@@ -2,7 +2,7 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://toko-23.pages.dev",
+  site: "http://localhost:4321",
   output: "static",
   integrations: [sitemap()],
   build: {

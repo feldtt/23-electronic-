@@ -1,11 +1,14 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { expandProductMarkers, loadProducts } from "./render-products.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const mockupRoot = path.join(repoRoot, "mockup", "toko-23");
 const pagesRoot = path.join(repoRoot, "src", "pages");
 const publicRoot = path.join(repoRoot, "public");
+
+const products = loadProducts(repoRoot);
 
 // Design artifacts that must NOT be copied into the deployed site.
 const SKIP_ENTRIES = new Set(["screenshots", ".thumbnail"]);
@@ -85,7 +88,8 @@ for (const sourcePath of walkHtmlFiles(mockupRoot)) {
   const astroPath = toAstroPath(relativePath);
 
   mkdirSync(path.dirname(astroPath), { recursive: true });
-  writeFileSync(astroPath, preserveScripts(readFileSync(sourcePath, "utf8")));
+  const html = expandProductMarkers(readFileSync(sourcePath, "utf8"), products);
+  writeFileSync(astroPath, preserveScripts(html));
 }
 
 // Copy EVERY non-.html file/dir into public/, preserving relative paths,

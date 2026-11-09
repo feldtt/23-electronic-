@@ -1,0 +1,11 @@
+{
+  "category": "tv",
+  "group": "Televisi yang Tersedia",
+  "title": "Xiaomi TV",
+  "photo": "/assets/uploads/tv-xiaomi.jpeg",
+  "alt": "Xiaomi TV",
+  "description": "Smart TV",
+  "wa_message": "Halo 23 Electronic, mau tanya stok & harga TV Xiaomi TV.",
+  "order": 60,
+  "published": true
+}

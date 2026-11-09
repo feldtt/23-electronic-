@@ -1,0 +1,82 @@
+/* Admin skin modeled on eci.id: brand blue #0f69ab, Rubik, white header with
+   underlined active tab, flat white panels with thin #e6e6e6 borders, 4px radius.
+   Decap uses emotion classes whose names end in a stable component label,
+   so everything is matched with [class*="Label"]. */
+:root {
+  --blue: #0f69ab; --blue-dark: #0b5288; --blue-soft: #e8f1f9;
+  --text: #222; --text-soft: #393939; --muted: #878787;
+  --line: #e6e6e6; --page: #f5f5f5; --red: #dc2626;
+  --r: 4px;
+}
+html, body, #nc-root, #nc-root * { font-family: 'Rubik', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+body { background: var(--page) !important; color: var(--text); -webkit-font-smoothing: antialiased; }
+
+/* ---------- Header: white, blue text, underline on the active tab ---------- */
+[class*="AppHeaderContent"] { background: #fff !important; border-bottom: 1px solid var(--line) !important; box-shadow: none !important; }
+[class*="AppHeaderNavLink"], [class*="AppHeaderButton"], [class*="AppHeaderSiteLink"] {
+  color: var(--text-soft) !important; font-weight: 500 !important; background: transparent !important;
+  border-radius: 0 !important; border-bottom: 2px solid transparent !important;
+}
+[class*="AppHeaderNavLink"]:hover, [class*="AppHeaderButton"]:hover { color: var(--blue) !important; }
+[class*="AppHeaderNavLink"].active, [class*="AppHeaderNavLink"][aria-current="page"] { color: var(--blue) !important; border-bottom-color: var(--blue) !important; }
+[class*="AppHeaderNavLink"] svg, [class*="AppHeaderButton"] svg { color: inherit !important; }
+[class*="AppHeaderQuickNewButton"] { background: var(--blue) !important; color: #fff !important; border-radius: var(--r) !important; font-weight: 500 !important; }
+[class*="AppHeaderQuickNewButton"]:hover { background: var(--blue-dark) !important; }
+
+/* ---------- Sidebar ---------- */
+[class*="SidebarContainer"] { background: #fff !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important; box-shadow: none !important; }
+[class*="SidebarHeading"] { color: var(--text) !important; font-weight: 500 !important; font-size: 16px !important; }
+[class*="SidebarNavLink"] { color: var(--text-soft) !important; font-weight: 400 !important; border-left: 3px solid transparent !important; }
+[class*="SidebarNavLink"]:hover { color: var(--blue) !important; background: var(--blue-soft) !important; }
+[class*="SidebarNavLink"].sidebar-active, [class*="SidebarNavLink"].active { color: var(--blue) !important; background: var(--blue-soft) !important; border-left-color: var(--blue) !important; font-weight: 500 !important; }
+[class*="SearchInput"] { border: 1px solid var(--line) !important; border-radius: var(--r) !important; background: var(--page) !important; }
+[class*="SearchInput"]:focus { border-color: var(--blue) !important; background: #fff !important; }
+
+/* ---------- Collection page: heading, controls, list ---------- */
+[class*="CollectionTopContainer"] { background: #fff !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important; box-shadow: none !important; }
+[class*="CollectionTopHeading"] { color: var(--text) !important; font-weight: 500 !important; }
+[class*="CollectionTopDescription"] { color: var(--muted) !important; }
+[class*="CollectionControlsContainer"] { margin-top: 12px !important; }
+[class*="ViewControlsButton"], [class*="StyledDropdownButton"], [class*="DropdownButton"] {
+  background: #fff !important; color: var(--text-soft) !important; border: 1px solid var(--line) !important;
+  border-radius: var(--r) !important; box-shadow: none !important; font-weight: 500 !important;
+}
+[class*="ViewControlsButton"]:hover, [class*="StyledDropdownButton"]:hover, [class*="DropdownButton"]:hover { color: var(--blue) !important; border-color: var(--blue) !important; }
+[class*="ViewControlsSection"] { color: var(--muted) !important; }
+
+[class*="ListCard"] { background: #fff !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important; box-shadow: none !important; margin-bottom: 6px !important; }
+[class*="ListCard"]:hover { border-color: var(--blue) !important; }
+[class*="ListCardTitle"] { color: var(--text) !important; font-weight: 400 !important; font-size: 15px !important; }
+[class*="ListCard"] [class*="CollectionLabel"] { color: var(--blue) !important; }
+[class*="GridCard"] { background: #fff !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important; box-shadow: none !important; }
+[class*="GridCard"]:hover { border-color: var(--blue) !important; }
+[class*="CardHeading"] { color: var(--text) !important; font-weight: 500 !important; }
+[class*="CardImage"] { background-color: #fff !important; background-size: contain !important; }
+[class*="GroupHeading"] { color: var(--blue) !important; font-weight: 500 !important; border-bottom: 2px solid var(--blue) !important; display: inline-block; padding-bottom: 4px !important; }
+
+/* ---------- Buttons ---------- */
+[class*="CollectionTopNewButton"], [class*="LoginButton"], [class*="PublishButton"], [class*="SaveButton"],
+[class*="UploadButton"], [class*="AddButton"], [class*="FileWidgetButton"]:not([class*="Remove"]) {
+  background: var(--blue) !important; color: #fff !important; border: 0 !important;
+  border-radius: var(--r) !important; font-weight: 500 !important; box-shadow: none !important;
+}
+[class*="CollectionTopNewButton"]:hover, [class*="LoginButton"]:hover, [class*="PublishButton"]:hover,
+[class*="SaveButton"]:hover, [class*="UploadButton"]:hover, [class*="AddButton"]:hover { background: var(--blue-dark) !important; }
+[class*="DeleteButton"], [class*="FileWidgetButtonRemove"] {
+  background: #fff !important; color: var(--red) !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important;
+}
+
+/* ---------- Editor ---------- */
+[class*="ToolbarContainer"] { background: #fff !important; border-bottom: 1px solid var(--line) !important; box-shadow: none !important; }
+[class*="ToolbarSectionBackLink"] { color: var(--blue) !important; }
+[class*="ControlPaneContainer"] { background: var(--page) !important; }
+[class*="ControlContainer"] { background: #fff !important; border: 1px solid var(--line) !important; border-radius: var(--r) !important; padding: 4px 16px 16px !important; margin-top: 12px !important; }
+[class*="ControlContainer"] label, [class*="ControlTopbar"] label { color: var(--text) !important; font-weight: 500 !important; background: transparent !important; }
+[class*="ControlHint"] { color: var(--muted) !important; font-size: 12.5px !important; }
+#nc-root input[type="text"], #nc-root input[type="number"], #nc-root input[type="search"], #nc-root textarea, #nc-root select {
+  border: 1px solid var(--line) !important; border-radius: var(--r) !important; background: #fff !important; color: var(--text) !important;
+}
+#nc-root input:focus, #nc-root textarea:focus, #nc-root select:focus { border-color: var(--blue) !important; box-shadow: 0 0 0 3px var(--blue-soft) !important; outline: 0 !important; }
+
+/* ---------- Login page ---------- */
+[class*="StyledAuthenticationPage"] { background: var(--page) !important; }

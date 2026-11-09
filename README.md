@@ -1,14 +1,22 @@
 # 23 Electronic (repo: toko-23)
 
-Client website for **23 Electronic** (brand name; repo/URL kept as `toko-23`) — AC, kulkas, mesin cuci & home-electronics sales and service (Ciputat / Pamulang / Tangerang Selatan). Deployed on Cloudflare Pages.
+Client website for **23 Electronic** (brand name; repo/URL kept as `toko-23`) — AC, kulkas, mesin cuci & home-electronics sales and service (Ciputat / Pamulang / Tangerang Selatan). Local-only project: it is not published anywhere.
 
-- **Status:** Stage 1 (preview) — deployed, mobile-QA'd + polished. Real product catalog + real logo applied 2026-05-30.
-- **Live preview:** https://toko-23.pages.dev
+- **Status:** Local only. The old `toko-23.pages.dev` site belonged to the original developer and is no longer used.
 - **Stack:** Astro (static); header / footer / sticky-WhatsApp injected client-side by `public/assets/partials.js`.
 - **Brand:** real "23 Electronic" logo in the header (`assets/uploads/logo-23-electronic.png`); brand text is "23 Electronic" site-wide.
 - **Catalog:** real owner inventory — 12 washers, 10 AC, 17 TVs (photo + brand + model + warranty per card) in `produk/*`. Kulkas page = 12 real models (8 one-door + 4 two-door) as text cards with "Foto menyusul" — **no fridge photos yet**. Photos live in `public/assets/uploads/`, referenced as `/assets/uploads/...`.
 
 The mockup source stays in `mockup/toko-23`; `src/pages` are generated via `npm run import:mockup` (it **wipes** `src/pages` and rebuilds from the mockup + copies every non-HTML file into `public/` — always edit the mockup, never `src/pages`).
+
+## Admin panel (product editing without code)
+
+Runs only on this computer. Products live in `content/products/*.json`; uploaded photos go to `mockup/toko-23/assets/uploads/`.
+
+1. Terminal 1: `npx decap-server` (leave running).
+2. Terminal 2: `npm run import:mockup` then `npm run dev`.
+3. Open `http://localhost:4321/admin/index.html` (needs the full filename). No login.
+4. After saving in the admin, run `npm run import:mockup` again to refresh the site pages.
 
 ## Commands
 ```bash
@@ -16,7 +24,6 @@ npm install
 npm run import:mockup
 npm run dev
 npm run build
-npx wrangler pages deploy dist --project-name toko-23   # deploy
 ```
 
 ## Notes / outstanding

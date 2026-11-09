@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Client website for **23 Electronic** (repo/URL kept as `toko-23`): sells and services AC, kulkas, mesin cuci and TVs in Ciputat / Pamulang / Tangerang Selatan. Content is Indonesian. Static Astro site deployed on Cloudflare Pages (https://toko-23.pages.dev).
+Client website for **23 Electronic** (repo/URL kept as `toko-23`): sells and services AC, kulkas, mesin cuci and TVs in Ciputat / Pamulang / Tangerang Selatan. Content is Indonesian. Static Astro site, run locally only. It is not published: the old toko-23.pages.dev deployment belonged to the original developer and is no longer used.
+
+## Goal
+
+The site helps people find home electronic appliances and converts them into buyers by contacting the shop on WhatsApp. There is no online checkout or cart, by design. When making design or content decisions, favor whatever moves a visitor toward a WhatsApp message (clear product info, visible WhatsApp CTAs, trust signals).
 
 ## Commands
 
@@ -14,7 +18,6 @@ npm run import:mockup   # regenerate src/pages + public/ from mockup/ (destructi
 npm run dev             # astro dev on 0.0.0.0, http://localhost:4321
 npm run build           # astro check && astro build -> dist/
 npm run preview         # serve dist/
-npx wrangler pages deploy dist --project-name toko-23
 ```
 
 There is no test or lint setup; `astro check` (run by `build`) is the only static check.
@@ -34,7 +37,14 @@ There are no Astro layouts or components. The header, footer, top bar and sticky
 
 ## Content facts
 
-- Product catalog lives in `mockup/toko-23/produk/*.html` as hand-written cards (photo, brand, model, warranty). Photos are referenced as `/assets/uploads/...`.
-- Kulkas page: 12 real models shown as text cards with "Foto menyusul" because there are no fridge photos yet. Store, technician and service-action photos are also placeholders.
+- Status: local only, not deployed. The WhatsApp number in `partials.js` is real and live (`628111523239`); don't change it casually.
+- Product catalog lives in `content/products/*.json`, one file per product (category, group, title, photo, description, wa_message, order, published). The category pages in `mockup/toko-23/produk/*.html` contain only a `<!--PRODUCTS:<category>-->` marker (`ac`, `kulkas`, `mesin-cuci`, `tv`); `scripts/render-products.mjs` expands it into cards during `import:mockup`. Photos are referenced as `/assets/uploads/...`. Currently 10 AC, 6 kulkas, 18 washers, 24 TVs. The featured cards on the home page and `produk/index.html` are still hand-written HTML.
+
+- Kulkas 2-pintu models and Polytron 159/179 have no spec-sheet entry yet.
+- Kulkas page: 6 real models shown as icon cards because there are no fridge photos yet (README mentions 12 models; only 6 are on the page). Store, technician and service-action photos are also placeholders.
 - Spec research and the owner's spec sheet are in `docs/` (`state2-spec-research.md`, the PDFs).
 - The address "Jl. Dewi Sartika, Ciputat" is an unverified placeholder.
+
+## Admin panel (Decap CMS)
+
+Local-only product editor at `/admin/index.html` (`public/admin/index.html` + `config.yml`, hand-maintained, not generated). Run `npx decap-server` alongside `npm run dev`; the `proxy` backend in `config.yml` writes JSON to `content/products/` and photos to `mockup/toko-23/assets/uploads/` on disk, with no login. Re-run `npm run import:mockup` after saving. There is no deploy pipeline or OAuth. To change a product field, update both `public/admin/config.yml` and `scripts/render-products.mjs`.
