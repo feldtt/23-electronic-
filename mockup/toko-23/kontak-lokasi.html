@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak & Lokasi — 23 Electronic Ciputat</title>
+  <meta name="description" content="Alamat, jam buka, nomor telepon, dan WhatsApp 23 Electronic di Jl. Dewi Sartika Ciputat.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="header"></div>
+  <div id="subnav"></div>
+
+  <div class="crumbs">
+    <div class="container">
+      <a href="index.html">Beranda</a><span class="sep">›</span><strong>Kontak & Lokasi</strong>
+    </div>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Kontak & Lokasi 23 Electronic</h1>
+      <p>Toko fisik di koridor Jl. Dewi Sartika, Ciputat. Cara tercepat: WhatsApp admin atau datang langsung saat jam buka.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <figure style="margin:0 0 24px;border-radius:10px;overflow:hidden;border:1px solid #e3e8ee;">
+            <img src="/assets/uploads/store-front.jpg" alt="Tampak depan toko 23 Electronic (Toko Dua Tiga), Jl. Dewi Sartika, Ciputat" loading="lazy" style="width:100%;height:auto;display:block;">
+            <figcaption style="font-size:12px;color:var(--muted);padding:8px 4px;background:#fafbfc;">Tampak depan toko — papan nama "Toshiba · Toko Dua Tiga" di Jl. Dewi Sartika, Ciputat.</figcaption>
+          </figure>
+          <h2 style="margin-bottom:16px;">Informasi Toko</h2>
+          <table class="price-table">
+            <tbody>
+              <tr>
+                <th style="width:40%;">Nama Toko</th>
+                <td>23 Electronic <small>(alias: Toko Dua Tiga)</small></td>
+              </tr>
+              <tr>
+                <th>Alamat</th>
+                <td>Jl. Dewi Sartika, Cipayung / Ciputat, Tangerang Selatan</td>
+              </tr>
+              <tr>
+                <th>Jam Buka</th>
+                <td>Senin – Minggu, 08.00 – 21.00</td>
+              </tr>
+              <tr>
+                <th>Telepon</th>
+                <td><a href="tel:+628111523239">0811-1523-239</a></td>
+              </tr>
+              <tr>
+                <th>WhatsApp Admin</th>
+                <td><a href="#" id="contactWa" target="_blank" rel="noopener">Chat via WhatsApp</a> <small>(nomor menunggu verifikasi)</small></td>
+              </tr>
+              <tr>
+                <th>Google Maps</th>
+                <td><a href="#" id="contactMaps" target="_blank" rel="noopener">Buka di Google Maps</a></td>
+              </tr>
+              <tr>
+                <th>Kategori</th>
+                <td>Toko elektronik rumah tangga + jasa service AC</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 style="margin-top:40px;margin-bottom:12px;">Peta Lokasi</h2>
+          <div class="card-img" style="aspect-ratio:16/9;font-size:14px;">[ embed Google Maps — diaktifkan setelah alamat final diverifikasi ]</div>
+          <p style="font-size:13px;color:var(--muted);margin-top:8px;">Hingga alamat final diverifikasi, klik tombol "Buka di Google Maps" untuk pencarian berdasarkan nama toko.</p>
+
+          <h2 style="margin-top:40px;margin-bottom:12px;">Area Layanan Service & Pengiriman</h2>
+          <p style="color:var(--muted);margin-bottom:12px;">Radius inti — area lain bisa dibantu, konfirmasi via WhatsApp.</p>
+          <div class="area-list">
+            <span>Ciputat</span>
+            <span>Ciputat Timur</span>
+            <span>Cipayung</span>
+            <span>Pamulang</span>
+            <span>Pondok Cabe</span>
+            <span>Serua</span>
+            <span>Sawah Baru</span>
+            <span>Sawah Lama</span>
+            <span>Rempoa</span>
+            <span>Rengas</span>
+          </div>
+        </div>
+
+        <aside>
+          <div class="aside-card">
+            <h4>Cara paling cepat</h4>
+            <p>Chat WhatsApp untuk tanya stok, harga, atau booking service. Admin akan balas pada jam operasional.</p>
+            <a href="#" id="asideWa" class="btn btn-wa">Chat WhatsApp</a>
+            <a href="#" id="asideMaps" class="btn btn-primary" target="_blank" rel="noopener">Buka Google Maps</a>
+            <a href="tel:+628111523239" class="btn btn-secondary">Telepon Toko</a>
+            <hr style="margin:14px 0;border:0;border-top:1px solid var(--border);">
+            <p style="font-size:13px;"><strong>SLA balas chat:</strong><br>Pada jam buka, target balas ≤ 30 menit. Di luar jam buka, dibalas keesokan harinya.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <script>window.__page = { active: 'kontak', basePath: '' };</script>
+  <script src="assets/partials.js"></script>
+  <script>
+    ['contactWa', 'asideWa'].forEach(id => {
+      const e = document.getElementById(id);
+      e.href = window.__waLink; e.target = '_blank';
+    });
+    ['contactMaps', 'asideMaps'].forEach(id => {
+      document.getElementById(id).href = window.__mapsLink;
+    });
+  </script>
+</body>
+</html>
