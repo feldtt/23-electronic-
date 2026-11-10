@@ -65,10 +65,37 @@
         </div>
 
         <aside>
-          <div class="aside-card">
-            <h4>Belum yakin kapasitas yang cocok?</h4>
-            <p>Chat admin dengan info ukuran ruangan dan jumlah penghuni. Admin akan bantu pilih kapasitas dan tipe.</p>
-            <a href="#" id="asideWa" class="btn btn-wa">Chat Admin Sekarang</a>
+          <div class="aside-card pk-calc">
+            <h4>Hitung PK AC yang Cocok</h4>
+            <p>Isi ukuran ruangan, kami hitung perkiraan kapasitas AC-nya.</p>
+            <div class="row2">
+              <div><label for="pkP">Panjang (m)</label><input id="pkP" type="number" min="1" max="30" step="0.1" value="4" inputmode="decimal"></div>
+              <div><label for="pkL">Lebar (m)</label><input id="pkL" type="number" min="1" max="30" step="0.1" value="3" inputmode="decimal"></div>
+            </div>
+            <label for="pkO">Jumlah penghuni</label>
+            <input id="pkO" type="number" min="1" max="30" step="1" value="2" inputmode="numeric">
+            <label for="pkS">Kondisi ruangan</label>
+            <select id="pkS">
+              <option value="1">Lantai bawah / teduh</option>
+              <option value="1.1" selected>Terkena sinar matahari sebagian</option>
+              <option value="1.2">Lantai atas / bawah atap / jendela besar</option>
+            </select>
+            <label for="pkE">Peralatan elektronik (TV, PC, dll)</label>
+            <select id="pkE">
+              <option value="0">Sedikit</option>
+              <option value="1" selected>Beberapa (TV / laptop)</option>
+              <option value="2">Banyak (PC, kulkas, dapur)</option>
+            </select>
+            <button type="button" id="pkGo" class="btn btn-primary">Hitung Kapasitas</button>
+            <div id="pkResult" class="pk-result" aria-live="polite">
+              <p class="pk-small">Kapasitas yang disarankan</p>
+              <p class="pk-big" id="pkPk"></p>
+              <p class="pk-btu" id="pkBtu"></p>
+              <a href="#" id="pkWa" class="btn btn-wa">Tanya Stok AC Ini</a>
+            </div>
+            <p class="pk-note">Perkiraan untuk plafon standar ±2,5–3 m. Untuk kepastian, chat admin.</p>
+            <hr>
+            <a href="#" id="asideWa" class="btn btn-secondary">Chat Admin Sekarang</a>
             <a href="../jasa-service/pasang-ac-ciputat.html" class="btn btn-secondary">Detail Paket Pasang AC</a>
           </div>
         </aside>
@@ -92,6 +119,31 @@
     });
     document.getElementById('asideWa').href = window.__waLink;
     document.getElementById('asideWa').target = '_blank';
+
+    // AC capacity calculator
+    (function () {
+      const $ = id => document.getElementById(id);
+      const sizes = [
+        [5500, '1/2 PK'], [7500, '3/4 PK'], [10000, '1 PK'],
+        [14000, '1,5 PK'], [19000, '2 PK'], [24000, '2,5 PK']
+      ];
+      $('pkGo').addEventListener('click', () => {
+        const p = parseFloat($('pkP').value), l = parseFloat($('pkL').value);
+        const o = Math.max(1, parseInt($('pkO').value, 10) || 1);
+        if (!(p > 0) || !(l > 0)) { $('pkP').focus(); return; }
+        const sun = parseFloat($('pkS').value), el = parseInt($('pkE').value, 10);
+        const btu = Math.round(((p * l * 550) * sun + (o - 1) * 600 + el * 600) / 100) * 100;
+        const hit = sizes.find(s => btu <= s[0]);
+        const label = hit ? hit[1] : '3 PK atau lebih';
+        $('pkPk').textContent = label;
+        $('pkBtu').textContent = `≈ ${btu.toLocaleString('id-ID')} BTU/jam · ${(p * l).toFixed(1).replace('.', ',')} m²`;
+        const msg = `Halo 23 Electronic, ruangan saya ${p}x${l} m (${o} orang). Hasil hitung kapasitas AC: ${label}. Ada stok AC ${label}? Berapa harganya?`;
+        const a = $('pkWa');
+        a.href = `${window.__waLink.split('?')[0]}?text=${encodeURIComponent(msg)}`;
+        a.target = '_blank'; a.rel = 'noopener';
+        $('pkResult').classList.add('show');
+      });
+    })();
   </script>
 </body>
 </html>
