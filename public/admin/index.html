@@ -4,12 +4,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Admin — 23 Electronic</title>
+  <title>Seller Center — 23 Electronic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="/admin/admin.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/admin/panel.css">
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@3.8.0/dist/decap-cms.js"></script>
+  <div class="shell">
+    <aside class="side" id="side">
+      <div class="brand">
+        <img src="/assets/uploads/logo-23-electronic.png" alt="" onerror="this.style.display='none'">
+        <div><b>23 Electronic</b><span>Seller Center</span></div>
+      </div>
+      <nav class="nav">
+        <a href="#/dashboard" data-route="dashboard"><svg viewBox="0 0 24 24"><path d="M4 13h6V4H4zm0 7h6v-5H4zm10 0h6V11h-6zm0-16v5h6V4z"/></svg>Dashboard</a>
+        <a href="#/produk" data-route="produk"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4zm9-1.8L6 7.9l6 2.7 6-2.7zM5 9.5v6.2l6 2.7v-6.2zm14 0l-6 2.7v6.2l6-2.7z"/></svg>Produk<em id="navCount"></em></a>
+      </nav>
+      <div class="side-foot">
+        <a href="/index.html" target="_blank" rel="noopener">Lihat website ↗</a>
+        <a href="/admin/decap.html" target="_blank" rel="noopener" class="muted">Editor lama (Decap)</a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="top">
+        <button class="burger" id="burger" aria-label="Menu">☰</button>
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="top-right">
+          <span class="srv" id="srv"><i></i><span>Memeriksa server…</span></span>
+          <button class="btn btn-ghost" id="rebuildBtn" title="Terapkan perubahan produk ke halaman website">Terapkan ke website</button>
+        </div>
+      </header>
+
+      <main id="view"></main>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts"></div>
+  <script src="/admin/panel.js"></script>
 </body>
 </html>

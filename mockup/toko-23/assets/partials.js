@@ -231,6 +231,27 @@
   // Adds data-event attributes — when GA4 is wired up, gtag() will be called.
   // Until then, events log to console for QA.
   // =====================================================================
+  // First-party analytics: posts to the local admin server (scripts/admin-server.mjs).
+  // sendBeacon with a string body is a "simple" request, so there is no CORS preflight
+  // and a stopped server just fails silently.
+  const ANALYTICS_URL = /^https?:$/.test(location.protocol) ? `${location.protocol}//${location.hostname}:8082/api/track` : '';
+  const visitorId = (() => {
+    try {
+      let v = localStorage.getItem('a23vid');
+      if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem('a23vid', v); }
+      return v;
+    } catch (e) { return 'anon'; }
+  })();
+  const refHost = (() => {
+    try { const h = new URL(document.referrer).hostname; return h && h !== location.hostname ? h.replace(/^www\./, '') : ''; } catch (e) { return ''; }
+  })();
+  const beacon = (type, extra = {}) => {
+    if (!ANALYTICS_URL || !navigator.sendBeacon) return;
+    try {
+      navigator.sendBeacon(ANALYTICS_URL, JSON.stringify({ type, vid: visitorId, path: location.pathname, page: sourcePage, ref: refHost, ...extra }));
+    } catch (e) { /* ignore */ }
+  };
+
   const track = (name, params = {}) => {
     params.source_page = sourcePage;
     if (typeof window.gtag === 'function') {
@@ -250,10 +271,14 @@
     const href = a.getAttribute('href') || '';
     if (href.includes('wa.me') || href.includes('whatsapp')) {
       track('click_whatsapp', { link_text: a.textContent.trim().slice(0, 60) });
+      const card = a.closest('.card');
+      beacon('click_whatsapp', { label: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 60), product: card ? (card.querySelector('h3')?.textContent.trim() || '') : '' });
     } else if (href.startsWith('tel:')) {
       track('click_call', { phone: href.replace('tel:', '') });
+      beacon('click_call');
     } else if (href.includes('maps.google.com') || href.includes('goo.gl/maps')) {
       track('click_maps');
+      beacon('click_maps');
     } else if (href.includes('tokopedia') || href.includes('shopee') || href.includes('blibli')) {
       track('click_marketplace', { dest: new URL(href, location.href).hostname });
     }
@@ -265,6 +290,7 @@
     sourcePage === 'produk' ? 'view_product_category' :
     'view_page';
   track(intent, { page: location.pathname });
+  beacon('pageview');
 
   // Search bar: typing prefills WA message + tracks submit
   const hsInput = document.getElementById('hsInput');

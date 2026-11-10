@@ -8,6 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview --host 0.0.0.0",
     "import:mockup": "node scripts/import-mockup.mjs",
+    "admin": "node scripts/admin-server.mjs",
     "astro": "astro"
   },
   "dependencies": {

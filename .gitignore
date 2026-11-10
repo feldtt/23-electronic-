@@ -8,3 +8,9 @@ npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 .DS_Store
+
+# local analytics data
+content/analytics/
+
+# local analytics data
+content/analytics/

@@ -45,6 +45,12 @@ There are no Astro layouts or components. The header, footer, top bar and sticky
 - Spec research and the owner's spec sheet are in `docs/` (`state2-spec-research.md`, the PDFs).
 - The address "Jl. Dewi Sartika, Ciputat" is an unverified placeholder.
 
-## Admin panel (Decap CMS)
+## Admin panel (Seller Center) + analytics
 
-Local-only product editor at `/admin/index.html` (`public/admin/index.html` + `config.yml`, hand-maintained, not generated). Run `npx decap-server` alongside `npm run dev`; the `proxy` backend in `config.yml` writes JSON to `content/products/` and photos to `mockup/toko-23/assets/uploads/` on disk, with no login. Re-run `npm run import:mockup` after saving. There is no deploy pipeline or OAuth. To change a product field, update both `public/admin/config.yml` and `scripts/render-products.mjs`.
+Local-only. Run `npm run admin` (`scripts/admin-server.mjs`, port 8082, no dependencies) alongside `npm run dev`, then open `/admin/index.html`. On Windows PowerShell use `npm.cmd` if scripts are blocked.
+
+- UI: `public/admin/index.html` + `panel.css` + `panel.js` (hand-written, not generated). Dashboard (traffic, WhatsApp clicks, top products/pages, referrers, hourly) and Produk (table, search, tabs, drawer editor, photo upload).
+- Server API: product CRUD writes `content/products/*.json`; uploads go to both `mockup/toko-23/assets/uploads/` and `public/assets/uploads/`; "Terapkan ke website" calls `import-mockup.mjs`. Admin routes accept loopback only plus header `X-Admin: 1`.
+- Tracking: `partials.js` sends `sendBeacon` events (pageview, click_whatsapp, click_call, click_maps; random visitor id in localStorage, no IP stored) to `http://<host>:8082/api/track`. Stored in `content/analytics/events.jsonl` (gitignored). If the site is ever deployed, the endpoint in `partials.js` must change.
+- To change a product field, update `cleanProduct`/`FIELD_ORDER` in `admin-server.mjs`, the drawer in `panel.js`, and `scripts/render-products.mjs`.
+- Old Decap editor kept at `/admin/decap.html` (`config.yml`, `decap.css`, needs `npx decap-server`).
