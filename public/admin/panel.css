@@ -170,3 +170,20 @@ tr:last-child td { border-bottom: 0; }
   .top { padding: 10px 16px; }
 }
 @media (max-width: 520px) { .two, .photo { grid-template-columns: 1fr; } }
+
+/* bulk actions, completeness warnings */
+.bulkbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 16px; background: var(--blue-s); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bulkbar[hidden] { display: none; }
+.bulkbar select, .bulkbar input { padding: 5px 8px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.bulkbar input[type=number] { width: 80px; }
+.bulkbar .inl { display: inline-flex; gap: 4px; align-items: center; }
+tr.sel td { background: var(--blue-s); }
+.issues { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.banner.warn { background: var(--orange-s); border-color: #f5c9bf; color: #9a2a14; }
+.banner.warn a { color: inherit; font-weight: 700; }
+
+/* import dialog */
+.imp-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; }
+.rad { display: flex; gap: 8px; align-items: center; font-weight: 400; margin-top: 6px; }
+.imp-sum { margin: 4px 0 8px; }
+.imp-tbl { max-height: 320px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }

@@ -1,11 +1,15 @@
 {
-  "category": "mesin-cuci",
-  "group": "Mesin Cuci yang Tersedia",
+  "category": "led",
+  "group": [
+    "Kulkas 1 Pintu",
+    "Kulkas 3 Pintu"
+  ],
   "title": "Aqua QW-7021HT",
   "photo": "/assets/uploads/mc-aqua-freshair.jpeg",
   "alt": "Aqua QW-7021HT",
   "description": "2 tabung · 7 kg · Fresh Air System · Hijab Mode · garansi motor 7 tahun",
   "wa_message": "Halo 23 Electronic, mau tanya stok & harga Aqua QW-7021HT.",
   "order": 10,
+  "stock": 1,
   "published": true
 }

@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "v": "led",
+      "l": "LED"
+    },
+    {
+      "v": "kulkas-2-pintu",
+      "l": "Kulkas 2 Pintu"
+    }
+  ],
+  "groups": [
+    "Kulkas 1 Pintu",
+    "Kulkas 3 Pintu"
+  ]
+}

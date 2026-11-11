@@ -55,9 +55,12 @@ export function renderCategory(products, category) {
   // Groups keep the order in which their first product appears.
   const groups = new Map();
   for (const p of items) {
-    const g = p.group?.trim() || DEFAULT_GROUP[category] || "Produk";
-    if (!groups.has(g)) groups.set(g, []);
-    groups.get(g).push(p);
+    // `group` may be a string (old files) or an array (multiple sub-categories).
+    const names = [].concat(p.group ?? []).map((x) => String(x).trim()).filter(Boolean);
+    for (const g of names.length ? names : [DEFAULT_GROUP[category] || "Produk"]) {
+      if (!groups.has(g)) groups.set(g, []);
+      groups.get(g).push(p);
+    }
   }
   if (groups.size === 0) {
     return `<p style="color:var(--muted);">Daftar produk sedang diperbarui. Hubungi admin via WhatsApp untuk stok terbaru.</p>`;

@@ -21,6 +21,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = Number(process.env.ADMIN_PORT) || 8082;
 const productsDir = path.join(root, "content", "products");
 const analyticsDir = path.join(root, "content", "analytics");
+const taxonomyFile = path.join(root, "content", "taxonomy.json");
 const eventsFile = path.join(analyticsDir, "events.jsonl");
 const uploadDirs = [
   path.join(root, "mockup", "toko-23", "assets", "uploads"),
@@ -30,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "title", "photo", "alt", "description", "wa_message", "order", "published"];
+const FIELD_ORDER = ["category", "group", "title", "photo", "alt", "description", "wa_message", "order", "stock", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -80,19 +81,219 @@ function listProducts() {
 function cleanProduct(input) {
   const p = {
     category: String(input.category ?? ""),
-    group: String(input.group ?? "").trim(),
+    group: [...new Set([].concat(input.group ?? []).map((g) => String(g).trim()).filter(Boolean))],
     title: String(input.title ?? "").trim(),
     photo: String(input.photo ?? "").trim(),
     alt: String(input.alt ?? "").trim(),
     description: String(input.description ?? "").trim(),
     wa_message: String(input.wa_message ?? "").trim(),
     order: Number.isFinite(Number(input.order)) ? Math.trunc(Number(input.order)) : 1000,
+    stock: Number.isFinite(Number(input.stock)) ? Math.max(0, Math.trunc(Number(input.stock))) : 0,
     published: input.published !== false,
   };
-  if (!CATEGORIES.includes(p.category)) throw Object.assign(new Error("Kategori tidak valid"), { code: 400 });
-  if (!p.title) throw Object.assign(new Error("Nama produk wajib diisi"), { code: 400 });
-  if (p.photo && !/^\/assets\/uploads\/[\w.\-]+$/.test(p.photo)) throw Object.assign(new Error("Path foto tidak valid"), { code: 400 });
+  p.category = slugify(p.category);
+  if (!p.category) throw Object.assign(new Error("Invalid category"), { code: 400 });
+  if (!p.title) throw Object.assign(new Error("Product name is required"), { code: 400 });
+  if (p.photo && !/^\/assets\/uploads\/[\w.\-]+$/.test(p.photo)) throw Object.assign(new Error("Invalid photo path"), { code: 400 });
   return Object.fromEntries(FIELD_ORDER.map((k) => [k, p[k]]));
+}
+// Saved categories / sub-categories so new ones are reusable before any product uses them.
+function readTaxonomy() {
+  try { const t = JSON.parse(readFileSync(taxonomyFile, "utf8")); return { categories: t.categories ?? [], groups: t.groups ?? [] }; }
+  catch { return { categories: [], groups: [] }; }
+}
+function addTaxonomy(type, name) {
+  name = String(name ?? "").trim().slice(0, 80);
+  if (!name) throw Object.assign(new Error("Name is required"), { code: 400 });
+  const t = readTaxonomy();
+  if (type === "category") {
+    const v = slugify(name);
+    if (!v) throw Object.assign(new Error("Invalid category name"), { code: 400 });
+    if (!t.categories.some((c) => c.v === v)) t.categories.push({ v, l: name });
+  } else if (type === "group") {
+    if (!t.groups.some((g) => g.toLowerCase() === name.toLowerCase())) t.groups.push(name);
+  } else throw Object.assign(new Error("Invalid type"), { code: 400 });
+  writeFileSync(taxonomyFile, JSON.stringify(t, null, 2) + "\n");
+  return t;
+}
+const BUILTIN_CATS = ["ac", "kulkas", "mesin-cuci", "tv"];
+const groupList = (p) => [].concat(p.group ?? []).map((x) => String(x).trim()).filter(Boolean);
+const writeTaxonomy = (t) => writeFileSync(taxonomyFile, JSON.stringify(t, null, 2) + "\n");
+// Apply fn to every product file; fn returns the changed product or null to leave it alone.
+function rewriteProducts(fn) {
+  let n = 0;
+  for (const f of readdirSync(productsDir).filter((x) => x.endsWith(".json"))) {
+    let p; try { p = readProduct(f); } catch { continue; }
+    const { id, ...rest } = p;
+    const next = fn(rest);
+    if (!next) continue;
+    writeProduct(id, cleanProduct(next)); n++;
+  }
+  return n;
+}
+function renameTaxonomy(type, from, to) {
+  to = String(to ?? "").trim().slice(0, 80);
+  if (!to) throw Object.assign(new Error("New name is required"), { code: 400 });
+  const t = readTaxonomy();
+  if (type === "category") {
+    const c = t.categories.find((x) => x.v === from);
+    if (c) c.l = to; else t.categories.push({ v: from, l: to });
+  } else if (type === "group") {
+    const same = (a) => a.toLowerCase() === String(from).toLowerCase();
+    rewriteProducts((p) => {
+      const g = groupList(p);
+      if (!g.some(same)) return null;
+      return { ...p, group: [...new Set(g.map((x) => (same(x) ? to : x)))] };
+    });
+    t.groups = [...new Set(t.groups.map((x) => (same(x) ? to : x)))];
+    if (!t.groups.includes(to)) t.groups.push(to);
+  } else throw Object.assign(new Error("Invalid type"), { code: 400 });
+  writeTaxonomy(t);
+  return t;
+}
+function deleteTaxonomy(type, name) {
+  const t = readTaxonomy();
+  if (type === "category") {
+    if (BUILTIN_CATS.includes(name)) throw Object.assign(new Error("Built-in categories have a website page and cannot be deleted"), { code: 400 });
+    const used = listProducts().filter((p) => p.category === name).length;
+    if (used) throw Object.assign(new Error(`Still used by ${used} products. Move or delete those products first.`), { code: 400 });
+    t.categories = t.categories.filter((c) => c.v !== name);
+  } else if (type === "group") {
+    const same = (a) => a.toLowerCase() === String(name).toLowerCase();
+    rewriteProducts((p) => {
+      const g = groupList(p);
+      return g.some(same) ? { ...p, group: g.filter((x) => !same(x)) } : null;
+    });
+    t.groups = t.groups.filter((x) => !same(x));
+  } else throw Object.assign(new Error("Invalid type"), { code: 400 });
+  writeTaxonomy(t);
+  return t;
+}
+function bulkProducts({ ids, action, value }) {
+  if (!Array.isArray(ids) || !ids.length) throw Object.assign(new Error("Select products first"), { code: 400 });
+  let n = 0;
+  for (const id of ids) {
+    if (!safeId(id)) continue;
+    const file = path.join(productsDir, `${id}.json`);
+    if (!existsSync(file)) continue;
+    if (action === "delete") { rmSync(file); n++; continue; }
+    const { id: _id, ...p } = readProduct(`${id}.json`);
+    if (action === "publish") p.published = true;
+    else if (action === "hide") p.published = false;
+    else if (action === "category") p.category = value;
+    else if (action === "stock") p.stock = value;
+    else if (action === "addGroup") p.group = [...new Set([...groupList(p), String(value).trim()])];
+    else if (action === "removeGroup") p.group = groupList(p).filter((x) => x.toLowerCase() !== String(value).toLowerCase());
+    else throw Object.assign(new Error("Unknown action"), { code: 400 });
+    writeProduct(id, cleanProduct(p)); n++;
+  }
+  return { ok: true, changed: n };
+}
+// ---------- bulk import (rows parsed from Excel/CSV in the browser) ----------
+const IMPORT_COLS = {
+  title: ["title", "name", "product", "product name", "model", "nama", "nama produk"],
+  category: ["category", "kategori"],
+  group: ["sub-category", "subcategory", "sub category", "sub-categories", "subcategories", "group", "type", "jenis", "sub-kategori"],
+  description: ["description", "desc", "deskripsi"],
+  stock: ["stock", "qty", "quantity", "stok"],
+  photo: ["photo", "image", "picture", "foto", "gambar"],
+  alt: ["alt", "alt text", "photo alt text"],
+  wa_message: ["wa_message", "whatsapp message", "wa message", "message", "pesan whatsapp"],
+  published: ["published", "visible", "show", "tampil"],
+};
+const CAT_ALIASES = {
+  ac: "ac", kulkas: "kulkas", fridge: "kulkas", refrigerator: "kulkas",
+  "mesin cuci": "mesin-cuci", "mesin-cuci": "mesin-cuci", "washing machine": "mesin-cuci", washer: "mesin-cuci",
+  tv: "tv", television: "tv", "tv & electronics": "tv", "tv & elektronik": "tv", "tv and electronics": "tv",
+};
+function pickCols(raw) {
+  const norm = {};
+  for (const [k, v] of Object.entries(raw ?? {})) norm[String(k).trim().toLowerCase()] = v;
+  const out = {};
+  for (const [field, names] of Object.entries(IMPORT_COLS)) {
+    const hit = names.find((n) => norm[n] !== undefined && String(norm[n]).trim() !== "");
+    out[field] = hit ? String(norm[hit]).trim() : "";
+  }
+  return out;
+}
+function resolveCategory(text, tax, existing) {
+  const key = text.trim().toLowerCase();
+  if (CAT_ALIASES[key]) return { v: CAT_ALIASES[key] };
+  const v = slugify(text);
+  if (!v) throw new Error("Invalid category");
+  if (BUILTIN_CATS.includes(v)) return { v };
+  const known = tax.categories.find((c) => c.v === v || c.l.toLowerCase() === key);
+  if (known) return { v: known.v };
+  if (existing.some((p) => p.category === v)) return { v };
+  return { v, l: text.trim(), isNew: true };
+}
+function importProducts({ rows, mode, dryRun }) {
+  if (!Array.isArray(rows) || !rows.length) throw Object.assign(new Error("No rows to import"), { code: 400 });
+  if (rows.length > 1000) throw Object.assign(new Error("Maximum 1000 rows per import"), { code: 400 });
+  const tax = readTaxonomy();
+  const existing = listProducts();
+  const results = [], newCats = new Map(), newGroups = new Set(), seen = new Set();
+  rows.forEach((raw, i) => {
+    const row = i + 2; // row 1 is the header in the spreadsheet
+    const r = pickCols(raw);
+    const title = r.title;
+    try {
+      if (!title) throw new Error("Missing name");
+      if (!r.category) throw new Error("Missing category");
+      const cat = resolveCategory(r.category, tax, existing);
+      const key = `${cat.v}|${title.toLowerCase()}`;
+      if (seen.has(key)) throw new Error("Duplicate of an earlier row in this file");
+      seen.add(key);
+      const warnings = [];
+      let stock;
+      if (r.stock !== "") {
+        stock = Number(r.stock);
+        if (!Number.isFinite(stock) || stock < 0) throw new Error("Stock must be a number");
+      }
+      let photo = r.photo;
+      if (photo) {
+        photo = photo.startsWith("/") ? photo : `/assets/uploads/${photo}`;
+        if (!/^\/assets\/uploads\/[\w.\-]+$/.test(photo) || !existsSync(path.join(uploadDirs[0], path.basename(photo)))) {
+          warnings.push(`Photo "${r.photo}" not found`); photo = "";
+        }
+      }
+      const match = existing.find((p) => p.category === cat.v && String(p.title).trim().toLowerCase() === title.toLowerCase());
+      if (match && mode !== "update") { results.push({ row, title, status: "skipped", message: "Already exists" }); return; }
+      const { id: matchId, ...base } = match ?? {};
+      const next = { ...base, category: cat.v, title };
+      const groups = [...new Set(r.group.split(/[;|\n]/).map((g) => g.trim()).filter(Boolean))];
+      if (groups.length) next.group = groups;
+      if (r.description) next.description = r.description;
+      if (r.alt) next.alt = r.alt;
+      if (r.wa_message) next.wa_message = r.wa_message;
+      if (photo) next.photo = photo;
+      if (stock !== undefined) next.stock = stock;
+      if (r.published !== "") next.published = !["no", "n", "false", "0", "hidden", "hide", "tidak"].includes(r.published.toLowerCase());
+      else if (!match) next.published = true;
+      const clean = cleanProduct(next);
+      if (!dryRun) {
+        let id = matchId;
+        if (!id) {
+          const b = `${clean.category}-${slugify(title) || "product"}`;
+          id = b;
+          for (let n = 2; existsSync(path.join(productsDir, `${id}.json`)); n++) id = `${b}-${n}`;
+        }
+        writeProduct(id, clean);
+      }
+      if (cat.isNew) newCats.set(cat.v, cat.l);
+      clean.group.forEach((g) => newGroups.add(g));
+      results.push({ row, title, status: match ? "updated" : "created", message: warnings.join("; ") });
+    } catch (err) {
+      results.push({ row, title, status: "error", message: err.message });
+    }
+  });
+  if (!dryRun) {
+    for (const [, l] of newCats) addTaxonomy("category", l);
+    for (const g of newGroups) addTaxonomy("group", g);
+  }
+  const counts = { created: 0, updated: 0, skipped: 0, error: 0 };
+  for (const r of results) counts[r.status]++;
+  return { ok: true, dryRun: !!dryRun, counts, results };
 }
 const writeProduct = (id, p) => writeFileSync(path.join(productsDir, `${id}.json`), JSON.stringify(p, null, 2) + "\n");
 const safeId = (id) => /^[a-z0-9][a-z0-9\-_.]*$/i.test(id) && !id.includes("..");
@@ -166,7 +367,7 @@ function stats(days) {
     topPages: topBy(views, (e) => e.path, 8).map(([p, n]) => ({ path: p, views: n, waClicks: waByPath.get(p) || 0 })),
     topProducts: topBy(waEv.filter((e) => e.product), (e) => e.product, 8).map(([name, n]) => ({ name, clicks: n })),
     topButtons: topBy(waEv, (e) => e.label || "(tanpa label)", 6).map(([name, n]) => ({ name, clicks: n })),
-    referrers: topBy(views, (e) => e.ref || "Langsung", 6).map(([name, n]) => ({ name, visits: n })),
+    referrers: topBy(views, (e) => e.ref || "Direct", 6).map(([name, n]) => ({ name, visits: n })),
     devices: {
       mobile: views.filter((e) => e.dev === "mobile").length,
       desktop: views.filter((e) => e.dev !== "mobile").length,
@@ -219,12 +420,31 @@ const server = http.createServer(async (req, res) => {
 
     // Everything below is admin-only.
     if (!isLoopback(req.socket.remoteAddress) || req.headers["x-admin"] !== "1") {
-      return json(res, 403, { error: "Hanya bisa diakses dari komputer ini" });
+      return json(res, 403, { error: "Only accessible from this computer" });
     }
 
     if (route === "/api/stats" && req.method === "GET") {
       const days = Math.min(90, Math.max(1, Number(url.searchParams.get("days")) || 7));
       return json(res, 200, stats(days));
+    }
+    if (route === "/api/taxonomy" && req.method === "GET") return json(res, 200, readTaxonomy());
+    if (route === "/api/taxonomy" && req.method === "POST") {
+      const b = JSON.parse((await readBody(req, 4096)).toString("utf8"));
+      return json(res, 200, addTaxonomy(b.type, b.name));
+    }
+    if (route === "/api/taxonomy" && req.method === "PUT") {
+      const b = JSON.parse((await readBody(req, 4096)).toString("utf8"));
+      return json(res, 200, renameTaxonomy(b.type, b.from, b.to));
+    }
+    if (route === "/api/taxonomy" && req.method === "DELETE") {
+      const b = JSON.parse((await readBody(req, 4096)).toString("utf8"));
+      return json(res, 200, deleteTaxonomy(b.type, b.name));
+    }
+    if (route === "/api/products/import" && req.method === "POST") {
+      return json(res, 200, importProducts(JSON.parse((await readBody(req, 4 * 1024 * 1024)).toString("utf8"))));
+    }
+    if (route === "/api/products/bulk" && req.method === "POST") {
+      return json(res, 200, bulkProducts(JSON.parse((await readBody(req, 65536)).toString("utf8"))));
     }
     if (route === "/api/products" && req.method === "GET") return json(res, 200, listProducts());
     if (route === "/api/products" && req.method === "POST") {
@@ -239,7 +459,7 @@ const server = http.createServer(async (req, res) => {
     if (m) {
       const id = decodeURIComponent(m[1]);
       const file = path.join(productsDir, `${id}.json`);
-      if (!safeId(id) || !existsSync(file)) return json(res, 404, { error: "Produk tidak ditemukan" });
+      if (!safeId(id) || !existsSync(file)) return json(res, 404, { error: "Product not found" });
       if (req.method === "PUT") {
         const merged = { ...readProduct(`${id}.json`), ...JSON.parse((await readBody(req, 65536)).toString("utf8")) };
         const p = cleanProduct(merged);
@@ -251,9 +471,9 @@ const server = http.createServer(async (req, res) => {
     if (route === "/api/upload" && req.method === "POST") {
       const orig = path.basename(url.searchParams.get("name") || "foto.jpg");
       const ext = path.extname(orig).toLowerCase();
-      if (![".jpg", ".jpeg", ".png", ".webp"].includes(ext)) return json(res, 400, { error: "Format harus JPG, PNG, atau WebP" });
+      if (![".jpg", ".jpeg", ".png", ".webp"].includes(ext)) return json(res, 400, { error: "Format must be JPG, PNG, or WebP" });
       const body = await readBody(req, 8 * 1024 * 1024);
-      if (!body.length) return json(res, 400, { error: "File kosong" });
+      if (!body.length) return json(res, 400, { error: "File is empty" });
       const base = slugify(path.basename(orig, ext)) || "foto";
       let name = `${base}${ext}`, n = 2;
       while (uploadDirs.some((d) => existsSync(path.join(d, name)))) name = `${base}-${n++}${ext}`;
