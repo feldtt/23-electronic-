@@ -1,6 +1,8 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Kulkas 1 Pintu"
+  ],
   "title": "LG Dual Cool T05NSA",
   "photo": "/assets/uploads/ac-lg-r32.jpeg",
   "alt": "LG Dual Cool R32",
@@ -8,5 +10,5 @@
   "wa_message": "Halo 23 Electronic, mau tanya stok & harga AC LG Dual Cool R32.",
   "order": 10,
   "stock": 0,
-  "published": true
+  "published": false
 }

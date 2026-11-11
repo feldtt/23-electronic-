@@ -45,10 +45,25 @@
     return () => { if (!inp.hidden) commit(); return sel.value; };
   };
   // Sub-categories: chip box with an input and a "+" button; several allowed
-  const groupFieldHtml = (cur, all) => `<div id="f_group_box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line,#ccc);border-radius:8px;padding:6px"><span id="f_group_chips" style="display:contents"></span><input type="text" id="f_group_in" list="f_group_dl" placeholder="Type or pick a sub-category" style="flex:1;min-width:140px;border:0;outline:0;background:transparent"><datalist id="f_group_dl">${all.map((g) => `<option value="${esc(g)}">`).join('')}</datalist><button type="button" class="btn btn-ghost btn-sm" id="f_group_add" title="Add sub-category">+</button></div>`;
-  const wireGroups = (root, initial) => {
+  // Custom suggestion list (native datalist pops up at the wrong place inside the drawer)
+  const suggest = (inp, host, items) => {
+    host.classList.add('sug-host');
+    const box = document.createElement('div'); box.className = 'sug'; box.hidden = true; host.appendChild(box);
+    const show = () => {
+      const k = inp.value.trim().toLowerCase();
+      const m = items().filter((g) => g.toLowerCase().includes(k));
+      box.innerHTML = m.map((g) => `<button type="button" data-v="${esc(g)}">${esc(g)}</button>`).join('');
+      box.hidden = !m.length;
+    };
+    inp.addEventListener('focus', show); inp.addEventListener('input', show);
+    inp.addEventListener('blur', () => { box.hidden = true; });
+    box.addEventListener('mousedown', (e) => { const b = e.target.closest('button'); if (!b) return; e.preventDefault(); inp.value = b.dataset.v; box.hidden = true; inp.focus(); });
+  };
+  const groupFieldHtml = () => `<div id="f_group_box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line,#ccc);border-radius:8px;padding:6px"><span id="f_group_chips" style="display:contents"></span><input type="text" id="f_group_in" placeholder="Type or pick a sub-category" style="flex:1;min-width:140px;border:0;outline:0;background:transparent"><button type="button" class="btn btn-ghost btn-sm" id="f_group_add" title="Add sub-category">+</button></div>`;
+  const wireGroups = (root, initial, all) => {
     let list = [...initial];
     const chips = root.querySelector('#f_group_chips'), inp = root.querySelector('#f_group_in');
+    suggest(inp, root.querySelector('#f_group_box'), () => all.filter((g) => !list.some((x) => x.toLowerCase() === g.toLowerCase())));
     const draw = () => {
       chips.innerHTML = list.map((g, i) => `<span class="pill b" style="display:inline-flex;gap:6px;align-items:center">${esc(g)}<button type="button" data-i="${i}" aria-label="Remove" style="border:0;background:none;cursor:pointer;font-size:15px;line-height:1;color:inherit">×</button></span>`).join('');
       chips.querySelectorAll('button').forEach((b) => (b.onclick = () => { list.splice(+b.dataset.i, 1); draw(); }));
@@ -306,15 +321,23 @@
     const el = $('#bulk');
     if (!selected.size) { el.hidden = true; el.innerHTML = ''; return; }
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
+    const selGroups = [...new Set(products.filter((p) => selected.has(p.id)).flatMap(groupsOf))].sort();
     el.hidden = false;
     el.innerHTML = `<b>${selected.size} selected</b>
       <button class="btn btn-ghost btn-sm" data-a="publish">Show</button>
       <button class="btn btn-ghost btn-sm" data-a="hide">Hide</button>
       <select id="bk_cat"><option value="">Move to category…</option>${allCats().map((c) => `<option value="${esc(c.v)}">${esc(c.l)}</option>`).join('')}</select>
       <span class="inl"><input type="number" id="bk_stock" min="0" placeholder="Stock"><button class="btn btn-ghost btn-sm" data-a="stock">Set</button></span>
-      <span class="inl"><input type="text" id="bk_group" list="bk_dl" placeholder="Add sub-category"><datalist id="bk_dl">${groups.map((g) => `<option value="${esc(g)}">`).join('')}</datalist><button class="btn btn-ghost btn-sm" data-a="addGroup">+</button></span>
+      <span class="inl"><input type="text" id="bk_group" placeholder="Add sub-category"><button class="btn btn-ghost btn-sm" data-a="addGroup">+</button></span>
+      <select id="bk_rm"><option value="">Remove sub-category…</option>${selGroups.length ? `<option value="__all__">All sub-categories</option>` : ''}${selGroups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <button class="btn btn-danger btn-sm" data-a="delete">Delete</button>
       <button class="btn btn-ghost btn-sm" data-a="clear">Cancel</button>`;
+    suggest($('#bk_group'), $('#bk_group').parentElement, () => groups);
+    $('#bk_rm').onchange = (e) => {
+      const v = e.target.value; if (!v) return;
+      if (v === '__all__') bulk('clearGroup', null, 'Sub-categories cleared');
+      else bulk('removeGroup', v, `Sub-category "${v}" removed`);
+    };
     let armed = false;
     el.onclick = (e) => {
       const b = e.target.closest('button[data-a]'); if (!b) return;
@@ -619,7 +642,7 @@
           <div class="fld"><label for="f_cat">Category</label>${catFieldHtml(d.category)}</div>
           <div class="fld"><label for="f_stock">Stock</label><input type="number" id="f_stock" min="0" value="${d.stock ?? 0}"><small>Units available.</small></div>
         </div>
-        <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml(groupsOf(d), groups)}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
+        <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
         <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
         <div class="fld"><label for="f_wa">Pre-filled WhatsApp message</label><textarea id="f_wa">${esc(d.wa_message)}</textarea><small>Empty = default message containing the product name.</small></div>
         <div class="fld"><label for="f_alt">Photo alt text</label><input type="text" id="f_alt" value="${esc(d.alt)}"></div>
@@ -634,7 +657,7 @@
     requestAnimationFrame(() => { drawer.classList.add('on'); scrim.classList.add('on'); });
 
     const g = (id) => $(id, drawer);
-    const getCat = wireCat(drawer), getGroup = wireGroups(drawer, groupsOf(d));
+    const getCat = wireCat(drawer), getGroup = wireGroups(drawer, groupsOf(d), groups);
     let photo = d.photo || '';
     const paint = () => {
       const bg = photo ? `url('${photo.replace(/'/g, '%27')}')` : 'none';

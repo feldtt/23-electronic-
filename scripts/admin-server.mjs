@@ -183,6 +183,7 @@ function bulkProducts({ ids, action, value }) {
     else if (action === "category") p.category = value;
     else if (action === "stock") p.stock = value;
     else if (action === "addGroup") p.group = [...new Set([...groupList(p), String(value).trim()])];
+    else if (action === "clearGroup") p.group = [];
     else if (action === "removeGroup") p.group = groupList(p).filter((x) => x.toLowerCase() !== String(value).toLowerCase());
     else throw Object.assign(new Error("Unknown action"), { code: 400 });
     writeProduct(id, cleanProduct(p)); n++;
