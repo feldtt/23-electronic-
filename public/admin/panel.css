@@ -192,3 +192,17 @@ tr.sel td { background: var(--blue-s); }
 .rad { display: flex; gap: 8px; align-items: center; font-weight: 400; margin-top: 6px; }
 .imp-sum { margin: 4px 0 8px; }
 .imp-tbl { max-height: 320px; overflow: auto; border: 1px solid var(--line); border-radius: 8px; }
+
+/* custom dropdowns */
+.dd { position: relative; display: inline-block; min-width: 140px; }
+.fld .dd, .dd[style*="flex"] { display: block; }
+.dd-btn { width: 100%; text-align: left; padding: 9px 30px 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; position: relative; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bulkbar .dd-btn { padding: 5px 28px 5px 8px; }
+.dd-btn::after { content: ''; position: absolute; right: 11px; top: 50%; width: 6px; height: 6px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-70%) rotate(45deg); }
+.dd-btn.ph { color: var(--muted); }
+.dd-btn:focus { outline: 0; border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-s); }
+.sug button { display: flex; align-items: center; gap: 8px; }
+.sug button .ck { width: 14px; flex: none; color: var(--blue); font-weight: 700; }
+.sug button.on { background: var(--blue-s); color: var(--blue); }
+.dd[hidden] { display: none; }
+div[style*="display:flex"] > .dd { flex: 1; }

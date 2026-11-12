@@ -5,12 +5,33 @@
       "l": "LED"
     },
     {
-      "v": "kulkas-2-pintu",
-      "l": "Kulkas 2 Pintu"
+      "v": "kulkas",
+      "l": "Kulkas"
+    },
+    {
+      "v": "mesin-cuci",
+      "l": "Mesin Cuci"
+    },
+    {
+      "v": "tv",
+      "l": "Speaker"
     }
   ],
   "groups": [
     "Kulkas 1 Pintu",
-    "Kulkas 3 Pintu"
+    "Kulkas 2 Pintu",
+    "1/2 PK",
+    "3/4 PK",
+    "1 PK",
+    "1.5 PK",
+    "2 PK",
+    "2.5 PK",
+    "3 PK",
+    "Twin Tube",
+    "Top Loading",
+    "Front Loading",
+    "24\"",
+    "32\"",
+    "43\""
   ]
 }

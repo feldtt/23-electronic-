@@ -45,35 +45,82 @@
     return () => { if (!inp.hidden) commit(); return sel.value; };
   };
   // Sub-categories: chip box with an input and a "+" button; several allowed
-  // Custom suggestion list (native datalist pops up at the wrong place inside the drawer)
-  const suggest = (inp, host, items) => {
+  // Custom pick list. Stays open after a pick; each item toggles on/off, so a wrong click is undone with one more click.
+  const suggest = (inp, host, items, isOn, toggle) => {
     host.classList.add('sug-host');
     const box = document.createElement('div'); box.className = 'sug'; box.hidden = true; host.appendChild(box);
     const show = () => {
       const k = inp.value.trim().toLowerCase();
       const m = items().filter((g) => g.toLowerCase().includes(k));
-      box.innerHTML = m.map((g) => `<button type="button" data-v="${esc(g)}">${esc(g)}</button>`).join('');
+      box.innerHTML = m.map((g) => `<button type="button" class="${isOn(g) ? 'on' : ''}" data-v="${esc(g)}"><span class="ck">${isOn(g) ? '✓' : ''}</span>${esc(g)}</button>`).join('');
       box.hidden = !m.length;
     };
-    inp.addEventListener('focus', show); inp.addEventListener('input', show);
+    inp.addEventListener('focus', show); inp.addEventListener('click', show); inp.addEventListener('input', show);
+    host.addEventListener('mousedown', (e) => { if (!e.target.closest('.sug') && e.target !== inp && !e.target.closest('button')) { e.preventDefault(); inp.focus(); show(); } });
     inp.addEventListener('blur', () => { box.hidden = true; });
-    box.addEventListener('mousedown', (e) => { const b = e.target.closest('button'); if (!b) return; e.preventDefault(); inp.value = b.dataset.v; box.hidden = true; inp.focus(); });
+    box.addEventListener('mousedown', (e) => { const b = e.target.closest('button'); if (!b) return; e.preventDefault(); toggle(b.dataset.v); show(); inp.focus(); });
+    return show;
   };
-  const groupFieldHtml = () => `<div id="f_group_box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line,#ccc);border-radius:8px;padding:6px"><span id="f_group_chips" style="display:contents"></span><input type="text" id="f_group_in" placeholder="Type or pick a sub-category" style="flex:1;min-width:140px;border:0;outline:0;background:transparent"><button type="button" class="btn btn-ghost btn-sm" id="f_group_add" title="Add sub-category">+</button></div>`;
+  const groupFieldHtml = () => `<div id="f_group_box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line,#ccc);border-radius:8px;padding:6px"><span id="f_group_chips" style="display:contents"></span><input type="text" id="f_group_in" placeholder="Type or pick a sub-category" style="flex:1;min-width:140px;border:0;outline:0;background:transparent"><button type="button" class="btn btn-ghost btn-sm" id="f_group_add" title="Pick from existing sub-categories (or type a new one)">+</button></div>`;
   const wireGroups = (root, initial, all) => {
     let list = [...initial];
     const chips = root.querySelector('#f_group_chips'), inp = root.querySelector('#f_group_in');
-    suggest(inp, root.querySelector('#f_group_box'), () => all.filter((g) => !list.some((x) => x.toLowerCase() === g.toLowerCase())));
+    const has = (g) => list.some((x) => x.toLowerCase() === g.toLowerCase());
+    let refresh = () => {};
+    const toggle = (g) => { if (has(g)) list = list.filter((x) => x.toLowerCase() !== g.toLowerCase()); else list.push(g); draw(); };
+    refresh = suggest(inp, root.querySelector('#f_group_box'), () => [...new Set([...all, ...list])], has, toggle);
     const draw = () => {
       chips.innerHTML = list.map((g, i) => `<span class="pill b" style="display:inline-flex;gap:6px;align-items:center">${esc(g)}<button type="button" data-i="${i}" aria-label="Remove" style="border:0;background:none;cursor:pointer;font-size:15px;line-height:1;color:inherit">×</button></span>`).join('');
-      chips.querySelectorAll('button').forEach((b) => (b.onclick = () => { list.splice(+b.dataset.i, 1); draw(); }));
+      chips.querySelectorAll('button').forEach((b) => (b.onclick = () => { list.splice(+b.dataset.i, 1); draw(); if (!inp.parentNode.querySelector('.sug').hidden) refresh(); }));
     };
     const add = () => { const v = inp.value.trim(); if (v && !list.some((x) => x.toLowerCase() === v.toLowerCase())) { list.push(v); saveTax('group', v); } inp.value = ''; draw(); };
-    root.querySelector('#f_group_add').onclick = add;
+    // "+" opens the list of existing sub-categories (from the Categories page); typing a brand-new name and pressing "+" creates it
+    const plus = root.querySelector('#f_group_add');
+    plus.onmousedown = (e) => e.preventDefault();
+    plus.onclick = () => {
+      const v = inp.value.trim();
+      if (v && !all.some((x) => x.toLowerCase() === v.toLowerCase())) { add(); inp.focus(); }
+      else { inp.focus(); refresh(); }
+    };
     inp.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); add(); } };
     draw();
     return () => { add(); return list; };
   };
+
+
+  // ---------- custom dropdowns: every <select> gets the same look as the sub-category pick list ----------
+  function enhanceSelect(sel) {
+    if (sel._ui || sel.multiple) return;
+    const ui = document.createElement('div'); ui.className = 'dd sug-host';
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'dd-btn';
+    const box = document.createElement('div'); box.className = 'sug'; box.hidden = true;
+    ui.append(btn, box); sel.after(ui); sel.style.display = 'none'; sel._ui = ui;
+    const sync = () => { const o = sel.options[sel.selectedIndex]; btn.textContent = o ? o.textContent : ''; btn.classList.toggle('ph', !!o && o.value === ''); };
+    const close = () => { box.hidden = true; };
+    const open = () => {
+      box.innerHTML = [...sel.options].map((o, i) => `<button type="button" data-i="${i}" class="${i === sel.selectedIndex ? 'on' : ''}"><span class="ck">${i === sel.selectedIndex ? '✓' : ''}</span>${esc(o.textContent)}</button>`).join('');
+      box.hidden = false;
+    };
+    btn.onclick = () => { if (box.hidden) open(); else close(); };
+    box.addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      sel.selectedIndex = +b.dataset.i; sync(); close();
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    document.addEventListener('mousedown', (e) => { if (!ui.contains(e.target)) close(); });
+    ui.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    const proto = HTMLSelectElement.prototype;
+    for (const k of ['value', 'selectedIndex']) {
+      const d = Object.getOwnPropertyDescriptor(proto, k);
+      Object.defineProperty(sel, k, { configurable: true, get() { return d.get.call(this); }, set(v) { d.set.call(this, v); sync(); } });
+    }
+    const hd = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'hidden');
+    Object.defineProperty(sel, 'hidden', { configurable: true, get() { return hd.get.call(this); }, set(v) { hd.set.call(this, v); ui.hidden = !!v; } });
+    sel._sync = sync; sync();
+  }
+  const enhanceAll = () => document.querySelectorAll('select').forEach(enhanceSelect);
+  new MutationObserver(enhanceAll).observe(document.body, { childList: true, subtree: true });
+  enhanceAll();
 
   // ---------- api ----------
   async function api(path, opt = {}) {
@@ -307,32 +354,60 @@
     return list.sort(cmp);
   }
 
+  // Refresh tab counts and the "incomplete" banner in place (no full page redraw, so nothing flickers)
+  function updateCounts() {
+    document.querySelectorAll('#tabs button').forEach((b) => {
+      const n = products.filter((p) => b.dataset.t === 'all' || p.category === b.dataset.t).length;
+      const sp = b.querySelector('span'); if (sp && sp.textContent !== String(n)) sp.textContent = n;
+    });
+    const n = products.filter(incomplete).length, ban = $('#view > .banner.warn');
+    if (!n) { if (ban) ban.remove(); return; }
+    const html = `<b>${n} products are incomplete</b> (missing photo, description, or sub-category). <a href="#" id="showInc">Show</a>`;
+    if (ban) { if (ban.innerHTML !== html) { ban.innerHTML = html; } } else return;
+    const inc = $('#showInc'); if (inc) inc.onclick = (e) => { e.preventDefault(); issueFilter = 'any'; $('#issue').value = 'any'; drawList(false); };
+  }
   async function bulk(action, value, okMsg) {
     const ids = [...selected];
     try {
       const r = await api('/products/bulk', { method: 'POST', body: JSON.stringify({ ids, action, value }) });
       await reloadAll();
-      selected.clear(); setPending(true); drawList(true);
+      if (action === 'delete') selected.clear(); else for (const id of [...selected]) if (!products.some((p) => p.id === id)) selected.delete(id);
+      setPending(true); updateCounts(); drawList(false);
       toast(okMsg || `${r.changed} products updated`);
     } catch (err) { toast(err.message, true); }
   }
 
   function drawBulk() {
     const el = $('#bulk');
-    if (!selected.size) { el.hidden = true; el.innerHTML = ''; return; }
+    if (!selected.size) { el.hidden = true; return; }
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
     const selGroups = [...new Set(products.filter((p) => selected.has(p.id)).flatMap(groupsOf))].sort();
+    // The bar is built once and then only updated in place, so it never flickers
+    const setOpts = (sel, head, opts) => {
+      const cur = [...sel.options].map((o) => o.value).join(''), next = ['', ...opts.map((o) => o[0])].join('');
+      if (cur !== next) { sel.innerHTML = `<option value="">${head}</option>` + opts.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join(''); }
+      sel.value = ''; if (sel._sync) sel._sync();
+    };
+    if (el.dataset.built) {
+      el.hidden = false;
+      $('#bk_count').textContent = `${selected.size} selected`;
+      setOpts($('#bk_add'), 'Add sub-category…', groups.map((g) => [g, g]));
+      setOpts($('#bk_rm'), 'Remove sub-category…', [...(selGroups.length ? [['__all__', 'All sub-categories']] : []), ...selGroups.map((g) => [g, g])]);
+      setOpts($('#bk_cat'), 'Move to category…', allCats().map((c) => [c.v, c.l]));
+      return;
+    }
+    el.dataset.built = '1';
     el.hidden = false;
-    el.innerHTML = `<b>${selected.size} selected</b>
+    el.innerHTML = `<b id="bk_count">${selected.size} selected</b>
       <button class="btn btn-ghost btn-sm" data-a="publish">Show</button>
       <button class="btn btn-ghost btn-sm" data-a="hide">Hide</button>
       <select id="bk_cat"><option value="">Move to category…</option>${allCats().map((c) => `<option value="${esc(c.v)}">${esc(c.l)}</option>`).join('')}</select>
       <span class="inl"><input type="number" id="bk_stock" min="0" placeholder="Stock"><button class="btn btn-ghost btn-sm" data-a="stock">Set</button></span>
-      <span class="inl"><input type="text" id="bk_group" placeholder="Add sub-category"><button class="btn btn-ghost btn-sm" data-a="addGroup">+</button></span>
+      <select id="bk_add"><option value="">Add sub-category…</option>${groups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <select id="bk_rm"><option value="">Remove sub-category…</option>${selGroups.length ? `<option value="__all__">All sub-categories</option>` : ''}${selGroups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <button class="btn btn-danger btn-sm" data-a="delete">Delete</button>
       <button class="btn btn-ghost btn-sm" data-a="clear">Cancel</button>`;
-    suggest($('#bk_group'), $('#bk_group').parentElement, () => groups);
+    $('#bk_add').onchange = (e) => { const v = e.target.value; if (v) bulk('addGroup', v, `Sub-category "${v}" added`); };
     $('#bk_rm').onchange = (e) => {
       const v = e.target.value; if (!v) return;
       if (v === '__all__') bulk('clearGroup', null, 'Sub-categories cleared');
@@ -346,7 +421,6 @@
       else if (a === 'hide') bulk('hide', null, 'Product hidden');
       else if (a === 'clear') { selected.clear(); drawList(false); }
       else if (a === 'stock') { const v = $('#bk_stock').value; if (v === '') return toast('Enter a stock number', true); bulk('stock', Number(v), 'Stock updated'); }
-      else if (a === 'addGroup') { const v = $('#bk_group').value.trim(); if (!v) return toast('Enter a sub-category name', true); saveTax('group', v); bulk('addGroup', v, 'Sub-category added'); }
       else if (a === 'delete') {
         if (!armed) { armed = true; b.textContent = 'Click again to delete'; setTimeout(() => { armed = false; b.textContent = 'Delete'; }, 3500); return; }
         bulk('delete', null, 'Product deleted');
@@ -427,40 +501,121 @@
     try { await reloadAll(); } catch { view.innerHTML = offlineBanner(); checkServer(); return; }
     checkServer();
     const BUILTIN = CATS.map((c) => c.v);
-    const cats = allCats().map((c) => ({ ...c, n: products.filter((p) => p.category === c.v).length, builtin: BUILTIN.includes(c.v) }));
+    const cats = allCats().map((c) => ({ key: c.v, label: c.l, n: products.filter((p) => p.category === c.v).length, builtin: BUILTIN.includes(c.v) }));
     const names = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort((a, b) => a.localeCompare(b));
-    const grps = names.map((g) => ({ g, n: products.filter((p) => groupsOf(p).some((x) => x.toLowerCase() === g.toLowerCase())).length }));
-    view.innerHTML = `
-      <section class="grid2">
-        <div class="card"><div class="card-h"><h2>Categories</h2><span class="sub">${cats.length} categories</span></div>
-          <div class="tbl-wrap"><table><thead><tr><th>Name</th><th>Products</th><th></th></tr></thead><tbody>${cats.map((c) => `
-            <tr data-type="category" data-key="${esc(c.v)}" data-n="${c.n}"><td><b>${esc(c.l)}</b>${c.builtin ? ' <span class="pill">built-in</span>' : ''}<div style="color:var(--muted);font-size:12px">${esc(c.v)}</div></td><td>${c.n}</td>
-            <td><div class="row-act"><button class="btn btn-ghost btn-sm rn">Rename</button>${c.builtin ? '' : '<button class="btn btn-danger btn-sm rm">Delete</button>'}</div></td></tr>`).join('')}</tbody></table></div>
-          <div class="card-b" style="color:var(--muted);font-size:12.5px">Built-in categories have a page on the website, so they can only be renamed. A category can only be deleted when it has no products.</div>
+    const grps = names.map((g) => ({ key: g, label: g, n: products.filter((p) => groupsOf(p).some((x) => x.toLowerCase() === g.toLowerCase())).length }));
+    const note = 'color:var(--muted);font-size:12.5px';
+    const card = (type, title, items, hint) => `
+      <div class="card" data-card="${type}"><div class="card-h"><h2>${title}</h2><span class="sub">${items.length} total</span></div>
+        <div class="card-b" style="display:flex;gap:6px"><input type="text" class="tx-new" placeholder="New ${type === 'category' ? 'category' : 'sub-category'} name" style="flex:1"><button class="btn btn-primary btn-sm tx-add">+ Add</button></div>
+        <div class="card-b tx-bulk" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-top:0">
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" class="tx-all"> Select all</label>
+          <span class="tx-count" style="${note}"></span>
+          ${type === 'group' ? '<button class="btn btn-ghost btn-sm tx-merge" disabled>Merge selected…</button>' : ''}
+          <button class="btn btn-danger btn-sm tx-del" disabled>Delete selected</button>
         </div>
-        <div class="card"><div class="card-h"><h2>Sub-categories</h2><span class="sub">${grps.length} sub-categories</span></div>
-          ${grps.length ? `<div class="tbl-wrap"><table><thead><tr><th>Name</th><th>Products</th><th></th></tr></thead><tbody>${grps.map((x) => `
-            <tr data-type="group" data-key="${esc(x.g)}" data-n="${x.n}"><td><b>${esc(x.g)}</b></td><td>${x.n}</td>
-            <td><div class="row-act"><button class="btn btn-ghost btn-sm rn">Rename</button><button class="btn btn-danger btn-sm rm">Delete</button></div></td></tr>`).join('')}</tbody></table></div>` : '<div class="empty">No sub-categories yet</div>'}
-          <div class="card-b" style="color:var(--muted);font-size:12.5px">Renaming applies to all products. If the name matches another sub-category, the two are merged. Deleting only removes the sub-category from products; the products stay.</div>
-        </div>
-      </section>`;
-    view.querySelectorAll('tr[data-type]').forEach((tr) => {
-      const { type, key, n } = tr.dataset;
-      const label = type === 'category' ? catLabel(key) : key;
-      tr.querySelector('.rn').onclick = async () => {
-        const to = prompt(`New name for "${label}":`, label);
-        if (to === null || !to.trim() || to.trim() === label) return;
-        try { tax = await api('/taxonomy', { method: 'PUT', body: JSON.stringify({ type, from: key, to: to.trim() }) }); setPending(true); toast('Renamed'); renderTaxonomy(); }
-        catch (err) { toast(err.message, true); }
+        ${items.length ? `<div class="tbl-wrap"><table><thead><tr><th style="width:30px"></th><th>Name</th><th>Products</th><th></th></tr></thead><tbody>${items.map((c) => `
+          <tr data-key="${esc(c.key)}" data-n="${c.n}" data-builtin="${c.builtin ? 1 : 0}"><td><input type="checkbox" class="tx-sel"></td>
+          <td class="tx-name"><b>${esc(c.label)}</b>${c.builtin ? ' <span class="pill">built-in</span>' : ''}${type === 'category' ? `<div style="${note}">${esc(c.key)}</div>` : ''}</td><td>${c.n}</td>
+          <td class="tx-act"><div class="row-act"><button class="btn btn-ghost btn-sm rn">Rename</button>${c.builtin ? '' : '<button class="btn btn-danger btn-sm rm">Delete</button>'}</div></td></tr>`).join('')}</tbody></table></div>` : '<div class="empty">Nothing yet</div>'}
+        <div class="card-b" style="${note}">${hint}</div>
+      </div>`;
+    view.innerHTML = `<section class="grid2">
+      ${card('category', 'Categories', cats, 'Built-in categories have a website page, so they can only be renamed. A category can only be deleted when it has no products.')}
+      ${card('group', 'Sub-categories', grps, 'Renaming applies to all products. If the name matches another sub-category, the two are merged. Deleting only removes the sub-category from products; the products stay.')}
+    </section>`;
+
+    const done = (msg) => { setPending(true); toast(msg); renderTaxonomy(); };
+    const call = async (method, body) => { tax = await api('/taxonomy', { method, body: JSON.stringify(body) }); };
+    const labelOf = (type, key) => (type === 'category' ? catLabel(key) : key);
+
+    view.querySelectorAll('[data-card]').forEach((cardEl) => {
+      const type = cardEl.dataset.card;
+      const rows = () => [...cardEl.querySelectorAll('tbody tr')];
+      const selected = () => rows().filter((r) => r.querySelector('.tx-sel').checked);
+
+      const inp = cardEl.querySelector('.tx-new');
+      const add = async () => {
+        const v = inp.value.trim(); if (!v) return;
+        try { await call('POST', { type, name: v }); done('Added'); } catch (err) { toast(err.message, true); }
       };
-      const rm = tr.querySelector('.rm');
-      if (rm) rm.onclick = async () => {
-        const msg = type === 'group' && +n ? `Remove "${label}" from ${n} products and delete it?` : `Delete "${label}"?`;
-        if (!confirm(msg)) return;
-        try { tax = await api('/taxonomy', { method: 'DELETE', body: JSON.stringify({ type, name: key }) }); setPending(true); toast('Deleted'); renderTaxonomy(); }
-        catch (err) { toast(err.message, true); }
+      cardEl.querySelector('.tx-add').onclick = add;
+      inp.onkeydown = (e) => { if (e.key === 'Enter') add(); };
+
+      const delBtn = cardEl.querySelector('.tx-del'), mergeBtn = cardEl.querySelector('.tx-merge'), all = cardEl.querySelector('.tx-all');
+      const sync = () => {
+        const sel = selected();
+        cardEl.querySelector('.tx-count').textContent = sel.length ? `${sel.length} selected` : '';
+        delBtn.disabled = !sel.length;
+        if (mergeBtn) mergeBtn.disabled = sel.length < 2;
+        all.checked = !!sel.length && sel.length === rows().length;
       };
+      rows().forEach((r) => { r.querySelector('.tx-sel').onchange = sync; });
+      all.onchange = () => { rows().forEach((r) => { r.querySelector('.tx-sel').checked = all.checked; }); sync(); };
+
+      // Bulk delete with an inline two-click confirm (no confirm() dialog)
+      const doBulkDelete = async () => {
+        const sel = selected(); let ok = 0; const fail = [];
+        for (const r of sel) {
+          if (type === 'category' && r.dataset.builtin === '1') { fail.push(`${labelOf(type, r.dataset.key)} (built-in)`); continue; }
+          try { await call('DELETE', { type, name: r.dataset.key }); ok++; } catch (err) { fail.push(`${labelOf(type, r.dataset.key)}: ${err.message}`); }
+        }
+        setPending(true);
+        toast(fail.length ? `Deleted ${ok}. Skipped: ${fail.join('; ')}` : `Deleted ${ok}`, !!fail.length);
+        renderTaxonomy();
+      };
+      let armed = null;
+      delBtn.onclick = () => {
+        if (armed) { clearTimeout(armed); armed = null; return doBulkDelete(); }
+        delBtn.textContent = 'Click again to confirm';
+        armed = setTimeout(() => { armed = null; delBtn.textContent = 'Delete selected'; }, 4000);
+      };
+
+      if (mergeBtn) mergeBtn.onclick = () => {
+        const sel = selected().map((r) => r.dataset.key);
+        const bar = cardEl.querySelector('.tx-bulk');
+        bar.innerHTML = `<span style="${note}">Merge ${sel.length} into:</span><input type="text" class="tx-mt" value="${esc(sel[0])}" style="flex:1;min-width:140px"><button class="btn btn-primary btn-sm tx-mgo">Merge</button><button class="btn btn-ghost btn-sm tx-mx">Cancel</button>`;
+        const t = bar.querySelector('.tx-mt'); t.focus(); t.select();
+        bar.querySelector('.tx-mx').onclick = () => renderTaxonomy();
+        const go = async () => {
+          const to = t.value.trim(); if (!to) return;
+          try { for (const k of sel) if (k !== to) await call('PUT', { type, from: k, to }); done('Merged'); } catch (err) { toast(err.message, true); }
+        };
+        bar.querySelector('.tx-mgo').onclick = go;
+        t.onkeydown = (e) => { if (e.key === 'Enter') go(); if (e.key === 'Escape') renderTaxonomy(); };
+      };
+
+      // Per-row rename / delete, inline (prompt()/confirm() are blocked in embedded browsers)
+      rows().forEach((tr) => {
+        const { key, n } = tr.dataset, label = labelOf(type, key);
+        const nameTd = tr.querySelector('.tx-name'), actTd = tr.querySelector('.tx-act');
+        const nameHtml = nameTd.innerHTML, actHtml = actTd.innerHTML;
+        const bind = () => {
+          tr.querySelector('.rn').onclick = () => {
+            nameTd.innerHTML = `<input type="text" value="${esc(label)}" style="width:100%">`;
+            actTd.innerHTML = '<div class="row-act"><button class="btn btn-primary btn-sm sv">Save</button><button class="btn btn-ghost btn-sm cx">Cancel</button></div>';
+            const t = nameTd.querySelector('input'); t.focus(); t.select();
+            const cancel = () => { nameTd.innerHTML = nameHtml; actTd.innerHTML = actHtml; bind(); };
+            const save = async () => {
+              const to = t.value.trim(); if (!to || to === label) return cancel();
+              try { await call('PUT', { type, from: key, to }); done('Renamed'); } catch (err) { toast(err.message, true); }
+            };
+            actTd.querySelector('.sv').onclick = save; actTd.querySelector('.cx').onclick = cancel;
+            t.onkeydown = (e) => { if (e.key === 'Enter') save(); if (e.key === 'Escape') cancel(); };
+          };
+          const rm = tr.querySelector('.rm');
+          if (rm) rm.onclick = () => {
+            const msg = type === 'group' && +n ? `Remove from ${n} products?` : 'Delete?';
+            actTd.innerHTML = `<div class="row-act"><span style="${note}">${msg}</span><button class="btn btn-danger btn-sm yes">Yes</button><button class="btn btn-ghost btn-sm no">No</button></div>`;
+            actTd.querySelector('.no').onclick = () => { actTd.innerHTML = actHtml; bind(); };
+            actTd.querySelector('.yes').onclick = async () => {
+              try { await call('DELETE', { type, name: key }); done('Deleted'); } catch (err) { toast(err.message, true); actTd.innerHTML = actHtml; bind(); }
+            };
+          };
+        };
+        bind();
+      });
+      sync();
     });
   }
 
