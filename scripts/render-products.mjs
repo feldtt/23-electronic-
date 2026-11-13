@@ -28,6 +28,13 @@ export function loadProducts(repoRoot) {
     });
 }
 
+// "Rp 3.450.000" when a price is set, otherwise the WhatsApp prompt.
+function priceHtml(price) {
+  const n = Math.round(Number(price));
+  if (!Number.isFinite(n) || n <= 0) return "Cek harga via WA";
+  return `Rp ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+}
+
 function card(p) {
   const title = String(p.title ?? "").trim();
   if (!title) throw new Error(`content/products/${p.file} has no title`);
@@ -41,7 +48,7 @@ function card(p) {
               <div class="card-body">
                 <h3>${esc(title)}</h3>
                 <div class="card-meta">${esc(p.description)}</div>
-                <div class="price">Cek harga via WA</div>
+                <div class="price">${priceHtml(p.price)}</div>
                 <a href="#" class="btn btn-wa wa-link" data-msg="${esc(msg)}">Tanya stok</a>
               </div>
             </div>`;

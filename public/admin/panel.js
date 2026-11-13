@@ -329,6 +329,9 @@
     drawList(true);
   }
 
+  const fmtNum = (n) => Number(n).toLocaleString('id-ID');
+  const parsePriceInput = (v) => { const d = String(v ?? '').replace(/[^\d]/g, ''); return d ? Number(d) : 0; };
+
   // Data completeness: what a visitor would find missing on the product card
   const issuesOf = (p) => {
     const i = [];
@@ -403,6 +406,7 @@
       <button class="btn btn-ghost btn-sm" data-a="hide">Hide</button>
       <select id="bk_cat"><option value="">Move to category…</option>${allCats().map((c) => `<option value="${esc(c.v)}">${esc(c.l)}</option>`).join('')}</select>
       <span class="inl"><input type="number" id="bk_stock" min="0" placeholder="Stock"><button class="btn btn-ghost btn-sm" data-a="stock">Set</button></span>
+      <span class="inl"><span class="prw"><input type="text" inputmode="numeric" id="bk_price" placeholder="Price"></span><button class="btn btn-ghost btn-sm" data-a="price">Set</button></span>
       <select id="bk_add"><option value="">Add sub-category…</option>${groups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <select id="bk_rm"><option value="">Remove sub-category…</option>${selGroups.length ? `<option value="__all__">All sub-categories</option>` : ''}${selGroups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <button class="btn btn-danger btn-sm" data-a="delete">Delete</button>
@@ -421,6 +425,7 @@
       else if (a === 'hide') bulk('hide', null, 'Product hidden');
       else if (a === 'clear') { selected.clear(); drawList(false); }
       else if (a === 'stock') { const v = $('#bk_stock').value; if (v === '') return toast('Enter a stock number', true); bulk('stock', Number(v), 'Stock updated'); }
+      else if (a === 'price') { const v = $('#bk_price').value; if (v.trim() === '') return toast('Enter a price (0 clears it)', true); bulk('price', parsePriceInput(v), 'Price updated'); }
       else if (a === 'delete') {
         if (!armed) { armed = true; b.textContent = 'Click again to delete'; setTimeout(() => { armed = false; b.textContent = 'Delete'; }, 3500); return; }
         bulk('delete', null, 'Product deleted');
@@ -460,7 +465,7 @@
     const list = filtered();
     $('#pager').textContent = `Showing ${list.length} of ${products.length} products`;
     const allOn = list.length && list.every((p) => selected.has(p.id));
-    $('#tbl').innerHTML = list.length ? `<table><thead><tr><th style="width:34px"><input type="checkbox" id="selAll" ${allOn ? 'checked' : ''} aria-label="Select all"></th><th>Product</th><th>Category / type</th><th>Stock</th><th>Visible</th><th></th></tr></thead><tbody>${list.map((p) => {
+    $('#tbl').innerHTML = list.length ? `<table><thead><tr><th style="width:34px"><input type="checkbox" id="selAll" ${allOn ? 'checked' : ''} aria-label="Select all"></th><th>Product</th><th>Category / type</th><th>Stock</th><th>Price (Rp)</th><th>Visible</th><th></th></tr></thead><tbody>${list.map((p) => {
       const iss = issuesOf(p).filter((x) => x.k !== 'stock');
       return `
       <tr data-id="${esc(p.id)}" class="${selected.has(p.id) ? 'sel' : ''}">
@@ -468,6 +473,7 @@
         <td><div class="prod"><div class="thumb" style="${p.photo ? `background-image:url('${esc(p.photo)}')` : ''}">${p.photo ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc(p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
         <td><span class="pill b">${esc(catLabel(p.category))}</span><div style="color:var(--muted);font-size:12px;margin-top:4px">${esc(groupsOf(p).join(', ') || '—')}</div></td>
         <td>${p.stock > 0 ? p.stock : '<span class="pill o">Out</span>'}</td>
+        <td><span class="prw"><input type="text" inputmode="numeric" class="pr" value="${p.price > 0 ? fmtNum(p.price) : ''}" placeholder="Not set" aria-label="Price in Rupiah"></span></td>
         <td><label class="sw"><input type="checkbox" class="tg" ${p.published !== false ? 'checked' : ''}><span></span></label></td>
         <td><div class="row-act"><button class="btn btn-ghost btn-sm dup" title="Make a copy of this product">Duplicate</button><button class="btn btn-ghost btn-sm ed">Edit</button></div></td>
       </tr>`; }).join('')}</tbody></table>` : `<div class="empty">No matching products.</div>`;
@@ -481,6 +487,21 @@
       tr.querySelector('.dup').onclick = () => {
         const src = products.find((p) => p.id === id);
         openDrawer(null, { ...src, title: `${src.title} (copy)`, published: false });
+      };
+      const pr = tr.querySelector('.pr');
+      pr.onfocus = () => pr.select();
+      pr.onkeydown = (e) => { if (e.key === 'Enter') pr.blur(); else if (e.key === 'Escape') { pr.value = (() => { const c = products.find((p) => p.id === id).price; return c > 0 ? fmtNum(c) : ''; })(); pr.blur(); } };
+      pr.onchange = async () => {
+        const cur = products.find((p) => p.id === id), price = parsePriceInput(pr.value);
+        if (price === (cur.price || 0)) { pr.value = price ? fmtNum(price) : ''; return; }
+        pr.disabled = true;
+        try {
+          const saved = await api(`/products/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ price }) });
+          Object.assign(cur, saved);
+          pr.value = saved.price > 0 ? fmtNum(saved.price) : '';
+          setPending(true); toast(saved.price > 0 ? `Price set to Rp ${fmtNum(saved.price)}` : 'Price cleared');
+        } catch (err) { pr.value = cur.price > 0 ? fmtNum(cur.price) : ''; toast(err.message, true); }
+        pr.disabled = false;
       };
       tr.querySelector('.tg').onchange = async (e) => {
         const on = e.target.checked;
@@ -622,10 +643,10 @@
   // =====================================================================
   // IMPORT / EXPORT (Excel or CSV)
   // =====================================================================
-  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'stock', 'photo', 'alt', 'wa_message', 'published'];
+  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'stock', 'price', 'photo', 'alt', 'wa_message', 'published'];
   const SAMPLE_ROWS = [
-    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 5, 'daikin.jpg', 'Daikin STC15YV', '', 'yes'],
-    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', 3, '', '', '', 'yes'],
+    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 5, 3450000, 'daikin.jpg', 'Daikin STC15YV', '', 'yes'],
+    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', 3, 2100000, '', '', '', 'yes'],
   ];
   const PHOTO_HEADERS = ['photo', 'image', 'picture', 'foto', 'gambar'];
 
@@ -684,7 +705,7 @@
     return X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
   }
   const exportGrid = () => [IMPORT_HEADERS, ...products.map((p) => [
-    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', p.stock ?? 0,
+    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', p.stock ?? 0, p.price > 0 ? p.price : '',
     (p.photo || '').replace('/assets/uploads/', ''), p.alt || '', p.wa_message || '', p.published === false ? 'no' : 'yes',
   ])];
 
@@ -697,7 +718,7 @@
       <div class="drawer-b imp">
         <div class="fld"><label>1. Get the template</label>
           <div class="imp-row"><button type="button" class="btn btn-ghost btn-sm" id="tplX">Excel template (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="tplC">CSV template</button><button type="button" class="btn btn-ghost btn-sm" id="expX">Export current products (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="expC">Export (.csv)</button></div>
-          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, stock, photo (file name), alt, wa_message, published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
+          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, stock, price (Rupiah, digits only), photo (file name), alt, wa_message, published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
         <div class="fld"><label for="imp_photos">2. Photos (optional)</label><input type="file" id="imp_photos" accept="image/jpeg,image/png,image/webp" multiple><small id="imp_pstat">Select the image files named in the photo column. They are uploaded right away.</small></div>
         <div class="fld"><label for="imp_file">3. Spreadsheet file</label><input type="file" id="imp_file" accept=".xlsx,.xls,.csv,.txt"></div>
         <div class="fld"><label>If a product already exists (same name and category)</label>
@@ -779,7 +800,7 @@
   function openDrawer(p, tpl) {
     ensureDrawer();
     const isNew = !p;
-    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', alt: '', description: '', wa_message: '', order: 1000, stock: 0, published: true };
+    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', alt: '', description: '', wa_message: '', order: 1000, stock: 0, price: 0, published: true };
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
     drawer.innerHTML = `
       <div class="drawer-h"><h2>${isNew ? (tpl ? 'Duplicate product' : 'Add product') : 'Edit product'}</h2><button id="dx" aria-label="Close">×</button></div>
@@ -797,6 +818,7 @@
           <div class="fld"><label for="f_cat">Category</label>${catFieldHtml(d.category)}</div>
           <div class="fld"><label for="f_stock">Stock</label><input type="number" id="f_stock" min="0" value="${d.stock ?? 0}"><small>Units available.</small></div>
         </div>
+        <div class="fld"><label for="f_price">Price (Rp)</label><span class="prw"><input type="text" inputmode="numeric" id="f_price" value="${d.price > 0 ? fmtNum(d.price) : ''}" placeholder="Not set"></span><small>Whole Rupiah, e.g. 3.450.000. Empty = card shows "Cek harga via WA".</small></div>
         <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
         <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
         <div class="fld"><label for="f_wa">Pre-filled WhatsApp message</label><textarea id="f_wa">${esc(d.wa_message)}</textarea><small>Empty = default message containing the product name.</small></div>
@@ -847,7 +869,7 @@
       const body = {
         category: getCat(), group: getGroup(), title: g('#f_title').value, photo,
         alt: g('#f_alt').value, description: g('#f_desc').value, wa_message: g('#f_wa').value,
-        stock: g('#f_stock').value, published: g('#f_pub').checked,
+        stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), published: g('#f_pub').checked,
       };
       if (!body.category) return toast('Category is required', true);
       const btn = g('#save'); btn.disabled = true;

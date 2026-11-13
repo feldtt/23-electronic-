@@ -31,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "title", "photo", "alt", "description", "wa_message", "order", "stock", "published"];
+const FIELD_ORDER = ["category", "group", "title", "photo", "alt", "description", "wa_message", "order", "stock", "price", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -78,6 +78,12 @@ function listProducts() {
     try { return [readProduct(f)]; } catch { return []; }
   });
 }
+// Price in whole Rupiah; 0 = not set (card shows "Cek harga via WA"). Accepts "Rp 1.500.000" style text.
+function parsePrice(v) {
+  if (typeof v === "number") return Number.isFinite(v) ? Math.max(0, Math.round(v)) : 0;
+  const digits = String(v ?? "").replace(/[^\d]/g, "");
+  return digits ? Math.min(Number(digits), 9_999_999_999) : 0;
+}
 function cleanProduct(input) {
   const p = {
     category: String(input.category ?? ""),
@@ -89,6 +95,7 @@ function cleanProduct(input) {
     wa_message: String(input.wa_message ?? "").trim(),
     order: Number.isFinite(Number(input.order)) ? Math.trunc(Number(input.order)) : 1000,
     stock: Number.isFinite(Number(input.stock)) ? Math.max(0, Math.trunc(Number(input.stock))) : 0,
+    price: parsePrice(input.price),
     published: input.published !== false,
   };
   p.category = slugify(p.category);
@@ -182,6 +189,7 @@ function bulkProducts({ ids, action, value }) {
     else if (action === "hide") p.published = false;
     else if (action === "category") p.category = value;
     else if (action === "stock") p.stock = value;
+    else if (action === "price") p.price = value;
     else if (action === "addGroup") p.group = [...new Set([...groupList(p), String(value).trim()])];
     else if (action === "clearGroup") p.group = [];
     else if (action === "removeGroup") p.group = groupList(p).filter((x) => x.toLowerCase() !== String(value).toLowerCase());
@@ -197,6 +205,7 @@ const IMPORT_COLS = {
   group: ["sub-category", "subcategory", "sub category", "sub-categories", "subcategories", "group", "type", "jenis", "sub-kategori"],
   description: ["description", "desc", "deskripsi"],
   stock: ["stock", "qty", "quantity", "stok"],
+  price: ["price", "harga", "price (rp)", "harga (rp)"],
   photo: ["photo", "image", "picture", "foto", "gambar"],
   alt: ["alt", "alt text", "photo alt text"],
   wa_message: ["wa_message", "whatsapp message", "wa message", "message", "pesan whatsapp"],
@@ -269,6 +278,7 @@ function importProducts({ rows, mode, dryRun }) {
       if (r.wa_message) next.wa_message = r.wa_message;
       if (photo) next.photo = photo;
       if (stock !== undefined) next.stock = stock;
+      if (r.price !== "") next.price = parsePrice(r.price);
       if (r.published !== "") next.published = !["no", "n", "false", "0", "hidden", "hide", "tidak"].includes(r.published.toLowerCase());
       else if (!match) next.published = true;
       const clean = cleanProduct(next);

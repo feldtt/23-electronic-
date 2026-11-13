@@ -15,6 +15,18 @@
     {
       "v": "tv",
       "l": "Speaker"
+    },
+    {
+      "v": "showcase",
+      "l": "Showcase"
+    },
+    {
+      "v": "air-cooler",
+      "l": "Air Cooler"
+    },
+    {
+      "v": "air-purifier",
+      "l": "Air Purifier"
     }
   ],
   "groups": [
@@ -32,6 +44,9 @@
     "Front Loading",
     "24\"",
     "32\"",
-    "43\""
+    "43\"",
+    "Inverter",
+    "Standard",
+    "Low Watt"
   ]
 }
