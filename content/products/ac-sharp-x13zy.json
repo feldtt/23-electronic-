@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp X13ZY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "Fitur :\r\n-Besaran 1.5 pk\r\n-J-Tech Inverter Series\r\n-ECO mode (Power saving mode)\r\n-Powerful Jet\r\n-Two-Way Auto Swing\r\n-10 Years Warranty Compressor\r\n-R32 Eco Refrigerant\r\n-7 Shield Protection\r\n\r\n\r\n\r\nSpesifikasi :\r\nCooling Capacity(BTU) 13000 BTU\r\nRefrigerant Volume R32\r\nRated Frequency (Hz) 50 Hz\r\nRated Voltage ( Volt ) 220V\r\nRated Current (Ampere) 3.5 A\r\nRate Input (Watt) 1060 W\r\nIn Door Dimensions (mm) 848 x 294 x 204\r\nOut Door Dimensions (mm) 598 x 495 x 265\r\nIn Door Weight (kg) 7 Kg\r\nOut Door Weight (kg) 28 Kg",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

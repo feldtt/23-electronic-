@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp X10BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "SPESIFIKASI PRODUK:\r\n- 9000 Btu/h - Bisa mendinginkan ruangan sampai 16m2.\r\n- Garansi Resmi 3 thn parts + 10 thn kompresor\r\n- J-Tech Inverter - Mengubah pengendalian konsumsi listrik yang presisi menjadi penghematan energi dan operasi yang efisien energi hingga 65%.\r\n- 14 Derajat - Bisa setting remote sampai 14 derajat.\r\n- 7 Shields Protection - Perlindungan petir, korosi, voltase, jatuh, api, getaran & cuaca ekstrim.\r\n- Garuda Air Flow - Mode aliran udara lewat langit-langit, sehingga tidak langsung mengenai badan.\r\n- Daya : 780 (230 - 1000) Watt\r\n- Kapasitas : 9000 (3000 - 10000) BTU/h\r\n- Dimensi Indoor : 85 x 30 x 21\r\n- Dimensi Outdoor : 60 x 50 x 27cm\r\n- Pipa 1/4 3/8\r\n- Freon R32",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

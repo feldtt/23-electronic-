@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Gree GWC-30AIRY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "Fitur :\r\nG-Learning (Mengontrol Mode berdasarkan Kebiasaan Pengguna)\r\nOutdoor G-Boost Inverter (Kompressor mampu bertahan pada suhu ekstrim hingga 65 derajat celcius juga pendinginan cepat hingga suhu 8 derajat dalam 1 menit)\r\nSmart Voice Control\r\nUVC Lampu Ultraviolet & Plasma Dingin Ganda\r\nWi-Fi\r\nKondensor Black Diamond Fin\r\nEvaporator Gold Fin\r\nTimer\r\nChild Lock\r\nLED Display\r\nX-Fan\r\nSelf Diagnosis + Protect\r\nPengingat Pintar\r\n4 perlindungan\r\nSmart Cleaner\r\nSmart Dehumidifier System\r\nUltra Wide Voltage\r\nMode Udara 4 sisi\r\nLow Noise\r\n6 Perlindungan Outdoor Anti Karat\r\nSystem Akses Pintu\r\n\r\n\r\nGARANSI :\r\n10 Tahun Kompresor\r\n5 Tahun Services + Spareparts",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

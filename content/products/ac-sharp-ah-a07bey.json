@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Standard"
+  ],
   "title": "Sharp AH-A07BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "1-door fridge, 162 L",
+  "description": "Fitur Utama:\r\n- Garuda Wing Air Flow\r\n- Superjet Mode\r\n- Sleep Mode / Dark LED\r\n- Cooper Evaporator & Condenser\r\n- Jetstream\r\n- Coanda\r\n- Auto Swing Louver\r\n- Anti Rust Evaporator\r\n\r\nSpesifikasi Ac sharp ah-a07bey\r\n- Coverage Floor Area ( m² ) : 12-14\r\n- Capacity (PK) : 0,75\r\n- Cooling Capacity(BTU) : 7000\r\n- Liquid Side (Inch) : 1/4\r\n- Gas Side (Inch) : 3/8\r\n- Rated Frequency (Hz) : 50Hz\r\n- Rated Voltage ( Volt ) : 220V\r\n- Rate Input (Watt) : 535\r\n- in Door Dimensions (mm) : 853x295x185\r\n- Out Door Dimensions (mm) : 598x495x265\r\n- Made In : INDONESIA\r\n- Garansi ressmi ac sharp\r\nService & Part 3 Tahun, Kompresor 10 Tahun",
   "wa_message": "",
   "order": 1000,
   "stock": 3,
+  "price": 0,
+  "featured": false,
   "published": true
 }

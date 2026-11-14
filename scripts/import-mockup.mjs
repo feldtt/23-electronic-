@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { expandProductMarkers, loadProducts } from "./render-products.mjs";
+import { expandProductMarkers, loadProducts, renderDetailPages } from "./render-products.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const mockupRoot = path.join(repoRoot, "mockup", "toko-23");
@@ -89,6 +89,13 @@ for (const sourcePath of walkHtmlFiles(mockupRoot)) {
 
   mkdirSync(path.dirname(astroPath), { recursive: true });
   const html = expandProductMarkers(readFileSync(sourcePath, "utf8"), products);
+  writeFileSync(astroPath, preserveScripts(html));
+}
+
+// One detail page per published product: produk/<id>.html (the id is the content file name).
+for (const { id, html } of renderDetailPages(products)) {
+  const astroPath = path.join(pagesRoot, "produk", `${id}.astro`);
+  mkdirSync(path.dirname(astroPath), { recursive: true });
   writeFileSync(astroPath, preserveScripts(html));
 }
 

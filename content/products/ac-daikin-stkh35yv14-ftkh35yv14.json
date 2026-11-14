@@ -3,10 +3,12 @@
   "group": [],
   "title": "Daikin STKH35YV14 / FTKH35YV14",
   "photo": "",
+  "photos": [],
   "alt": "",
   "description": "",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "featured": false,
   "published": true
 }

@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Gree GWC-24AIRY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "Fitur utama :\r\n- G-Learning\r\n- G-Boost Inverter\r\n- Mini ERV + Hepa Filter (OPTIONAL)\r\n- Smart Voice Control\r\n- UVC Lampu Ultraviolet & Plasma Dingin Ganda\r\n- Wi-Fi\r\n- Indoor Evaporator (Gold FIn)\r\n- Outdoor Kondensor (Black Diamond Fin)\r\n- Timer\r\n- Child Lock\r\n- LED Display\r\n- X-Fan\r\n- Self Diagnosis + Protect\r\n- Pengingat Pintar\r\n- 4 perlindungan\r\n- Smart Cleaner\r\n- Smart Dehumidifier System\r\n- Ultra Wide Voltage\r\n- Mode Udara 4 sisi\r\n- Low Noise\r\n- 6 Perlindungan Outdoor Anti Karat\r\n- System Akses Pintu\r\n\r\nSpesifikasi :\r\n- Model : GWC-24AIRY\r\n- Kapasitas : 2.5 PK\r\n- Refrigerant : R32\r\n- Kapasitas : 24800 BTU/h\r\n- Daya Masukan : 1930 W\r\n- Area Aplikasi : 30-35 m2\r\n- Dimensi Indoor (WxHxD) : 970 x 347 x 257 mm\r\n- Dimensi Outdoor (WxHxD) : 958 x 660 x 402 mm\r\n- pipa cair : 1/4\"\r\n- pipa gas : 1/2\"\r\n\r\nGaransi resmi gree Indonesia 5 tahun Sparepart dan service + 10 Tahun Kompresor",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

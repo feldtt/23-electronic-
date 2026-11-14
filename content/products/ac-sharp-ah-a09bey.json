@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Standard"
+  ],
   "title": "Sharp AH-A09BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "FITUR :\r\n- Turbo Cooling\r\n- Self Diagnosis\r\n- auto swing louver swing otomatis naik turun\r\n- X-Fan Function\r\n- Made in indonesia Bintang 3\r\n- Tidak ada lampu indikator\r\n\r\n\r\nSpesifikasi :\r\nAH-A9BEY | 1PK | 760W | CSPF **\r\nNama Model : Local production garuda series (BEY)\r\nMADEIN INDONESIA\r\nType AC Standard\r\nDaya Listrik (Watt) 760 Watt\r\nDimensi (l x w x h) 853x295x185mm\r\nBerat 9 Kg\r\nDaya PK 1 PK\r\nKapasitas Pendinginan 9000 BTU/h\r\nTipe Refrigrant R-32\r\nDimensi Outdoor (l x w x h) 598x495x265mm\r\nBerat Outdoor 21 Kg\r\nBahan Material Evaporator & Kondensor Tembaga\r\nGaransi Produk 3 Tahun Sparepart, 10 Tahun Kompresor",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

@@ -186,6 +186,13 @@
   slot('cta', cta);
   slot('footer', footer);
 
+  // Per-button WhatsApp messages (product cards, product pages): <a class="wa-link" data-msg="...">
+  document.querySelectorAll('.wa-link').forEach((a) => {
+    a.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(a.dataset.msg || 'Halo 23 Electronic')}`;
+    a.target = '_blank';
+    a.rel = 'noopener';
+  });
+
   // Sticky
   const stick = document.createElement('div');
   stick.innerHTML = sticky.trim();
@@ -272,7 +279,7 @@
     if (href.includes('wa.me') || href.includes('whatsapp')) {
       track('click_whatsapp', { link_text: a.textContent.trim().slice(0, 60) });
       const card = a.closest('.card');
-      beacon('click_whatsapp', { label: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 60), product: card ? (card.querySelector('h3')?.textContent.trim() || '') : '' });
+      beacon('click_whatsapp', { label: a.textContent.trim().replace(/\s+/g, ' ').slice(0, 60), product: a.dataset.product || (card ? (card.querySelector('h3')?.textContent.trim() || '') : '') });
     } else if (href.startsWith('tel:')) {
       track('click_call', { phone: href.replace('tel:', '') });
       beacon('click_call');

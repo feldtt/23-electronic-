@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Samsung AR40F18D0AMNSE",
   "photo": "",
+  "photos": [],
   "alt": "",
   "description": "",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

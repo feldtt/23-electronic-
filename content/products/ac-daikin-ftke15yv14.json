@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Daikin FTKE15YV14",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "Fitur Utama :\r\n- Fast Cooling\r\n- Inverter\r\n- Auto Restart\r\n- Self Diagnosis\r\n- Weekly Timer Operation\r\n- Wide Angle Louvre\r\n- Refrigerant R32\r\n- Blue Fin Coating\r\n- Grey Hairpin\r\n- Super PCB\r\n- Filter Gin-Ion\r\n\r\nSpesifikasi\r\n- Daya PK : 0.5 PK\r\n- Tipe Refrigrant : R-32\r\n- Daya Listrik (Watt) : 380 Watt\r\n- Kapasitas Pendinginan : 5000 BTU/h\r\n- Ukuran Pipa Cair & Gas (Inch) : 1/4 3/8\r\n- Berat Indoor + Outdoor : 25.5 Kg\r\n- Dimensi (h x w x d) : 28 x 73 x 22 cm (Indoor) , 46 x 65 x 24 cm (Outdoor)\r\n- Ada di Dalam Kotak : 1 Unit AC (indoor dan outdoor) , 1 Remote, Kartu Garansi & Buku Petunjuk\r\n\r\nGaransi resmi daikin 3 Tahun Sparepart, Service dan 5 Tahun Kompressor",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

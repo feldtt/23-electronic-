@@ -525,6 +525,41 @@ h1, h2, h3, h4, h5 { font-weight: 700; color: var(--text); line-height: 1.3; let
 }
 .card-badge.blue { background: var(--blue-600); }
 .card-badge.green { background: var(--green); }
+.card-badge.gray { background: #6b7684; }
+.card-img { text-decoration: none; }
+.card h3 a.card-title { color: inherit; text-decoration: none; }
+.card h3 a.card-title:hover { color: var(--blue-600); text-decoration: underline; }
+.card-actions { margin-top: auto; display: flex; gap: 8px; }
+.card-actions .btn { flex: 1; padding: 10px 8px; font-size: 13.5px; }
+
+/* Product detail page */
+.pd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+@media (max-width: 880px) { .pd { grid-template-columns: 1fr; gap: 18px; } }
+.pd-main {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--r-md);
+  aspect-ratio: 1 / 1; display: grid; place-items: center; overflow: hidden;
+}
+.pd-main img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pd-noimg { background: var(--bg-soft); }
+.pd-noimg svg { width: 84px; height: auto; }
+.pd-thumbs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.pd-thumb {
+  width: 64px; height: 64px; padding: 0; background: #fff; cursor: pointer;
+  border: 2px solid var(--border); border-radius: var(--r-sm); overflow: hidden;
+}
+.pd-thumb.on { border-color: var(--blue-600); }
+.pd-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.pd-info h1 { font-size: 24px; line-height: 1.3; margin: 8px 0 12px; }
+.pd-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.pd-price { font-size: 28px; font-weight: 800; color: var(--orange); letter-spacing: -0.01em; margin-bottom: 4px; }
+.pd-price.pd-price-cta { font-size: 18px; color: var(--blue-600); font-weight: 700; }
+.pd-stock { display: inline-block; font-size: 13px; font-weight: 700; color: var(--green); margin: 6px 0; }
+.pd-stock.out { color: #b42318; }
+.pd-note { font-size: 12.5px; color: var(--muted); margin: 4px 0 12px; }
+.pd-wa { width: 100%; padding: 14px 18px; font-size: 16px; margin: 10px 0 6px; }
+.pd-section { margin-top: 40px; }
+.pd-section h2 { margin-bottom: 14px; }
+.pd-desc { white-space: pre-line; line-height: 1.7; max-width: 760px; }
 
 /* Product price box */
 .price-box {

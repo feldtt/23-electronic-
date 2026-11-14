@@ -1,14 +1,17 @@
 {
   "category": "ac",
   "group": [
-    "Inverter"
+    "Standard"
   ],
   "title": "Sharp AH-A05BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "AC split ½ PK · 350 W · R32",
+  "description": "Spesifikasi\r\n- BTU/h 5000\r\n- Konsumsi Daya 360 W\r\n- Jetstream YES\r\n- Coanda YES\r\n- Auto Swing Louver YES\r\n- Anti Rust Evaporator YES\r\n- Freon R32\r\n- Dimensi (Indoor/ Outdoor) 853x295x185mm/ 598x495x265mm\r\n- Berat 25kg\r\n- Garansi Service & Part 3 Tahun, Kompresor 10 Tahun\r\n\r\nFitur\r\n- Garuda Wing Air Flow\r\n- Anti Rush Evaporator\r\nMaterial evaporator lebih tahan cuaca extrim dan ketahanan terhadap korosi.\r\n- Superjet Mode\r\nAC Beroperasi pada kecepatan Extra High untuk mendinginkan ruangan dengan cepat.\r\n- Sleep Mode / Dark LED\r\n- Cooper Evaporator & Condenser",
   "wa_message": "",
   "order": 1000,
   "stock": 5,
+  "price": 0,
+  "featured": false,
   "published": true
 }

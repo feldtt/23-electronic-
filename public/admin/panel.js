@@ -335,10 +335,10 @@
   // Data completeness: what a visitor would find missing on the product card
   const issuesOf = (p) => {
     const i = [];
-    if (!p.photo) i.push({ k: 'photo', l: 'No photo' });
+    if (!photosOf(p).length) i.push({ k: 'photo', l: 'No photo' });
     if (!String(p.description || '').trim()) i.push({ k: 'desc', l: 'No description' });
     if (!groupsOf(p).length) i.push({ k: 'group', l: 'No sub-category' });
-    if (!(p.stock > 0)) i.push({ k: 'stock', l: 'Out of stock' });
+    if (p.stock === 0) i.push({ k: 'stock', l: 'Out of stock' });
     return i;
   };
   const incomplete = (p) => issuesOf(p).some((x) => x.k !== 'stock');
@@ -352,7 +352,7 @@
       order: (a, b) => (a.order ?? 1000) - (b.order ?? 1000) || a.title.localeCompare(b.title),
       name: (a, b) => a.title.localeCompare(b.title),
       hidden: (a, b) => (a.published === b.published ? 0 : a.published ? 1 : -1) || a.title.localeCompare(b.title),
-      stock: (a, b) => (a.stock ?? 0) - (b.stock ?? 0) || a.title.localeCompare(b.title),
+      stock: (a, b) => (a.stock ?? 1e9) - (b.stock ?? 1e9) || a.title.localeCompare(b.title),
     }[sort];
     return list.sort(cmp);
   }
@@ -470,9 +470,9 @@
       return `
       <tr data-id="${esc(p.id)}" class="${selected.has(p.id) ? 'sel' : ''}">
         <td><input type="checkbox" class="pick" ${selected.has(p.id) ? 'checked' : ''} aria-label="Select"></td>
-        <td><div class="prod"><div class="thumb" style="${p.photo ? `background-image:url('${esc(p.photo)}')` : ''}">${p.photo ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc(p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
+        <td><div class="prod"><div class="thumb" style="${photosOf(p)[0] ? `background-image:url('${esc(photosOf(p)[0])}')` : ''}">${photosOf(p)[0] ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc(p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
         <td><span class="pill b">${esc(catLabel(p.category))}</span><div style="color:var(--muted);font-size:12px;margin-top:4px">${esc(groupsOf(p).join(', ') || '—')}</div></td>
-        <td>${p.stock > 0 ? p.stock : '<span class="pill o">Out</span>'}</td>
+        <td>${p.stock == null ? '–' : p.stock > 0 ? p.stock : '<span class="pill o">Out</span>'}</td>
         <td><span class="prw"><input type="text" inputmode="numeric" class="pr" value="${p.price > 0 ? fmtNum(p.price) : ''}" placeholder="Not set" aria-label="Price in Rupiah"></span></td>
         <td><label class="sw"><input type="checkbox" class="tg" ${p.published !== false ? 'checked' : ''}><span></span></label></td>
         <td><div class="row-act"><button class="btn btn-ghost btn-sm dup" title="Make a copy of this product">Duplicate</button><button class="btn btn-ghost btn-sm ed">Edit</button></div></td>
@@ -643,11 +643,12 @@
   // =====================================================================
   // IMPORT / EXPORT (Excel or CSV)
   // =====================================================================
-  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'stock', 'price', 'photo', 'alt', 'wa_message', 'published'];
+  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
   const SAMPLE_ROWS = [
-    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 5, 3450000, 'daikin.jpg', 'Daikin STC15YV', '', 'yes'],
-    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', 3, 2100000, '', '', '', 'yes'],
+    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
+    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', 3, 2100000, '', '', '', 'no', 'yes'],
   ];
+  const photosOf = (p) => (Array.isArray(p.photos) && p.photos.length ? p.photos : p.photo ? [p.photo] : []);
   const PHOTO_HEADERS = ['photo', 'image', 'picture', 'foto', 'gambar'];
 
   // Minimal CSV parser: quotes, BOM, and comma / semicolon / tab delimiters (Indonesian Excel saves CSV with ";")
@@ -705,8 +706,8 @@
     return X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
   }
   const exportGrid = () => [IMPORT_HEADERS, ...products.map((p) => [
-    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', p.stock ?? 0, p.price > 0 ? p.price : '',
-    (p.photo || '').replace('/assets/uploads/', ''), p.alt || '', p.wa_message || '', p.published === false ? 'no' : 'yes',
+    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', p.stock ?? '', p.price > 0 ? p.price : '',
+    photosOf(p).map((x) => x.replace('/assets/uploads/', '')).join(', '), p.alt || '', p.wa_message || '', p.featured ? 'yes' : 'no', p.published === false ? 'no' : 'yes',
   ])];
 
   function openImport() {
@@ -718,7 +719,7 @@
       <div class="drawer-b imp">
         <div class="fld"><label>1. Get the template</label>
           <div class="imp-row"><button type="button" class="btn btn-ghost btn-sm" id="tplX">Excel template (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="tplC">CSV template</button><button type="button" class="btn btn-ghost btn-sm" id="expX">Export current products (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="expC">Export (.csv)</button></div>
-          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, stock, price (Rupiah, digits only), photo (file name), alt, wa_message, published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
+          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
         <div class="fld"><label for="imp_photos">2. Photos (optional)</label><input type="file" id="imp_photos" accept="image/jpeg,image/png,image/webp" multiple><small id="imp_pstat">Select the image files named in the photo column. They are uploaded right away.</small></div>
         <div class="fld"><label for="imp_file">3. Spreadsheet file</label><input type="file" id="imp_file" accept=".xlsx,.xls,.csv,.txt"></div>
         <div class="fld"><label>If a product already exists (same name and category)</label>
@@ -739,7 +740,7 @@
 
     const payload = () => rows.map((r) => {
       const o = { ...r };
-      for (const k of Object.keys(o)) if (PHOTO_HEADERS.includes(k.trim().toLowerCase())) o[k] = photoMap[String(o[k]).trim().toLowerCase()] || o[k];
+      for (const k of Object.keys(o)) if (PHOTO_HEADERS.includes(k.trim().toLowerCase())) o[k] = String(o[k]).split(',').map((x) => x.trim()).filter(Boolean).map((x) => photoMap[x.toLowerCase()] || x).join(',');
       return o;
     });
     async function preview() {
@@ -800,7 +801,7 @@
   function openDrawer(p, tpl) {
     ensureDrawer();
     const isNew = !p;
-    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', alt: '', description: '', wa_message: '', order: 1000, stock: 0, price: 0, published: true };
+    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', photos: [], alt: '', description: '', wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
     drawer.innerHTML = `
       <div class="drawer-h"><h2>${isNew ? (tpl ? 'Duplicate product' : 'Add product') : 'Edit product'}</h2><button id="dx" aria-label="Close">×</button></div>
@@ -808,21 +809,22 @@
         <div class="fld photo">
           <div class="thumb" id="pth"></div>
           <div>
-            <div class="drop" id="drop">Click or drag a photo here<br><small>JPG, PNG, WebP · max 8 MB</small></div>
-            <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
-            <button type="button" class="btn btn-ghost btn-sm" id="rmPhoto" style="margin-top:8px" ${d.photo ? '' : 'hidden'}>Remove photo</button>
+            <div class="drop" id="drop">Click or drag photos here<br><small>JPG, PNG, WebP · max 8 MB each · the first photo is the main one</small></div>
+            <input type="file" id="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
           </div>
         </div>
+        <div class="pl" id="pl"></div>
         <div class="fld"><label for="f_title">Name / model *</label><input type="text" id="f_title" required value="${esc(d.title)}"></div>
         <div class="two">
           <div class="fld"><label for="f_cat">Category</label>${catFieldHtml(d.category)}</div>
-          <div class="fld"><label for="f_stock">Stock</label><input type="number" id="f_stock" min="0" value="${d.stock ?? 0}"><small>Units available.</small></div>
+          <div class="fld"><label for="f_stock">Stock</label><input type="number" id="f_stock" min="0" value="${d.stock ?? ''}" placeholder="Not tracked"><small>Empty = not shown on the website. 0 = "Stok habis".</small></div>
         </div>
         <div class="fld"><label for="f_price">Price (Rp)</label><span class="prw"><input type="text" inputmode="numeric" id="f_price" value="${d.price > 0 ? fmtNum(d.price) : ''}" placeholder="Not set"></span><small>Whole Rupiah, e.g. 3.450.000. Empty = card shows "Cek harga via WA".</small></div>
         <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
         <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
         <div class="fld"><label for="f_wa">Pre-filled WhatsApp message</label><textarea id="f_wa">${esc(d.wa_message)}</textarea><small>Empty = default message containing the product name.</small></div>
         <div class="fld"><label for="f_alt">Photo alt text</label><input type="text" id="f_alt" value="${esc(d.alt)}"></div>
+        <div class="fld" style="display:flex;align-items:center;gap:12px"><label class="sw"><input type="checkbox" id="f_feat" ${d.featured ? 'checked' : ''}><span></span></label><b>Featured product</b><small>Shown in "Produk Unggulan" on the home page.</small></div>
         <div class="fld" style="display:flex;align-items:center;gap:12px"><label class="sw"><input type="checkbox" id="f_pub" ${d.published !== false ? 'checked' : ''}><span></span></label><b>Show on website</b></div>
         <div class="preview"><h4>Card preview</h4><div class="pc"><div class="thumb" id="pv_th"></div><div><b id="pv_t"></b><div style="color:var(--muted);font-size:12.5px" id="pv_d"></div><span class="wa">Tanya stok</span></div></div></div>
       </form>
@@ -835,41 +837,54 @@
 
     const g = (id) => $(id, drawer);
     const getCat = wireCat(drawer), getGroup = wireGroups(drawer, groupsOf(d), groups);
-    let photo = d.photo || '';
+    let photos = [...photosOf(d)];
     const paint = () => {
+      const photo = photos[0] || '';
       const bg = photo ? `url('${photo.replace(/'/g, '%27')}')` : 'none';
       for (const id of ['#pth', '#pv_th']) { const el = g(id); el.style.backgroundImage = bg; el.textContent = photo ? '' : 'No photo'; }
       g('#pv_t').textContent = g('#f_title').value || 'Product name';
       g('#pv_d').textContent = g('#f_desc').value || 'Short description';
-      g('#rmPhoto').hidden = !photo;
+      g('#pl').innerHTML = photos.map((src, i) => `<div class="pli${i === 0 ? ' main' : ''}" style="background-image:url('${src.replace(/'/g, '%27')}')"><button type="button" data-i="${i}" data-a="rm" title="Remove" aria-label="Remove photo">×</button>${i === 0 ? '<span>Main</span>' : `<button type="button" data-i="${i}" data-a="main" class="mk">Make main</button>`}</div>`).join('');
+    };
+    g('#pl').onclick = (e) => {
+      const b = e.target.closest('button[data-i]'); if (!b) return;
+      const i = Number(b.dataset.i);
+      if (b.dataset.a === 'rm') photos.splice(i, 1);
+      else photos.unshift(...photos.splice(i, 1));
+      paint();
     };
     paint();
     ['#f_title', '#f_desc'].forEach((id) => g(id).addEventListener('input', paint));
     g('#dx').onclick = g('#cancel').onclick = closeDrawer;
-    g('#rmPhoto').onclick = () => { photo = ''; paint(); };
 
     const drop = g('#drop'), file = g('#file');
     drop.onclick = () => file.click();
     ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('over'); }));
     ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('over'); }));
-    drop.addEventListener('drop', (e) => upload(e.dataTransfer.files[0]));
-    file.onchange = () => upload(file.files[0]);
-    async function upload(f) {
-      if (!f) return;
-      drop.textContent = 'Uploading…';
-      try {
-        const r = await api(`/upload?name=${encodeURIComponent(f.name)}`, { method: 'POST', body: f });
-        photo = r.path; if (!g('#f_alt').value) g('#f_alt').value = g('#f_title').value;
-        paint(); drop.innerHTML = 'Photo uploaded. Click to replace.';
-      } catch (err) { drop.innerHTML = 'Click or drag a photo here'; toast(err.message, true); }
+    drop.addEventListener('drop', (e) => upload([...e.dataTransfer.files]));
+    file.onchange = () => { upload([...file.files]); file.value = ''; };
+    async function upload(list) {
+      if (!list.length) return;
+      const idle = 'Click or drag photos here<br><small>JPG, PNG, WebP · max 8 MB each · the first photo is the main one</small>';
+      let ok = 0;
+      for (const f of list) {
+        drop.textContent = `Uploading ${ok + 1} of ${list.length}…`;
+        try {
+          const r = await api(`/upload?name=${encodeURIComponent(f.name)}`, { method: 'POST', body: f });
+          photos.push(r.path); ok++;
+          if (!g('#f_alt').value) g('#f_alt').value = g('#f_title').value;
+          paint();
+        } catch (err) { toast(`${f.name}: ${err.message}`, true); }
+      }
+      drop.innerHTML = ok ? `${ok} photo${ok === 1 ? '' : 's'} added. Click to add more.` : idle;
     }
 
     g('#pf').onsubmit = async (e) => {
       e.preventDefault();
       const body = {
-        category: getCat(), group: getGroup(), title: g('#f_title').value, photo,
+        category: getCat(), group: getGroup(), title: g('#f_title').value, photos,
         alt: g('#f_alt').value, description: g('#f_desc').value, wa_message: g('#f_wa').value,
-        stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), published: g('#f_pub').checked,
+        stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), featured: g('#f_feat').checked, published: g('#f_pub').checked,
       };
       if (!body.category) return toast('Category is required', true);
       const btn = g('#save'); btn.disabled = true;

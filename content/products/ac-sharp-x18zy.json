@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp X18ZY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "SPESIFICATIONS :\r\n\r\n\r\nCapacity : 2 PK\r\nPower Consumptions : 1, 640 watt\r\nPowerful Jet\r\nEco Mode\r\nBaby Sleep Mode\r\nTwo-Way Auto Swing\r\nR32 Eco Refrigerant\r\n7 Shield Protection\r\nJetstream : Yes\r\nCoanda : Yes\r\nAnti Rust Evaporator : Yes\r\nCoverage Floor Area ( m² ) : 22- 42 m2\r\nCooling Capacity(BTU) : 18,000 ( 5,400 - 20,000) BTU\r\nRated Voltage ( Volt ) : 220",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

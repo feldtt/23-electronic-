@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp AH-A18ZCY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "FITUR :\r\n-Turbo Cooling\r\n-Self Diagnosis\r\n-auto swing louver swing otomatis naik turun\r\n-evaporator anti karat.\r\n- X-Fan Function\r\n- easy remot control winth 12 hour timer sleep\r\n\r\n\r\nSpisifikasi :\r\nAc split\r\nBesaran pk : 2 PK\r\nDaya listrik :1590 Watt\r\nPower :19.000 Btu/h\r\nDimensi IN : 970 x 300 x 224 mm\r\nBerat : 11 KG\r\nDimensi OUT :900 x 596 x 378 mm\r\nBerat : 42 kg\r\nUkuran pipa : 1/4 1/2\r\nGaransi 10 tahun kompressor & 1 tahun sparepart",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

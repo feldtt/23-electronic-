@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp X13BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "[Fitur Porduk]\r\n1.5PK\r\nJ-Tech Inverter\r\nWatt Fit\r\nGaruda Wing Airflow\r\nSuper Jet Mode\r\nCoanda Air Flow\r\n\r\nSpecification (AC) (-)\r\nPRODUCT SERIES Garuda Series\r\nColour White\r\nJetstream YES\r\nCoanda YES\r\nLow Wattage NO\r\nTurbo Cooling NO\r\nPlasmacluster NO\r\nAuto Swing Louver YES\r\nAnti Rust Evaporator YES\r\nSelf Cleaning Function NO\r\nCapacity (PK) 1.5\r\nLiquid Side (Inch) 1/4\r\nGas Side (Inch) 3/8\r\nRated Frequency (Hz) 50Hz\r\nRated Voltage ( Volt ) 220V\r\nRated Current (Ampere) 6,2\r\nRate Input (Watt) 1,030\r\nIn Door Dimensions (mm) 853 x 295 x 185\r\nOut Door Dimensions (mm) 598 x 495 x 265\r\nIn Door Weight (kg) 7 Kg\r\nOut Door Weight (kg) 19 Kg\r\nCooling Capacity (kW) 3,52\r\n\r\nGaransi Resmi SHARP 3 Tahun Service, Sparepart dan 10 Tahun Kompressor",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

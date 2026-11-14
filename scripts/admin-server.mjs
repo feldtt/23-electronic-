@@ -31,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "title", "photo", "alt", "description", "wa_message", "order", "stock", "price", "published"];
+const FIELD_ORDER = ["category", "group", "title", "photo", "photos", "alt", "description", "wa_message", "order", "stock", "price", "featured", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -84,24 +84,35 @@ function parsePrice(v) {
   const digits = String(v ?? "").replace(/[^\d]/g, "");
   return digits ? Math.min(Number(digits), 9_999_999_999) : 0;
 }
+// Stock: empty / null = not tracked (website shows nothing); 0 = sold out; n = available.
+function parseStock(v) {
+  if (v === null || v === undefined || String(v).trim() === "") return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? Math.max(0, Math.trunc(n)) : null;
+}
+const PHOTO_RE = /^\/assets\/uploads\/[\w.\-]+$/;
 function cleanProduct(input) {
+  // `photos` is the list (first = main photo); `photo` is kept equal to the first entry.
+  const photos = [...new Set((Array.isArray(input.photos) ? input.photos : input.photo ? [input.photo] : []).map((x) => String(x).trim()).filter(Boolean))];
   const p = {
     category: String(input.category ?? ""),
     group: [...new Set([].concat(input.group ?? []).map((g) => String(g).trim()).filter(Boolean))],
     title: String(input.title ?? "").trim(),
-    photo: String(input.photo ?? "").trim(),
+    photo: photos[0] ?? "",
+    photos,
     alt: String(input.alt ?? "").trim(),
     description: String(input.description ?? "").trim(),
     wa_message: String(input.wa_message ?? "").trim(),
     order: Number.isFinite(Number(input.order)) ? Math.trunc(Number(input.order)) : 1000,
-    stock: Number.isFinite(Number(input.stock)) ? Math.max(0, Math.trunc(Number(input.stock))) : 0,
+    stock: parseStock(input.stock),
     price: parsePrice(input.price),
+    featured: input.featured === true,
     published: input.published !== false,
   };
   p.category = slugify(p.category);
   if (!p.category) throw Object.assign(new Error("Invalid category"), { code: 400 });
   if (!p.title) throw Object.assign(new Error("Product name is required"), { code: 400 });
-  if (p.photo && !/^\/assets\/uploads\/[\w.\-]+$/.test(p.photo)) throw Object.assign(new Error("Invalid photo path"), { code: 400 });
+  if (p.photos.some((x) => !PHOTO_RE.test(x))) throw Object.assign(new Error("Invalid photo path"), { code: 400 });
   return Object.fromEntries(FIELD_ORDER.map((k) => [k, p[k]]));
 }
 // Saved categories / sub-categories so new ones are reusable before any product uses them.
@@ -206,10 +217,11 @@ const IMPORT_COLS = {
   description: ["description", "desc", "deskripsi"],
   stock: ["stock", "qty", "quantity", "stok"],
   price: ["price", "harga", "price (rp)", "harga (rp)"],
-  photo: ["photo", "image", "picture", "foto", "gambar"],
+  photo: ["photo", "photos", "image", "picture", "foto", "gambar"],
   alt: ["alt", "alt text", "photo alt text"],
   wa_message: ["wa_message", "whatsapp message", "wa message", "message", "pesan whatsapp"],
   published: ["published", "visible", "show", "tampil"],
+  featured: ["featured", "unggulan", "produk unggulan"],
 };
 const CAT_ALIASES = {
   ac: "ac", kulkas: "kulkas", fridge: "kulkas", refrigerator: "kulkas",
@@ -260,12 +272,12 @@ function importProducts({ rows, mode, dryRun }) {
         stock = Number(r.stock);
         if (!Number.isFinite(stock) || stock < 0) throw new Error("Stock must be a number");
       }
-      let photo = r.photo;
-      if (photo) {
-        photo = photo.startsWith("/") ? photo : `/assets/uploads/${photo}`;
-        if (!/^\/assets\/uploads\/[\w.\-]+$/.test(photo) || !existsSync(path.join(uploadDirs[0], path.basename(photo)))) {
-          warnings.push(`Photo "${r.photo}" not found`); photo = "";
-        }
+      // photo cell: one file name, or several separated by commas (first = main photo)
+      const photos = [];
+      for (let name of r.photo.split(",").map((x) => x.trim()).filter(Boolean)) {
+        name = name.startsWith("/") ? name : `/assets/uploads/${name}`;
+        if (!PHOTO_RE.test(name) || !existsSync(path.join(uploadDirs[0], path.basename(name)))) warnings.push(`Photo "${name.replace("/assets/uploads/", "")}" not found`);
+        else photos.push(name);
       }
       const match = existing.find((p) => p.category === cat.v && String(p.title).trim().toLowerCase() === title.toLowerCase());
       if (match && mode !== "update") { results.push({ row, title, status: "skipped", message: "Already exists" }); return; }
@@ -276,9 +288,10 @@ function importProducts({ rows, mode, dryRun }) {
       if (r.description) next.description = r.description;
       if (r.alt) next.alt = r.alt;
       if (r.wa_message) next.wa_message = r.wa_message;
-      if (photo) next.photo = photo;
+      if (photos.length) { next.photos = photos; delete next.photo; }
       if (stock !== undefined) next.stock = stock;
       if (r.price !== "") next.price = parsePrice(r.price);
+      if (r.featured !== "") next.featured = ["yes", "y", "true", "1", "ya"].includes(r.featured.toLowerCase());
       if (r.published !== "") next.published = !["no", "n", "false", "0", "hidden", "hide", "tidak"].includes(r.published.toLowerCase());
       else if (!match) next.published = true;
       const clean = cleanProduct(next);
@@ -472,7 +485,9 @@ const server = http.createServer(async (req, res) => {
       const file = path.join(productsDir, `${id}.json`);
       if (!safeId(id) || !existsSync(file)) return json(res, 404, { error: "Product not found" });
       if (req.method === "PUT") {
-        const merged = { ...readProduct(`${id}.json`), ...JSON.parse((await readBody(req, 65536)).toString("utf8")) };
+        const body = JSON.parse((await readBody(req, 65536)).toString("utf8"));
+        const merged = { ...readProduct(`${id}.json`), ...body };
+        if (body.photo !== undefined && body.photos === undefined) delete merged.photos;
         const p = cleanProduct(merged);
         writeProduct(id, p);
         return json(res, 200, { id, ...p });

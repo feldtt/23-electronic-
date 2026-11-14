@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Inverter"
+  ],
   "title": "Sharp X06BEY",
   "photo": "",
+  "photos": [],
   "alt": "",
-  "description": "",
+  "description": "Fitur Utama :\r\n\r\nCapacity : 0.50 PK\r\nJ-Tech Inverter\r\nWatt Fit\r\nGaruda Wing Airflow\r\nSuper Jet Mode\r\nCoanda Air Flow\r\n\r\nSpecification (AC) (-)\r\nPRODUCT SERIES Inverter BEY Series\r\nColour White Panel\r\nJetstream Yes ( Super Jet Mode )\r\nCoanda Yes\r\nRemote Control Yes\r\nCapacity (PK) 0.50\r\nLiquid Side (Inch) 1/4\r\nGas Side (Inch) 3/8\r\nRefrigerant Volume R-32\r\nRated Frequency (Hz) 50\r\nRated Voltage ( Volt ) 220\r\nRated Current (Ampere) 2.9\r\nRate Input (Watt) 465\r\nIn Door Dimensions (mm) 853 x 295 x 185\r\nOut Door Dimensions (mm) 598 x 495 x 275\r\nIn Door Weight (kg) 7\r\nOut Door Weight (kg) 17\r\nCooling Capacity (kW) 1.82",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }

@@ -1,12 +1,17 @@
 {
   "category": "ac",
-  "group": [],
+  "group": [
+    "Low Watt"
+  ],
   "title": "Gree GWC-07C3ES",
   "photo": "",
+  "photos": [],
   "alt": "",
   "description": "",
   "wa_message": "",
   "order": 1000,
-  "stock": 0,
+  "stock": null,
+  "price": 0,
+  "featured": false,
   "published": true
 }
