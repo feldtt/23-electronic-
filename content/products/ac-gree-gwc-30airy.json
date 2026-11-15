@@ -7,7 +7,65 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur :\r\nG-Learning (Mengontrol Mode berdasarkan Kebiasaan Pengguna)\r\nOutdoor G-Boost Inverter (Kompressor mampu bertahan pada suhu ekstrim hingga 65 derajat celcius juga pendinginan cepat hingga suhu 8 derajat dalam 1 menit)\r\nSmart Voice Control\r\nUVC Lampu Ultraviolet & Plasma Dingin Ganda\r\nWi-Fi\r\nKondensor Black Diamond Fin\r\nEvaporator Gold Fin\r\nTimer\r\nChild Lock\r\nLED Display\r\nX-Fan\r\nSelf Diagnosis + Protect\r\nPengingat Pintar\r\n4 perlindungan\r\nSmart Cleaner\r\nSmart Dehumidifier System\r\nUltra Wide Voltage\r\nMode Udara 4 sisi\r\nLow Noise\r\n6 Perlindungan Outdoor Anti Karat\r\nSystem Akses Pintu\r\n\r\n\r\nGARANSI :\r\n10 Tahun Kompresor\r\n5 Tahun Services + Spareparts",
+  "description": "Fitur Utama:\n- G-Learning (Mengontrol Mode berdasarkan Kebiasaan Pengguna)\n- Outdoor G-Boost Inverter (Kompressor mampu bertahan pada suhu ekstrim hingga 65 derajat celcius juga pendinginan cepat hingga suhu 8 derajat dalam 1 menit)\n- Smart Voice Control\n- UVC Lampu Ultraviolet & Plasma Dingin Ganda\n- Wi-Fi\n- Kondensor Black Diamond Fin\n- Evaporator Gold Fin\n- Timer\n- Child Lock\n- LED Display\n- X-Fan\n- Self Diagnosis + Protect\n- Pengingat Pintar\n- 4 perlindungan\n- Smart Cleaner\n- Smart Dehumidifier System\n- Ultra Wide Voltage\n- Mode Udara 4 sisi\n- Low Noise\n- 6 Perlindungan Outdoor Anti Karat\n- System Akses Pintu",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "GWC-30AIRY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Silver / Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "2381 (562 - 3700) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "111 x 35 x 26 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "15 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "3 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "30000 (8870 - 37500) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀5/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "100 x 75 x 43 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "42 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

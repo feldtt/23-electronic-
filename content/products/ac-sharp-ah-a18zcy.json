@@ -7,7 +7,73 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "FITUR :\r\n-Turbo Cooling\r\n-Self Diagnosis\r\n-auto swing louver swing otomatis naik turun\r\n-evaporator anti karat.\r\n- X-Fan Function\r\n- easy remot control winth 12 hour timer sleep\r\n\r\n\r\nSpisifikasi :\r\nAc split\r\nBesaran pk : 2 PK\r\nDaya listrik :1590 Watt\r\nPower :19.000 Btu/h\r\nDimensi IN : 970 x 300 x 224 mm\r\nBerat : 11 KG\r\nDimensi OUT :900 x 596 x 378 mm\r\nBerat : 42 kg\r\nUkuran pipa : 1/4 1/2\r\nGaransi 10 tahun kompressor & 1 tahun sparepart",
+  "description": "Fitur Utama:\n- Turbo Cooling\n- Self Diagnosis\n- Auto swing louver naik turun otomatis\n- Evaporator anti karat\n- X-Fan Function\n- Remote control mudah dengan timer sleep 12 jam",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-A18ZCY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1640 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "97 x 30 x 22 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "14 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "17500 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "90 x 60 x 38 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "42 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Alumunium"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "3.31"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

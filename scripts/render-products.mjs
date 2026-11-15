@@ -63,6 +63,9 @@ export function loadProducts(repoRoot) {
         console.warn(`[products] ${id}: photo ${src} not found, showing placeholder`);
         return false;
       });
+      const specs = (Array.isArray(raw.specs) ? raw.specs : [])
+        .map((x) => ({ label: String(x?.label ?? "").trim(), value: String(x?.value ?? "").trim() }))
+        .filter((x) => x.label && x.value);
       const cat = taxonomy.categories?.find((c) => c.v === raw.category);
       const stock = raw.stock === null || raw.stock === undefined || raw.stock === "" ? null : Number(raw.stock);
       return {
@@ -70,6 +73,7 @@ export function loadProducts(repoRoot) {
         ...raw,
         id,
         photos,
+        specs,
         stock: Number.isFinite(stock) ? stock : null,
         categoryLabel: CATEGORY_PAGES[raw.category]?.label || cat?.l || raw.category,
       };
@@ -259,7 +263,14 @@ function renderDetailPage(p, products) {
           <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
         </div>
       </div>
-${description ? `
+${p.specs.length ? `
+      <div class="pd-section">
+        <h2>Spesifikasi ${esc(title)}</h2>
+        <table class="spec-table"><tbody>
+          ${p.specs.map((x) => `<tr><th scope="row">${esc(x.label)}</th><td>${esc(x.value)}</td></tr>`).join("\n          ")}
+        </tbody></table>
+      </div>
+` : ""}${description ? `
       <div class="pd-section">
         <h2>Deskripsi Produk</h2>
         <div class="pd-desc">${esc(description)}</div>

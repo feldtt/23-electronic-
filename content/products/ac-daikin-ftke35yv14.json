@@ -7,7 +7,69 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama :\r\n- Fast Cooling\r\n- Inverter\r\n- Auto Restart\r\n- Self Diagnosis\r\n- Weekly Timer Operation\r\n- Wide Angle Louvre\r\n- Refrigerant R32\r\n- Blue Fin Coating\r\n- Grey Hairpin\r\n- Super PCB\r\n- Filter Gin-Ion\r\n\r\nSpesifikasi\r\n- Daya PK : 1.5 PK\r\n- Tipe Refrigrant : R-32\r\n- Daya Listrik (Watt) : 1190 Watt\r\n- Kapasitas Pendinginan : 12300 BTU/h\r\n- Ukuran Pipa Cair & Gas (Inch) : 1/4 3/8\r\n- Berat Indoor + Outdoor : 25.5 Kg\r\n- Dimensi (h x w x d) : 29 x 77 x 25 cm (Indoor) , 55 x 68 x 29 cm (Outdoor)\r\n- Ada di Dalam Kotak : 1 Unit AC (indoor dan outdoor) , 1 Remote, Kartu Garansi & Buku Petunjuk\r\n\r\nGaransi resmi daikin 3 Tahun Sparepart, Service dan 5 Tahun Kompressor",
+  "description": "Fitur Utama:\n- Fast Cooling\n- Inverter\n- Auto Restart\n- Self Diagnosis\n- Weekly Timer Operation\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB\n- Filter Gin-Ion",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "FTKE35YV14"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1190 (320 -1215) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "77 x 29 x 25 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "9 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor, 3 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "11900 (4400 - 13000) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "68 x 55 x 29 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "22 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.77"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

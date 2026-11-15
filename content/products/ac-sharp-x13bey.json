@@ -7,7 +7,77 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "[Fitur Porduk]\r\n1.5PK\r\nJ-Tech Inverter\r\nWatt Fit\r\nGaruda Wing Airflow\r\nSuper Jet Mode\r\nCoanda Air Flow\r\n\r\nSpecification (AC) (-)\r\nPRODUCT SERIES Garuda Series\r\nColour White\r\nJetstream YES\r\nCoanda YES\r\nLow Wattage NO\r\nTurbo Cooling NO\r\nPlasmacluster NO\r\nAuto Swing Louver YES\r\nAnti Rust Evaporator YES\r\nSelf Cleaning Function NO\r\nCapacity (PK) 1.5\r\nLiquid Side (Inch) 1/4\r\nGas Side (Inch) 3/8\r\nRated Frequency (Hz) 50Hz\r\nRated Voltage ( Volt ) 220V\r\nRated Current (Ampere) 6,2\r\nRate Input (Watt) 1,030\r\nIn Door Dimensions (mm) 853 x 295 x 185\r\nOut Door Dimensions (mm) 598 x 495 x 265\r\nIn Door Weight (kg) 7 Kg\r\nOut Door Weight (kg) 19 Kg\r\nCooling Capacity (kW) 3,52\r\n\r\nGaransi Resmi SHARP 3 Tahun Service, Sparepart dan 10 Tahun Kompressor",
+  "description": "Fitur Utama:\n- J-Tech Inverter\n- Watt Fit\n- Garuda Wing Airflow\n- Super Jet Mode\n- Coanda Air Flow\n- Jetstream\n- Auto Swing Louver\n- Anti Rust Evaporator",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-X13BEY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1030 (180 - 1100) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "85 x 30 x 19 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "12000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "60 x 50 x 27 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "19 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "3.52"
+    },
+    {
+      "label": "EER Rating",
+      "value": "13.32"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

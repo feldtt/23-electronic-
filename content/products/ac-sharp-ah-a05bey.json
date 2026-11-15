@@ -3,15 +3,85 @@
   "group": [
     "Standard"
   ],
-  "title": "Sharp AH-A05BEY",
+  "title": "Sharp AH-A5BEY2",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Spesifikasi\r\n- BTU/h 5000\r\n- Konsumsi Daya 360 W\r\n- Jetstream YES\r\n- Coanda YES\r\n- Auto Swing Louver YES\r\n- Anti Rust Evaporator YES\r\n- Freon R32\r\n- Dimensi (Indoor/ Outdoor) 853x295x185mm/ 598x495x265mm\r\n- Berat 25kg\r\n- Garansi Service & Part 3 Tahun, Kompresor 10 Tahun\r\n\r\nFitur\r\n- Garuda Wing Air Flow\r\n- Anti Rush Evaporator\r\nMaterial evaporator lebih tahan cuaca extrim dan ketahanan terhadap korosi.\r\n- Superjet Mode\r\nAC Beroperasi pada kecepatan Extra High untuk mendinginkan ruangan dengan cepat.\r\n- Sleep Mode / Dark LED\r\n- Cooper Evaporator & Condenser",
+  "description": "Fitur Utama:\n- Garuda Wing Air Flow\n- Anti Rust Evaporator: material evaporator lebih tahan cuaca ekstrim dan korosi\n- Superjet Mode: beroperasi pada kecepatan Extra High untuk mendinginkan ruangan dengan cepat\n- Sleep Mode / Dark LED\n- Evaporator & Condenser tembaga\n- Jetstream\n- Coanda\n- Auto Swing Louver",
   "wa_message": "",
   "order": 1000,
   "stock": 5,
   "price": 0,
   "featured": false,
-  "published": true
+  "published": true,
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-A5BEY2"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "344 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "70 x 25 x 19 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "72 x 43 x 31 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "21 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.15"
+    },
+    {
+      "label": "EER Rating",
+      "value": "13.32"
+    }
+  ]
 }

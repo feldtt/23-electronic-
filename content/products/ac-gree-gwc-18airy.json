@@ -7,7 +7,65 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur utama :\r\n- G-Learning\r\n- G-Boost Inverter\r\n- Mini ERV + Hepa Filter (OPTIONAL)\r\n- Smart Voice Control\r\n- UVC Lampu Ultraviolet & Plasma Dingin Ganda\r\n- Wi-Fi\r\n- Indoor Evaporator (Gold FIn)\r\n- Outdoor Kondensor (Black Diamond Fin)\r\n- Timer\r\n- Child Lock\r\n- LED Display\r\n- X-Fan\r\n- Self Diagnosis + Protect\r\n- Pengingat Pintar\r\n- 4 perlindungan\r\n- Smart Cleaner\r\n- Smart Dehumidifier System\r\n- Ultra Wide Voltage\r\n- Mode Udara 4 sisi\r\n- Low Noise\r\n- 6 Perlindungan Outdoor Anti Karat\r\n- System Akses Pintu\r\n\r\nSpesifikasi :\r\n- Model : GWC-18AIRY\r\n- Kapasitas : 2 PK\r\n- Refrigerant : R32\r\n- Kapasitas : 19000 BTU/h\r\n- Daya Masukan : 1390 W\r\n- Area Aplikasi : 23-27 m2\r\n- Dimensi Indoor (WxHxD) : 970 x 347 x 257 mm\r\n- Dimensi Outdoor (WxHxD) : 958 x 660 x 402 mm\r\n- pipa cair : 1/4\"\r\n- pipa gas : 1/2\"\r\n\r\nGaransi resmi gree Indonesia 5 tahun Sparepart dan service + 10 Tahun Kompresor",
+  "description": "Fitur Utama:\n- G-Learning\n- G-Boost Inverter\n- Mini ERV + Hepa Filter (OPTIONAL)\n- Smart Voice Control\n- UVC Lampu Ultraviolet & Plasma Dingin Ganda\n- Wi-Fi\n- Indoor Evaporator (Gold FIn)\n- Outdoor Kondensor (Black Diamond Fin)\n- Timer\n- Child Lock\n- LED Display\n- X-Fan\n- Self Diagnosis + Protect\n- Pengingat Pintar\n- 4 perlindungan\n- Smart Cleaner\n- Smart Dehumidifier System\n- Ultra Wide Voltage\n- Mode Udara 4 sisi\n- Low Noise\n- 6 Perlindungan Outdoor Anti Karat\n- System Akses Pintu",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "GWC-18AIRY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Silver / Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1390 (325 - 2100) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "97 x 35 x 26 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "12 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "19000 (5118 - 21837) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "96 x 66 x 41 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "35 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

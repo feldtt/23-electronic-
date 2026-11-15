@@ -7,7 +7,69 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama :\r\n- Fast Cooling\r\n- Streamer Technology\r\n- Inverter\r\n- Enzyme Blue\r\n- Filter Gin-Ion\r\n- 3D AirFlow\r\n- Intelligent Eye\r\n- Wifi Smart Control\r\n- Auto Restart\r\n- Self Diagnosis\r\n- Timer ON/OFF\r\n- Wide Angle Louvre\r\n- Refrigerant R32\r\n- Blue Fin Coating\r\n- Grey Hairpin\r\n- Super PCB\r\n\r\nSpesifikasi\r\n- Daya PK : 2.5 PK\r\n- Tipe Refrigrant : R-32\r\n- Daya Listrik (Watt) : 2000 Watt\r\n- Kapasitas Pendinginan : 22500 BTU/h\r\n- Ukuran Pipa Cair & Gas (Inch) : 1/4 1/2\r\n- Berat Indoor + Outdoor : 48 Kg\r\n- Dimensi (h x w x d) : 30 x 99 x 29 cm (Indoor) , 60 x 85 x 30 cm (Outdoor)\r\n- Ada di Dalam Kotak : 1 Unit AC (indoor dan outdoor) , 1 Remote, Kartu Garansi & Buku Petunjuk\r\n\r\nGaransi resmi daikin 3 Tahun Sparepart, Service dan 5 Tahun Kompressor",
+  "description": "Fitur Utama:\n- Fast Cooling\n- Streamer Technology\n- Inverter\n- Enzyme Blue\n- Filter Gin-Ion\n- 3D AirFlow\n- Intelligent Eye\n- Wifi Smart Control\n- Auto Restart\n- Self Diagnosis\n- Timer ON/OFF\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "FTKH60YV14"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "2000 (380 - 2300) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "99 x 30 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "13 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor, 3 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "22500 (6600 - 24500) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "85 x 60 x 30 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "35 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "6.38"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

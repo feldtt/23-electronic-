@@ -3,15 +3,69 @@
   "group": [
     "Inverter"
   ],
-  "title": "Sharp X13ZY",
+  "title": "Sharp AH-X13ZY",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur :\r\n-Besaran 1.5 pk\r\n-J-Tech Inverter Series\r\n-ECO mode (Power saving mode)\r\n-Powerful Jet\r\n-Two-Way Auto Swing\r\n-10 Years Warranty Compressor\r\n-R32 Eco Refrigerant\r\n-7 Shield Protection\r\n\r\n\r\n\r\nSpesifikasi :\r\nCooling Capacity(BTU) 13000 BTU\r\nRefrigerant Volume R32\r\nRated Frequency (Hz) 50 Hz\r\nRated Voltage ( Volt ) 220V\r\nRated Current (Ampere) 3.5 A\r\nRate Input (Watt) 1060 W\r\nIn Door Dimensions (mm) 848 x 294 x 204\r\nOut Door Dimensions (mm) 598 x 495 x 265\r\nIn Door Weight (kg) 7 Kg\r\nOut Door Weight (kg) 28 Kg",
+  "description": "Fitur Utama:\n- J-Tech Inverter\n- Eco Mode (hemat daya)\n- Powerful Jet\n- Two-Way Auto Swing\n- 7 Shield Protection\n- Coanda Air Flow",
   "wa_message": "",
   "order": 1000,
   "stock": null,
   "price": 0,
   "featured": false,
-  "published": true
+  "published": true,
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-X13ZY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1060 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "87,7 x 29,2 x 22,2 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "13000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "59,8 x 49,5 x 26,5 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "28 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Thailand"
+    }
+  ]
 }

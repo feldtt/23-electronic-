@@ -7,7 +7,77 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "SPESIFIKASI PRODUK:\r\n- 9000 Btu/h - Bisa mendinginkan ruangan sampai 16m2.\r\n- Garansi Resmi 3 thn parts + 10 thn kompresor\r\n- J-Tech Inverter - Mengubah pengendalian konsumsi listrik yang presisi menjadi penghematan energi dan operasi yang efisien energi hingga 65%.\r\n- 14 Derajat - Bisa setting remote sampai 14 derajat.\r\n- 7 Shields Protection - Perlindungan petir, korosi, voltase, jatuh, api, getaran & cuaca ekstrim.\r\n- Garuda Air Flow - Mode aliran udara lewat langit-langit, sehingga tidak langsung mengenai badan.\r\n- Daya : 780 (230 - 1000) Watt\r\n- Kapasitas : 9000 (3000 - 10000) BTU/h\r\n- Dimensi Indoor : 85 x 30 x 21\r\n- Dimensi Outdoor : 60 x 50 x 27cm\r\n- Pipa 1/4 3/8\r\n- Freon R32",
+  "description": "Fitur Utama:\n- J-Tech Inverter: pengendalian konsumsi listrik yang presisi, hemat energi hingga 65%\n- Setting suhu remote sampai 14 derajat\n- 7 Shields Protection: perlindungan petir, korosi, voltase, jatuh, api, getaran & cuaca ekstrim\n- Garuda Air Flow: aliran udara lewat langit-langit sehingga tidak langsung mengenai badan",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-X10BEY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "765 (300 - 1000) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "86 x 30 x 19 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "9 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "9000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "85 x 60 x 32 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "29 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "5.23"
+    },
+    {
+      "label": "EER Rating",
+      "value": "13.32"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

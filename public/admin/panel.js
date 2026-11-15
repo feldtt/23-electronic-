@@ -643,11 +643,12 @@
   // =====================================================================
   // IMPORT / EXPORT (Excel or CSV)
   // =====================================================================
-  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
+  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'description', 'specs', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
   const SAMPLE_ROWS = [
-    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
-    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', 3, 2100000, '', '', '', 'no', 'yes'],
+    ['Daikin STC15YV', 'AC', 'Available AC Units', 'AC split ½ PK · 350 W · R32', 'Daya Listrik (Watt): 350 Watt\nTipe Refrigerant: R-32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
+    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '1-door fridge, 162 L', '', 3, 2100000, '', '', '', 'no', 'yes'],
   ];
+  const specsText = (p) => (Array.isArray(p.specs) ? p.specs : []).map((x) => `${x.label}: ${x.value}`).join('\n');
   const photosOf = (p) => (Array.isArray(p.photos) && p.photos.length ? p.photos : p.photo ? [p.photo] : []);
   const PHOTO_HEADERS = ['photo', 'image', 'picture', 'foto', 'gambar'];
 
@@ -706,7 +707,7 @@
     return X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
   }
   const exportGrid = () => [IMPORT_HEADERS, ...products.map((p) => [
-    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', p.stock ?? '', p.price > 0 ? p.price : '',
+    p.title, catLabel(p.category), groupsOf(p).join('; '), p.description || '', specsText(p), p.stock ?? '', p.price > 0 ? p.price : '',
     photosOf(p).map((x) => x.replace('/assets/uploads/', '')).join(', '), p.alt || '', p.wa_message || '', p.featured ? 'yes' : 'no', p.published === false ? 'no' : 'yes',
   ])];
 
@@ -719,7 +720,7 @@
       <div class="drawer-b imp">
         <div class="fld"><label>1. Get the template</label>
           <div class="imp-row"><button type="button" class="btn btn-ghost btn-sm" id="tplX">Excel template (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="tplC">CSV template</button><button type="button" class="btn btn-ghost btn-sm" id="expX">Export current products (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="expC">Export (.csv)</button></div>
-          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
+          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), description, specs (one <b>Label: value</b> per line inside the cell, shown as a table), stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
         <div class="fld"><label for="imp_photos">2. Photos (optional)</label><input type="file" id="imp_photos" accept="image/jpeg,image/png,image/webp" multiple><small id="imp_pstat">Select the image files named in the photo column. They are uploaded right away.</small></div>
         <div class="fld"><label for="imp_file">3. Spreadsheet file</label><input type="file" id="imp_file" accept=".xlsx,.xls,.csv,.txt"></div>
         <div class="fld"><label>If a product already exists (same name and category)</label>
@@ -801,7 +802,7 @@
   function openDrawer(p, tpl) {
     ensureDrawer();
     const isNew = !p;
-    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', photos: [], alt: '', description: '', wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
+    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', title: '', photo: '', photos: [], alt: '', description: '', specs: [], wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
     drawer.innerHTML = `
       <div class="drawer-h"><h2>${isNew ? (tpl ? 'Duplicate product' : 'Add product') : 'Edit product'}</h2><button id="dx" aria-label="Close">×</button></div>
@@ -822,6 +823,7 @@
         <div class="fld"><label for="f_price">Price (Rp)</label><span class="prw"><input type="text" inputmode="numeric" id="f_price" value="${d.price > 0 ? fmtNum(d.price) : ''}" placeholder="Not set"></span><small>Whole Rupiah, e.g. 3.450.000. Empty = card shows "Cek harga via WA".</small></div>
         <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
         <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
+        <div class="fld"><label for="f_specs">Specifications (table)</label><textarea id="f_specs" rows="8" placeholder="Daya Listrik (Watt): 344 Watt&#10;Dimensi (p x t x l): 70 x 25 x 19 cm">${esc(specsText(d))}</textarea><small>One per line as <b>Label: value</b>. Shown as a table on the product page.</small></div>
         <div class="fld"><label for="f_wa">Pre-filled WhatsApp message</label><textarea id="f_wa">${esc(d.wa_message)}</textarea><small>Empty = default message containing the product name.</small></div>
         <div class="fld"><label for="f_alt">Photo alt text</label><input type="text" id="f_alt" value="${esc(d.alt)}"></div>
         <div class="fld" style="display:flex;align-items:center;gap:12px"><label class="sw"><input type="checkbox" id="f_feat" ${d.featured ? 'checked' : ''}><span></span></label><b>Featured product</b><small>Shown in "Produk Unggulan" on the home page.</small></div>
@@ -883,7 +885,7 @@
       e.preventDefault();
       const body = {
         category: getCat(), group: getGroup(), title: g('#f_title').value, photos,
-        alt: g('#f_alt').value, description: g('#f_desc').value, wa_message: g('#f_wa').value,
+        alt: g('#f_alt').value, description: g('#f_desc').value, specs: g('#f_specs').value, wa_message: g('#f_wa').value,
         stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), featured: g('#f_feat').checked, published: g('#f_pub').checked,
       };
       if (!body.category) return toast('Category is required', true);

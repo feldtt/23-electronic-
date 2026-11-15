@@ -7,7 +7,65 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "SPESIFICATIONS :\r\n\r\n\r\nCapacity : 2 PK\r\nPower Consumptions : 1, 640 watt\r\nPowerful Jet\r\nEco Mode\r\nBaby Sleep Mode\r\nTwo-Way Auto Swing\r\nR32 Eco Refrigerant\r\n7 Shield Protection\r\nJetstream : Yes\r\nCoanda : Yes\r\nAnti Rust Evaporator : Yes\r\nCoverage Floor Area ( m² ) : 22- 42 m2\r\nCooling Capacity(BTU) : 18,000 ( 5,400 - 20,000) BTU\r\nRated Voltage ( Volt ) : 220",
+  "description": "Fitur Utama:\n- Powerful Jet\n- Eco Mode\n- Baby Sleep Mode\n- Two-Way Auto Swing\n- 7 Shield Protection\n- Jetstream\n- Coanda\n- Anti Rust Evaporator",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-X18ZY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1640 (370 - 2100) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "88 x 22 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "18000 (5400-20000) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "78 x 27 x 54 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "27 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Thailand"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

@@ -3,15 +3,81 @@
   "group": [
     "Standard"
   ],
-  "title": "Sharp AH-A07BEY",
+  "title": "Sharp AH-A7BEY2",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\r\n- Garuda Wing Air Flow\r\n- Superjet Mode\r\n- Sleep Mode / Dark LED\r\n- Cooper Evaporator & Condenser\r\n- Jetstream\r\n- Coanda\r\n- Auto Swing Louver\r\n- Anti Rust Evaporator\r\n\r\nSpesifikasi Ac sharp ah-a07bey\r\n- Coverage Floor Area ( m² ) : 12-14\r\n- Capacity (PK) : 0,75\r\n- Cooling Capacity(BTU) : 7000\r\n- Liquid Side (Inch) : 1/4\r\n- Gas Side (Inch) : 3/8\r\n- Rated Frequency (Hz) : 50Hz\r\n- Rated Voltage ( Volt ) : 220V\r\n- Rate Input (Watt) : 535\r\n- in Door Dimensions (mm) : 853x295x185\r\n- Out Door Dimensions (mm) : 598x495x265\r\n- Made In : INDONESIA\r\n- Garansi ressmi ac sharp\r\nService & Part 3 Tahun, Kompresor 10 Tahun",
+  "description": "Fitur Utama:\n- Garuda Wing Air Flow\n- Superjet Mode\n- Sleep Mode / Dark LED\n- Evaporator & Condenser tembaga\n- Jetstream\n- Coanda\n- Auto Swing Louver\n- Anti Rust Evaporator",
   "wa_message": "",
   "order": 1000,
   "stock": 3,
   "price": 0,
   "featured": false,
-  "published": true
+  "published": true,
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-A7BEY2"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "595 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "78 x 25 x 19 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "9 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "3/4 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "7000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "78 x 54 x 32 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "22 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.15"
+    }
+  ]
 }

@@ -31,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "title", "photo", "photos", "alt", "description", "wa_message", "order", "stock", "price", "featured", "published"];
+const FIELD_ORDER = ["category", "group", "title", "photo", "photos", "alt", "description", "specs", "wa_message", "order", "stock", "price", "featured", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -91,6 +91,19 @@ function parseStock(v) {
   return Number.isFinite(n) ? Math.max(0, Math.trunc(n)) : null;
 }
 const PHOTO_RE = /^\/assets\/uploads\/[\w.\-]+$/;
+// Spec table rows: [{ label, value }]. Accepts that array, or text with one "Label: value" per line.
+function cleanSpecs(v) {
+  const list = Array.isArray(v)
+    ? v
+    : typeof v === "string"
+      ? v.split(/\r?\n/).map((line) => { const i = line.indexOf(":"); return i > 0 ? { label: line.slice(0, i), value: line.slice(i + 1) } : null; })
+      : [];
+  return list
+    .filter(Boolean)
+    .map((x) => ({ label: String(x.label ?? "").trim().slice(0, 80), value: String(x.value ?? "").trim().slice(0, 200) }))
+    .filter((x) => x.label && x.value)
+    .slice(0, 60);
+}
 function cleanProduct(input) {
   // `photos` is the list (first = main photo); `photo` is kept equal to the first entry.
   const photos = [...new Set((Array.isArray(input.photos) ? input.photos : input.photo ? [input.photo] : []).map((x) => String(x).trim()).filter(Boolean))];
@@ -102,6 +115,7 @@ function cleanProduct(input) {
     photos,
     alt: String(input.alt ?? "").trim(),
     description: String(input.description ?? "").trim(),
+    specs: cleanSpecs(input.specs),
     wa_message: String(input.wa_message ?? "").trim(),
     order: Number.isFinite(Number(input.order)) ? Math.trunc(Number(input.order)) : 1000,
     stock: parseStock(input.stock),
@@ -215,6 +229,7 @@ const IMPORT_COLS = {
   category: ["category", "kategori"],
   group: ["sub-category", "subcategory", "sub category", "sub-categories", "subcategories", "group", "type", "jenis", "sub-kategori"],
   description: ["description", "desc", "deskripsi"],
+  specs: ["specs", "specifications", "spesifikasi", "spec"],
   stock: ["stock", "qty", "quantity", "stok"],
   price: ["price", "harga", "price (rp)", "harga (rp)"],
   photo: ["photo", "photos", "image", "picture", "foto", "gambar"],
@@ -286,6 +301,7 @@ function importProducts({ rows, mode, dryRun }) {
       const groups = [...new Set(r.group.split(/[;|\n]/).map((g) => g.trim()).filter(Boolean))];
       if (groups.length) next.group = groups;
       if (r.description) next.description = r.description;
+      if (r.specs) next.specs = cleanSpecs(r.specs);
       if (r.alt) next.alt = r.alt;
       if (r.wa_message) next.wa_message = r.wa_message;
       if (photos.length) { next.photos = photos; delete next.photo; }
