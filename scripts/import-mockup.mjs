@@ -45,6 +45,11 @@ function preserveScripts(html) {
   // client-side partials.js loader working unchanged.
   let out = html.replace(/<script(?![^>]*\bis:inline\b)/g, "<script is:inline");
 
+  // Vite's dev dependency scan reads `<script src="assets/x.js">` as an import of a package
+  // named "assets/x.js" and logs "dependencies are imported but could not be resolved".
+  // Page-relative script paths are rewritten to root-absolute ones (served from public/).
+  out = out.replace(/(<script\b[^>]*\bsrc=")(?:\.\.\/)*(assets\/)/g, "$1/$2");
+
   // Rewrite bare root-relative asset references (href="/x" / src="/x") to keep a
   // leading slash so they resolve under build.format:'file'. The mockup uses
   // page-relative paths (assets/... and ../assets/...) which already resolve, so
