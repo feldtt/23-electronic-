@@ -3,17 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Sharp Standard Basic Garuda AH-A BEY2",
+  "variant": "1 PK",
   "title": "SHARP AH-A9BEY2 AC SPLIT 1 PK STANDARD BASIC GARUDA SERIES",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Turbo Cooling\n- Self Diagnosis\n- Auto swing louver naik turun otomatis\n- X-Fan Function\n- Label hemat energi Bintang 3\n- Tanpa lampu indikator",
-  "wa_message": "",
-  "order": 1000,
-  "stock": null,
-  "price": 0,
-  "featured": false,
-  "published": true,
+  "description": "Fitur Utama:\r\r\n- Turbo Cooling\r\r\n- Self Diagnosis\r\r\n- Auto swing louver naik turun otomatis\r\r\n- X-Fan Function\r\r\n- Label hemat energi Bintang 3\r\r\n- Tanpa lampu indikator",
   "specs": [
     {
       "label": "Produk SKU",
@@ -79,5 +75,11 @@
       "label": "CSPF Rating",
       "value": "3.55"
     }
-  ]
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1500000,
+  "featured": false,
+  "published": true
 }

@@ -5,7 +5,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Mode Powerful: pendinginan lebih cepat dengan satu tombol\n- Self-Cleaning: evaporator dibersihkan agar udara lebih higienis\n- Aliran Udara 4 Arah: udara menjangkau seluruh sudut ruangan",
+  "description": "Fitur Utama:\r\r\n- Mode Powerful: pendinginan lebih cepat dengan satu tombol\r\r\n- Self-Cleaning: evaporator dibersihkan agar udara lebih higienis\r\r\n- Aliran Udara 4 Arah: udara menjangkau seluruh sudut ruangan",
   "specs": [
     {
       "label": "Produk SKU",
@@ -79,7 +79,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Sharp Inverter Garuda AH-X BEY",
+  "variant": "1,5 PK",
   "title": "SHARP AH-X13BEY AC SPLIT 1,5 PK INVERTER",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- J-Tech Inverter\n- Watt Fit\n- Garuda Wing Airflow\n- Super Jet Mode\n- Coanda Air Flow\n- Jetstream\n- Auto Swing Louver\n- Anti Rust Evaporator",
+  "description": "Fitur Utama:\r\r\n- J-Tech Inverter\r\r\n- Watt Fit\r\r\n- Garuda Wing Airflow\r\r\n- Super Jet Mode\r\r\n- Coanda Air Flow\r\r\n- Jetstream\r\r\n- Auto Swing Louver\r\r\n- Anti Rust Evaporator",
   "specs": [
     {
       "label": "Produk SKU",
@@ -81,7 +83,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }

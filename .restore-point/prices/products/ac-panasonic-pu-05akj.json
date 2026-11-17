@@ -1,0 +1,83 @@
+{
+  "category": "ac",
+  "group": [],
+  "series": "Panasonic Inverter PU",
+  "variant": "1/2 PK",
+  "title": "Panasonic PU-05AKJ",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- ECO Mode: membatasi pemakaian daya\r\n- Powerful: pendinginan lebih cepat\r\n- Evaporator dan kondensor berlapis Bluefin\r\n- Comfort Cloud: kontrol dari ponsel (adaptor dijual terpisah)",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "CS-PU5AKJ"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "410 (190-550) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "78 x 21 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor & Evaporator, 5 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5300 (2630-6500) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "65 x 23 x 49 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "18 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.63"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

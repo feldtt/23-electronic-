@@ -7,7 +7,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Digital Inverter Technology: suhu stabil tanpa sering hidup-mati\n- Fast Cooling: kipas berputar maksimal untuk pendinginan lebih cepat\n- HD Filter: menyaring debu, alergen, dan serbuk\n- 2-Way Auto Swing: arah udara bergerak otomatis ke dua arah",
+  "description": "Fitur Utama:\r\r\n- Digital Inverter Technology: suhu stabil tanpa sering hidup-mati\r\r\n- Fast Cooling: kipas berputar maksimal untuk pendinginan lebih cepat\r\r\n- HD Filter: menyaring debu, alergen, dan serbuk\r\r\n- 2-Way Auto Swing: arah udara bergerak otomatis ke dua arah",
   "specs": [
     {
       "label": "Produk SKU",
@@ -73,7 +73,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

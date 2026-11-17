@@ -5,7 +5,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Nanoe: pemurni udara yang mengurangi debu, bakteri, dan virus\n- Low Voltage: tetap bekerja pada tegangan rendah\n- Mode Powerful: pendinginan sangat cepat\n- Evaporator dan kondensor berlapis Bluefin",
+  "description": "Fitur Utama:\r\r\n- Nanoe: pemurni udara yang mengurangi debu, bakteri, dan virus\r\r\n- Low Voltage: tetap bekerja pada tegangan rendah\r\r\n- Mode Powerful: pendinginan sangat cepat\r\r\n- Evaporator dan kondensor berlapis Bluefin",
   "specs": [
     {
       "label": "Produk SKU",
@@ -59,7 +59,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

@@ -5,7 +5,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Fast Cooling\n- Streamer Technology\n- Inverter\n- Enzyme Blue\n- Filter Gin-Ion\n- 3D AirFlow\n- Intelligent Eye\n- Wifi Smart Control\n- Auto Restart\n- Self Diagnosis\n- Timer ON/OFF\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB",
+  "description": "Fitur Utama:\r\n- Fast Cooling\r\n- Streamer Technology\r\n- Inverter\r\n- Enzyme Blue\r\n- Filter Gin-Ion\r\n- 3D AirFlow\r\n- Intelligent Eye\r\n- Wifi Smart Control\r\n- Auto Restart\r\n- Self Diagnosis\r\n- Timer ON/OFF\r\n- Wide Angle Louvre\r\n- Blue Fin Coating\r\n- Grey Hairpin\r\n- Super PCB",
   "specs": [
     {
       "label": "Produk SKU",
@@ -71,6 +71,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

@@ -8,10 +8,11 @@
   "photos": [],
   "alt": "",
   "description": "",
+  "specs": [],
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

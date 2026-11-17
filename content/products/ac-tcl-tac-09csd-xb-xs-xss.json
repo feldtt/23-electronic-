@@ -3,11 +3,13 @@
   "group": [
     "Low Watt"
   ],
+  "series": "TCL Low Watt TAC CSD",
+  "variant": "1 PK",
   "title": "TCL TAC-09CSD/XB/XS/XSS AC SPLIT 1 PK LOW WATT",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Smart Air Flow: arah hembusan udara diatur otomatis\n- Comfortable Fast Cooling: hembusan dingin hingga 600 m³/jam\n- Titan Gold: tahan korosi dan panas",
+  "description": "Fitur Utama:\r\r\n- Smart Air Flow: arah hembusan udara diatur otomatis\r\r\n- Comfortable Fast Cooling: hembusan dingin hingga 600 m³/jam\r\r\n- Titan Gold: tahan korosi dan panas",
   "specs": [
     {
       "label": "Produk SKU",
@@ -65,7 +67,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }

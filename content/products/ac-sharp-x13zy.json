@@ -3,17 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Sharp Inverter AH-X ZY",
+  "variant": "1,5 PK",
   "title": "Sharp AH-X13ZY",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- J-Tech Inverter\n- Eco Mode (hemat daya)\n- Powerful Jet\n- Two-Way Auto Swing\n- 7 Shield Protection\n- Coanda Air Flow",
-  "wa_message": "",
-  "order": 1000,
-  "stock": null,
-  "price": 0,
-  "featured": false,
-  "published": true,
+  "description": "Fitur Utama:\r\r\n- J-Tech Inverter\r\r\n- Eco Mode (hemat daya)\r\r\n- Powerful Jet\r\r\n- Two-Way Auto Swing\r\r\n- 7 Shield Protection\r\r\n- Coanda Air Flow",
   "specs": [
     {
       "label": "Produk SKU",
@@ -67,5 +63,11 @@
       "label": "Made In",
       "value": "Thailand"
     }
-  ]
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
 }

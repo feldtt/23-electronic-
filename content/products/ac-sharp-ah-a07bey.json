@@ -3,17 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Sharp Standard Basic Garuda AH-A BEY2",
+  "variant": "3/4 PK",
   "title": "SHARP AH-A7BEY2 AC SPLIT 3/4 PK STANDARD BASIC GARUDA SERIES",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Garuda Wing Air Flow\n- Superjet Mode\n- Sleep Mode / Dark LED\n- Evaporator & Condenser tembaga\n- Jetstream\n- Coanda\n- Auto Swing Louver\n- Anti Rust Evaporator",
-  "wa_message": "",
-  "order": 1000,
-  "stock": 3,
-  "price": 0,
-  "featured": false,
-  "published": true,
+  "description": "Fitur Utama:\r\r\n- Garuda Wing Air Flow\r\r\n- Superjet Mode\r\r\n- Sleep Mode / Dark LED\r\r\n- Evaporator & Condenser tembaga\r\r\n- Jetstream\r\r\n- Coanda\r\r\n- Auto Swing Louver\r\r\n- Anti Rust Evaporator",
   "specs": [
     {
       "label": "Produk SKU",
@@ -79,5 +75,11 @@
       "label": "CSPF Rating",
       "value": "4.15"
     }
-  ]
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": 3,
+  "price": 1250000,
+  "featured": false,
+  "published": true
 }

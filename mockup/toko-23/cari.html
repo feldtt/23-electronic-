@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Pencarian — 23 Electronic</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="header"></div>
+  <div id="subnav"></div>
+
+  <div class="crumbs">
+    <div class="container">
+      <a href="index.html">Beranda</a><span class="sep">›</span>
+      <strong>Hasil pencarian</strong>
+    </div>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 id="sTitle">Hasil Pencarian</h1>
+      <p id="sSub"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="sOut"></div>
+      <div class="notice" style="margin-top:32px;">
+        <strong>Produk yang kamu cari belum tampil di sini?</strong>
+        Katalog online belum memuat semua stok toko. Kirim nama atau foto produknya, admin bantu cek ketersediaan dan harga.
+        <p style="margin-top:12px;"><a class="btn btn-wa" id="sWa" href="#" target="_blank" rel="noopener">Kirim ke Admin via WhatsApp</a></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <script>window.__page = { active: 'produk', basePath: '' };</script>
+  <script src="assets/partials.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var q = params.get('q') || '';
+      var g = params.get('g') || '';
+      var input = document.getElementById('hsInput');
+      if (input) input.value = q;
+      var wa = document.getElementById('sWa');
+      if (wa && window.__waUrl) wa.href = window.__waUrl(q ? 'Halo 23 Electronic, saya cari ' + q + '. Ada stok? Boleh dibantu infonya (merek dan harga).' : 'Halo 23 Electronic, saya mau tanya stok/harga.');
+      window.__searchLoad().then(function () {
+        var r = window.__search(q, g);
+        var out = document.getElementById('sOut');
+        var title = document.getElementById('sTitle');
+        var sub = document.getElementById('sSub');
+        title.textContent = (q || g) ? 'Hasil untuk "' + r.label + '"' : 'Hasil Pencarian';
+        if (r.exact.length) {
+          sub.textContent = r.exact.length + ' produk ditemukan.';
+          out.innerHTML = '<div class="grid-3">' + r.exact.map(function (x) { return window.__searchCard(x, r.pk); }).join('') + '</div>';
+        } else if (r.near.length) {
+          sub.textContent = 'Tidak ada yang persis ' + r.label + '. Ini produk yang paling mendekati, atau minta dicarikan lewat WhatsApp di bawah:';
+          out.innerHTML = '<div class="grid-3">' + r.near.slice(0, 12).map(function (x) { return window.__searchCard(x, r.pk); }).join('') + '</div>';
+        } else {
+          sub.textContent = 'Produk yang kamu cari belum tampil di sini.';
+          out.innerHTML = '<p style="color:var(--muted);">Coba kata kunci lain, misalnya "ac 1 pk", "ac inverter", atau nama merek.</p>';
+        }
+        if (window.__wireChips) window.__wireChips(out);
+      });
+    })();
+  </script>
+</body>
+</html>

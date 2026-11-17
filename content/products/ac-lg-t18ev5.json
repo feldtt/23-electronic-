@@ -7,7 +7,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Vertical Airflow Tilt: arah hembusan bisa diatur ke 6 posisi\n- Dual Protection Filter: menangkap debu dan bakteri\n- Comfort Sleep: satu tombol menjalankan 3 fungsi otomatis untuk tidur\n- Auto Cleaning: pembersihan otomatis untuk mencegah bakteri dan jamur\n- Jet Dry: memprioritaskan pengurangan kelembapan",
+  "description": "Fitur Utama:\r\r\n- Vertical Airflow Tilt: arah hembusan bisa diatur ke 6 posisi\r\r\n- Dual Protection Filter: menangkap debu dan bakteri\r\r\n- Comfort Sleep: satu tombol menjalankan 3 fungsi otomatis untuk tidur\r\r\n- Auto Cleaning: pembersihan otomatis untuk mencegah bakteri dan jamur\r\r\n- Jet Dry: memprioritaskan pengurangan kelembapan",
   "specs": [
     {
       "label": "Produk SKU",
@@ -77,7 +77,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

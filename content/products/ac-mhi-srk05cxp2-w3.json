@@ -7,7 +7,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Dry Mode: menurunkan kelembapan ruangan\n- Economy Mode: hemat energi dengan pendinginan tetap nyaman\n- Self Clean: pembersihan otomatis setelah unit berhenti",
+  "description": "Fitur Utama:\r\r\n- Dry Mode: menurunkan kelembapan ruangan\r\r\n- Economy Mode: hemat energi dengan pendinginan tetap nyaman\r\r\n- Self Clean: pembersihan otomatis setelah unit berhenti",
   "specs": [
     {
       "label": "Produk SKU",
@@ -81,7 +81,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

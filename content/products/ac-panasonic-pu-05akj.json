@@ -1,11 +1,13 @@
 {
   "category": "ac",
   "group": [],
+  "series": "Panasonic Inverter PU",
+  "variant": "1/2 PK",
   "title": "Panasonic PU-05AKJ",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- ECO Mode: membatasi pemakaian daya\n- Powerful: pendinginan lebih cepat\n- Evaporator dan kondensor berlapis Bluefin\n- Comfort Cloud: kontrol dari ponsel (adaptor dijual terpisah)",
+  "description": "Fitur Utama:\r\r\n- ECO Mode: membatasi pemakaian daya\r\r\n- Powerful: pendinginan lebih cepat\r\r\n- Evaporator dan kondensor berlapis Bluefin\r\r\n- Comfort Cloud: kontrol dari ponsel (adaptor dijual terpisah)",
   "specs": [
     {
       "label": "Produk SKU",
@@ -75,7 +77,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

@@ -31,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "title", "photo", "photos", "alt", "description", "specs", "wa_message", "order", "stock", "price", "featured", "published"];
+const FIELD_ORDER = ["category", "group", "series", "variant", "title", "photo", "photos", "alt", "description", "specs", "wa_message", "order", "stock", "price", "featured", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -110,6 +110,8 @@ function cleanProduct(input) {
   const p = {
     category: String(input.category ?? ""),
     group: [...new Set([].concat(input.group ?? []).map((g) => String(g).trim()).filter(Boolean))],
+    series: String(input.series ?? "").trim().slice(0, 120),
+    variant: String(input.variant ?? "").trim().slice(0, 40),
     title: String(input.title ?? "").trim(),
     photo: photos[0] ?? "",
     photos,
@@ -237,6 +239,8 @@ const IMPORT_COLS = {
   wa_message: ["wa_message", "whatsapp message", "wa message", "message", "pesan whatsapp"],
   published: ["published", "visible", "show", "tampil"],
   featured: ["featured", "unggulan", "produk unggulan"],
+  series: ["series", "seri"],
+  variant: ["variant", "varian", "pilihan", "pk", "option"],
 };
 const CAT_ALIASES = {
   ac: "ac", kulkas: "kulkas", fridge: "kulkas", refrigerator: "kulkas",
@@ -300,6 +304,8 @@ function importProducts({ rows, mode, dryRun }) {
       const next = { ...base, category: cat.v, title };
       const groups = [...new Set(r.group.split(/[;|\n]/).map((g) => g.trim()).filter(Boolean))];
       if (groups.length) next.group = groups;
+      if (r.series) next.series = r.series;
+      if (r.variant) next.variant = r.variant;
       if (r.description) next.description = r.description;
       if (r.specs) next.specs = cleanSpecs(r.specs);
       if (r.alt) next.alt = r.alt;

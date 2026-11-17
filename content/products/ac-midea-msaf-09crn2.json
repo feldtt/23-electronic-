@@ -3,11 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Midea Standard MSAF",
+  "variant": "1 PK",
   "title": "Midea MSAF-09CRN2",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Xtreme Dura: perlindungan unit indoor dan outdoor (Prime Guard, kotak listrik tahan api, baut stainless steel, tembaga murni)\n- iECO Mode: lebih hemat listrik\n- Super Ionizer: ion negatif untuk udara lebih bersih\n- LED Display: suhu tampil di unit indoor\n- Gold Fin anti karat (Prime Guard)\n- Super Cool: pendinginan cepat satu tombol",
+  "description": "Fitur Utama:\r\r\n- Xtreme Dura: perlindungan unit indoor dan outdoor (Prime Guard, kotak listrik tahan api, baut stainless steel, tembaga murni)\r\r\n- iECO Mode: lebih hemat listrik\r\r\n- Super Ionizer: ion negatif untuk udara lebih bersih\r\r\n- LED Display: suhu tampil di unit indoor\r\r\n- Gold Fin anti karat (Prime Guard)\r\r\n- Super Cool: pendinginan cepat satu tombol",
   "specs": [
     {
       "label": "Produk SKU",
@@ -49,7 +51,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

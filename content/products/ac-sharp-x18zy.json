@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Sharp Inverter AH-X ZY",
+  "variant": "2 PK",
   "title": "SHARP AH-X18ZY AC SPLIT 2 PK INVERTER",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Powerful Jet\n- Eco Mode\n- Baby Sleep Mode\n- Two-Way Auto Swing\n- 7 Shield Protection\n- Jetstream\n- Coanda\n- Anti Rust Evaporator",
+  "description": "Fitur Utama:\r\r\n- Powerful Jet\r\r\n- Eco Mode\r\r\n- Baby Sleep Mode\r\r\n- Two-Way Auto Swing\r\r\n- 7 Shield Protection\r\r\n- Jetstream\r\r\n- Coanda\r\r\n- Anti Rust Evaporator",
   "specs": [
     {
       "label": "Produk SKU",
@@ -69,7 +71,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }

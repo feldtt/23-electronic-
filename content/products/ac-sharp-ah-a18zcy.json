@@ -7,7 +7,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Turbo Cooling\n- Self Diagnosis\n- Auto swing louver naik turun otomatis\n- Evaporator anti karat\n- X-Fan Function\n- Remote control mudah dengan timer sleep 12 jam",
+  "description": "Fitur Utama:\r\r\n- Turbo Cooling\r\r\n- Self Diagnosis\r\r\n- Auto swing louver naik turun otomatis\r\r\n- Evaporator anti karat\r\r\n- X-Fan Function\r\r\n- Remote control mudah dengan timer sleep 12 jam",
   "specs": [
     {
       "label": "Produk SKU",
@@ -77,7 +77,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

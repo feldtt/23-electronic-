@@ -1,0 +1,77 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Sharp Inverter AH-X ZY",
+  "variant": "2 PK",
+  "title": "SHARP AH-X18ZY AC SPLIT 2 PK INVERTER",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Powerful Jet\r\n- Eco Mode\r\n- Baby Sleep Mode\r\n- Two-Way Auto Swing\r\n- 7 Shield Protection\r\n- Jetstream\r\n- Coanda\r\n- Anti Rust Evaporator",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-X18ZY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1640 (370 - 2100) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "88 x 22 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "18000 (5400-20000) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "78 x 27 x 54 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "27 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Thailand"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

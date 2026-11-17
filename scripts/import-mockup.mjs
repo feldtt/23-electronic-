@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { expandProductMarkers, loadProducts, renderDetailPages } from "./render-products.mjs";
+import { buildSearchIndex, expandProductMarkers, loadProducts, renderDetailPages } from "./render-products.mjs";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const mockupRoot = path.join(repoRoot, "mockup", "toko-23");
@@ -129,3 +129,7 @@ function copyAssets(dir) {
 }
 
 copyAssets(mockupRoot);
+
+// Header search reads this file (generated, not in mockup/).
+mkdirSync(path.join(publicRoot, "assets"), { recursive: true });
+writeFileSync(path.join(publicRoot, "assets", "search-index.json"), JSON.stringify(buildSearchIndex(products)));

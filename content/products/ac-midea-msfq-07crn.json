@@ -3,11 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Midea Standard Prime Guard MSFQ",
+  "variant": "3/4 PK",
   "title": "MIDEA MSFQ-07CRN8 AC SPLIT 3/4 PK STANDARD PRIME GUARD HYPER GRAPFINS",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Hyper Grafins: lapisan anti korosi dan tahan sinar UV\n- Stronger Cooling: hembusan lebih kuat dengan Turbo Mode\n- I-Clean: bagian dalam dikeringkan untuk mencegah debu, jamur, dan bau\n- Dual Filtration Technology: filter Bio HEPA dan Cold Catalyst",
+  "description": "Fitur Utama:\r\r\n- Hyper Grafins: lapisan anti korosi dan tahan sinar UV\r\r\n- Stronger Cooling: hembusan lebih kuat dengan Turbo Mode\r\r\n- I-Clean: bagian dalam dikeringkan untuk mencegah debu, jamur, dan bau\r\r\n- Dual Filtration Technology: filter Bio HEPA dan Cold Catalyst",
   "specs": [
     {
       "label": "Produk SKU",
@@ -69,7 +71,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }

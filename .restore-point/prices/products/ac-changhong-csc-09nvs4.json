@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "series": "Changhong Guardian CSC NVS4",
+  "variant": "1 PK",
+  "title": "CHANGHONG CSC-09NVS4 AC SPLIT 1 PK STANDARD GUARDIAN SERIES",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Gold Fin: sirip kondensor berwarna emas, tahan debu\r\n- Sleep Mode: kipas lebih pelan dan lampu redup saat tidur\r\n- Turbo Function: mendinginkan ruangan hingga 30% lebih cepat\r\n- Auto Clean: kipas tetap berputar 3 menit setelah dimatikan untuk mengeringkan unit",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "CSC-09NVS4"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "780 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "80 x 27 x 20 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "18 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 12 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "9000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "66 x 53 x 25 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "23 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "3.41"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

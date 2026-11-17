@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Daikin Alpha Inverter FTKH",
+  "variant": "1 PK",
   "title": "DAIKIN FTKH25YV14 AC SPLIT 1 PK ALPHA INVERTER",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Fast Cooling\n- Streamer Technology\n- Inverter\n- Enzyme Blue\n- Filter Gin-Ion\n- 3D AirFlow\n- Intelligent Eye\n- Wifi Smart Control\n- Auto Restart\n- Self Diagnosis\n- Timer ON/OFF\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Streamer Technology\r\r\n- Inverter\r\r\n- Enzyme Blue\r\r\n- Filter Gin-Ion\r\r\n- 3D AirFlow\r\r\n- Intelligent Eye\r\r\n- Wifi Smart Control\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Timer ON/OFF\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB",
   "specs": [
     {
       "label": "Produk SKU",
@@ -73,7 +75,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1200000,
   "featured": false,
   "published": true
 }

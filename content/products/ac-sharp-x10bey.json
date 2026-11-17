@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Sharp Inverter Garuda AH-X BEY",
+  "variant": "1 PK",
   "title": "SHARP AH-X10BEY AC SPLIT 1 PK INVERTER GARUDA SERIES",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- J-Tech Inverter: pengendalian konsumsi listrik yang presisi, hemat energi hingga 65%\n- Setting suhu remote sampai 14 derajat\n- 7 Shields Protection: perlindungan petir, korosi, voltase, jatuh, api, getaran & cuaca ekstrim\n- Garuda Air Flow: aliran udara lewat langit-langit sehingga tidak langsung mengenai badan",
+  "description": "Fitur Utama:\r\r\n- J-Tech Inverter: pengendalian konsumsi listrik yang presisi, hemat energi hingga 65%\r\r\n- Setting suhu remote sampai 14 derajat\r\r\n- 7 Shields Protection: perlindungan petir, korosi, voltase, jatuh, api, getaran & cuaca ekstrim\r\r\n- Garuda Air Flow: aliran udara lewat langit-langit sehingga tidak langsung mengenai badan",
   "specs": [
     {
       "label": "Produk SKU",
@@ -81,7 +83,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1250000,
   "featured": false,
   "published": true
 }

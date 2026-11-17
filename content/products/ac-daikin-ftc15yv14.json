@@ -3,11 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Daikin Super Mini Split FTC",
+  "variant": "1/2 PK",
   "title": "DAIKIN FTC15YV14 AC SPLIT 1/2 PK SUPER MINI SPLIT SERIES STANDARD",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Powerful Operation\n- Auto Restart\n- Self Diagnosis\n- Weekly Timer Operation\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Low Voltage Protection\n- Filter Gin-Ion",
+  "description": "Fitur Utama:\r\r\n- Powerful Operation\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Weekly Timer Operation\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Low Voltage Protection\r\r\n- Filter Gin-Ion",
   "specs": [
     {
       "label": "Produk SKU",
@@ -77,7 +79,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

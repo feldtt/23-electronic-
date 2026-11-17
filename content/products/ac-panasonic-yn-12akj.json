@@ -5,7 +5,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- R32: refrigerant ramah lingkungan\n- Intelligent Auto Mode: cepat dingin dengan aliran udara nyaman\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
+  "description": "Fitur Utama:\r\r\n- R32: refrigerant ramah lingkungan\r\r\n- Intelligent Auto Mode: cepat dingin dengan aliran udara nyaman\r\r\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
   "specs": [
     {
       "label": "Produk SKU",
@@ -71,7 +71,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Samsung Neo Alpha Inverter AR40F",
+  "variant": "2 PK",
+  "title": "SAMSUNG AR40F18D0AMNSE AC SPLIT 2 PK NEO ALPHA INVERTER",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Digital Inverter Technology: suhu stabil tanpa sering hidup-mati\r\n- Fast Cooling: kipas berputar maksimal untuk pendinginan lebih cepat\r\n- HD Filter: menyaring debu, alergen, dan serbuk\r\n- 2-Way Auto Swing: arah udara bergerak otomatis ke dua arah",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AR40F18D0AMNSE"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1841 (320 - 1920) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "96 x 31 x 22 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "12 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 5 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "17800 (5400 - 18200) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "77 x 56 x 31 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "27 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.37"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

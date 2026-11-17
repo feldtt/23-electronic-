@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator PK AC — 23 Electronic</title>
+  <meta name="description" content="Hitung berapa PK AC yang pas untuk ruangan Anda dalam 3 langkah singkat, lengkap dengan pilihan AC yang cocok dan bantuan admin via WhatsApp.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="header"></div>
+  <div id="subnav"></div>
+
+  <div class="crumbs">
+    <div class="container">
+      <a href="index.html">Beranda</a><span class="sep">›</span>
+      <a href="produk/ac.html">AC</a><span class="sep">›</span>
+      <strong>Kalkulator PK</strong>
+    </div>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Kalkulator PK AC</h1>
+      <p>Isi ukuran ruangan, jenis ruangan, dan jumlah penghuni. Kami hitungkan PK yang pas dan tampilkan AC yang tersedia di toko.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="pkw" id="pkw">
+        <ol class="pkw-steps" id="pkwSteps" aria-label="Langkah">
+          <li class="on"><span>1</span></li>
+          <li><span>2</span></li>
+          <li><span>3</span></li>
+        </ol>
+
+        <!-- Step 1 -->
+        <div class="pkw-card" data-step="1">
+          <h2>Dimensi Ruangan</h2>
+          <div class="pkw-row three">
+            <label>Panjang (meter)<input type="number" id="wP" min="0" max="30" step="0.1" inputmode="decimal" placeholder="0"></label>
+            <label>Lebar (meter)<input type="number" id="wL" min="0" max="30" step="0.1" inputmode="decimal" placeholder="0"></label>
+            <label>Tinggi (meter)<input type="number" id="wT" min="0" max="10" step="0.1" inputmode="decimal" value="3"></label>
+          </div>
+          <p class="pkw-hint">Tinggi plafon rumah biasanya sekitar 3 meter.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="pkw-card" data-step="2" hidden>
+          <h2>Jenis Ruangan</h2>
+          <div class="pkw-opts cols-1" data-key="room">
+            <button type="button" data-v="5" data-name="Kamar Tidur" class="on"><b>Kamar Tidur</b></button>
+            <button type="button" data-v="6" data-name="Kantor / Ruang Keluarga"><b>Kantor / Ruang Keluarga</b><small>termasuk ruang tamu</small></button>
+            <button type="button" data-v="7" data-name="Restoran"><b>Restoran</b><small>warung makan, kafe</small></button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="pkw-card" data-step="3" hidden>
+          <h2>Jumlah Penghuni Biasanya</h2>
+          <div class="pkw-people">
+            <div><span>Dewasa</span><div class="pkw-count"><button type="button" data-c="adult" data-d="-1" aria-label="Kurangi dewasa">−</button><strong id="wA">1</strong><button type="button" data-c="adult" data-d="1" aria-label="Tambah dewasa">+</button></div></div>
+            <div><span>Anak-anak</span><div class="pkw-count"><button type="button" data-c="kid" data-d="-1" aria-label="Kurangi anak">−</button><strong id="wK">0</strong><button type="button" data-c="kid" data-d="1" aria-label="Tambah anak">+</button></div></div>
+          </div>
+        </div>
+
+        <div class="pkw-nav" id="pkwNav">
+          <button type="button" class="btn btn-secondary" id="wBack" disabled>‹ Kembali</button>
+          <button type="button" class="btn btn-primary" id="wNext" disabled>Lanjut ›</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="pkwResult" hidden>
+        <div class="pkw-res">
+          <span class="pkw-badge">Hasil Perhitungan</span>
+          <h2>Rekomendasi Kapasitas AC</h2>
+          <p class="pkw-lead">Kapasitas AC yang disarankan:</p>
+          <div class="pkw-big" id="rPk"></div>
+          <div class="pkw-btu" id="rBtu"></div>
+          <p class="pkw-detail" id="rCalc"></p>
+          <div class="pkw-tip"><strong>SARAN 23 ELECTRONIC</strong><p id="rTip"></p></div>
+          <div class="pkw-facts">
+            <div><small>Luas ruangan</small><b id="fArea"></b></div>
+            <div><small>Volume ruang</small><b id="fVol"></b></div>
+            <div><small>Jenis ruangan</small><b id="fRoom"></b></div>
+            <div><small>Jumlah penghuni</small><b id="fPpl"></b></div>
+          </div>
+          <div class="pkw-actions">
+            <button type="button" class="btn btn-secondary" id="wAgain">↻ Hitung Ruangan Lain</button>
+            <a class="btn btn-primary" id="rShop" href="#">Lihat Semua AC <span id="rShopPk"></span></a>
+            <a class="btn btn-wa" id="rWa" href="#" target="_blank" rel="noopener">Tanya Admin via WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="pkw-prods" id="rProds" hidden>
+          <h2>Pilihan AC untuk Kapasitas <span id="rProdPk"></span></h2>
+          <div class="grid-3" id="rGrid"></div>
+        </div>
+      </div>
+
+      <div class="notice" style="margin-top:28px;max-width:760px;">
+        <strong>Ini perkiraan, bukan hitungan teknisi.</strong>
+        Perhitungan mengacu pada rumus sederhana dari Panasonic Indonesia untuk kebutuhan sehari-hari. Bahan atap, alat elektronik, dan kondisi rumah bisa mempengaruhi hasil. Untuk ruangan besar atau kondisi rumit, admin kami bisa bantu menyarankan setelah survey.
+      </div>
+    </div>
+  </section>
+
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <script>window.__page = { active: 'produk', basePath: '' };</script>
+  <script src="assets/partials.js"></script>
+  <script>
+    (function () {
+      // Rumus sederhana Panasonic Indonesia:
+      // BTU/jam = [P x L x T x Faktor ruangan x 35] + [dewasa x 600] + [anak x 300]; 1 PK = 9.000 BTU/jam.
+      // Tabel konversi: [batas atas BTU/jam, label PK, nilai PK]. Dipilih PK terkecil yang batas atasnya >= kebutuhan.
+      var TABLE = [[5300, '1/2', 0.5], [7000, '3/4', 0.75], [9720, '1', 1], [13000, '1,5', 1.5], [19100, '2', 2], [25000, '2,5', 2.5], [30000, '3', 3], [36000, '4', 4], [48000, '5', 5], [60000, '6', 6]];
+      var $ = function (id) { return document.getElementById(id); };
+      var cards = document.querySelectorAll('.pkw-card');
+      var dots = document.querySelectorAll('#pkwSteps li');
+      var LAST = cards.length;
+      var step = 1;
+      var count = { adult: 1, kid: 0 };
+
+      function num(id) { return parseFloat($(id).value); }
+      function dimsOk() { return num('wP') > 0 && num('wL') > 0 && num('wT') > 0; }
+      function show() {
+        cards.forEach(function (c) { c.hidden = Number(c.dataset.step) !== step; });
+        dots.forEach(function (d, i) {
+          d.className = i + 1 < step ? 'done' : i + 1 === step ? 'on' : '';
+          d.firstChild.textContent = i + 1 < step ? '✓' : String(i + 1);
+        });
+        $('wBack').disabled = step === 1;
+        $('wNext').textContent = step === LAST ? 'Hitung Sekarang' : 'Lanjut ›';
+        $('wNext').disabled = step === 1 && !dimsOk();
+      }
+      ['wP', 'wL', 'wT'].forEach(function (id) { $(id).addEventListener('input', show); });
+      document.querySelectorAll('.pkw-opts').forEach(function (g) {
+        g.addEventListener('click', function (e) {
+          var b = e.target.closest('button');
+          if (!b) return;
+          g.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+        });
+      });
+      document.querySelectorAll('.pkw-count button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var k = b.dataset.c;
+          var min = k === 'adult' ? 1 : 0;
+          count[k] = Math.min(30, Math.max(min, count[k] + Number(b.dataset.d)));
+          $(k === 'adult' ? 'wA' : 'wK').textContent = count[k];
+        });
+      });
+      $('wBack').addEventListener('click', function () { if (step > 1) { step--; show(); } });
+      $('wNext').addEventListener('click', function () {
+        if (step === 1 && !dimsOk()) return;
+        if (step < LAST) { step++; show(); } else { calc(); }
+      });
+
+      function fmt(n) { return Math.round(n).toLocaleString('id-ID'); }
+      function dec(n) { return String(Math.round(n * 10) / 10).replace('.', ','); }
+      function calc() {
+        var p = num('wP'), l = num('wL'), tt = num('wT');
+        var roomBtn = document.querySelector('[data-key="room"] button.on');
+        var factor = roomBtn ? parseFloat(roomBtn.dataset.v) : 5;
+        var roomName = roomBtn ? roomBtn.dataset.name : 'Ruangan';
+        var room = p * l * tt * factor * 35;
+        var ppl = count.adult * 600 + count.kid * 300;
+        var btu = room + ppl;
+        var hit = null;
+        for (var i = 0; i < TABLE.length; i++) { if (btu <= TABLE[i][0]) { hit = TABLE[i]; break; } }
+        var big = hit === null;
+        var area = p * l;
+        var label = big ? 'lebih dari 6' : hit[1];
+        var pkVal = big ? 6 : hit[2];
+        $('rPk').textContent = big ? '> 6 PK' : label + ' PK';
+        $('rBtu').textContent = '~' + fmt(btu) + ' BTU/jam';
+        $('rCalc').textContent = '[' + dec(p) + ' × ' + dec(l) + ' × ' + dec(tt) + ' × ' + factor + ' × 35] + [' + count.adult + ' dewasa × 600' + (count.kid ? ' + ' + count.kid + ' anak × 300' : '') + '] = ' + fmt(room) + ' + ' + fmt(ppl) + ' = ' + fmt(btu) + ' BTU/jam. Dibagi 9.000 BTU/jam per PK ≈ ' + dec(btu / 9000) + ' PK.';
+        $('fArea').textContent = dec(area) + ' m² (' + dec(p) + 'm × ' + dec(l) + 'm)';
+        $('fVol').textContent = dec(area * tt) + ' m³';
+        $('fRoom').textContent = roomName;
+        $('fPpl').textContent = count.adult + ' dewasa' + (count.kid ? ', ' + count.kid + ' anak' : '');
+        $('rTip').textContent = big
+          ? 'Beban pendinginan ruangan ini sekitar ' + fmt(btu) + ' BTU/jam, di atas AC rumahan. Sebaiknya survey dulu, mungkin perlu beberapa unit atau AC kapasitas besar.'
+          : 'Untuk ruangan ' + dec(area) + ' m² dengan beban pendinginan sekitar ' + fmt(btu) + ' BTU/jam, AC ' + label + ' PK sudah pas: dingin merata tanpa kerja berlebihan. Pilih tipe inverter bila AC menyala lama setiap hari agar listrik lebih hemat.';
+        var q = big ? 'ac 2 pk' : 'ac ' + label + ' pk';
+        $('rShop').href = 'cari.html?q=' + encodeURIComponent(q);
+        $('rShopPk').textContent = big ? '2 PK' : label + ' PK';
+        var msg = 'Halo 23 Electronic, ruangan ' + roomName + ' saya ' + dec(p) + 'x' + dec(l) + 'x' + dec(tt) + ' m, ' + count.adult + ' dewasa' + (count.kid ? ' + ' + count.kid + ' anak' : '') + '. Hasil kalkulator: ' + (big ? 'lebih dari 6 PK' : label + ' PK') + '. Boleh dibantu pilihan AC, stok, dan harganya?';
+        if (window.__waUrl) $('rWa').href = window.__waUrl(msg);
+
+        $('pkw').hidden = true;
+        $('pkwResult').hidden = false;
+        window.scrollTo({ top: $('pkwResult').getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+
+        $('rProds').hidden = true;
+        window.__searchLoad().then(function () {
+          var r = window.__search(q);
+          var list = r.exact.length ? r.exact : r.near.slice(0, 6);
+          if (!list.length) return;
+          $('rProdPk').textContent = (r.exact.length ? '' : 'mendekati ') + (big ? '2 PK' : label + ' PK');
+          $('rGrid').innerHTML = list.slice(0, 6).map(function (x) { return window.__searchCard(x, big ? 2 : pkVal); }).join('');
+          if (window.__wireChips) window.__wireChips($('rGrid'));
+          $('rProds').hidden = false;
+        });
+      }
+      $('wAgain').addEventListener('click', function () {
+        $('pkwResult').hidden = true;
+        $('pkw').hidden = false;
+        step = 1;
+        show();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      show();
+    })();
+  </script>
+</body>
+</html>

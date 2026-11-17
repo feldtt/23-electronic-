@@ -7,7 +7,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- High Power Operation: mode HI POWER 15 menit untuk pendinginan cepat\n- Energy Saving: teknologi hemat daya\n- Jet Flow: udara dingin menyebar merata dan cepat\n- Self Clean Operation: unit dikeringkan setelah dimatikan\n- Self Diagnostic: mendeteksi potensi gangguan\n- Auto Flap Up-Down: flap bergerak naik-turun otomatis\n- Auto Restart: menyala kembali dengan pengaturan yang sama setelah listrik padam",
+  "description": "Fitur Utama:\r\r\n- High Power Operation: mode HI POWER 15 menit untuk pendinginan cepat\r\r\n- Energy Saving: teknologi hemat daya\r\r\n- Jet Flow: udara dingin menyebar merata dan cepat\r\r\n- Self Clean Operation: unit dikeringkan setelah dimatikan\r\r\n- Self Diagnostic: mendeteksi potensi gangguan\r\r\n- Auto Flap Up-Down: flap bergerak naik-turun otomatis\r\r\n- Auto Restart: menyala kembali dengan pengaturan yang sama setelah listrik padam",
   "specs": [
     {
       "label": "Produk SKU",
@@ -49,7 +49,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

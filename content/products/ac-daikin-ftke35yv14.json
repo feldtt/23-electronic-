@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Daikin Beta Inverter FTKE",
+  "variant": "1,5 PK",
   "title": "DAIKIN FTKE35YV14 AC SPLIT 1.5 PK BETA INVERTER",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Fast Cooling\n- Inverter\n- Auto Restart\n- Self Diagnosis\n- Weekly Timer Operation\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB\n- Filter Gin-Ion",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Inverter\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Weekly Timer Operation\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB\r\r\n- Filter Gin-Ion",
   "specs": [
     {
       "label": "Produk SKU",
@@ -73,7 +75,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }

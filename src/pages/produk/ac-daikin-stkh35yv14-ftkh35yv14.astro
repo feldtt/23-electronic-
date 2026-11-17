@@ -10,7 +10,7 @@
   <meta property="og:description" content="Fitur Utama: - Fast Cooling - Streamer Technology - Inverter - Enzyme Blue - Filter Gin-Ion - 3D AirFlow - Intelligent Eye - Wifi Smart Control - Auto">
   <meta property="og:url" content="http://localhost:4321/produk/ac-daikin-stkh35yv14-ftkh35yv14.html">
   <link rel="stylesheet" href="../assets/styles.css">
-  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Daikin STKH35YV14 / FTKH35YV14","description":"Fitur Utama:\n- Fast Cooling\n- Streamer Technology\n- Inverter\n- Enzyme Blue\n- Filter Gin-Ion\n- 3D AirFlow\n- Intelligent Eye\n- Wifi Smart Control\n- Auto Restart\n- Self Diagnosis\n- Timer ON/OFF\n- Wide Angle Louvre\n- Blue Fin Coating\n- Grey Hairpin\n- Super PCB","category":"AC"}</script>
+  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Daikin STKH35YV14 / FTKH35YV14","description":"Fitur Utama:\r\n- Fast Cooling\r\n- Streamer Technology\r\n- Inverter\r\n- Enzyme Blue\r\n- Filter Gin-Ion\r\n- 3D AirFlow\r\n- Intelligent Eye\r\n- Wifi Smart Control\r\n- Auto Restart\r\n- Self Diagnosis\r\n- Timer ON/OFF\r\n- Wide Angle Louvre\r\n- Blue Fin Coating\r\n- Grey Hairpin\r\n- Super PCB","category":"AC","offers":{"@type":"Offer","priceCurrency":"IDR","price":"1000000","availability":"https://schema.org/InStock"}}</script>
 </head>
 <body>
   <div id="topbar"></div>
@@ -29,19 +29,22 @@
   <section class="section">
     <div class="container">
       <div class="pd">
-        <div class="pd-gallery">
+        <div class="pd-gallery" id="pdGallery">
           <div class="pd-main pd-noimg"><svg width="46" height="52" viewBox="0 0 46 52" fill="none" stroke="#9aa4b0" stroke-width="2" aria-hidden="true"><rect x="10" y="3" width="26" height="46" rx="3"/><line x1="10" y1="21" x2="36" y2="21"/><line x1="15" y1="9" x2="15" y2="15"/><line x1="15" y1="26" x2="15" y2="35"/></svg></div>
         </div>
         <div class="pd-info">
           
-          <h1>Daikin STKH35YV14 / FTKH35YV14</h1>
-          <div class="pd-price pd-price-cta">Hubungi kami untuk harga</div>
+          <h1 id="pdTitle">Daikin STKH35YV14 / FTKH35YV14</h1>
+          <div id="pdPrice">
+          <div class="pd-price">Rp 1.000.000</div>
+          <p class="pd-note">Harga dapat berubah, konfirmasi via WhatsApp.</p>
           
-          <a href="#" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga Daikin STKH35YV14 / FTKH35YV14." data-product="Daikin STKH35YV14 / FTKH35YV14">Chat WhatsApp</a>
+          </div>
+          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga Daikin STKH35YV14 / FTKH35YV14." data-product="Daikin STKH35YV14 / FTKH35YV14">Chat WhatsApp</a>
           <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
         </div>
       </div>
-
+      <div id="pdSpecs">
       <div class="pd-section">
         <h2>Spesifikasi Daikin STKH35YV14 / FTKH35YV14</h2>
         <table class="spec-table"><tbody>
@@ -62,7 +65,8 @@
           <tr><th scope="row">CSPF Rating</th><td>5.91</td></tr>
         </tbody></table>
       </div>
-
+</div>
+      <div id="pdDesc">
       <div class="pd-section">
         <h2>Deskripsi Produk</h2>
         <div class="pd-desc">Fitur Utama:
@@ -82,6 +86,7 @@
 - Grey Hairpin
 - Super PCB</div>
       </div>
+</div>
     </div>
   </section>
 
@@ -91,11 +96,11 @@
   <script is:inline>window.__page = { active: 'produk', basePath: '../' };</script>
   <script is:inline src="/assets/partials.js"></script>
   <script is:inline>
-    document.querySelectorAll('.pd-thumb').forEach(function (b) {
-      b.addEventListener('click', function () {
-        document.getElementById('pdMain').src = b.dataset.src;
-        document.querySelectorAll('.pd-thumb').forEach(function (x) { x.classList.toggle('on', x === b); });
-      });
+    document.getElementById('pdGallery').addEventListener('click', function (ev) {
+      var b = ev.target.closest('.pd-thumb');
+      if (!b) return;
+      document.getElementById('pdMain').src = b.dataset.src;
+      document.querySelectorAll('.pd-thumb').forEach(function (x) { x.classList.toggle('on', x === b); });
     });
   </script>
 </body>

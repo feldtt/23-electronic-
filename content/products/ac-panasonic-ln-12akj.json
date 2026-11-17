@@ -5,7 +5,7 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Si-BiRU: evaporator berlapis Blue Fin anti karat\n- Low Voltage: tetap bekerja pada tegangan rendah\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
+  "description": "Fitur Utama:\r\r\n- Si-BiRU: evaporator berlapis Blue Fin anti karat\r\r\n- Low Voltage: tetap bekerja pada tegangan rendah\r\r\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
   "specs": [
     {
       "label": "Produk SKU",
@@ -67,7 +67,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

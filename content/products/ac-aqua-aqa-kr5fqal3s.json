@@ -3,11 +3,13 @@
   "group": [
     "Standard"
   ],
+  "series": "Aqua Turbo Cool KCR FQAL3",
+  "variant": "1/2 PK",
   "title": "Aqua AC Split 1/2 PK Standard Black Fin Turbo Cool Series - AQA-KCR5FQAL3",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- Turbo Mode: pendinginan lebih cepat\n- Power Saver: hemat listrik\n- Wide Voltage Stabil: bekerja di tegangan 160V - 242V\n- Anti-Corrosion: perlindungan komponen utama\n- Black Fin: tahan korosi dan sinar UV\n- Triple Airflow: hembusan udara lebih jauh dan merata",
+  "description": "Fitur Utama:\r\r\n- Turbo Mode: pendinginan lebih cepat\r\r\n- Power Saver: hemat listrik\r\r\n- Wide Voltage Stabil: bekerja di tegangan 160V - 242V\r\r\n- Anti-Corrosion: perlindungan komponen utama\r\r\n- Black Fin: tahan korosi dan sinar UV\r\r\n- Triple Airflow: hembusan udara lebih jauh dan merata",
   "specs": [
     {
       "label": "Produk SKU",
@@ -53,7 +55,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1000000,
   "featured": false,
   "published": true
 }

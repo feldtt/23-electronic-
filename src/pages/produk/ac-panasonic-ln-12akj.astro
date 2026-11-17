@@ -10,7 +10,7 @@
   <meta property="og:description" content="Fitur Utama: - Si-BiRU: evaporator berlapis Blue Fin anti karat - Low Voltage: tetap bekerja pada tegangan rendah - Ecotough: unit outdoor dari materi">
   <meta property="og:url" content="http://localhost:4321/produk/ac-panasonic-ln-12akj.html">
   <link rel="stylesheet" href="../assets/styles.css">
-  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD","description":"Fitur Utama:\n- Si-BiRU: evaporator berlapis Blue Fin anti karat\n- Low Voltage: tetap bekerja pada tegangan rendah\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat","category":"AC"}</script>
+  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD","description":"Fitur Utama:\r\r\n- Si-BiRU: evaporator berlapis Blue Fin anti karat\r\r\n- Low Voltage: tetap bekerja pada tegangan rendah\r\r\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat","category":"AC","offers":{"@type":"Offer","priceCurrency":"IDR","price":"1000000","availability":"https://schema.org/InStock"}}</script>
 </head>
 <body>
   <div id="topbar"></div>
@@ -29,19 +29,22 @@
   <section class="section">
     <div class="container">
       <div class="pd">
-        <div class="pd-gallery">
+        <div class="pd-gallery" id="pdGallery">
           <div class="pd-main pd-noimg"><svg width="46" height="52" viewBox="0 0 46 52" fill="none" stroke="#9aa4b0" stroke-width="2" aria-hidden="true"><rect x="10" y="3" width="26" height="46" rx="3"/><line x1="10" y1="21" x2="36" y2="21"/><line x1="15" y1="9" x2="15" y2="15"/><line x1="15" y1="26" x2="15" y2="35"/></svg></div>
         </div>
         <div class="pd-info">
           
-          <h1>PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD</h1>
-          <div class="pd-price pd-price-cta">Hubungi kami untuk harga</div>
+          <h1 id="pdTitle">PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD</h1>
+          <div id="pdPrice">
+          <div class="pd-price">Rp 1.000.000</div>
+          <p class="pd-note">Harga dapat berubah, konfirmasi via WhatsApp.</p>
           
-          <a href="#" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD." data-product="PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD">Chat WhatsApp</a>
+          </div>
+          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD." data-product="PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD">Chat WhatsApp</a>
           <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
         </div>
       </div>
-
+      <div id="pdSpecs">
       <div class="pd-section">
         <h2>Spesifikasi PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD</h2>
         <table class="spec-table"><tbody>
@@ -61,14 +64,16 @@
           <tr><th scope="row">Made In</th><td>Indonesia</td></tr>
         </tbody></table>
       </div>
-
+</div>
+      <div id="pdDesc">
       <div class="pd-section">
         <h2>Deskripsi Produk</h2>
-        <div class="pd-desc">Fitur Utama:
-- Si-BiRU: evaporator berlapis Blue Fin anti karat
-- Low Voltage: tetap bekerja pada tegangan rendah
+        <div class="pd-desc">Fitur Utama:
+- Si-BiRU: evaporator berlapis Blue Fin anti karat
+- Low Voltage: tetap bekerja pada tegangan rendah
 - Ecotough: unit outdoor dari material SuperDyma yang tahan karat</div>
       </div>
+</div>
     </div>
   </section>
 
@@ -78,11 +83,11 @@
   <script is:inline>window.__page = { active: 'produk', basePath: '../' };</script>
   <script is:inline src="/assets/partials.js"></script>
   <script is:inline>
-    document.querySelectorAll('.pd-thumb').forEach(function (b) {
-      b.addEventListener('click', function () {
-        document.getElementById('pdMain').src = b.dataset.src;
-        document.querySelectorAll('.pd-thumb').forEach(function (x) { x.classList.toggle('on', x === b); });
-      });
+    document.getElementById('pdGallery').addEventListener('click', function (ev) {
+      var b = ev.target.closest('.pd-thumb');
+      if (!b) return;
+      document.getElementById('pdMain').src = b.dataset.src;
+      document.querySelectorAll('.pd-thumb').forEach(function (x) { x.classList.toggle('on', x === b); });
     });
   </script>
 </body>

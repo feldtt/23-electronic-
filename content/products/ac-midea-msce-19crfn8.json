@@ -3,11 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "Midea Celest Inverter MSCE",
+  "variant": "2 PK",
   "title": "MIDEA MSCE-19CRFN8 AC SPLIT 2 PK CELEST INVERTER",
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "Fitur Utama:\n- AI ECOMASTER: efisiensi energi dan suhu nyaman tanpa boros listrik\n- COOLFLASH: pendinginan lebih cepat\n- POWER COOLING: ruangan tetap sejuk dan nyaman\n- Indoor Goldfin, Outdoor Grapfin",
+  "description": "Fitur Utama:\r\r\n- AI ECOMASTER: efisiensi energi dan suhu nyaman tanpa boros listrik\r\r\n- COOLFLASH: pendinginan lebih cepat\r\r\n- POWER COOLING: ruangan tetap sejuk dan nyaman\r\r\n- Indoor Goldfin, Outdoor Grapfin",
   "specs": [
     {
       "label": "Produk SKU",
@@ -65,7 +67,7 @@
   "wa_message": "",
   "order": 1000,
   "stock": null,
-  "price": 0,
+  "price": 1500000,
   "featured": false,
   "published": true
 }
