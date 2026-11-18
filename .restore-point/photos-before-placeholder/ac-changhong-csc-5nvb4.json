@@ -1,0 +1,82 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "series": "Changhong Standard CSC NVB4",
+  "variant": "1/2 PK",
+  "title": "CHANGHONG AC SPLIT STANDARD",
+  "model": "CSC-5NVB4",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Gold Fin: sirip kondensor berwarna emas, tahan debu dan mempercepat aliran air kondensasi\r\r\n- Hidden Display: layar LED tersembunyi untuk suhu, kompresor, kipas, dan timer\r\r\n- Turbo Function: mendinginkan ruangan hingga 30% lebih cepat\r\r\n- 3D Air Flow: kipas lebih lebar untuk sebaran udara yang lebih luas\r\r\n- Auto Clean: kipas tetap berputar 3 menit setelah dimatikan untuk mengeringkan kondensor",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "CSC-5NVB4"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "450 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "72 x 20 x 27 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "14 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 12 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "64 x 46 x 24 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "23 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Alumunium"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

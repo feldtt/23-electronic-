@@ -193,8 +193,10 @@
     const priceEl = chip.closest('.card-body')?.querySelector('.price');
     if (!priceEl) return;
     const base = priceEl.textContent;
-    const show = () => { priceEl.textContent = chip.dataset.price; };
-    const reset = () => { priceEl.textContent = base; };
+    const modelEl = chip.closest('.card-body')?.querySelector('.card-model span');
+    const baseModel = modelEl ? modelEl.textContent : '';
+    const show = () => { priceEl.textContent = chip.dataset.price; if (modelEl && chip.dataset.model) modelEl.textContent = chip.dataset.model; };
+    const reset = () => { priceEl.textContent = base; if (modelEl) modelEl.textContent = baseModel; };
     chip.addEventListener('mouseenter', show);
     chip.addEventListener('focus', show);
     chip.addEventListener('mouseleave', reset);
@@ -385,11 +387,12 @@
     const card = (x, pk) => {
       const chips = (x.s || []).map((m) => {
         const hit = pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01;
-        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.v)}</a>` };
+        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-model="${esc(m.mo || '')}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.v)}</a>` };
       });
       const hit = (x.s || []).find((m) => pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01);
       const price = hit ? hit.p : x.p;
-      return `<div class="card"><a class="card-img${x.i ? ' has-photo' : ''}" href="${esc(hit ? `${x.u}#${hit.id}` : x.u)}" tabindex="-1" aria-hidden="true">${x.i ? `<img src="${esc(x.i)}" alt="" loading="lazy">` : ''}</a><div class="card-body"><h3><a class="card-title" href="${esc(hit ? `${x.u}#${hit.id}` : x.u)}">${esc(x.t)}</a></h3>${chips.length ? `<div class="card-variants">${chips.map((c) => c.html).join('')}</div>` : ''}<div class="price">${esc(price || 'Cek harga via WA')}</div></div></div>`;
+      const model = x.s ? ((hit || x.s[0]).mo || '') : (x.m || '');
+      return `<div class="card"><a class="card-img${x.i ? ' has-photo' : ''}" href="${esc(hit ? `${x.u}#${hit.id}` : x.u)}" tabindex="-1" aria-hidden="true">${x.i ? `<img src="${esc(x.i)}" alt="" loading="lazy">` : ''}</a><div class="card-body"><h3><a class="card-title" href="${esc(hit ? `${x.u}#${hit.id}` : x.u)}">${esc(x.t)}</a></h3>${model ? `<div class="card-model"><span>${esc(model)}</span></div>` : ''}${chips.length ? `<div class="card-variants">${chips.map((c) => c.html).join('')}</div>` : ''}<div class="price">${esc(price || 'Cek harga via WA')}</div></div></div>`;
     };
     window.__searchCard = card;
 
@@ -406,7 +409,7 @@
       if (list.length) {
         html += `<a class="hs-all" href="${esc(searchUrl())}">Lihat semua ${esc(res.label)} <b>(${list.length})</b> &rsaquo;</a>`;
         if (!res.exact.length) html += '<div class="hs-note">Tidak ada yang persis <b>' + esc(res.label) + '</b>. Mungkin ini yang kamu cari:</div>';
-        html += items.map((x) => `<a class="hs-item" href="${esc(x.u)}">${x.i ? `<img src="${esc(x.i)}" alt="">` : '<span class="hs-noimg"></span>'}<span class="hs-t">${esc(x.t)}</span><span class="hs-p">${esc(x.p || 'Cek harga via WA')}</span></a>`).join('');
+        html += items.map((x) => `<a class="hs-item" href="${esc(x.u)}">${x.i ? `<img src="${esc(x.i)}" alt="">` : '<span class="hs-noimg"></span>'}<span class="hs-t">${esc(x.t)}${x.m ? `<small>${esc(x.m)}</small>` : ''}</span><span class="hs-p">${esc(x.p || 'Cek harga via WA')}</span></a>`).join('');
         if (!res.exact.length) html += '<a class="hs-wa-row" href="' + esc(waSearch(q)) + '" target="_blank" rel="noopener">Minta dicarikan via WA &rsaquo;</a>';
       } else {
         html = `<div class="hs-empty"><strong>Belum ada di daftar, tapi mungkin kami punya stoknya.</strong><span>Tanya admin untuk <em>${esc(q)}</em>, dibalas cepat.</span><a class="hs-wa" href="${esc(waSearch(q))}" target="_blank" rel="noopener">Tanya stok via WhatsApp</a></div>`;

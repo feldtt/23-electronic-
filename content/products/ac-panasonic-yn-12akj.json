@@ -1,9 +1,13 @@
 {
   "category": "ac",
   "group": [],
-  "title": "PANASONIC CS-YN12AKJ AC SPLIT 1,5PK STANDARD",
-  "photo": "",
-  "photos": [],
+  "variant": "1,5 PK",
+  "title": "PANASONIC AC SPLIT STANDARD",
+  "model": "CS-YN12AKJ",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- R32: refrigerant ramah lingkungan\r\r\n- Intelligent Auto Mode: cepat dingin dengan aliran udara nyaman\r\r\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
   "specs": [

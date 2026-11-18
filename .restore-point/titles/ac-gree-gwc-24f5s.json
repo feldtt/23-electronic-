@@ -1,0 +1,85 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Gree Inverter GWC F5S",
+  "variant": "2,5 PK",
+  "title": "GREE GWC-24F5S / 24F5A AC SPLIT INVERTER 2,5 PK",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling \"Turbo\": pendinginan ruangan sangat cepat\r\r\n- Smart Cleaner: evaporator dibersihkan otomatis\r\r\n- Mass Air Supply: hembusan kuat dengan suara halus\r\r\n- Goldfin dan Bluefin pada evaporator dan kondensor",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "GWC-24F5S-24F5A"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1920 (450 - 2350) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "108 x 24 x 32 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "17 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "24000 (6150 - 25250) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀5/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "87 x 37 x 55 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "34 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "7.63"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1500000,
+  "featured": false,
+  "published": true
+}

@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "variant": "1/2 PK",
+  "title": "POLYTRON AC SPLIT STANDARD",
+  "model": "PAC 05VH",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Auto Cleaning: evaporator dibersihkan otomatis\r\r\n- Leakage Detector: mendeteksi tanda kerusakan sistem pendingin sejak dini\r\r\n- Auto Restart: menyala kembali otomatis setelah listrik padam",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "PAC-05VH"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "390 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "79 x 20 x 26 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "66 x 24 x 48 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "19 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "EER Rating",
+      "value": "13.54"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

@@ -155,7 +155,7 @@
   const offlineBanner = () => `<div class="banner"><b>The admin server is not running.</b> Open a new terminal in the project folder and run <span class="code">npm.cmd run admin</span>, then reload this page.</div>`;
 
   // ---------- router ----------
-  const routes = { dashboard: renderDashboard, produk: renderProducts, kategori: renderTaxonomy };
+  const routes = { dashboard: renderDashboard, produk: renderProducts, kategori: renderTaxonomy, seri: renderSeries };
   const titles = { dashboard: 'Dashboard', produk: 'Products', kategori: 'Categories' };
   function route() {
     const name = (location.hash.match(/^#\/(\w+)/) || [])[1];
@@ -347,7 +347,7 @@
     let list = products.filter((p) => (tab === 'all' || p.category === tab));
     if (issueFilter === 'any') list = list.filter(incomplete);
     else if (issueFilter) list = list.filter((p) => issuesOf(p).some((x) => x.k === issueFilter));
-    if (q) { const k = q.toLowerCase(); list = list.filter((p) => `${p.title} ${groupsOf(p).join(' ')} ${p.description}`.toLowerCase().includes(k)); }
+    if (q) { const k = q.toLowerCase(); list = list.filter((p) => `${p.title} ${p.model || ''} ${p.variant || ''} ${groupsOf(p).join(' ')} ${p.description}`.toLowerCase().includes(k)); }
     const cmp = {
       order: (a, b) => (a.order ?? 1000) - (b.order ?? 1000) || a.title.localeCompare(b.title),
       name: (a, b) => a.title.localeCompare(b.title),
@@ -369,6 +369,7 @@
     if (ban) { if (ban.innerHTML !== html) { ban.innerHTML = html; } } else return;
     const inc = $('#showInc'); if (inc) inc.onclick = (e) => { e.preventDefault(); issueFilter = 'any'; $('#issue').value = 'any'; drawList(false); };
   }
+  const seriesNames = () => [...new Set(products.map((p) => String(p.series || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b));
   async function bulk(action, value, okMsg) {
     const ids = [...selected];
     try {
@@ -376,7 +377,9 @@
       await reloadAll();
       if (action === 'delete') selected.clear(); else for (const id of [...selected]) if (!products.some((p) => p.id === id)) selected.delete(id);
       setPending(true); updateCounts(); drawList(false);
-      toast(okMsg || `${r.changed} products updated`);
+      const noLabel = action === 'series' ? products.filter((p) => selected.has(p.id) && !String(p.variant || '').trim()).length : 0;
+      if (noLabel) toast(`${okMsg}. ${noLabel} product(s) have no choice label (e.g. 1/2 PK): open Edit to set it, otherwise they are not grouped.`, true);
+      else toast(okMsg || `${r.changed} products updated`);
     } catch (err) { toast(err.message, true); }
   }
 
@@ -397,6 +400,7 @@
       setOpts($('#bk_add'), 'Add sub-category…', groups.map((g) => [g, g]));
       setOpts($('#bk_rm'), 'Remove sub-category…', [...(selGroups.length ? [['__all__', 'All sub-categories']] : []), ...selGroups.map((g) => [g, g])]);
       setOpts($('#bk_cat'), 'Move to category…', allCats().map((c) => [c.v, c.l]));
+      setOpts($('#bk_series'), 'Add to series…', [['__new__', '+ New series…'], ...seriesNames().map((n) => [n, n]), ['__none__', '— Remove from series']]);
       return;
     }
     el.dataset.built = '1';
@@ -409,8 +413,24 @@
       <span class="inl"><span class="prw"><input type="text" inputmode="numeric" id="bk_price" placeholder="Price"></span><button class="btn btn-ghost btn-sm" data-a="price">Set</button></span>
       <select id="bk_add"><option value="">Add sub-category…</option>${groups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
       <select id="bk_rm"><option value="">Remove sub-category…</option>${selGroups.length ? `<option value="__all__">All sub-categories</option>` : ''}${selGroups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
+      <select id="bk_series"><option value="">Add to series…</option><option value="__new__">+ New series…</option>${seriesNames().map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('')}<option value="__none__">— Remove from series</option></select>
+      <span class="inl" id="bk_snew" hidden><input type="text" id="bk_sname" placeholder="New series name"><button class="btn btn-primary btn-sm" id="bk_sgo">Add</button></span>
       <button class="btn btn-danger btn-sm" data-a="delete">Delete</button>
       <button class="btn btn-ghost btn-sm" data-a="clear">Cancel</button>`;
+    $('#bk_series').onchange = (e) => {
+      const v = e.target.value; if (!v) return;
+      e.target.value = '';
+      if (v === '__none__') return bulk('clearSeries', null, 'Removed from series');
+      if (v === '__new__') { $('#bk_snew').hidden = false; $('#bk_sname').focus(); return; }
+      bulk('series', v, `Added to series "${v}"`);
+    };
+    const addNewSeries = () => {
+      const n = $('#bk_sname').value.trim(); if (!n) return toast('Enter a series name', true);
+      $('#bk_sname').value = ''; $('#bk_snew').hidden = true;
+      bulk('series', n, `Added to series "${n}"`);
+    };
+    $('#bk_sgo').onclick = addNewSeries;
+    $('#bk_sname').onkeydown = (e) => { if (e.key === 'Enter') addNewSeries(); if (e.key === 'Escape') { $('#bk_snew').hidden = true; } };
     $('#bk_add').onchange = (e) => { const v = e.target.value; if (v) bulk('addGroup', v, `Sub-category "${v}" added`); };
     $('#bk_rm').onchange = (e) => {
       const v = e.target.value; if (!v) return;
@@ -470,7 +490,7 @@
       return `
       <tr data-id="${esc(p.id)}" class="${selected.has(p.id) ? 'sel' : ''}">
         <td><input type="checkbox" class="pick" ${selected.has(p.id) ? 'checked' : ''} aria-label="Select"></td>
-        <td><div class="prod"><div class="thumb" style="${photosOf(p)[0] ? `background-image:url('${esc(photosOf(p)[0])}')` : ''}">${photosOf(p)[0] ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc(p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
+        <td><div class="prod"><div class="thumb" style="${photosOf(p)[0] ? `background-image:url('${esc(photosOf(p)[0])}')` : ''}">${photosOf(p)[0] ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc([p.model, p.variant].filter(Boolean).join(' · ') || p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
         <td><span class="pill b">${esc(catLabel(p.category))}</span><div style="color:var(--muted);font-size:12px;margin-top:4px">${esc(groupsOf(p).join(', ') || '—')}</div></td>
         <td>${p.stock == null ? '–' : p.stock > 0 ? p.stock : '<span class="pill o">Out</span>'}</td>
         <td><span class="prw"><input type="text" inputmode="numeric" class="pr" value="${p.price > 0 ? fmtNum(p.price) : ''}" placeholder="Not set" aria-label="Price in Rupiah"></span></td>
@@ -641,12 +661,150 @@
   }
 
   // =====================================================================
+  // SERIES (products with the same series name become ONE card / ONE page with PK buttons)
+  // =====================================================================
+  const pkNum = (v) => {
+    const m = String(v || '').replace(',', '.').match(/(\d+)\s*\/\s*(\d+)|(\d+(?:\.\d+)?)/);
+    if (!m) return 99;
+    return m[3] ? parseFloat(m[3]) : Number(m[1]) / Number(m[2]);
+  };
+  const specValue = (p, label) => ((Array.isArray(p.specs) ? p.specs : []).find((s) => s.label === label) || {}).value || '';
+  const guessVariant = (p) => p.variant || (specValue(p, 'Daya PK') ? `${String(specValue(p, 'Daya PK')).replace(/\s*PK$/i, '')} PK` : '');
+  // PUT merges with the saved product, so only the changed fields are sent.
+  const patchProduct = async (p, patch) => {
+    const saved = await api(`/products/${encodeURIComponent(p.id)}`, { method: 'PUT', body: JSON.stringify(patch) });
+    Object.assign(p, saved);
+  };
+
+  async function renderSeries() {
+    view.innerHTML = `<div class="empty">Loading…</div>`;
+    try { await reloadAll(); } catch { view.innerHTML = offlineBanner(); checkServer(); return; }
+    checkServer();
+    const note = 'color:var(--muted);font-size:12.5px';
+    const bySeries = new Map();
+    for (const p of products) {
+      const s = String(p.series || '').trim();
+      if (!s) continue;
+      const k = `${p.category}|${s}`;
+      if (!bySeries.has(k)) bySeries.set(k, { name: s, category: p.category, members: [] });
+      bySeries.get(k).members.push(p);
+    }
+    const list = [...bySeries.values()].sort((a, b) => a.name.localeCompare(b.name));
+    list.forEach((s) => s.members.sort((a, b) => pkNum(a.variant) - pkNum(b.variant)));
+    const alone = products.filter((p) => !String(p.series || '').trim()).length;
+
+    view.innerHTML = `<section>
+      <div class="card"><div class="card-h"><h2>Series</h2><span class="sub">${list.length} total · ${alone} products not in a series</span></div>
+        <div class="card-b" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" id="sNew">+ New series</button>
+          <span style="${note}">Products in the same series become ONE card and ONE page with PK buttons (needs 2 or more).</span>
+        </div>
+        <div id="sEditor"></div>
+        ${list.length ? `<div class="tbl-wrap"><table><thead><tr><th>Series</th><th>Category</th><th>Choices</th><th></th></tr></thead><tbody>${list.map((s, i) => `
+          <tr data-i="${i}"><td class="s-name"><b>${esc(s.members[0].title)}</b><div style="${note}">Series name: ${esc(s.name)}</div></td>
+          <td><span class="pill b">${esc(catLabel(s.category))}</span></td>
+          <td>${s.members.map((m) => `<span class="pill">${esc(m.variant || '?')}</span>`).join(' ')}${s.members.length < 2 ? ` <span class="pill o">needs 2+</span>` : ''}<div style="${note}">${s.members.length} products</div></td>
+          <td class="s-act"><div class="row-act"><button class="btn btn-ghost btn-sm s-edit">Edit</button><button class="btn btn-danger btn-sm s-del">Delete</button></div></td></tr>`).join('')}</tbody></table></div>` : '<div class="empty">No series yet. Click “+ New series”.</div>'}
+        <div class="card-b" style="${note}">Deleting a series only un-groups it: the products stay and each shows as its own card again.</div>
+      </div></section>`;
+
+    const done = (msg) => { setPending(true); toast(msg); renderSeries(); };
+
+    // ----- editor (new / edit) -----
+    const openEditor = (s) => {
+      const isNew = !s;
+      const editing = s ? { ...s, members: [...s.members] } : { name: '', category: 'ac', members: [] };
+      const memberIds = new Set(editing.members.map((m) => m.id));
+      const ed = $('#sEditor');
+      const catOpts = allCats().map((c) => `<option value="${esc(c.v)}"${c.v === editing.category ? ' selected' : ''}>${esc(c.l)}</option>`).join('');
+      ed.innerHTML = `<div class="card-b" style="border-top:1px solid var(--line,#e2e8f0);display:grid;gap:12px">
+        <b>${isNew ? 'New series' : `Edit series: ${esc(s.name)}`}</b>
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:10px">
+          <div class="fld"><label for="sn">Series name (internal)</label><input type="text" id="sn" value="${esc(editing.name)}" placeholder="e.g. Daikin Alpha Inverter FTKH"><small>Only used to group the products, customers never see it. Change the customer-facing title in the field below.</small></div>
+          <div class="fld"><label for="sc">Category</label><select id="sc">${catOpts}</select></div>
+        </div>
+        <div class="fld"><label for="st">Title shown to customers (optional)</label><input type="text" id="st" value="${esc(editing.members[0]?.title || '')}" placeholder="e.g. DAIKIN AC SPLIT ALPHA INVERTER"><small>Applied to every product in this series, so the card and page show one title. Leave empty to keep each product's own title.</small></div>
+        <div class="fld"><label for="sq">Choose products</label><input type="text" id="sq" placeholder="Search by title or model…"></div>
+        <div id="sList" style="max-height:340px;overflow:auto;border:1px solid var(--line,#e2e8f0);border-radius:10px"></div>
+        <div style="display:flex;gap:8px;align-items:center"><button class="btn btn-primary btn-sm" id="sSave">Save series</button><button class="btn btn-ghost btn-sm" id="sCancel">Cancel</button><span id="sMsg" style="${note}"></span></div>
+      </div>`;
+      const rowsFor = () => {
+        const cat = $('#sc').value, q = $('#sq').value.trim().toLowerCase();
+        return products
+          .filter((p) => p.category === cat)
+          .filter((p) => !q || `${p.title} ${p.model || ''} ${p.variant || ''} ${p.series || ''}`.toLowerCase().includes(q))
+          .sort((a, b) => (memberIds.has(b.id) - memberIds.has(a.id)) || String(a.title).localeCompare(String(b.title)) || pkNum(guessVariant(a)) - pkNum(guessVariant(b)));
+      };
+      const variants = {}; // id -> typed label (kept when the list is re-filtered)
+      const draw = () => {
+        const rows = rowsFor();
+        $('#sList').innerHTML = rows.length ? `<table><tbody>${rows.map((p) => {
+          const on = memberIds.has(p.id);
+          const other = p.series && p.series !== (s && s.name) ? `<span class="pill o" title="Moves it out of that series">now in: ${esc(p.series)}</span>` : '';
+          const val = variants[p.id] ?? guessVariant(p);
+          return `<tr data-id="${esc(p.id)}"><td style="width:30px"><input type="checkbox" class="sp-on"${on ? ' checked' : ''}></td>
+            <td><b>${esc(p.title)}</b><div style="${note}">${esc(p.model || p.id)} ${other}</div></td>
+            <td style="width:120px"><input type="text" class="sp-var" value="${esc(val)}" placeholder="e.g. 1/2 PK" aria-label="Choice label"></td></tr>`;
+        }).join('')}</tbody></table>` : '<div class="empty">No products in this category.</div>';
+        $('#sList').querySelectorAll('tr').forEach((tr) => {
+          const id = tr.dataset.id;
+          tr.querySelector('.sp-on').onchange = (e) => { if (e.target.checked) memberIds.add(id); else memberIds.delete(id); count(); };
+          tr.querySelector('.sp-var').oninput = (e) => { variants[id] = e.target.value; };
+        });
+        count();
+      };
+      const count = () => { $('#sMsg').textContent = `${memberIds.size} selected${memberIds.size === 1 ? ' (a series needs 2 or more to be shown as one card)' : ''}`; };
+      $('#sq').oninput = draw; $('#sc').onchange = () => { memberIds.clear(); draw(); };
+      $('#sCancel').onclick = () => { ed.innerHTML = ''; };
+      $('#sSave').onclick = async () => {
+        const name = $('#sn').value.trim();
+        if (!name) return toast('Series name is required', true);
+        if (!memberIds.size) return toast('Select at least one product', true);
+        const title = $('#st').value.trim();
+        const picked = products.filter((p) => memberIds.has(p.id));
+        const missing = picked.filter((p) => !String(variants[p.id] ?? guessVariant(p)).trim());
+        if (missing.length) return toast(`Choice label needed for: ${missing.map((p) => p.model || p.title).join(', ')}`, true);
+        const btn = $('#sSave'); btn.disabled = true;
+        try {
+          for (const p of picked) {
+            const patch = { series: name, variant: String(variants[p.id] ?? guessVariant(p)).trim() };
+            if (title) patch.title = title;
+            await patchProduct(p, patch);
+          }
+          // products that were in this series but got unticked leave it
+          for (const m of editing.members.filter((m) => !memberIds.has(m.id))) await patchProduct(products.find((p) => p.id === m.id) || m, { series: '' });
+          done('Series saved');
+        } catch (err) { toast(err.message, true); btn.disabled = false; }
+      };
+      draw();
+      ed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+    $('#sNew').onclick = () => openEditor(null);
+
+    view.querySelectorAll('tbody tr[data-i]').forEach((tr) => {
+      const s = list[+tr.dataset.i];
+      const act = tr.querySelector('.s-act'), actHtml = act.innerHTML;
+      const bind = () => {
+        tr.querySelector('.s-edit').onclick = () => openEditor(s);
+        tr.querySelector('.s-del').onclick = () => {
+          act.innerHTML = `<div class="row-act"><span style="${note}">Un-group ${s.members.length} products?</span><button class="btn btn-danger btn-sm yes">Yes</button><button class="btn btn-ghost btn-sm no">No</button></div>`;
+          act.querySelector('.no').onclick = () => { act.innerHTML = actHtml; bind(); };
+          act.querySelector('.yes').onclick = async () => {
+            try { for (const m of s.members) await patchProduct(m, { series: '' }); done('Series deleted'); } catch (err) { toast(err.message, true); act.innerHTML = actHtml; bind(); }
+          };
+        };
+      };
+      bind();
+    });
+  }
+
+  // =====================================================================
   // IMPORT / EXPORT (Excel or CSV)
   // =====================================================================
-  const IMPORT_HEADERS = ['name', 'category', 'sub-category', 'series', 'variant', 'description', 'specs', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
+  const IMPORT_HEADERS = ['name', 'model', 'category', 'sub-category', 'series', 'variant', 'description', 'specs', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
   const SAMPLE_ROWS = [
-    ['Daikin STC15YV', 'AC', 'Available AC Units', 'Daikin Alpha Inverter FTKH', '1/2 PK', 'AC split ½ PK · 350 W · R32', 'Daya Listrik (Watt): 350 Watt\nTipe Refrigerant: R-32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
-    ['Sharp SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '', '', '1-door fridge, 162 L', '', 3, 2100000, '', '', '', 'no', 'yes'],
+    ['Daikin AC Split Alpha Inverter', 'FTKH15YV14', 'AC', 'Available AC Units', 'Daikin Alpha Inverter FTKH', '1/2 PK', 'AC split ½ PK · 350 W · R32', 'Daya Listrik (Watt): 350 Watt\nTipe Refrigerant: R-32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
+    ['Sharp Kulkas 1 Pintu', 'SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '', '', '1-door fridge, 162 L', '', 3, 2100000, '', '', '', 'no', 'yes'],
   ];
   const specsText = (p) => (Array.isArray(p.specs) ? p.specs : []).map((x) => `${x.label}: ${x.value}`).join('\n');
   const photosOf = (p) => (Array.isArray(p.photos) && p.photos.length ? p.photos : p.photo ? [p.photo] : []);
@@ -707,7 +865,7 @@
     return X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
   }
   const exportGrid = () => [IMPORT_HEADERS, ...products.map((p) => [
-    p.title, catLabel(p.category), groupsOf(p).join('; '), p.series || '', p.variant || '', p.description || '', specsText(p), p.stock ?? '', p.price > 0 ? p.price : '',
+    p.title, p.model || '', catLabel(p.category), groupsOf(p).join('; '), p.series || '', p.variant || '', p.description || '', specsText(p), p.stock ?? '', p.price > 0 ? p.price : '',
     photosOf(p).map((x) => x.replace('/assets/uploads/', '')).join(', '), p.alt || '', p.wa_message || '', p.featured ? 'yes' : 'no', p.published === false ? 'no' : 'yes',
   ])];
 
@@ -720,7 +878,7 @@
       <div class="drawer-b imp">
         <div class="fld"><label>1. Get the template</label>
           <div class="imp-row"><button type="button" class="btn btn-ghost btn-sm" id="tplX">Excel template (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="tplC">CSV template</button><button type="button" class="btn btn-ghost btn-sm" id="expX">Export current products (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="expC">Export (.csv)</button></div>
-          <small>Columns: <b>name*</b>, <b>category*</b>, sub-category (separate several with <b>;</b>), series + variant (products with the same series name become one page with choice buttons, e.g. <b>1/2 PK</b>), description, specs (one <b>Label: value</b> per line inside the cell, shown as a table), stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
+          <small>Columns: <b>name*</b> (without model and PK), model (sub heading, e.g. <b>FTKH15YV14</b>), <b>category*</b>, sub-category (separate several with <b>;</b>), series + variant (products with the same series name become one page with choice buttons, e.g. <b>1/2 PK</b>), description, specs (one <b>Label: value</b> per line inside the cell, shown as a table), stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
         <div class="fld"><label for="imp_photos">2. Photos (optional)</label><input type="file" id="imp_photos" accept="image/jpeg,image/png,image/webp" multiple><small id="imp_pstat">Select the image files named in the photo column. They are uploaded right away.</small></div>
         <div class="fld"><label for="imp_file">3. Spreadsheet file</label><input type="file" id="imp_file" accept=".xlsx,.xls,.csv,.txt"></div>
         <div class="fld"><label>If a product already exists (same name and category)</label>
@@ -802,7 +960,7 @@
   function openDrawer(p, tpl) {
     ensureDrawer();
     const isNew = !p;
-    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', series: '', variant: '', title: '', photo: '', photos: [], alt: '', description: '', specs: [], wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
+    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', series: '', variant: '', title: '', model: '', photo: '', photos: [], alt: '', description: '', specs: [], wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
     const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
     drawer.innerHTML = `
       <div class="drawer-h"><h2>${isNew ? (tpl ? 'Duplicate product' : 'Add product') : 'Edit product'}</h2><button id="dx" aria-label="Close">×</button></div>
@@ -822,7 +980,8 @@
         </div>
         <div class="fld"><label for="f_price">Price (Rp)</label><span class="prw"><input type="text" inputmode="numeric" id="f_price" value="${d.price > 0 ? fmtNum(d.price) : ''}" placeholder="Not set"></span><small>Whole Rupiah, e.g. 3.450.000. Empty = card shows "Cek harga via WA".</small></div>
         <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
-        <div class="fld"><label for="f_series">Series (optional)</label><input type="text" id="f_series" value="${esc(d.series)}" placeholder="e.g. Daikin Alpha Inverter FTKH"><small>Products with the same series name are shown as ONE card and ONE page with choice buttons (needs 2 or more).</small></div>
+        <div class="fld"><label for="f_model">Model / sub heading</label><input type="text" id="f_model" value="${esc(d.model)}" placeholder="e.g. FTKH15YV14"><small>Shown under the product title (the model code). Keep the title itself without model and PK, e.g. DAIKIN AC SPLIT ALPHA INVERTER.</small></div>
+        <div class="fld"><label for="f_series">Series (optional)</label><select id="f_series"><option value="">— Not in a series —</option>${[...new Set([...seriesNames(), ...(d.series ? [d.series] : [])])].sort((a, b) => a.localeCompare(b)).map((n) => `<option value="${esc(n)}"${n === d.series ? ' selected' : ''}>${esc(n)}</option>`).join('')}<option value="__new__">+ New series…</option></select><input type="text" id="f_series_new" placeholder="New series name" hidden style="margin-top:8px"><small>Products in the same series are shown as ONE card and ONE page with choice buttons (needs 2 or more). Manage all series in the Series tab.</small></div>
         <div class="fld"><label for="f_variant">Choice label</label><input type="text" id="f_variant" value="${esc(d.variant)}" placeholder="e.g. 1/2 PK"><small>The button text for this product inside the series (e.g. 1/2 PK, 3/4 PK, 1 PK).</small></div>
         <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
         <div class="fld"><label for="f_specs">Specifications (table)</label><textarea id="f_specs" rows="8" placeholder="Daya Listrik (Watt): 344 Watt&#10;Dimensi (p x t x l): 70 x 25 x 19 cm">${esc(specsText(d))}</textarea><small>One per line as <b>Label: value</b>. Shown as a table on the product page.</small></div>
@@ -883,14 +1042,23 @@
       drop.innerHTML = ok ? `${ok} photo${ok === 1 ? '' : 's'} added. Click to add more.` : idle;
     }
 
+    const sSel = g('#f_series'), sNew = g('#f_series_new');
+    sSel.onchange = () => {
+      sNew.hidden = sSel.value !== '__new__';
+      if (!sNew.hidden) sNew.focus();
+      const vi = g('#f_variant');
+      if (sSel.value && !vi.value.trim()) vi.value = guessVariant({ ...d, variant: '' });
+    };
     g('#pf').onsubmit = async (e) => {
       e.preventDefault();
       const body = {
-        category: getCat(), group: getGroup(), series: g('#f_series').value, variant: g('#f_variant').value, title: g('#f_title').value, photos,
+        category: getCat(), group: getGroup(), series: (g('#f_series').value === '__new__' ? g('#f_series_new').value.trim() : g('#f_series').value), variant: g('#f_variant').value, title: g('#f_title').value, model: g('#f_model').value, photos,
         alt: g('#f_alt').value, description: g('#f_desc').value, specs: g('#f_specs').value, wa_message: g('#f_wa').value,
         stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), featured: g('#f_feat').checked, published: g('#f_pub').checked,
       };
       if (!body.category) return toast('Category is required', true);
+      if (g('#f_series').value === '__new__' && !body.series) return toast('Enter the new series name or pick another option', true);
+      if (body.series && !String(body.variant).trim()) return toast('Choice label is needed for a product in a series (e.g. 1/2 PK)', true);
       const btn = g('#save'); btn.disabled = true;
       try {
         const saved = isNew

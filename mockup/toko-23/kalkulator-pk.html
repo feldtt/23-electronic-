@@ -139,6 +139,17 @@
         $('wNext').disabled = step === 1 && !dimsOk();
       }
       ['wP', 'wL', 'wT'].forEach(function (id) { $(id).addEventListener('input', show); });
+      // Spinner/arrow from empty or 0 jumps straight to 1, then continues in 0.1 steps. Typing is untouched.
+      ['wP', 'wL'].forEach(function (id) {
+        var el = $(id), last = '';
+        el.addEventListener('input', function (e) {
+          if (!e.inputType && (last === '' || Number(last) === 0) && Math.abs(Number(el.value) - 0.1) < 1e-9) {
+            el.value = '1';
+            show();
+          }
+          last = el.value;
+        });
+      });
       document.querySelectorAll('.pkw-opts').forEach(function (g) {
         g.addEventListener('click', function (e) {
           var b = e.target.closest('button');

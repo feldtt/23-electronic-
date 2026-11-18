@@ -3,9 +3,13 @@
   "group": [
     "Standard"
   ],
-  "title": "Changhong CHOL-05L4",
-  "photo": "",
-  "photos": [],
+  "variant": "1/2 PK",
+  "title": "CHANGHONG AC SPLIT",
+  "model": "CHOL-05L4",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\n- R32 Refrigerant\r\n- Smart mode: mengaktifkan sensor otomatis yang bertugas mengatur suhu dan kecepatan kipas\r\n- LED display: membuat penghuni ruangan lebih mudah mengontrol suhu tanpa harus mengambil remote AC\r\n- Anti-Corrosion: Perlidndungan Korosi Ganda\r\n- Gold Fin\r\n- Evaporator Self-clean: Pembersihan otomatis agar terhindar dari jamur dan bakteri",
   "specs": [

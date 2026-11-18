@@ -5,9 +5,12 @@
   ],
   "series": "Gree Deluxe Standard GWC N1A",
   "variant": "1,5 PK",
-  "title": "GREE GWC-12N1 / 12N1A AC SPLIT 1,5 PK DELUXE STANDARD BLACK DIAMOND FIN",
-  "photo": "",
-  "photos": [],
+  "title": "GREE AC SPLIT DELUXE STANDARD BLACK DIAMOND FIN",
+  "model": "GWC-12N1 / 12N1A",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Outdoor I-Cool: tetap bekerja normal di cuaca sangat panas\r\r\n- Smart Cleaner System: bagian dalam AC dibersihkan otomatis\r\r\n- Indoor Goldfin, Outdoor Blackfin",
   "specs": [

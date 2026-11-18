@@ -5,9 +5,12 @@
   ],
   "series": "Changhong Guardian CSC NVS4",
   "variant": "2 PK",
-  "title": "Changhong CSC-18NVS4",
-  "photo": "",
-  "photos": [],
+  "title": "CHANGHONG AC SPLIT STANDARD GUARDIAN SERIES",
+  "model": "CSC-18NVS4",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "",
   "specs": [],

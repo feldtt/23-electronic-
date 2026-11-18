@@ -3,9 +3,13 @@
   "group": [
     "Standard"
   ],
-  "title": "MIDEA MSFT-05CRN8 AC SPLIT 1/2 PK STANDARD GOLDEN COATING HYPER GRAPFINS",
-  "photo": "",
-  "photos": [],
+  "variant": "1/2 PK",
+  "title": "MIDEA AC SPLIT STANDARD GOLDEN COATING HYPER GRAPFINS",
+  "model": "MSFT-05CRN8",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Stronger Cooling: hembusan lebih kuat dengan Turbo Mode\r\r\n- I-Clean: bagian dalam dikeringkan untuk mencegah debu, jamur, dan bau\r\r\n- Dual Filtration Technology: penyaringan dua tahap untuk udara lebih bersih",
   "specs": [

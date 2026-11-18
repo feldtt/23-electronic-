@@ -1,0 +1,82 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Daikin Alpha Inverter FTKH",
+  "variant": "2 PK",
+  "title": "DAIKIN AC SPLIT ALPHA INVERTER",
+  "model": "FTKH50YV14",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Streamer Technology\r\r\n- Inverter\r\r\n- Enzyme Blue\r\r\n- Filter Gin-Ion\r\r\n- 3D AirFlow\r\r\n- Intelligent Eye\r\r\n- Wifi Smart Control\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Timer ON/OFF\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "FTKH50YV14"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1700 (420 - 2200) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "77 x 29 x 25 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "10 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor, 3 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "19000 (6000 - 21200) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "85 x 60 x 30 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "35 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "5.90"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1400000,
+  "featured": false,
+  "published": true
+}

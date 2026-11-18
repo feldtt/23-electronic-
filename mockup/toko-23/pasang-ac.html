@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jasa Pasang AC — 23 Electronic</title>
+  <meta name="description" content="Atur sendiri jasa pasang AC: paket lengkap atau jasa satuan, pilih pipa, panjang pemasangan, dan tambahan. Kirim pesanan lewat WhatsApp.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div id="topbar"></div>
+  <div id="header"></div>
+  <div id="subnav"></div>
+
+  <div class="crumbs">
+    <div class="container">
+      <a href="index.html">Beranda</a><span class="sep">›</span>
+      <a href="produk/ac.html">AC</a><span class="sep">›</span>
+      <strong>Jasa Pasang AC</strong>
+    </div>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Jasa Pasang AC</h1>
+      <p>Pilih paket lengkap, atau beli jasa satuan saja. Atur pipa dan tambahan sesuai kebutuhan, lalu kirim pesanan ke admin lewat WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="ins" id="ins">
+        <div class="ins-main">
+
+          <div class="ins-card">
+            <h2>1. Pilih jenis pemesanan</h2>
+            <div class="ins-modes" id="insMode">
+              <button type="button" class="ins-mode on" data-v="paket"><b>Paket Lengkap</b><span>Jasa pasang, vakum, pipa + kabel + selang, bracket outdoor</span></button>
+              <button type="button" class="ins-mode" data-v="satuan"><b>Jasa Satuan</b><span>Pilih sendiri jasa dan bahan yang dibutuhkan</span></button>
+            </div>
+            <div class="ins-row">
+              <label class="ins-f">AC yang dipasang (opsional)<input type="text" id="iAc" placeholder="mis. DAIKIN AC SPLIT ALPHA INVERTER FTKH15YV14"></label>
+              <label class="ins-f">Kapasitas<select id="iPk"><option value="">Belum tahu</option><option>1/2 PK</option><option>3/4 PK</option><option>1 PK</option><option>1,5 PK</option><option>2 PK</option><option>2,5 PK</option><option>3 PK</option></select></label>
+              <label class="ins-f">Freon<select id="iFreon"><option value="">Belum tahu</option><option>R32</option><option>R410A</option><option>R22</option></select></label>
+            </div>
+          </div>
+
+          <div class="ins-card" id="boxPaket">
+            <h2>2. Atur paket</h2>
+            <div class="ins-f">Pilih pipa
+              <div class="ins-pipes" id="iPipe">
+                <button type="button" class="ins-pipe on" data-v="Basic (0,50 mm)"><b>Basic</b><span>Tebal 0,50 mm</span></button>
+                <button type="button" class="ins-pipe" data-v="Premium (0,60 mm)"><b>Premium</b><span>Tebal 0,60 mm</span></button>
+                <button type="button" class="ins-pipe" data-v="Elite (0,76 mm)"><b>Elite</b><span>Tebal 0,76 mm, paling awet anti bocor</span></button>
+              </div>
+              <small>Merk pipa mengikuti ketersediaan stok.</small>
+            </div>
+            <div class="ins-f">Jarak unit dalam ke unit luar
+              <div class="ins-qty" id="qLen"><button type="button" data-d="-1" aria-label="Kurangi">−</button><output>3</output><span>meter</span><button type="button" data-d="1" aria-label="Tambah">+</button></div>
+              <small>Paket sudah termasuk 3 meter. Lebih dari 3 meter: ada biaya pipa, kabel, dan jasa tarik tambahan, dihitung admin.</small>
+            </div>
+            <div class="ins-f">Termasuk dalam paket
+              <ul class="ins-inc">
+                <li>Jasa pasang AC baru</li><li>Vakum</li><li>Pipa tembaga + kabel + selang drain 3 m</li><li>Bracket outdoor</li><li>Duct tape</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ins-card">
+            <h2 id="addTitle">3. Tambahan</h2>
+            <p class="ins-hint" id="addHint">Centang yang dibutuhkan. Jumlah bisa diubah.</p>
+            <div id="addList"></div>
+          </div>
+
+          <div class="ins-card">
+            <h2>4. Catatan</h2>
+            <label class="ins-f">Alamat / area pemasangan dan catatan lain (opsional)<textarea id="iNote" rows="3" placeholder="mis. Pamulang, rumah lantai 2, AC lama mau dibongkar"></textarea></label>
+          </div>
+        </div>
+
+        <aside class="ins-side">
+          <div class="ins-sum">
+            <h2>Ringkasan Pesanan</h2>
+            <ul id="sumList"></ul>
+            <div class="ins-total"><span>Estimasi harga</span><b id="sumTotal">Dikonfirmasi admin</b></div>
+            <p class="ins-note">Harga final dikonfirmasi admin via WhatsApp setelah cek lokasi dan kebutuhan.</p>
+            <a href="#" id="insWa" class="btn btn-wa" style="width:100%;justify-content:center">Pesan via WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="notice" style="margin-top:28px;max-width:760px;">
+        <strong>Perlu diketahui.</strong>
+        Jasa satuan tidak termasuk garansi pemasangan paket. Pemasangan di apartemen atau gedung bisa kena biaya tambahan. Stop kontak, kabel power, dan MCB tidak termasuk paket.
+      </div>
+    </div>
+  </section>
+
+  <div id="cta"></div>
+  <div id="footer"></div>
+
+  <script>window.__page = { active: 'produk', basePath: '' };</script>
+  <script src="assets/partials.js"></script>
+  <script>
+    (function () {
+      // Harga tiap item. null = belum di-set (tampil "Hubungi kami"). Isi angka (rupiah) untuk mengaktifkan estimasi.
+      // unit: 'set' | 'meter' | 'roll'
+      var ITEMS = [
+        { id: 'jasa',    name: 'Jasa pasang AC baru',            unit: 'set',   price: null, mode: 'satuan', base: true, note: 'Sudah termasuk vakum. Belum termasuk material.' },
+        { id: 'jasalama', name: 'Jasa pasang AC bekas / lama',   unit: 'set',   price: null, mode: 'satuan', note: 'Belum termasuk material dan vakum.' },
+        { id: 'pipa',    name: 'Pipa tembaga AC',                unit: 'meter', price: null, mode: 'satuan', note: 'Sesuai pilihan pipa di atas.' },
+        { id: 'kabel',   name: 'Kabel AC isi 3',                 unit: 'meter', price: null, mode: 'both',   note: 'Panjang kabel mengikuti panjang pipa.' },
+        { id: 'drain',   name: 'Pipa drain (selang)',            unit: 'meter', price: null, mode: 'both' },
+        { id: 'bracket', name: 'Bracket outdoor',                unit: 'set',   price: null, mode: 'satuan' },
+        { id: 'tape',    name: 'Duct tape',                      unit: 'roll',  price: null, mode: 'both',   note: 'Setiap 5 m pipa butuh 1 roll.' },
+        { id: 'tarik',   name: 'Jasa tarik pipa',                unit: 'meter', price: null, mode: 'both',   note: 'Dikenakan jika pipa lebih panjang dari standar.' },
+        { id: 'freon',   name: 'Tambah freon',                   unit: 'set',   price: null, mode: 'both',   note: 'Disarankan jika pipa lebih dari 10 m.' },
+        { id: 'flush',   name: 'Flushing pipa lama + vakum',     unit: 'set',   price: null, mode: 'both',   note: 'Untuk pipa lama yang dipakai ulang.' },
+        { id: 'bongkar', name: 'Bongkar AC lama',                unit: 'set',   price: null, mode: 'both' },
+        { id: 'bobok',   name: 'Bobok tembok tambahan',          unit: 'titik', price: null, mode: 'both' },
+        { id: 'apart',   name: 'Pasang di apartemen / gedung',   unit: 'set',   price: null, mode: 'both',   note: 'Tidak termasuk APD dan scaffolding.' },
+        { id: 'tangga',  name: 'Penyediaan tangga',              unit: 'set',   price: null, mode: 'both' },
+        { id: 'steker',  name: 'Stop kontak / steker',           unit: 'pcs',   price: null, mode: 'both' },
+        { id: 'power',   name: 'Kabel power',                    unit: 'meter', price: null, mode: 'both' },
+        { id: 'mcb',     name: 'MCB',                            unit: 'pcs',   price: null, mode: 'both' }
+      ];
+      var PIPE_PRICE = { 'Basic (0,50 mm)': null, 'Premium (0,60 mm)': null, 'Elite (0,76 mm)': null }; // harga paket per pilihan pipa
+      var PAKET_PRICE = null; // harga dasar paket lengkap (3 m)
+
+      var $ = function (id) { return document.getElementById(id); };
+      var mode = 'paket', pipe = 'Basic (0,50 mm)', len = 3;
+      var sel = {}; // id -> qty
+      var rp = function (n) { return 'Rp ' + n.toLocaleString('id-ID'); };
+
+      // query: ?produk=...&pk=...
+      var q = new URLSearchParams(location.search);
+      if (q.get('produk')) $('iAc').value = q.get('produk');
+      if (q.get('pk')) { var pk = q.get('pk'); Array.prototype.forEach.call($('iPk').options, function (o) { if (o.value && o.value.replace(',', '.').toLowerCase() === pk.replace(',', '.').toLowerCase()) $('iPk').value = o.value; }); }
+
+      function visible() { return ITEMS.filter(function (x) { return mode === 'satuan' ? true : x.mode === 'both'; }); }
+
+      function drawAdd() {
+        $('addTitle').textContent = mode === 'paket' ? '3. Tambahan (opsional)' : '2. Pilih jasa dan bahan';
+        $('addHint').textContent = mode === 'paket' ? 'Centang jika perlu tambahan di luar paket.' : 'Centang jasa dan bahan yang dibutuhkan. Jumlah bisa diubah.';
+        $('addList').innerHTML = visible().map(function (x) {
+          var on = sel[x.id] > 0;
+          return '<div class="ins-it' + (on ? ' on' : '') + '" data-id="' + x.id + '">' +
+            '<label class="ins-chk"><input type="checkbox"' + (on ? ' checked' : '') + '><span><b>' + x.name + '</b>' + (x.note ? '<small>' + x.note + '</small>' : '') + '</span></label>' +
+            '<span class="ins-pr">' + (x.price == null ? 'Hubungi kami' : rp(x.price) + ' / ' + x.unit) + '</span>' +
+            '<div class="ins-qty sm"' + (on ? '' : ' hidden') + '><button type="button" data-d="-1" aria-label="Kurangi">−</button><output>' + (sel[x.id] || 1) + '</output><span>' + x.unit + '</span><button type="button" data-d="1" aria-label="Tambah">+</button></div></div>';
+        }).join('');
+      }
+
+      function lines() {
+        var out = [];
+        if (mode === 'paket') {
+          out.push({ t: 'Paket lengkap pasang AC (pipa ' + pipe + ', ' + len + ' m)', price: (PAKET_PRICE == null || PIPE_PRICE[pipe] == null) ? null : PAKET_PRICE + PIPE_PRICE[pipe] });
+          if (len > 3) out.push({ t: 'Tambahan jarak ' + (len - 3) + ' m (pipa, kabel, jasa tarik)', price: null });
+        }
+        visible().forEach(function (x) {
+          if (!(sel[x.id] > 0)) return;
+          out.push({ t: x.name + ' x ' + sel[x.id] + ' ' + x.unit, price: x.price == null ? null : x.price * sel[x.id] });
+        });
+        return out;
+      }
+
+      function refresh() {
+        var L = lines();
+        $('sumList').innerHTML = L.length ? L.map(function (l) { return '<li><span>' + l.t + '</span><em>' + (l.price == null ? 'Hubungi kami' : rp(l.price)) + '</em></li>'; }).join('') : '<li class="empty">Belum ada yang dipilih</li>';
+        var allPriced = L.length && L.every(function (l) { return l.price != null; });
+        $('sumTotal').textContent = allPriced ? rp(L.reduce(function (s, l) { return s + l.price; }, 0)) : 'Dikonfirmasi admin';
+        var msg = ['Halo 23 Electronic, saya mau pesan jasa pasang AC (' + (mode === 'paket' ? 'paket lengkap' : 'jasa satuan') + ').'];
+        if ($('iAc').value.trim()) msg.push('AC: ' + $('iAc').value.trim());
+        if ($('iPk').value) msg.push('Kapasitas: ' + $('iPk').value);
+        if ($('iFreon').value) msg.push('Freon: ' + $('iFreon').value);
+        if (L.length) { msg.push('', 'Pesanan:'); L.forEach(function (l) { msg.push('- ' + l.t); }); }
+        if ($('iNote').value.trim()) msg.push('', 'Catatan: ' + $('iNote').value.trim());
+        msg.push('', 'Mohon info harga dan jadwalnya.');
+        $('insWa').href = window.__waUrl ? window.__waUrl(msg.join('\n')) : '#';
+      }
+
+      function stepper(box, get, set, min, max) {
+        box.addEventListener('click', function (e) {
+          var b = e.target.closest('button[data-d]'); if (!b) return;
+          var v = Math.max(min, Math.min(max, get() + Number(b.dataset.d)));
+          set(v); box.querySelector('output').textContent = v;
+        });
+      }
+
+      $('insMode').addEventListener('click', function (e) {
+        var b = e.target.closest('.ins-mode'); if (!b) return;
+        mode = b.dataset.v;
+        document.querySelectorAll('.ins-mode').forEach(function (x) { x.classList.toggle('on', x === b); });
+        $('boxPaket').hidden = mode !== 'paket';
+        drawAdd(); refresh();
+      });
+      $('iPipe').addEventListener('click', function (e) {
+        var b = e.target.closest('.ins-pipe'); if (!b) return;
+        pipe = b.dataset.v;
+        document.querySelectorAll('.ins-pipe').forEach(function (x) { x.classList.toggle('on', x === b); });
+        refresh();
+      });
+      stepper($('qLen'), function () { return len; }, function (v) { len = v; refresh(); }, 3, 20);
+
+      $('addList').addEventListener('change', function (e) {
+        var row = e.target.closest('.ins-it'); if (!row || e.target.type !== 'checkbox') return;
+        var id = row.dataset.id;
+        sel[id] = e.target.checked ? (sel[id] || 1) : 0;
+        row.classList.toggle('on', e.target.checked);
+        row.querySelector('.ins-qty').hidden = !e.target.checked;
+        refresh();
+      });
+      $('addList').addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-d]'); if (!b) return;
+        var row = b.closest('.ins-it'), id = row.dataset.id;
+        sel[id] = Math.max(1, Math.min(100, (sel[id] || 1) + Number(b.dataset.d)));
+        row.querySelector('output').textContent = sel[id];
+        refresh();
+      });
+      ['iAc', 'iPk', 'iFreon', 'iNote'].forEach(function (id) { $(id).addEventListener('input', refresh); });
+
+      if (q.get('mode') === 'satuan') { document.querySelector('.ins-mode[data-v="satuan"]').click(); }
+      drawAdd(); refresh();
+    })();
+  </script>
+</body>
+</html>

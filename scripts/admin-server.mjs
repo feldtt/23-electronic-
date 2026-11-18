@@ -31,7 +31,7 @@ mkdirSync(analyticsDir, { recursive: true });
 mkdirSync(productsDir, { recursive: true });
 
 const CATEGORIES = ["ac", "kulkas", "mesin-cuci", "tv"];
-const FIELD_ORDER = ["category", "group", "series", "variant", "title", "photo", "photos", "alt", "description", "specs", "wa_message", "order", "stock", "price", "featured", "published"];
+const FIELD_ORDER = ["category", "group", "series", "variant", "title", "model", "photo", "photos", "alt", "description", "specs", "wa_message", "order", "stock", "price", "featured", "published"];
 const EVENT_TYPES = new Set(["pageview", "click_whatsapp", "click_call", "click_maps"]);
 
 // ---------- helpers ----------
@@ -113,6 +113,7 @@ function cleanProduct(input) {
     series: String(input.series ?? "").trim().slice(0, 120),
     variant: String(input.variant ?? "").trim().slice(0, 40),
     title: String(input.title ?? "").trim(),
+    model: String(input.model ?? "").trim().slice(0, 80),
     photo: photos[0] ?? "",
     photos,
     alt: String(input.alt ?? "").trim(),
@@ -219,6 +220,15 @@ function bulkProducts({ ids, action, value }) {
     else if (action === "price") p.price = value;
     else if (action === "addGroup") p.group = [...new Set([...groupList(p), String(value).trim()])];
     else if (action === "clearGroup") p.group = [];
+    else if (action === "series") {
+      p.series = String(value ?? "").trim().slice(0, 120);
+      // The choice button needs a label: take the PK from the spec table when none is set yet.
+      if (p.series && !String(p.variant ?? "").trim()) {
+        const pk = (Array.isArray(p.specs) ? p.specs : []).find((s) => s.label === "Daya PK")?.value;
+        if (pk) p.variant = `${String(pk).replace(/\s*PK$/i, "")} PK`;
+      }
+    }
+    else if (action === "clearSeries") p.series = "";
     else if (action === "removeGroup") p.group = groupList(p).filter((x) => x.toLowerCase() !== String(value).toLowerCase());
     else throw Object.assign(new Error("Unknown action"), { code: 400 });
     writeProduct(id, cleanProduct(p)); n++;
@@ -241,6 +251,7 @@ const IMPORT_COLS = {
   featured: ["featured", "unggulan", "produk unggulan"],
   series: ["series", "seri"],
   variant: ["variant", "varian", "pilihan", "pk", "option"],
+  model: ["model", "kode model", "tipe model", "sku", "sub heading", "subheading"],
 };
 const CAT_ALIASES = {
   ac: "ac", kulkas: "kulkas", fridge: "kulkas", refrigerator: "kulkas",
@@ -306,6 +317,7 @@ function importProducts({ rows, mode, dryRun }) {
       if (groups.length) next.group = groups;
       if (r.series) next.series = r.series;
       if (r.variant) next.variant = r.variant;
+      if (r.model) next.model = r.model;
       if (r.description) next.description = r.description;
       if (r.specs) next.specs = cleanSpecs(r.specs);
       if (r.alt) next.alt = r.alt;

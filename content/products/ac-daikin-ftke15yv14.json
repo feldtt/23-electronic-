@@ -5,9 +5,12 @@
   ],
   "series": "Daikin Beta Inverter FTKE",
   "variant": "1/2 PK",
-  "title": "DAIKIN FTKE15YV14 AC SPLIT 1/2 PK BETA INVERTER",
-  "photo": "",
-  "photos": [],
+  "title": "DAIKIN AC SPLIT BETA INVERTER",
+  "model": "FTKE15YV14",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Inverter\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Weekly Timer Operation\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB\r\r\n- Filter Gin-Ion",
   "specs": [

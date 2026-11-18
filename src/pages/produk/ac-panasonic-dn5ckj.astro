@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD — 23 Electronic</title>
+  <title>PANASONIC AC SPLIT STANDARD — 23 Electronic</title>
   <meta name="description" content="Fitur Utama: - Mode Powerful: pendinginan lebih cepat dengan satu tombol - Self-Cleaning: evaporator dibersihkan agar udara lebih higienis - Aliran Ud">
   <meta property="og:type" content="product">
-  <meta property="og:title" content="PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD — 23 Electronic">
+  <meta property="og:title" content="PANASONIC AC SPLIT STANDARD — 23 Electronic">
   <meta property="og:description" content="Fitur Utama: - Mode Powerful: pendinginan lebih cepat dengan satu tombol - Self-Cleaning: evaporator dibersihkan agar udara lebih higienis - Aliran Ud">
   <meta property="og:url" content="http://localhost:4321/produk/ac-panasonic-dn5ckj.html">
+  <meta property="og:image" content="http://localhost:4321/assets/uploads/placeholder-produk.png">
   <link rel="stylesheet" href="../assets/styles.css">
-  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD","description":"Fitur Utama:\r\r\n- Mode Powerful: pendinginan lebih cepat dengan satu tombol\r\r\n- Self-Cleaning: evaporator dibersihkan agar udara lebih higienis\r\r\n- Aliran Udara 4 Arah: udara menjangkau seluruh sudut ruangan","category":"AC","offers":{"@type":"Offer","priceCurrency":"IDR","price":"1000000","availability":"https://schema.org/InStock"}}</script>
+  <script is:inline type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"PANASONIC AC SPLIT STANDARD","mpn":"CS-DN5CKJ","description":"Fitur Utama:\r\r\n- Mode Powerful: pendinginan lebih cepat dengan satu tombol\r\r\n- Self-Cleaning: evaporator dibersihkan agar udara lebih higienis\r\r\n- Aliran Udara 4 Arah: udara menjangkau seluruh sudut ruangan","image":["http://localhost:4321/assets/uploads/placeholder-produk.png"],"category":"AC","offers":{"@type":"Offer","priceCurrency":"IDR","price":"1000000","availability":"https://schema.org/InStock"}}</script>
 </head>
 <body>
   <div id="topbar"></div>
@@ -22,7 +23,7 @@
       <a href="../index.html">Beranda</a><span class="sep">›</span>
       <a href="index.html">Produk</a><span class="sep">›</span>
       <a href="ac.html">AC</a><span class="sep">›</span>
-      <strong>PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD</strong>
+      <strong>PANASONIC AC SPLIT STANDARD</strong>
     </div>
   </div>
 
@@ -30,23 +31,47 @@
     <div class="container">
       <div class="pd">
         <div class="pd-gallery" id="pdGallery">
-          <div class="pd-main pd-noimg"><svg width="46" height="52" viewBox="0 0 46 52" fill="none" stroke="#9aa4b0" stroke-width="2" aria-hidden="true"><rect x="10" y="3" width="26" height="46" rx="3"/><line x1="10" y1="21" x2="36" y2="21"/><line x1="15" y1="9" x2="15" y2="15"/><line x1="15" y1="26" x2="15" y2="35"/></svg></div>
+          <div class="pd-main"><img id="pdMain" src="/assets/uploads/placeholder-produk.png" alt="PANASONIC AC SPLIT STANDARD"></div>
+          
         </div>
         <div class="pd-info">
           
-          <h1 id="pdTitle">PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD</h1>
+          <h1 id="pdTitle">PANASONIC AC SPLIT STANDARD</h1>
+          <p class="pd-model" id="pdSub">CS-DN5CKJ · 1/2 PK</p>
           <div id="pdPrice">
           <div class="pd-price">Rp 1.000.000</div>
           <p class="pd-note">Harga dapat berubah, konfirmasi via WhatsApp.</p>
           
           </div>
-          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD." data-product="PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD">Chat WhatsApp</a>
+          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="Halo 23 Electronic, mau tanya stok &amp; harga PANASONIC AC SPLIT STANDARD 1/2 PK CS-DN5CKJ." data-product="PANASONIC AC SPLIT STANDARD">Chat WhatsApp</a>
           <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
+          <div class="pd-install">
+            <div class="pd-install-h"><b>Jasa Pasang AC</b><span class="pd-install-price">Hubungi kami untuk harga</span></div>
+            <ul>
+              <li>Jasa pasang</li>
+              <li>Vakum</li>
+              <li>Pipa + kabel + selang 3m</li>
+              <li>Bracket outdoor</li>
+            </ul>
+            <a href="../pasang-ac.html" id="pdInstallBuy" class="btn btn-primary pd-install-buy">Beli dengan Jasa Pasang</a>
+            <a href="../pasang-ac.html?mode=satuan" class="pd-install-wa">Atau beli jasa satuan ›</a>
+            <script is:inline>
+              (function () {
+                var b = document.getElementById('pdInstallBuy');
+                b.addEventListener('click', function () {
+                  var t = document.getElementById('pdTitle'), s = document.getElementById('pdSub'), pk = document.querySelector('.pd-vbtn.on');
+                  var u = '../pasang-ac.html?produk=' + encodeURIComponent((t ? t.textContent : '') + (s && s.textContent ? ' ' + s.textContent : ''));
+                  if (pk) u += '&pk=' + encodeURIComponent(pk.textContent.trim());
+                  b.href = u;
+                });
+              })();
+            </script>
+          </div>
         </div>
       </div>
       <div id="pdSpecs">
       <div class="pd-section">
-        <h2>Spesifikasi PANASONIC CS-DN5CKJ AC SPLIT 1/2 PK STANDARD</h2>
+        <h2>Spesifikasi PANASONIC AC SPLIT STANDARD CS-DN5CKJ</h2>
         <table class="spec-table"><tbody>
           <tr><th scope="row">Produk SKU</th><td>CS-DN5CKJ</td></tr>
           <tr><th scope="row">Type</th><td>AC Standard</td></tr>

@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Daikin Beta Inverter FTKE",
+  "variant": "3/4 PK",
+  "title": "DAIKIN FTKE20YV14 AC SPLIT 3/4 PK BETA INVERTER",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Inverter\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Weekly Timer Operation\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB\r\r\n- Filter Gin-Ion",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "FTKE20YV14"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "615 (245 - 750) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "73 x 28 x 22 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor, 3 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "3/4 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "7000 (3400 - 8200) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "65 x 46 x 24 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "18 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.90"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1170000,
+  "featured": false,
+  "published": true
+}

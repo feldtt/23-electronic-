@@ -97,7 +97,8 @@ const byOrder = (a, b) => (a.order ?? 1000) - (b.order ?? 1000) || String(a.titl
 const isShown = (p) => p.published !== false && !RESERVED_IDS.has(p.id);
 // stock null = never filled in (shows nothing); 0 = sold out; >0 = available.
 const soldOut = (p) => p.stock === 0;
-const defaultMessage = (p) => p.wa_message?.trim() || `Halo 23 Electronic, mau tanya stok & harga ${String(p.title).trim()}.`;
+const fullName = (p) => [p.title, p.variant, p.model].map((x) => String(x ?? "").trim()).filter(Boolean).join(" ");
+const defaultMessage = (p) => p.wa_message?.trim() || `Halo 23 Electronic, mau tanya stok & harga ${fullName(p)}.`;
 
 function requireTitle(p) {
   const title = String(p.title ?? "").trim();
@@ -154,7 +155,7 @@ export function buildEntities(products) {
   return entities;
 }
 
-const entityTitle = (e) => (e.series ? e.series : requireTitle(e.lead));
+const entityTitle = (e) => requireTitle(e.lead);
 const entityByOrder = (a, b) => a.order - b.order || entityTitle(a).localeCompare(entityTitle(b));
 const allSoldOut = (e) => e.members.every(soldOut);
 const minPrice = (e) => {
@@ -186,10 +187,16 @@ function card(e, prefix = "") {
     const highest = maxPrice(e);
     // One price when all variants cost the same, otherwise the range. Hovering a chip shows that variant's price.
     priceText = !lowest ? "Cek harga via WA" : lowest === highest ? formatPrice(lowest) : `${formatPrice(lowest)} - ${formatPrice(highest).replace(/^Rp /, "")}`;
-    metaHtml = `<div class="card-variants">${e.members.map((m) => `<a class="cv-chip" href="${esc(`${href}#${m.id}`)}" title="Lihat ${esc(String(m.variant).trim())}" data-price="${esc(formatPrice(m.price) ?? "Cek harga via WA")}">${esc(String(m.variant).trim())}</a>`).join("")}</div>`;
+    const modelOf = (m) => String(m.model ?? "").trim();
+    const leadModel = modelOf(e.members[0]);
+    // Model (type) line first, PK chips below it. Hovering a chip swaps the model, price shows that PK too.
+    metaHtml = `${leadModel ? `<div class="card-model"><span>${esc(leadModel)}</span></div>` : ""}<div class="card-variants">${e.members.map((m) => `<a class="cv-chip" href="${esc(`${href}#${m.id}`)}" title="Lihat ${esc(String(m.variant).trim())}" data-model="${esc(modelOf(m))}" data-price="${esc(formatPrice(m.price) ?? "Cek harga via WA")}">${esc(String(m.variant).trim())}</a>`).join("")}</div>`;
     msg = `Halo 23 Electronic, mau tanya stok & harga ${title}.`;
   } else {
     priceText = formatPrice(p.price) ?? "Cek harga via WA";
+    const model = String(p.model ?? "").trim();
+    const pk = String(p.variant ?? "").trim();
+    metaHtml = model || pk ? `${model ? `<div class="card-model"><span>${esc(model)}</span></div>` : ""}${pk ? `<div class="card-variants"><span class="cv-chip">${esc(pk)}</span></div>` : ""}` : null;
     meta = p.description;
     msg = defaultMessage(p);
   }
@@ -211,6 +218,7 @@ export function buildSearchIndex(products) {
     return {
       t: entityTitle(e),
       u: `/produk/${e.id}.html`,
+      m: e.series ? "" : String(e.lead.model ?? "").trim(),
       c: e.category,
       g: e.groups,
       i: e.lead.photos[0] ?? "",
@@ -220,9 +228,9 @@ export function buildSearchIndex(products) {
         const n = pkValue(raw);
         return n === 99 ? null : n;
       }).filter((n) => n !== null))],
-      s: e.series ? e.members.map((m) => ({ v: String(m.variant).trim(), p: formatPrice(m.price) ?? "", id: m.id })) : undefined,
+      s: e.series ? e.members.map((m) => ({ v: String(m.variant).trim(), p: formatPrice(m.price) ?? "", id: m.id, mo: String(m.model ?? "").trim() })) : undefined,
       p: !lo ? "" : lo === hi ? formatPrice(lo) : `${formatPrice(lo)} - ${formatPrice(hi).replace(/^Rp /, "")}`,
-      k: [...new Set(e.members.flatMap((m) => [m.title, m.variant, m.id.replace(/-/g, " ")]))].filter(Boolean).join(" "),
+      k: [...new Set(e.members.flatMap((m) => [m.title, m.model, m.variant, m.id.replace(/-/g, " ")]))].filter(Boolean).join(" "),
     };
   });
 }
@@ -281,8 +289,10 @@ function relatedEntities(e, entities) {
 }
 
 // The parts of a detail page that change when another variant is picked.
-function view(p) {
+function view(p, isSeries = false) {
   const title = requireTitle(p);
+  const model = String(p.model ?? "").trim();
+  const sub = isSeries ? model : [model, String(p.variant ?? "").trim()].filter(Boolean).join(" · ");
   const price = formatPrice(p.price);
   const description = String(p.description ?? "").trim();
 
@@ -303,7 +313,7 @@ function view(p) {
       : "";
   const specs = p.specs.length ? `
       <div class="pd-section">
-        <h2>Spesifikasi ${esc(title)}</h2>
+        <h2>Spesifikasi ${esc(title)}${model ? ` ${esc(model)}` : ""}</h2>
         <table class="spec-table"><tbody>
           ${p.specs.map((x) => `<tr><th scope="row">${esc(x.label)}</th><td>${esc(x.value)}</td></tr>`).join("\n          ")}
         </tbody></table>
@@ -316,7 +326,7 @@ function view(p) {
       </div>
 ` : "";
   return {
-    id: p.id, title, price, description, gallery,
+    id: p.id, title, model, sub, price, description, gallery,
     priceHtml: `${priceBlock}\n          ${stockBlock}`,
     specs, desc, msg: defaultMessage(p),
   };
@@ -325,9 +335,9 @@ function view(p) {
 function renderDetailPage(e, entities) {
   const isSeries = !!e.series;
   const p = e.lead;
-  const v = view(p);
-  const title = isSeries ? v.title : v.title;
-  const crumbTitle = isSeries ? e.series : v.title;
+  const v = view(p, isSeries);
+  const title = v.title;
+  const crumbTitle = v.title;
   const href = `${e.id}.html`;
   const cat = CATEGORY_PAGES[p.category];
   const groups = e.groups;
@@ -339,6 +349,7 @@ function renderDetailPage(e, entities) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: title,
+    ...(v.model ? { mpn: v.model } : {}),
     ...(v.description ? { description: v.description } : {}),
     ...(p.photos.length ? { image: p.photos.map(absolute) } : {}),
     category: p.categoryLabel,
@@ -358,8 +369,8 @@ function renderDetailPage(e, entities) {
 
   const data = isSeries
     ? JSON.stringify(Object.fromEntries(e.members.map((m) => {
-        const mv = view(m);
-        return [m.id, { variant: String(m.variant).trim(), title: mv.title, gallery: mv.gallery, price: mv.priceHtml, specs: mv.specs, desc: mv.desc, msg: mv.msg }];
+        const mv = view(m, true);
+        return [m.id, { variant: String(m.variant).trim(), title: mv.title, sub: mv.sub, gallery: mv.gallery, price: mv.priceHtml, specs: mv.specs, desc: mv.desc, msg: mv.msg }];
       }))).replace(/</g, "\\u003c")
     : "";
   const seriesScript = isSeries ? `
@@ -372,6 +383,7 @@ function renderDetailPage(e, entities) {
         if (!v) return;
         document.getElementById('pdGallery').innerHTML = v.gallery;
         document.getElementById('pdTitle').textContent = v.title;
+        document.getElementById('pdSub').textContent = v.sub;
         document.getElementById('pdPrice').innerHTML = v.price;
         document.getElementById('pdSpecs').innerHTML = v.specs;
         document.getElementById('pdDesc').innerHTML = v.desc;
@@ -427,12 +439,35 @@ function renderDetailPage(e, entities) {
         </div>
         <div class="pd-info">
           ${groups.length ? `<div class="pd-tags">${groups.map((g) => `<span class="tag">${esc(g)}</span>`).join(" ")}</div>` : ""}
-          <h1 id="pdTitle">${esc(title)}</h1>${variantBlock}
+          <h1 id="pdTitle">${esc(title)}</h1>
+          <p class="pd-model" id="pdSub">${esc(v.sub)}</p>${variantBlock}
           <div id="pdPrice">
           ${v.priceHtml}
           </div>
           <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="${esc(v.msg)}" data-product="${esc(title)}">Chat WhatsApp</a>
-          <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
+          <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>${p.category === "ac" ? `
+          <div class="pd-install">
+            <div class="pd-install-h"><b>Jasa Pasang AC</b><span class="pd-install-price">Hubungi kami untuk harga</span></div>
+            <ul>
+              <li>Jasa pasang</li>
+              <li>Vakum</li>
+              <li>Pipa + kabel + selang 3m</li>
+              <li>Bracket outdoor</li>
+            </ul>
+            <a href="../pasang-ac.html" id="pdInstallBuy" class="btn btn-primary pd-install-buy">Beli dengan Jasa Pasang</a>
+            <a href="../pasang-ac.html?mode=satuan" class="pd-install-wa">Atau beli jasa satuan ›</a>
+            <script>
+              (function () {
+                var b = document.getElementById('pdInstallBuy');
+                b.addEventListener('click', function () {
+                  var t = document.getElementById('pdTitle'), s = document.getElementById('pdSub'), pk = document.querySelector('.pd-vbtn.on');
+                  var u = '../pasang-ac.html?produk=' + encodeURIComponent((t ? t.textContent : '') + (s && s.textContent ? ' ' + s.textContent : ''));
+                  if (pk) u += '&pk=' + encodeURIComponent(pk.textContent.trim());
+                  b.href = u;
+                });
+              })();
+            </script>
+          </div>` : ""}
         </div>
       </div>
       <div id="pdSpecs">${v.specs}</div>

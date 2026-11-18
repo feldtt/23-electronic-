@@ -3,9 +3,13 @@
   "group": [
     "Inverter"
   ],
-  "title": "LG K05NVA AC SPLIT 1/2 PK INVERTER TERMINATOR",
-  "photo": "",
-  "photos": [],
+  "variant": "1/2 PK",
+  "title": "LG AC SPLIT INVERTER TERMINATOR",
+  "model": "K05NVA",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Dual Swing: arah udara fleksibel ke segala arah\r\r\n- Watt Control: 4 level daya sesuai kebutuhan\r\r\n- Auto Cleaning: bagian dalam dikeringkan agar tetap higienis\r\r\n- Gold Fin: lapisan anti karat",
   "specs": [

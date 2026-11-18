@@ -1,0 +1,69 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "variant": "1/2 PK",
+  "title": "LG AC SPLIT",
+  "model": "K05NVB",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Dual Swing Auto: arah udara kiri-kanan diatur lewat remote\r\r\n- Watt Control: 4 level daya sesuai aktivitas\r\r\n- Dual Inverter Compressor: pendinginan cepat dan hemat listrik\r\r\n- Gold Fin: perlindungan korosi pada unit outdoor\r\r\n- Auto Cleaning: bagian dalam dikeringkan untuk mencegah jamur dan bakteri\r\r\n- Fine Dust Filter dan Pre-Filter\r\r\n- Smart Air Care dengan LG ThinQ: kontrol lewat aplikasi dan perintah suara",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "K05NVB"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "420 Watt"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "15,1 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.34"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

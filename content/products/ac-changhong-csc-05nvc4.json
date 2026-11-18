@@ -3,9 +3,13 @@
   "group": [
     "Standard"
   ],
-  "title": "Changhong CSC-05NVC4",
-  "photo": "",
-  "photos": [],
+  "variant": "1/2 PK",
+  "title": "CHANGHONG AC SPLIT",
+  "model": "CSC-05NVC4",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\n- Turbo Mode: pendinginan lebih cepat\r\n- Smart Mode: Menggunakan sensor otomatis untuk menyesuaikan pengaturan suhu dan kecepatan kipas berdasarkan kondisi suhu ruangan saat itu\r\n- Evaporator Self-Clean: Membersihkan dan mengeringkan bagian dalam unit indoor secara otomatis\r\n- Double Gold Fin:  Lapisan pelindung anti-karat di evap dan kondensor agar unit lebih awet dan tidak mudah bocor akibat korosi\r\n- Turbo Jet: Memaksimalkan kinerja kompresor dan kecepatan kipas agar suhu ruangan turun jauh lebih cepat saat AC pertama kali dinyalakan",
   "specs": [

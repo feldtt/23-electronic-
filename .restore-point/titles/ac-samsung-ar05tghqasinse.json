@@ -1,0 +1,79 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "title": "Samsung AR05TGHQASINSE",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Digital Inverter Technology: suhu stabil tanpa sering hidup-mati\r\r\n- Fast Cooling: kipas berputar maksimal untuk pendinginan lebih cepat\r\r\n- HD Filter: menyaring debu, alergen, dan serbuk\r\r\n- 2-Way Auto Swing: arah udara bergerak otomatis ke dua arah",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AR40F05D0AMNSE"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "381 (120 - 520) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "72 x 29 x 20 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 5 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 (1500 - 6300) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "67 x 47 x 26 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "19 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "5.15"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

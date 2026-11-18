@@ -1,0 +1,89 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "variant": "1/2 PK",
+  "title": "MITSUBISHI HEAVY INDUSTRIES AC SPLIT STANDARD",
+  "model": "SRK05CXP2-W3",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Dry Mode: menurunkan kelembapan ruangan\r\r\n- Economy Mode: hemat energi dengan pendinginan tetap nyaman\r\r\n- Self Clean: pembersihan otomatis setelah unit berhenti",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "SRK05CXP2-W3"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "330 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "72 x 19 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "7 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 3 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "72 x 27 x 50 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "19 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Tembaga"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "4.16"
+    },
+    {
+      "label": "EER Rating",
+      "value": "10.63"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

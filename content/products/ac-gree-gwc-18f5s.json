@@ -5,9 +5,12 @@
   ],
   "series": "Gree Inverter GWC F5S",
   "variant": "2 PK",
-  "title": "GREE GWC-18F5S / 18F5A AC SPLIT INVERTER 2 PK",
-  "photo": "",
-  "photos": [],
+  "title": "GREE AC SPLIT INVERTER",
+  "model": "GWC-18F5S / 18F5A",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Fast Cooling \"Turbo\": pendinginan ruangan sangat cepat\r\r\n- Smart Cleaner: evaporator dibersihkan otomatis\r\r\n- Mass Air Supply: hembusan kuat dengan suara halus\r\r\n- Goldfin dan Bluefin pada evaporator dan kondensor",
   "specs": [

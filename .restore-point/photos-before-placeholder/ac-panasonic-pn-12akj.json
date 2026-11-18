@@ -1,0 +1,67 @@
+{
+  "category": "ac",
+  "group": [],
+  "variant": "1,5 PK",
+  "title": "PANASONIC AC SPLIT STANDARD PLASMA",
+  "model": "CS-PN12AKJ",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Nanoe: pemurni udara yang mengurangi debu, bakteri, dan virus\r\r\n- Low Voltage: tetap bekerja pada tegangan rendah\r\r\n- Mode Powerful: pendinginan sangat cepat\r\r\n- Evaporator dan kondensor berlapis Bluefin",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "CS-PN12AKJ"
+    },
+    {
+      "label": "Type",
+      "value": "AC Plasma"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1020 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "80 x 29 x 20 cm"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Evaporator & Kompresor, 5 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "12000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "65 x 49 x 23 cm"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

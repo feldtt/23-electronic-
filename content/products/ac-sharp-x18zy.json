@@ -3,11 +3,14 @@
   "group": [
     "Inverter"
   ],
-  "series": "Sharp Inverter AH-X ZY",
+  "series": "SHARP AC SPLIT INVERTER ZY SERIES",
   "variant": "2 PK",
-  "title": "SHARP AH-X18ZY AC SPLIT 2 PK INVERTER",
-  "photo": "",
-  "photos": [],
+  "title": "SHARP AC SPLIT INVERTER ZY SERIES",
+  "model": "AH-X18ZY",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Powerful Jet\r\r\n- Eco Mode\r\r\n- Baby Sleep Mode\r\r\n- Two-Way Auto Swing\r\r\n- 7 Shield Protection\r\r\n- Jetstream\r\r\n- Coanda\r\r\n- Anti Rust Evaporator",
   "specs": [

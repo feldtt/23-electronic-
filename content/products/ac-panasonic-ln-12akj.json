@@ -1,9 +1,13 @@
 {
   "category": "ac",
   "group": [],
-  "title": "PANASONIC CS-LN12AKJ SI-BIRU AC SPLIT 1.5 PK STANDARD",
-  "photo": "",
-  "photos": [],
+  "variant": "1,5 PK",
+  "title": "PANASONIC AC SPLIT STANDARD",
+  "model": "CS-LN12AKJ SI-BIRU",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Si-BiRU: evaporator berlapis Blue Fin anti karat\r\r\n- Low Voltage: tetap bekerja pada tegangan rendah\r\r\n- Ecotough: unit outdoor dari material SuperDyma yang tahan karat",
   "specs": [

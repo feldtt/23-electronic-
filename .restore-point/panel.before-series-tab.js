@@ -1,0 +1,923 @@
+// Seller Center admin for 23 Electronic. Vanilla JS, talks to scripts/admin-server.mjs (port 8082).
+(() => {
+  const API = `http://${location.hostname}:8082/api`;
+  const $ = (s, el = document) => el.querySelector(s);
+  const view = $('#view');
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const nf = new Intl.NumberFormat('en-US');
+
+  const CATS = [
+    { v: 'ac', l: 'AC' }, { v: 'kulkas', l: 'Fridge' },
+    { v: 'mesin-cuci', l: 'Washing Machine' }, { v: 'tv', l: 'TV & Electronics' },
+  ];
+  const catLabel = (v) => tax.categories.find((c) => c.v === v)?.l || CATS.find((c) => c.v === v)?.l || String(v).replace(/-/g, ' ').replace(/\b\w/g, (m) => m.toUpperCase());
+  const slug = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  // Built-in categories plus any already used by products
+  let tax = { categories: [], groups: [] };
+  const allCats = () => {
+    const out = CATS.map((c) => ({ v: c.v, l: catLabel(c.v) }));
+    for (const c of tax.categories) if (!out.some((k) => k.v === c.v)) out.push(c);
+    for (const v of new Set(products.map((x) => x.category))) if (v && !out.some((k) => k.v === v)) out.push({ v, l: catLabel(v) });
+    return out;
+  };
+  const saveTax = (type, name) => api('/taxonomy', { method: 'POST', body: JSON.stringify({ type, name }) }).then((t) => { tax = t; }).catch((e) => toast(e.message, true));
+  const groupsOf = (p) => [].concat(p.group ?? []).map((x) => String(x).trim()).filter(Boolean);
+  const btnCss = 'flex:none;width:38px;padding:0;font-size:20px;line-height:1';
+  // Category: dropdown plus a "+" button that swaps to an inline input in the same row
+  const catFieldHtml = (cur) => {
+    const opts = allCats(); const known = opts.some((o) => o.v === cur);
+    return `<div style="display:flex;gap:6px"><select id="f_cat" style="flex:1">${opts.map((o) => `<option value="${esc(o.v)}" ${o.v === cur ? 'selected' : ''}>${esc(o.l)}</option>`).join('')}${cur && !known ? `<option value="${esc(cur)}" selected>${esc(catLabel(cur))}</option>` : ''}</select><input type="text" id="f_cat_new" placeholder="New category name" hidden style="flex:1"><button type="button" class="btn btn-ghost" id="f_cat_add" style="${btnCss}" title="Add new category">+</button></div>`;
+  };
+  const wireCat = (root) => {
+    const sel = root.querySelector('#f_cat'), inp = root.querySelector('#f_cat_new'), btn = root.querySelector('#f_cat_add');
+    const commit = () => {
+      const name = inp.value.trim(), v = slug(name);
+      if (v) {
+        if (![...sel.options].some((o) => o.value === v)) { sel.add(new Option(name, v)); saveTax('category', name); }
+        sel.value = v;
+      }
+      inp.value = ''; inp.hidden = true; sel.hidden = false; btn.textContent = '+';
+    };
+    btn.onclick = () => {
+      if (inp.hidden) { inp.hidden = false; sel.hidden = true; btn.textContent = '✓'; inp.focus(); } else commit();
+    };
+    inp.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); commit(); } };
+    return () => { if (!inp.hidden) commit(); return sel.value; };
+  };
+  // Sub-categories: chip box with an input and a "+" button; several allowed
+  // Custom pick list. Stays open after a pick; each item toggles on/off, so a wrong click is undone with one more click.
+  const suggest = (inp, host, items, isOn, toggle) => {
+    host.classList.add('sug-host');
+    const box = document.createElement('div'); box.className = 'sug'; box.hidden = true; host.appendChild(box);
+    const show = () => {
+      const k = inp.value.trim().toLowerCase();
+      const m = items().filter((g) => g.toLowerCase().includes(k));
+      box.innerHTML = m.map((g) => `<button type="button" class="${isOn(g) ? 'on' : ''}" data-v="${esc(g)}"><span class="ck">${isOn(g) ? '✓' : ''}</span>${esc(g)}</button>`).join('');
+      box.hidden = !m.length;
+    };
+    inp.addEventListener('focus', show); inp.addEventListener('click', show); inp.addEventListener('input', show);
+    host.addEventListener('mousedown', (e) => { if (!e.target.closest('.sug') && e.target !== inp && !e.target.closest('button')) { e.preventDefault(); inp.focus(); show(); } });
+    inp.addEventListener('blur', () => { box.hidden = true; });
+    box.addEventListener('mousedown', (e) => { const b = e.target.closest('button'); if (!b) return; e.preventDefault(); toggle(b.dataset.v); show(); inp.focus(); });
+    return show;
+  };
+  const groupFieldHtml = () => `<div id="f_group_box" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;border:1px solid var(--line,#ccc);border-radius:8px;padding:6px"><span id="f_group_chips" style="display:contents"></span><input type="text" id="f_group_in" placeholder="Type or pick a sub-category" style="flex:1;min-width:140px;border:0;outline:0;background:transparent"><button type="button" class="btn btn-ghost btn-sm" id="f_group_add" title="Pick from existing sub-categories (or type a new one)">+</button></div>`;
+  const wireGroups = (root, initial, all) => {
+    let list = [...initial];
+    const chips = root.querySelector('#f_group_chips'), inp = root.querySelector('#f_group_in');
+    const has = (g) => list.some((x) => x.toLowerCase() === g.toLowerCase());
+    let refresh = () => {};
+    const toggle = (g) => { if (has(g)) list = list.filter((x) => x.toLowerCase() !== g.toLowerCase()); else list.push(g); draw(); };
+    refresh = suggest(inp, root.querySelector('#f_group_box'), () => [...new Set([...all, ...list])], has, toggle);
+    const draw = () => {
+      chips.innerHTML = list.map((g, i) => `<span class="pill b" style="display:inline-flex;gap:6px;align-items:center">${esc(g)}<button type="button" data-i="${i}" aria-label="Remove" style="border:0;background:none;cursor:pointer;font-size:15px;line-height:1;color:inherit">×</button></span>`).join('');
+      chips.querySelectorAll('button').forEach((b) => (b.onclick = () => { list.splice(+b.dataset.i, 1); draw(); if (!inp.parentNode.querySelector('.sug').hidden) refresh(); }));
+    };
+    const add = () => { const v = inp.value.trim(); if (v && !list.some((x) => x.toLowerCase() === v.toLowerCase())) { list.push(v); saveTax('group', v); } inp.value = ''; draw(); };
+    // "+" opens the list of existing sub-categories (from the Categories page); typing a brand-new name and pressing "+" creates it
+    const plus = root.querySelector('#f_group_add');
+    plus.onmousedown = (e) => e.preventDefault();
+    plus.onclick = () => {
+      const v = inp.value.trim();
+      if (v && !all.some((x) => x.toLowerCase() === v.toLowerCase())) { add(); inp.focus(); }
+      else { inp.focus(); refresh(); }
+    };
+    inp.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); add(); } };
+    draw();
+    return () => { add(); return list; };
+  };
+
+
+  // ---------- custom dropdowns: every <select> gets the same look as the sub-category pick list ----------
+  function enhanceSelect(sel) {
+    if (sel._ui || sel.multiple) return;
+    const ui = document.createElement('div'); ui.className = 'dd sug-host';
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'dd-btn';
+    const box = document.createElement('div'); box.className = 'sug'; box.hidden = true;
+    ui.append(btn, box); sel.after(ui); sel.style.display = 'none'; sel._ui = ui;
+    const sync = () => { const o = sel.options[sel.selectedIndex]; btn.textContent = o ? o.textContent : ''; btn.classList.toggle('ph', !!o && o.value === ''); };
+    const close = () => { box.hidden = true; };
+    const open = () => {
+      box.innerHTML = [...sel.options].map((o, i) => `<button type="button" data-i="${i}" class="${i === sel.selectedIndex ? 'on' : ''}"><span class="ck">${i === sel.selectedIndex ? '✓' : ''}</span>${esc(o.textContent)}</button>`).join('');
+      box.hidden = false;
+    };
+    btn.onclick = () => { if (box.hidden) open(); else close(); };
+    box.addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      sel.selectedIndex = +b.dataset.i; sync(); close();
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    document.addEventListener('mousedown', (e) => { if (!ui.contains(e.target)) close(); });
+    ui.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    const proto = HTMLSelectElement.prototype;
+    for (const k of ['value', 'selectedIndex']) {
+      const d = Object.getOwnPropertyDescriptor(proto, k);
+      Object.defineProperty(sel, k, { configurable: true, get() { return d.get.call(this); }, set(v) { d.set.call(this, v); sync(); } });
+    }
+    const hd = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'hidden');
+    Object.defineProperty(sel, 'hidden', { configurable: true, get() { return hd.get.call(this); }, set(v) { hd.set.call(this, v); ui.hidden = !!v; } });
+    sel._sync = sync; sync();
+  }
+  const enhanceAll = () => document.querySelectorAll('select').forEach(enhanceSelect);
+  new MutationObserver(enhanceAll).observe(document.body, { childList: true, subtree: true });
+  enhanceAll();
+
+  // ---------- api ----------
+  async function api(path, opt = {}) {
+    const res = await fetch(API + path, {
+      ...opt,
+      headers: { 'X-Admin': '1', ...(opt.body && !(opt.body instanceof Blob) ? { 'Content-Type': 'application/json' } : {}), ...opt.headers },
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `Error ${res.status}`);
+    return data;
+  }
+
+  function toast(msg, err) {
+    const t = document.createElement('div');
+    t.className = 'toast' + (err ? ' err' : '');
+    t.textContent = msg;
+    $('#toasts').appendChild(t);
+    setTimeout(() => t.remove(), err ? 5000 : 2600);
+  }
+
+  async function checkServer() {
+    const el = $('#srv');
+    try {
+      await api('/products');
+      el.className = 'srv ok'; el.lastElementChild.textContent = 'Server online';
+      return true;
+    } catch {
+      el.className = 'srv bad'; el.lastElementChild.textContent = 'Server offline';
+      return false;
+    }
+  }
+  const offlineBanner = () => `<div class="banner"><b>The admin server is not running.</b> Open a new terminal in the project folder and run <span class="code">npm.cmd run admin</span>, then reload this page.</div>`;
+
+  // ---------- router ----------
+  const routes = { dashboard: renderDashboard, produk: renderProducts, kategori: renderTaxonomy };
+  const titles = { dashboard: 'Dashboard', produk: 'Products', kategori: 'Categories' };
+  function route() {
+    const name = (location.hash.match(/^#\/(\w+)/) || [])[1];
+    const r = routes[name] ? name : 'dashboard';
+    document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', a.dataset.route === r));
+    $('#pageTitle').textContent = titles[r];
+    $('#side').classList.remove('open');
+    routes[r]();
+  }
+  window.addEventListener('hashchange', route);
+  $('#burger').onclick = () => $('#side').classList.toggle('open');
+
+  let pending = false;
+  const setPending = (v) => { pending = v; $('#rebuildBtn').textContent = v ? 'Publish to website •' : 'Publish to website'; };
+  $('#rebuildBtn').onclick = async (e) => {
+    const b = e.currentTarget; b.disabled = true; b.textContent = 'Working…';
+    try {
+      const r = await api('/rebuild', { method: 'POST' });
+      if (r.ok) { setPending(false); toast('Website updated. Reload the shop page to see the changes.'); }
+      else toast('Failed: ' + (r.output || 'unknown').slice(0, 200), true);
+    } catch (err) { toast(err.message, true); }
+    b.disabled = false; setPending(pending);
+  };
+
+  // =====================================================================
+  // DASHBOARD
+  // =====================================================================
+  let days = 7;
+
+  function delta(cur, prev, suffix = '') {
+    if (!prev && !cur) return `<span class="d flat">–</span>`;
+    if (!prev) return `<span class="d up">▲ new</span>`;
+    const p = ((cur - prev) / prev) * 100;
+    const cls = p > 0.5 ? 'up' : p < -0.5 ? 'down' : 'flat';
+    const arrow = p > 0.5 ? '▲' : p < -0.5 ? '▼' : '■';
+    return `<span class="d ${cls}">${arrow} ${Math.abs(p).toFixed(0)}%${suffix}</span>`;
+  }
+  const pct = (x) => (x * 100).toFixed(1) + '%';
+  const niceMax = (m) => { if (m <= 5) return 5; const p = 10 ** Math.floor(Math.log10(m)); return Math.ceil(m / p) * p; };
+  const shortDate = (k) => { const [, m, d] = k.split('-'); return `${+d}/${+m}`; };
+  const dayName = (k) => new Date(k + 'T00:00').toLocaleDateString('en-US', { weekday: 'short', day: 'numeric', month: 'short' });
+
+  function lineChart(series) {
+    const W = 760, H = 250, L = 38, R = 12, T = 12, B = 28;
+    const iw = W - L - R, ih = H - T - B;
+    const max = niceMax(Math.max(1, ...series.map((s) => Math.max(s.visitors, s.waClicks))));
+    const x = (i) => L + (series.length === 1 ? iw / 2 : (i / (series.length - 1)) * iw);
+    const y = (v) => T + ih - (v / max) * ih;
+    const path = (k) => series.map((s, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(s[k]).toFixed(1)}`).join('');
+    const area = (k) => `${path(k)}L${x(series.length - 1)},${T + ih}L${x(0)},${T + ih}Z`;
+    let grid = '';
+    for (let i = 0; i <= 4; i++) {
+      const v = (max / 4) * i, yy = y(v);
+      grid += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" stroke="#eef0f3"/><text x="${L - 8}" y="${yy + 4}" text-anchor="end" font-size="11" fill="#8a92a0">${Math.round(v)}</text>`;
+    }
+    const step = Math.ceil(series.length / 8);
+    const labels = series.map((s, i) => (i % step === 0 || i === series.length - 1) ? `<text x="${x(i)}" y="${H - 8}" text-anchor="middle" font-size="11" fill="#8a92a0">${shortDate(s.date)}</text>` : '').join('');
+    const dots = series.length <= 31 ? series.map((s, i) => `<circle cx="${x(i)}" cy="${y(s.visitors)}" r="3" fill="#0f69ab"/><circle cx="${x(i)}" cy="${y(s.waClicks)}" r="3" fill="#25d366"/>`).join('') : '';
+    return `<div class="chart" id="lc"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Chart of visitors and WhatsApp clicks per day">
+      ${grid}${labels}
+      <path d="${area('visitors')}" fill="#0f69ab" opacity=".08"/>
+      <path d="${path('visitors')}" fill="none" stroke="#0f69ab" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="${path('waClicks')}" fill="none" stroke="#25d366" stroke-width="2.2" stroke-linejoin="round"/>
+      ${dots}<line id="lcx" y1="${T}" y2="${T + ih}" stroke="#c5cdd9" opacity="0"/>
+    </svg></div>`;
+  }
+  function wireChart(series) {
+    const box = $('#lc'); if (!box) return;
+    const svg = box.querySelector('svg'), vline = $('#lcx');
+    const tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; box.appendChild(tip);
+    svg.addEventListener('mousemove', (e) => {
+      const r = svg.getBoundingClientRect(), W = 760, L = 38, R = 12;
+      const px = ((e.clientX - r.left) / r.width) * W;
+      const i = Math.max(0, Math.min(series.length - 1, Math.round(((px - L) / (W - L - R)) * (series.length - 1))));
+      const s = series[i];
+      const cx = L + (series.length === 1 ? (W - L - R) / 2 : (i / (series.length - 1)) * (W - L - R));
+      vline.setAttribute('x1', cx); vline.setAttribute('x2', cx); vline.setAttribute('opacity', 1);
+      tip.hidden = false;
+      tip.style.left = `${(cx / W) * r.width}px`; tip.style.top = `${(e.clientY - r.top)}px`;
+      tip.innerHTML = `<b>${dayName(s.date)}</b>Visitors: ${s.visitors}<br>WhatsApp clicks: ${s.waClicks}<br>Page views: ${s.pageviews}`;
+    });
+    svg.addEventListener('mouseleave', () => { tip.hidden = true; vline.setAttribute('opacity', 0); });
+  }
+
+  function hourChart(hours) {
+    const W = 520, H = 170, L = 6, B = 22, T = 8, bw = (W - L) / 24;
+    const max = Math.max(1, ...hours.map((h) => h.pageviews));
+    const bars = hours.map((h, i) => {
+      const bh = (h.pageviews / max) * (H - B - T), wh = (h.waClicks / max) * (H - B - T);
+      const xx = L + i * bw;
+      return `<g><title>${String(i).padStart(2, '0')}:00 — ${h.pageviews} views, ${h.waClicks} WA clicks</title>
+        <rect x="${xx + 2}" y="${H - B - bh}" width="${bw - 4}" height="${Math.max(bh, h.pageviews ? 2 : 0)}" rx="3" fill="#c8def0"/>
+        <rect x="${xx + 2}" y="${H - B - wh}" width="${bw - 4}" height="${Math.max(wh, h.waClicks ? 2 : 0)}" rx="3" fill="#25d366"/>
+        ${i % 3 === 0 ? `<text x="${xx + bw / 2}" y="${H - 6}" text-anchor="middle" font-size="10.5" fill="#8a92a0">${String(i).padStart(2, '0')}</text>` : ''}</g>`;
+    }).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto" role="img" aria-label="Activity per hour">${bars}</svg>`;
+  }
+
+  function rankList(items, { valueKey, nameKey, subFn, green }) {
+    if (!items.length) return `<div class="empty">No data yet</div>`;
+    const max = Math.max(...items.map((i) => i[valueKey]));
+    return `<ol class="rank ${green ? 'g' : ''}">${items.map((it, i) => `<li>
+      <span class="n">${i + 1}</span>
+      <span class="nm" title="${esc(it[nameKey])}">${esc(it[nameKey])}${subFn ? `<small>${subFn(it)}</small>` : ''}</span>
+      <span class="vl">${nf.format(it[valueKey])}</span>
+      <span class="meter"><b style="width:${(it[valueKey] / max) * 100}%"></b></span></li>`).join('')}</ol>`;
+  }
+  const pageName = (p) => p === '/' || p === '/index.html' ? 'Home' : p.replace(/^\//, '').replace(/\.html$/, '').replace(/\/index$/, '') || p;
+  const ago = (t) => {
+    const s = Math.max(1, Math.round((Date.now() - t) / 1000));
+    if (s < 60) return `${s} s ago`; if (s < 3600) return `${Math.round(s / 60)} min ago`;
+    if (s < 86400) return `${Math.round(s / 3600)} h ago`; return `${Math.round(s / 86400)} d ago`;
+  };
+
+  async function renderDashboard() {
+    view.innerHTML = `<div class="empty">Loading…</div>`;
+    let s;
+    try { s = await api(`/stats?days=${days}`); } catch (e) { view.innerHTML = offlineBanner(); checkServer(); return; }
+    checkServer();
+    const c = s.current, p = s.previous;
+    const totalDev = s.devices.mobile + s.devices.desktop || 1;
+    const mPct = Math.round((s.devices.mobile / totalDev) * 100);
+    view.innerHTML = `
+      <div class="bar">
+        <p>Last ${days} days, compared with the previous ${days} days.</p>
+        <div class="seg">${[7, 30, 90].map((d) => `<button data-d="${d}" class="${d === days ? 'on' : ''}">${d} days</button>`).join('')}</div>
+      </div>
+      ${s.totalEventsEver === 0 ? `<div class="banner"><b>No data yet.</b> Open the website at <a href="/index.html" target="_blank">localhost:4321</a>, click a WhatsApp button, then reload this dashboard. Make sure <span class="code">npm.cmd run admin</span> is running.</div>` : ''}
+      <section class="kpis">
+        <div class="card kpi wa"><div class="k">WhatsApp button clicks</div><div class="v">${nf.format(c.waClicks)}</div><div>${delta(c.waClicks, p.waClicks)}<span class="foot">from ${nf.format(c.waVisitors)} people</span></div></div>
+        <div class="card kpi"><div class="k">Unique visitors</div><div class="v">${nf.format(c.visitors)}</div><div>${delta(c.visitors, p.visitors)}<span class="foot">vs previous period</span></div></div>
+        <div class="card kpi"><div class="k">Page views</div><div class="v">${nf.format(c.pageviews)}</div><div>${delta(c.pageviews, p.pageviews)}<span class="foot">${c.visitors ? (c.pageviews / c.visitors).toFixed(1) : '0'} per visitor</span></div></div>
+        <div class="card kpi"><div class="k">WhatsApp conversion</div><div class="v">${pct(c.conversion)}</div><div>${delta(c.conversion, p.conversion)}<span class="foot">visitors who chatted</span></div></div>
+      </section>
+      <section class="grid2">
+        <div class="card"><div class="card-h"><h2>Daily trend</h2><div class="legend"><span><i style="background:#0f69ab"></i>Visitors</span><span><i style="background:#25d366"></i>WhatsApp clicks</span></div></div><div class="card-b">${lineChart(s.series)}</div></div>
+        <div class="card"><div class="card-h"><h2>Devices</h2></div><div class="card-b">
+          <div class="split" title="Mobile ${mPct}%"><b style="width:${mPct}%"></b><i style="width:${100 - mPct}%;background:#c8def0"></i></div>
+          <div style="display:flex;justify-content:space-between"><span><span class="pill b">Mobile</span> ${nf.format(s.devices.mobile)}</span><span><span class="pill">Desktop</span> ${nf.format(s.devices.desktop)}</span></div>
+          <h2 style="font-size:15px;margin:22px 0 4px">Activity per hour</h2>
+          <div class="legend" style="margin:0 0 4px"><span><i style="background:#c8def0"></i>Views</span><span><i style="background:#25d366"></i>WA clicks</span></div>
+          ${hourChart(s.hours)}
+        </div></div>
+      </section>
+      <section class="grid3">
+        <div class="card"><div class="card-h"><h2>Most clicked products</h2><span class="sub">the "Tanya stok" button</span></div><div class="card-b">${rankList(s.topProducts, { valueKey: 'clicks', nameKey: 'name', green: true })}</div></div>
+        <div class="card"><div class="card-h"><h2>Top pages</h2></div><div class="card-b">${rankList(s.topPages.map((x) => ({ ...x, nm: pageName(x.path) })), { valueKey: 'views', nameKey: 'nm', subFn: (x) => `${x.waClicks} WA clicks` })}</div></div>
+        <div class="card"><div class="card-h"><h2>Traffic sources</h2></div><div class="card-b">${rankList(s.referrers, { valueKey: 'visits', nameKey: 'name' })}</div></div>
+        <div class="card"><div class="card-h"><h2>WhatsApp buttons clicked</h2></div><div class="card-b">${rankList(s.topButtons, { valueKey: 'clicks', nameKey: 'name', green: true })}</div></div>
+      </section>
+      <section class="card"><div class="card-h"><h2>Recent WhatsApp clicks</h2><span class="sub">also: ${c.callClicks} call clicks · ${c.mapsClicks} map clicks</span></div>
+        <div class="tbl-wrap">${s.recentWa.length ? `<table><thead><tr><th>Time</th><th>Page</th><th>Button / product</th><th>Device</th></tr></thead><tbody>${s.recentWa.map((r) => `<tr><td>${ago(r.t)}</td><td>${esc(pageName(r.path))}</td><td>${esc(r.product || r.label)}</td><td><span class="pill ${r.dev === 'mobile' ? 'b' : ''}">${r.dev === 'mobile' ? 'Mobile' : 'Desktop'}</span></td></tr>`).join('')}</tbody></table>` : `<div class="empty">No WhatsApp clicks yet</div>`}</div>
+      </section>`;
+    view.querySelectorAll('.seg button').forEach((b) => (b.onclick = () => { days = +b.dataset.d; renderDashboard(); }));
+    wireChart(s.series);
+  }
+
+  // =====================================================================
+  // PRODUCTS
+  // =====================================================================
+  let products = [], tab = 'all', q = '', sort = 'order', issueFilter = '';
+  const selected = new Set();
+
+  async function reloadAll() { products = await api('/products'); tax = await api('/taxonomy'); $('#navCount').textContent = products.length; }
+
+  async function renderProducts() {
+    view.innerHTML = `<div class="empty">Loading…</div>`;
+    try { await reloadAll(); } catch { view.innerHTML = offlineBanner(); checkServer(); return; }
+    checkServer();
+    selected.clear();
+    drawList(true);
+  }
+
+  const fmtNum = (n) => Number(n).toLocaleString('id-ID');
+  const parsePriceInput = (v) => { const d = String(v ?? '').replace(/[^\d]/g, ''); return d ? Number(d) : 0; };
+
+  // Data completeness: what a visitor would find missing on the product card
+  const issuesOf = (p) => {
+    const i = [];
+    if (!photosOf(p).length) i.push({ k: 'photo', l: 'No photo' });
+    if (!String(p.description || '').trim()) i.push({ k: 'desc', l: 'No description' });
+    if (!groupsOf(p).length) i.push({ k: 'group', l: 'No sub-category' });
+    if (p.stock === 0) i.push({ k: 'stock', l: 'Out of stock' });
+    return i;
+  };
+  const incomplete = (p) => issuesOf(p).some((x) => x.k !== 'stock');
+
+  function filtered() {
+    let list = products.filter((p) => (tab === 'all' || p.category === tab));
+    if (issueFilter === 'any') list = list.filter(incomplete);
+    else if (issueFilter) list = list.filter((p) => issuesOf(p).some((x) => x.k === issueFilter));
+    if (q) { const k = q.toLowerCase(); list = list.filter((p) => `${p.title} ${p.model || ''} ${p.variant || ''} ${groupsOf(p).join(' ')} ${p.description}`.toLowerCase().includes(k)); }
+    const cmp = {
+      order: (a, b) => (a.order ?? 1000) - (b.order ?? 1000) || a.title.localeCompare(b.title),
+      name: (a, b) => a.title.localeCompare(b.title),
+      hidden: (a, b) => (a.published === b.published ? 0 : a.published ? 1 : -1) || a.title.localeCompare(b.title),
+      stock: (a, b) => (a.stock ?? 1e9) - (b.stock ?? 1e9) || a.title.localeCompare(b.title),
+    }[sort];
+    return list.sort(cmp);
+  }
+
+  // Refresh tab counts and the "incomplete" banner in place (no full page redraw, so nothing flickers)
+  function updateCounts() {
+    document.querySelectorAll('#tabs button').forEach((b) => {
+      const n = products.filter((p) => b.dataset.t === 'all' || p.category === b.dataset.t).length;
+      const sp = b.querySelector('span'); if (sp && sp.textContent !== String(n)) sp.textContent = n;
+    });
+    const n = products.filter(incomplete).length, ban = $('#view > .banner.warn');
+    if (!n) { if (ban) ban.remove(); return; }
+    const html = `<b>${n} products are incomplete</b> (missing photo, description, or sub-category). <a href="#" id="showInc">Show</a>`;
+    if (ban) { if (ban.innerHTML !== html) { ban.innerHTML = html; } } else return;
+    const inc = $('#showInc'); if (inc) inc.onclick = (e) => { e.preventDefault(); issueFilter = 'any'; $('#issue').value = 'any'; drawList(false); };
+  }
+  async function bulk(action, value, okMsg) {
+    const ids = [...selected];
+    try {
+      const r = await api('/products/bulk', { method: 'POST', body: JSON.stringify({ ids, action, value }) });
+      await reloadAll();
+      if (action === 'delete') selected.clear(); else for (const id of [...selected]) if (!products.some((p) => p.id === id)) selected.delete(id);
+      setPending(true); updateCounts(); drawList(false);
+      toast(okMsg || `${r.changed} products updated`);
+    } catch (err) { toast(err.message, true); }
+  }
+
+  function drawBulk() {
+    const el = $('#bulk');
+    if (!selected.size) { el.hidden = true; return; }
+    const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
+    const selGroups = [...new Set(products.filter((p) => selected.has(p.id)).flatMap(groupsOf))].sort();
+    // The bar is built once and then only updated in place, so it never flickers
+    const setOpts = (sel, head, opts) => {
+      const cur = [...sel.options].map((o) => o.value).join(''), next = ['', ...opts.map((o) => o[0])].join('');
+      if (cur !== next) { sel.innerHTML = `<option value="">${head}</option>` + opts.map(([v, l]) => `<option value="${esc(v)}">${esc(l)}</option>`).join(''); }
+      sel.value = ''; if (sel._sync) sel._sync();
+    };
+    if (el.dataset.built) {
+      el.hidden = false;
+      $('#bk_count').textContent = `${selected.size} selected`;
+      setOpts($('#bk_add'), 'Add sub-category…', groups.map((g) => [g, g]));
+      setOpts($('#bk_rm'), 'Remove sub-category…', [...(selGroups.length ? [['__all__', 'All sub-categories']] : []), ...selGroups.map((g) => [g, g])]);
+      setOpts($('#bk_cat'), 'Move to category…', allCats().map((c) => [c.v, c.l]));
+      return;
+    }
+    el.dataset.built = '1';
+    el.hidden = false;
+    el.innerHTML = `<b id="bk_count">${selected.size} selected</b>
+      <button class="btn btn-ghost btn-sm" data-a="publish">Show</button>
+      <button class="btn btn-ghost btn-sm" data-a="hide">Hide</button>
+      <select id="bk_cat"><option value="">Move to category…</option>${allCats().map((c) => `<option value="${esc(c.v)}">${esc(c.l)}</option>`).join('')}</select>
+      <span class="inl"><input type="number" id="bk_stock" min="0" placeholder="Stock"><button class="btn btn-ghost btn-sm" data-a="stock">Set</button></span>
+      <span class="inl"><span class="prw"><input type="text" inputmode="numeric" id="bk_price" placeholder="Price"></span><button class="btn btn-ghost btn-sm" data-a="price">Set</button></span>
+      <select id="bk_add"><option value="">Add sub-category…</option>${groups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
+      <select id="bk_rm"><option value="">Remove sub-category…</option>${selGroups.length ? `<option value="__all__">All sub-categories</option>` : ''}${selGroups.map((g) => `<option value="${esc(g)}">${esc(g)}</option>`).join('')}</select>
+      <button class="btn btn-danger btn-sm" data-a="delete">Delete</button>
+      <button class="btn btn-ghost btn-sm" data-a="clear">Cancel</button>`;
+    $('#bk_add').onchange = (e) => { const v = e.target.value; if (v) bulk('addGroup', v, `Sub-category "${v}" added`); };
+    $('#bk_rm').onchange = (e) => {
+      const v = e.target.value; if (!v) return;
+      if (v === '__all__') bulk('clearGroup', null, 'Sub-categories cleared');
+      else bulk('removeGroup', v, `Sub-category "${v}" removed`);
+    };
+    let armed = false;
+    el.onclick = (e) => {
+      const b = e.target.closest('button[data-a]'); if (!b) return;
+      const a = b.dataset.a;
+      if (a === 'publish') bulk('publish', null, 'Product shown');
+      else if (a === 'hide') bulk('hide', null, 'Product hidden');
+      else if (a === 'clear') { selected.clear(); drawList(false); }
+      else if (a === 'stock') { const v = $('#bk_stock').value; if (v === '') return toast('Enter a stock number', true); bulk('stock', Number(v), 'Stock updated'); }
+      else if (a === 'price') { const v = $('#bk_price').value; if (v.trim() === '') return toast('Enter a price (0 clears it)', true); bulk('price', parsePriceInput(v), 'Price updated'); }
+      else if (a === 'delete') {
+        if (!armed) { armed = true; b.textContent = 'Click again to delete'; setTimeout(() => { armed = false; b.textContent = 'Delete'; }, 3500); return; }
+        bulk('delete', null, 'Product deleted');
+      }
+    };
+    $('#bk_cat').onchange = (e) => { if (e.target.value) bulk('category', e.target.value, 'Category moved'); };
+  }
+
+  function drawList(full) {
+    if (full) {
+      const count = (v) => products.filter((p) => v === 'all' || p.category === v).length;
+      const nIncomplete = products.filter(incomplete).length;
+      view.innerHTML = `
+        ${nIncomplete ? `<div class="banner warn"><b>${nIncomplete} products are incomplete</b> (missing photo, description, or sub-category). <a href="#" id="showInc">Show</a></div>` : ''}
+        <div class="card">
+          <div class="tabs" id="tabs">${[{ v: 'all', l: 'All' }, ...allCats()].map((c) => `<button data-t="${esc(c.v)}" class="${c.v === tab ? 'on' : ''}">${esc(c.l)}<span>${count(c.v)}</span></button>`).join('')}</div>
+          <div class="tools">
+            <label class="search"><svg viewBox="0 0 24 24"><path d="M10 2a8 8 0 105.3 14l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg><input id="q" type="search" placeholder="Search name, type, or description" value="${esc(q)}"></label>
+            <select id="sort"><option value="order">Display order</option><option value="name">Name A–Z</option><option value="stock">Lowest stock</option><option value="hidden">Hidden first</option></select>
+            <select id="issue"><option value="">All completeness</option><option value="any">Needs completing</option><option value="photo">No photo</option><option value="desc">No description</option><option value="group">No sub-category</option><option value="stock">Out of stock</option></select>
+            <button class="btn btn-ghost" id="impBtn">Import / Export</button>
+            <button class="btn" id="addBtn">+ Add product</button>
+          </div>
+          <div class="bulkbar" id="bulk" hidden></div>
+          <div class="tbl-wrap" id="tbl"></div>
+          <div class="pager" id="pager"></div>
+        </div>`;
+      $('#sort').value = sort; $('#issue').value = issueFilter;
+      $('#tabs').onclick = (e) => { const b = e.target.closest('button'); if (!b) return; tab = b.dataset.t; selected.clear(); drawList(true); };
+      $('#q').oninput = (e) => { q = e.target.value; drawList(false); };
+      $('#sort').onchange = (e) => { sort = e.target.value; drawList(false); };
+      $('#issue').onchange = (e) => { issueFilter = e.target.value; drawList(false); };
+      $('#addBtn').onclick = () => openDrawer(null);
+      $('#impBtn').onclick = openImport;
+      const inc = $('#showInc'); if (inc) inc.onclick = (e) => { e.preventDefault(); issueFilter = 'any'; $('#issue').value = 'any'; drawList(false); };
+    }
+    const list = filtered();
+    $('#pager').textContent = `Showing ${list.length} of ${products.length} products`;
+    const allOn = list.length && list.every((p) => selected.has(p.id));
+    $('#tbl').innerHTML = list.length ? `<table><thead><tr><th style="width:34px"><input type="checkbox" id="selAll" ${allOn ? 'checked' : ''} aria-label="Select all"></th><th>Product</th><th>Category / type</th><th>Stock</th><th>Price (Rp)</th><th>Visible</th><th></th></tr></thead><tbody>${list.map((p) => {
+      const iss = issuesOf(p).filter((x) => x.k !== 'stock');
+      return `
+      <tr data-id="${esc(p.id)}" class="${selected.has(p.id) ? 'sel' : ''}">
+        <td><input type="checkbox" class="pick" ${selected.has(p.id) ? 'checked' : ''} aria-label="Select"></td>
+        <td><div class="prod"><div class="thumb" style="${photosOf(p)[0] ? `background-image:url('${esc(photosOf(p)[0])}')` : ''}">${photosOf(p)[0] ? '' : 'No photo'}</div><div><b>${esc(p.title)}</b><small>${esc([p.model, p.variant].filter(Boolean).join(' · ') || p.description)}</small>${iss.length ? `<div class="issues">${iss.map((x) => `<span class="pill o">${x.l}</span>`).join('')}</div>` : ''}</div></div></td>
+        <td><span class="pill b">${esc(catLabel(p.category))}</span><div style="color:var(--muted);font-size:12px;margin-top:4px">${esc(groupsOf(p).join(', ') || '—')}</div></td>
+        <td>${p.stock == null ? '–' : p.stock > 0 ? p.stock : '<span class="pill o">Out</span>'}</td>
+        <td><span class="prw"><input type="text" inputmode="numeric" class="pr" value="${p.price > 0 ? fmtNum(p.price) : ''}" placeholder="Not set" aria-label="Price in Rupiah"></span></td>
+        <td><label class="sw"><input type="checkbox" class="tg" ${p.published !== false ? 'checked' : ''}><span></span></label></td>
+        <td><div class="row-act"><button class="btn btn-ghost btn-sm dup" title="Make a copy of this product">Duplicate</button><button class="btn btn-ghost btn-sm ed">Edit</button></div></td>
+      </tr>`; }).join('')}</tbody></table>` : `<div class="empty">No matching products.</div>`;
+    drawBulk();
+    const sa = $('#selAll');
+    if (sa) sa.onchange = () => { list.forEach((p) => (sa.checked ? selected.add(p.id) : selected.delete(p.id))); drawList(false); };
+    $('#tbl').querySelectorAll('tr[data-id]').forEach((tr) => {
+      const id = tr.dataset.id;
+      tr.querySelector('.pick').onchange = (e) => { e.target.checked ? selected.add(id) : selected.delete(id); tr.classList.toggle('sel', e.target.checked); drawBulk(); const s2 = $('#selAll'); if (s2) s2.checked = list.every((p) => selected.has(p.id)); };
+      tr.querySelector('.ed').onclick = () => openDrawer(products.find((p) => p.id === id));
+      tr.querySelector('.dup').onclick = () => {
+        const src = products.find((p) => p.id === id);
+        openDrawer(null, { ...src, title: `${src.title} (copy)`, published: false });
+      };
+      const pr = tr.querySelector('.pr');
+      pr.onfocus = () => pr.select();
+      pr.onkeydown = (e) => { if (e.key === 'Enter') pr.blur(); else if (e.key === 'Escape') { pr.value = (() => { const c = products.find((p) => p.id === id).price; return c > 0 ? fmtNum(c) : ''; })(); pr.blur(); } };
+      pr.onchange = async () => {
+        const cur = products.find((p) => p.id === id), price = parsePriceInput(pr.value);
+        if (price === (cur.price || 0)) { pr.value = price ? fmtNum(price) : ''; return; }
+        pr.disabled = true;
+        try {
+          const saved = await api(`/products/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ price }) });
+          Object.assign(cur, saved);
+          pr.value = saved.price > 0 ? fmtNum(saved.price) : '';
+          setPending(true); toast(saved.price > 0 ? `Price set to Rp ${fmtNum(saved.price)}` : 'Price cleared');
+        } catch (err) { pr.value = cur.price > 0 ? fmtNum(cur.price) : ''; toast(err.message, true); }
+        pr.disabled = false;
+      };
+      tr.querySelector('.tg').onchange = async (e) => {
+        const on = e.target.checked;
+        try {
+          const saved = await api(`/products/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ published: on }) });
+          Object.assign(products.find((p) => p.id === id), saved);
+          setPending(true); toast(on ? 'Product shown' : 'Product hidden');
+        } catch (err) { e.target.checked = !on; toast(err.message, true); }
+      };
+    });
+  }
+
+  // =====================================================================
+  // CATEGORIES (rename / delete categories and sub-categories)
+  // =====================================================================
+  async function renderTaxonomy() {
+    view.innerHTML = `<div class="empty">Loading…</div>`;
+    try { await reloadAll(); } catch { view.innerHTML = offlineBanner(); checkServer(); return; }
+    checkServer();
+    const BUILTIN = CATS.map((c) => c.v);
+    const cats = allCats().map((c) => ({ key: c.v, label: c.l, n: products.filter((p) => p.category === c.v).length, builtin: BUILTIN.includes(c.v) }));
+    const names = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort((a, b) => a.localeCompare(b));
+    const grps = names.map((g) => ({ key: g, label: g, n: products.filter((p) => groupsOf(p).some((x) => x.toLowerCase() === g.toLowerCase())).length }));
+    const note = 'color:var(--muted);font-size:12.5px';
+    const card = (type, title, items, hint) => `
+      <div class="card" data-card="${type}"><div class="card-h"><h2>${title}</h2><span class="sub">${items.length} total</span></div>
+        <div class="card-b" style="display:flex;gap:6px"><input type="text" class="tx-new" placeholder="New ${type === 'category' ? 'category' : 'sub-category'} name" style="flex:1"><button class="btn btn-primary btn-sm tx-add">+ Add</button></div>
+        <div class="card-b tx-bulk" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding-top:0">
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" class="tx-all"> Select all</label>
+          <span class="tx-count" style="${note}"></span>
+          ${type === 'group' ? '<button class="btn btn-ghost btn-sm tx-merge" disabled>Merge selected…</button>' : ''}
+          <button class="btn btn-danger btn-sm tx-del" disabled>Delete selected</button>
+        </div>
+        ${items.length ? `<div class="tbl-wrap"><table><thead><tr><th style="width:30px"></th><th>Name</th><th>Products</th><th></th></tr></thead><tbody>${items.map((c) => `
+          <tr data-key="${esc(c.key)}" data-n="${c.n}" data-builtin="${c.builtin ? 1 : 0}"><td><input type="checkbox" class="tx-sel"></td>
+          <td class="tx-name"><b>${esc(c.label)}</b>${c.builtin ? ' <span class="pill">built-in</span>' : ''}${type === 'category' ? `<div style="${note}">${esc(c.key)}</div>` : ''}</td><td>${c.n}</td>
+          <td class="tx-act"><div class="row-act"><button class="btn btn-ghost btn-sm rn">Rename</button>${c.builtin ? '' : '<button class="btn btn-danger btn-sm rm">Delete</button>'}</div></td></tr>`).join('')}</tbody></table></div>` : '<div class="empty">Nothing yet</div>'}
+        <div class="card-b" style="${note}">${hint}</div>
+      </div>`;
+    view.innerHTML = `<section class="grid2">
+      ${card('category', 'Categories', cats, 'Built-in categories have a website page, so they can only be renamed. A category can only be deleted when it has no products.')}
+      ${card('group', 'Sub-categories', grps, 'Renaming applies to all products. If the name matches another sub-category, the two are merged. Deleting only removes the sub-category from products; the products stay.')}
+    </section>`;
+
+    const done = (msg) => { setPending(true); toast(msg); renderTaxonomy(); };
+    const call = async (method, body) => { tax = await api('/taxonomy', { method, body: JSON.stringify(body) }); };
+    const labelOf = (type, key) => (type === 'category' ? catLabel(key) : key);
+
+    view.querySelectorAll('[data-card]').forEach((cardEl) => {
+      const type = cardEl.dataset.card;
+      const rows = () => [...cardEl.querySelectorAll('tbody tr')];
+      const selected = () => rows().filter((r) => r.querySelector('.tx-sel').checked);
+
+      const inp = cardEl.querySelector('.tx-new');
+      const add = async () => {
+        const v = inp.value.trim(); if (!v) return;
+        try { await call('POST', { type, name: v }); done('Added'); } catch (err) { toast(err.message, true); }
+      };
+      cardEl.querySelector('.tx-add').onclick = add;
+      inp.onkeydown = (e) => { if (e.key === 'Enter') add(); };
+
+      const delBtn = cardEl.querySelector('.tx-del'), mergeBtn = cardEl.querySelector('.tx-merge'), all = cardEl.querySelector('.tx-all');
+      const sync = () => {
+        const sel = selected();
+        cardEl.querySelector('.tx-count').textContent = sel.length ? `${sel.length} selected` : '';
+        delBtn.disabled = !sel.length;
+        if (mergeBtn) mergeBtn.disabled = sel.length < 2;
+        all.checked = !!sel.length && sel.length === rows().length;
+      };
+      rows().forEach((r) => { r.querySelector('.tx-sel').onchange = sync; });
+      all.onchange = () => { rows().forEach((r) => { r.querySelector('.tx-sel').checked = all.checked; }); sync(); };
+
+      // Bulk delete with an inline two-click confirm (no confirm() dialog)
+      const doBulkDelete = async () => {
+        const sel = selected(); let ok = 0; const fail = [];
+        for (const r of sel) {
+          if (type === 'category' && r.dataset.builtin === '1') { fail.push(`${labelOf(type, r.dataset.key)} (built-in)`); continue; }
+          try { await call('DELETE', { type, name: r.dataset.key }); ok++; } catch (err) { fail.push(`${labelOf(type, r.dataset.key)}: ${err.message}`); }
+        }
+        setPending(true);
+        toast(fail.length ? `Deleted ${ok}. Skipped: ${fail.join('; ')}` : `Deleted ${ok}`, !!fail.length);
+        renderTaxonomy();
+      };
+      let armed = null;
+      delBtn.onclick = () => {
+        if (armed) { clearTimeout(armed); armed = null; return doBulkDelete(); }
+        delBtn.textContent = 'Click again to confirm';
+        armed = setTimeout(() => { armed = null; delBtn.textContent = 'Delete selected'; }, 4000);
+      };
+
+      if (mergeBtn) mergeBtn.onclick = () => {
+        const sel = selected().map((r) => r.dataset.key);
+        const bar = cardEl.querySelector('.tx-bulk');
+        bar.innerHTML = `<span style="${note}">Merge ${sel.length} into:</span><input type="text" class="tx-mt" value="${esc(sel[0])}" style="flex:1;min-width:140px"><button class="btn btn-primary btn-sm tx-mgo">Merge</button><button class="btn btn-ghost btn-sm tx-mx">Cancel</button>`;
+        const t = bar.querySelector('.tx-mt'); t.focus(); t.select();
+        bar.querySelector('.tx-mx').onclick = () => renderTaxonomy();
+        const go = async () => {
+          const to = t.value.trim(); if (!to) return;
+          try { for (const k of sel) if (k !== to) await call('PUT', { type, from: k, to }); done('Merged'); } catch (err) { toast(err.message, true); }
+        };
+        bar.querySelector('.tx-mgo').onclick = go;
+        t.onkeydown = (e) => { if (e.key === 'Enter') go(); if (e.key === 'Escape') renderTaxonomy(); };
+      };
+
+      // Per-row rename / delete, inline (prompt()/confirm() are blocked in embedded browsers)
+      rows().forEach((tr) => {
+        const { key, n } = tr.dataset, label = labelOf(type, key);
+        const nameTd = tr.querySelector('.tx-name'), actTd = tr.querySelector('.tx-act');
+        const nameHtml = nameTd.innerHTML, actHtml = actTd.innerHTML;
+        const bind = () => {
+          tr.querySelector('.rn').onclick = () => {
+            nameTd.innerHTML = `<input type="text" value="${esc(label)}" style="width:100%">`;
+            actTd.innerHTML = '<div class="row-act"><button class="btn btn-primary btn-sm sv">Save</button><button class="btn btn-ghost btn-sm cx">Cancel</button></div>';
+            const t = nameTd.querySelector('input'); t.focus(); t.select();
+            const cancel = () => { nameTd.innerHTML = nameHtml; actTd.innerHTML = actHtml; bind(); };
+            const save = async () => {
+              const to = t.value.trim(); if (!to || to === label) return cancel();
+              try { await call('PUT', { type, from: key, to }); done('Renamed'); } catch (err) { toast(err.message, true); }
+            };
+            actTd.querySelector('.sv').onclick = save; actTd.querySelector('.cx').onclick = cancel;
+            t.onkeydown = (e) => { if (e.key === 'Enter') save(); if (e.key === 'Escape') cancel(); };
+          };
+          const rm = tr.querySelector('.rm');
+          if (rm) rm.onclick = () => {
+            const msg = type === 'group' && +n ? `Remove from ${n} products?` : 'Delete?';
+            actTd.innerHTML = `<div class="row-act"><span style="${note}">${msg}</span><button class="btn btn-danger btn-sm yes">Yes</button><button class="btn btn-ghost btn-sm no">No</button></div>`;
+            actTd.querySelector('.no').onclick = () => { actTd.innerHTML = actHtml; bind(); };
+            actTd.querySelector('.yes').onclick = async () => {
+              try { await call('DELETE', { type, name: key }); done('Deleted'); } catch (err) { toast(err.message, true); actTd.innerHTML = actHtml; bind(); }
+            };
+          };
+        };
+        bind();
+      });
+      sync();
+    });
+  }
+
+  // =====================================================================
+  // IMPORT / EXPORT (Excel or CSV)
+  // =====================================================================
+  const IMPORT_HEADERS = ['name', 'model', 'category', 'sub-category', 'series', 'variant', 'description', 'specs', 'stock', 'price', 'photo', 'alt', 'wa_message', 'featured', 'published'];
+  const SAMPLE_ROWS = [
+    ['Daikin AC Split Alpha Inverter', 'FTKH15YV14', 'AC', 'Available AC Units', 'Daikin Alpha Inverter FTKH', '1/2 PK', 'AC split ½ PK · 350 W · R32', 'Daya Listrik (Watt): 350 Watt\nTipe Refrigerant: R-32', 5, 3450000, 'daikin.jpg, daikin-2.jpg', 'Daikin STC15YV', '', 'yes', 'yes'],
+    ['Sharp Kulkas 1 Pintu', 'SJ-N162', 'Fridge', 'Fridge 1 Door; Fridge 2 Doors', '', '', '1-door fridge, 162 L', '', 3, 2100000, '', '', '', 'no', 'yes'],
+  ];
+  const specsText = (p) => (Array.isArray(p.specs) ? p.specs : []).map((x) => `${x.label}: ${x.value}`).join('\n');
+  const photosOf = (p) => (Array.isArray(p.photos) && p.photos.length ? p.photos : p.photo ? [p.photo] : []);
+  const PHOTO_HEADERS = ['photo', 'image', 'picture', 'foto', 'gambar'];
+
+  // Minimal CSV parser: quotes, BOM, and comma / semicolon / tab delimiters (Indonesian Excel saves CSV with ";")
+  function parseCsv(text) {
+    text = text.replace(/^﻿/, '');
+    if (/^sep=./i.test(text)) text = text.replace(/^[^\r\n]*\r?\n/, '');
+    const first = text.split(/\r?\n/, 1)[0];
+    const delim = [',', ';', '\t'].map((d) => [d, first.split(d).length]).sort((a, b) => b[1] - a[1])[0][0];
+    const rows = []; let row = [], cell = '', inQ = false;
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (inQ) {
+        if (ch === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else inQ = false; } else cell += ch;
+      } else if (ch === '"') inQ = true;
+      else if (ch === delim) { row.push(cell); cell = ''; }
+      else if (ch === '\n' || ch === '\r') { if (ch === '\r' && text[i + 1] === '\n') i++; row.push(cell); rows.push(row); row = []; cell = ''; }
+      else cell += ch;
+    }
+    if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+    return rows;
+  }
+  const gridToObjects = (grid) => {
+    const [head, ...body] = grid.filter((r) => r.some((c) => String(c).trim() !== ''));
+    if (!head) return [];
+    return body.map((r) => Object.fromEntries(head.map((h, i) => [String(h).trim(), r[i] ?? ''])));
+  };
+  const csvCell = (v) => { v = String(v ?? ''); return /[",;\r\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v; };
+  const gridToCsv = (grid) => '﻿sep=,\r\n' + grid.map((r) => r.map(csvCell).join(',')).join('\r\n');
+  function saveBlob(name, parts, type) {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(parts, { type }));
+    a.download = name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  let xlsxP;
+  const loadXlsx = () => window.XLSX ? Promise.resolve(window.XLSX) : (xlsxP ||= new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    s.onload = () => res(window.XLSX);
+    s.onerror = () => { xlsxP = null; rej(new Error('Could not load the Excel library (internet needed). Use the CSV version instead.')); };
+    document.head.appendChild(s);
+  }));
+  async function saveGrid(grid, base, kind) {
+    if (kind === 'csv') return saveBlob(`${base}.csv`, [gridToCsv(grid)], 'text/csv;charset=utf-8');
+    const X = await loadXlsx();
+    const ws = X.utils.aoa_to_sheet(grid);
+    ws['!cols'] = grid[0].map((h, i) => ({ wch: Math.min(60, Math.max(String(h).length + 2, ...grid.slice(1, 40).map((r) => String(r[i] ?? '').length + 2))) }));
+    const wb = X.utils.book_new(); X.utils.book_append_sheet(wb, ws, 'Products');
+    X.writeFile(wb, `${base}.xlsx`);
+  }
+  async function readSheetFile(file) {
+    if (/\.(csv|txt)$/i.test(file.name)) return gridToObjects(parseCsv(await file.text()));
+    const X = await loadXlsx();
+    const wb = X.read(await file.arrayBuffer(), { type: 'array' });
+    return X.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: '', raw: false });
+  }
+  const exportGrid = () => [IMPORT_HEADERS, ...products.map((p) => [
+    p.title, p.model || '', catLabel(p.category), groupsOf(p).join('; '), p.series || '', p.variant || '', p.description || '', specsText(p), p.stock ?? '', p.price > 0 ? p.price : '',
+    photosOf(p).map((x) => x.replace('/assets/uploads/', '')).join(', '), p.alt || '', p.wa_message || '', p.featured ? 'yes' : 'no', p.published === false ? 'no' : 'yes',
+  ])];
+
+  function openImport() {
+    ensureDrawer();
+    let rows = [];
+    const photoMap = {};
+    drawer.innerHTML = `
+      <div class="drawer-h"><h2>Import products</h2><button id="dx" aria-label="Close">×</button></div>
+      <div class="drawer-b imp">
+        <div class="fld"><label>1. Get the template</label>
+          <div class="imp-row"><button type="button" class="btn btn-ghost btn-sm" id="tplX">Excel template (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="tplC">CSV template</button><button type="button" class="btn btn-ghost btn-sm" id="expX">Export current products (.xlsx)</button><button type="button" class="btn btn-ghost btn-sm" id="expC">Export (.csv)</button></div>
+          <small>Columns: <b>name*</b> (without model and PK), model (sub heading, e.g. <b>FTKH15YV14</b>), <b>category*</b>, sub-category (separate several with <b>;</b>), series + variant (products with the same series name become one page with choice buttons, e.g. <b>1/2 PK</b>), description, specs (one <b>Label: value</b> per line inside the cell, shown as a table), stock, price (Rupiah, digits only), photo (file name; several separated by <b>,</b>, the first is the main photo), alt, wa_message, featured (yes/no, shows on the home page), published (yes/no). New categories and sub-categories are created automatically. Tip: export, edit in Excel, then import with "Update it".</small></div>
+        <div class="fld"><label for="imp_photos">2. Photos (optional)</label><input type="file" id="imp_photos" accept="image/jpeg,image/png,image/webp" multiple><small id="imp_pstat">Select the image files named in the photo column. They are uploaded right away.</small></div>
+        <div class="fld"><label for="imp_file">3. Spreadsheet file</label><input type="file" id="imp_file" accept=".xlsx,.xls,.csv,.txt"></div>
+        <div class="fld"><label>If a product already exists (same name and category)</label>
+          <label class="rad"><input type="radio" name="imp_mode" value="skip" checked> Skip it</label>
+          <label class="rad"><input type="radio" name="imp_mode" value="update"> Update it (empty cells keep the current value)</label></div>
+        <div id="imp_prev"></div>
+      </div>
+      <div class="drawer-f"><span></span><button type="button" class="btn btn-ghost" id="imp_cancel">Cancel</button><button type="button" class="btn" id="imp_go" disabled>Import</button></div>`;
+    requestAnimationFrame(() => { drawer.classList.add('on'); scrim.classList.add('on'); });
+    const g = (id) => $(id, drawer);
+    const mode = () => drawer.querySelector('input[name=imp_mode]:checked').value;
+    g('#dx').onclick = g('#imp_cancel').onclick = closeDrawer;
+    const guard = (fn) => async () => { try { await fn(); } catch (err) { toast(err.message, true); } };
+    g('#tplX').onclick = guard(() => saveGrid([IMPORT_HEADERS, ...SAMPLE_ROWS], 'product-import-template', 'xlsx'));
+    g('#tplC').onclick = guard(() => saveGrid([IMPORT_HEADERS, ...SAMPLE_ROWS], 'product-import-template', 'csv'));
+    g('#expX').onclick = guard(() => saveGrid(exportGrid(), 'products', 'xlsx'));
+    g('#expC').onclick = guard(() => saveGrid(exportGrid(), 'products', 'csv'));
+
+    const payload = () => rows.map((r) => {
+      const o = { ...r };
+      for (const k of Object.keys(o)) if (PHOTO_HEADERS.includes(k.trim().toLowerCase())) o[k] = String(o[k]).split(',').map((x) => x.trim()).filter(Boolean).map((x) => photoMap[x.toLowerCase()] || x).join(',');
+      return o;
+    });
+    async function preview() {
+      const box = g('#imp_prev'), go = g('#imp_go');
+      go.disabled = true;
+      if (!rows.length) { box.innerHTML = ''; return; }
+      box.innerHTML = '<div class="empty">Checking…</div>';
+      try {
+        const r = await api('/products/import', { method: 'POST', body: JSON.stringify({ rows: payload(), mode: mode(), dryRun: true }) });
+        const c = r.counts, pill = { created: 'g', updated: 'b', skipped: '', error: 'o' };
+        box.innerHTML = `<p class="imp-sum"><b>${c.created}</b> new · <b>${c.updated}</b> updated · <b>${c.skipped}</b> skipped · <b>${c.error}</b> with errors</p>
+          <div class="tbl-wrap imp-tbl"><table><thead><tr><th>Row</th><th>Name</th><th>Result</th><th>Note</th></tr></thead><tbody>${r.results.slice(0, 300).map((x) => `<tr><td>${x.row}</td><td>${esc(x.title)}</td><td><span class="pill ${pill[x.status]}">${x.status}</span></td><td>${esc(x.message)}</td></tr>`).join('')}</tbody></table></div>
+          ${r.results.length > 300 ? `<small>Showing the first 300 of ${r.results.length} rows.</small>` : ''}`;
+        go.disabled = c.created + c.updated === 0;
+        go.textContent = `Import ${c.created + c.updated} product${c.created + c.updated === 1 ? '' : 's'}`;
+      } catch (err) { box.innerHTML = ''; toast(err.message, true); }
+    }
+    drawer.querySelectorAll('input[name=imp_mode]').forEach((el) => (el.onchange = preview));
+    g('#imp_file').onchange = guard(async () => {
+      const f = g('#imp_file').files[0]; if (!f) return;
+      g('#imp_prev').innerHTML = '<div class="empty">Reading file…</div>';
+      rows = await readSheetFile(f);
+      if (!rows.length) { g('#imp_prev').innerHTML = '<div class="empty">No rows found in this file.</div>'; return; }
+      await preview();
+    });
+    g('#imp_photos').onchange = guard(async () => {
+      const files = [...g('#imp_photos').files]; if (!files.length) return;
+      const stat = g('#imp_pstat'); let ok = 0;
+      for (const f of files) {
+        stat.textContent = `Uploading ${ok + 1} of ${files.length}…`;
+        try { const r = await api(`/upload?name=${encodeURIComponent(f.name)}`, { method: 'POST', body: f }); photoMap[f.name.trim().toLowerCase()] = r.path; ok++; }
+        catch (err) { toast(`${f.name}: ${err.message}`, true); }
+      }
+      stat.textContent = `${ok} of ${files.length} photos uploaded.`;
+      await preview();
+    });
+    g('#imp_go').onclick = async () => {
+      const go = g('#imp_go'); go.disabled = true; go.textContent = 'Importing…';
+      try {
+        const r = await api('/products/import', { method: 'POST', body: JSON.stringify({ rows: payload(), mode: mode(), dryRun: false }) });
+        await reloadAll(); selected.clear(); setPending(true); closeDrawer(); drawList(true);
+        toast(`Imported: ${r.counts.created} new, ${r.counts.updated} updated, ${r.counts.skipped} skipped, ${r.counts.error} errors.`);
+      } catch (err) { toast(err.message, true); go.disabled = false; go.textContent = 'Import'; }
+    };
+  }
+
+  // ---------- drawer ----------
+  let drawer, scrim;
+  function ensureDrawer() {
+    if (drawer) return;
+    scrim = document.createElement('div'); scrim.className = 'scrim'; scrim.onclick = closeDrawer;
+    drawer = document.createElement('aside'); drawer.className = 'drawer';
+    document.body.append(scrim, drawer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+  }
+  function closeDrawer() { drawer?.classList.remove('on'); scrim?.classList.remove('on'); }
+
+  function openDrawer(p, tpl) {
+    ensureDrawer();
+    const isNew = !p;
+    const d = p ? { ...p } : tpl ? { ...tpl } : { category: tab !== 'all' ? tab : 'ac', group: '', series: '', variant: '', title: '', model: '', photo: '', photos: [], alt: '', description: '', specs: [], wa_message: '', order: 1000, stock: null, price: 0, featured: false, published: true };
+    const groups = [...new Set([...products.flatMap(groupsOf), ...tax.groups])].sort();
+    drawer.innerHTML = `
+      <div class="drawer-h"><h2>${isNew ? (tpl ? 'Duplicate product' : 'Add product') : 'Edit product'}</h2><button id="dx" aria-label="Close">×</button></div>
+      <form class="drawer-b" id="pf" autocomplete="off">
+        <div class="fld photo">
+          <div class="thumb" id="pth"></div>
+          <div>
+            <div class="drop" id="drop">Click or drag photos here<br><small>JPG, PNG, WebP · max 8 MB each · the first photo is the main one</small></div>
+            <input type="file" id="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+          </div>
+        </div>
+        <div class="pl" id="pl"></div>
+        <div class="fld"><label for="f_title">Name / model *</label><input type="text" id="f_title" required value="${esc(d.title)}"></div>
+        <div class="two">
+          <div class="fld"><label for="f_cat">Category</label>${catFieldHtml(d.category)}</div>
+          <div class="fld"><label for="f_stock">Stock</label><input type="number" id="f_stock" min="0" value="${d.stock ?? ''}" placeholder="Not tracked"><small>Empty = not shown on the website. 0 = "Stok habis".</small></div>
+        </div>
+        <div class="fld"><label for="f_price">Price (Rp)</label><span class="prw"><input type="text" inputmode="numeric" id="f_price" value="${d.price > 0 ? fmtNum(d.price) : ''}" placeholder="Not set"></span><small>Whole Rupiah, e.g. 3.450.000. Empty = card shows "Cek harga via WA".</small></div>
+        <div class="fld"><label for="f_group">Type / sub-categories</label>${groupFieldHtml()}<small>Section headings on the category page. You can add several; the product appears in each section.</small></div>
+        <div class="fld"><label for="f_model">Model / sub heading</label><input type="text" id="f_model" value="${esc(d.model)}" placeholder="e.g. FTKH15YV14"><small>Shown under the product title (the model code). Keep the title itself without model and PK, e.g. DAIKIN AC SPLIT ALPHA INVERTER.</small></div>
+        <div class="fld"><label for="f_series">Series (optional)</label><input type="text" id="f_series" value="${esc(d.series)}" placeholder="e.g. Daikin Alpha Inverter FTKH"><small>Products with the same series name are shown as ONE card and ONE page with choice buttons (needs 2 or more).</small></div>
+        <div class="fld"><label for="f_variant">Choice label</label><input type="text" id="f_variant" value="${esc(d.variant)}" placeholder="e.g. 1/2 PK"><small>The button text for this product inside the series (e.g. 1/2 PK, 3/4 PK, 1 PK).</small></div>
+        <div class="fld"><label for="f_desc">Short description</label><textarea id="f_desc">${esc(d.description)}</textarea><small>Example: AC split ½ PK · 350 W · R32</small></div>
+        <div class="fld"><label for="f_specs">Specifications (table)</label><textarea id="f_specs" rows="8" placeholder="Daya Listrik (Watt): 344 Watt&#10;Dimensi (p x t x l): 70 x 25 x 19 cm">${esc(specsText(d))}</textarea><small>One per line as <b>Label: value</b>. Shown as a table on the product page.</small></div>
+        <div class="fld"><label for="f_wa">Pre-filled WhatsApp message</label><textarea id="f_wa">${esc(d.wa_message)}</textarea><small>Empty = default message containing the product name.</small></div>
+        <div class="fld"><label for="f_alt">Photo alt text</label><input type="text" id="f_alt" value="${esc(d.alt)}"></div>
+        <div class="fld" style="display:flex;align-items:center;gap:12px"><label class="sw"><input type="checkbox" id="f_feat" ${d.featured ? 'checked' : ''}><span></span></label><b>Featured product</b><small>Shown in "Produk Unggulan" on the home page.</small></div>
+        <div class="fld" style="display:flex;align-items:center;gap:12px"><label class="sw"><input type="checkbox" id="f_pub" ${d.published !== false ? 'checked' : ''}><span></span></label><b>Show on website</b></div>
+        <div class="preview"><h4>Card preview</h4><div class="pc"><div class="thumb" id="pv_th"></div><div><b id="pv_t"></b><div style="color:var(--muted);font-size:12.5px" id="pv_d"></div><span class="wa">Tanya stok</span></div></div></div>
+      </form>
+      <div class="drawer-f">
+        ${isNew ? '<span></span>' : '<button type="button" class="btn btn-danger" id="del">Delete</button>'}
+        <button type="button" class="btn btn-ghost" id="cancel">Cancel</button>
+        <button type="submit" class="btn" id="save" form="pf">Save</button>
+      </div>`;
+    requestAnimationFrame(() => { drawer.classList.add('on'); scrim.classList.add('on'); });
+
+    const g = (id) => $(id, drawer);
+    const getCat = wireCat(drawer), getGroup = wireGroups(drawer, groupsOf(d), groups);
+    let photos = [...photosOf(d)];
+    const paint = () => {
+      const photo = photos[0] || '';
+      const bg = photo ? `url('${photo.replace(/'/g, '%27')}')` : 'none';
+      for (const id of ['#pth', '#pv_th']) { const el = g(id); el.style.backgroundImage = bg; el.textContent = photo ? '' : 'No photo'; }
+      g('#pv_t').textContent = g('#f_title').value || 'Product name';
+      g('#pv_d').textContent = g('#f_desc').value || 'Short description';
+      g('#pl').innerHTML = photos.map((src, i) => `<div class="pli${i === 0 ? ' main' : ''}" style="background-image:url('${src.replace(/'/g, '%27')}')"><button type="button" data-i="${i}" data-a="rm" title="Remove" aria-label="Remove photo">×</button>${i === 0 ? '<span>Main</span>' : `<button type="button" data-i="${i}" data-a="main" class="mk">Make main</button>`}</div>`).join('');
+    };
+    g('#pl').onclick = (e) => {
+      const b = e.target.closest('button[data-i]'); if (!b) return;
+      const i = Number(b.dataset.i);
+      if (b.dataset.a === 'rm') photos.splice(i, 1);
+      else photos.unshift(...photos.splice(i, 1));
+      paint();
+    };
+    paint();
+    ['#f_title', '#f_desc'].forEach((id) => g(id).addEventListener('input', paint));
+    g('#dx').onclick = g('#cancel').onclick = closeDrawer;
+
+    const drop = g('#drop'), file = g('#file');
+    drop.onclick = () => file.click();
+    ['dragenter', 'dragover'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add('over'); }));
+    ['dragleave', 'drop'].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove('over'); }));
+    drop.addEventListener('drop', (e) => upload([...e.dataTransfer.files]));
+    file.onchange = () => { upload([...file.files]); file.value = ''; };
+    async function upload(list) {
+      if (!list.length) return;
+      const idle = 'Click or drag photos here<br><small>JPG, PNG, WebP · max 8 MB each · the first photo is the main one</small>';
+      let ok = 0;
+      for (const f of list) {
+        drop.textContent = `Uploading ${ok + 1} of ${list.length}…`;
+        try {
+          const r = await api(`/upload?name=${encodeURIComponent(f.name)}`, { method: 'POST', body: f });
+          photos.push(r.path); ok++;
+          if (!g('#f_alt').value) g('#f_alt').value = g('#f_title').value;
+          paint();
+        } catch (err) { toast(`${f.name}: ${err.message}`, true); }
+      }
+      drop.innerHTML = ok ? `${ok} photo${ok === 1 ? '' : 's'} added. Click to add more.` : idle;
+    }
+
+    g('#pf').onsubmit = async (e) => {
+      e.preventDefault();
+      const body = {
+        category: getCat(), group: getGroup(), series: g('#f_series').value, variant: g('#f_variant').value, title: g('#f_title').value, model: g('#f_model').value, photos,
+        alt: g('#f_alt').value, description: g('#f_desc').value, specs: g('#f_specs').value, wa_message: g('#f_wa').value,
+        stock: g('#f_stock').value, price: parsePriceInput(g('#f_price').value), featured: g('#f_feat').checked, published: g('#f_pub').checked,
+      };
+      if (!body.category) return toast('Category is required', true);
+      const btn = g('#save'); btn.disabled = true;
+      try {
+        const saved = isNew
+          ? await api('/products', { method: 'POST', body: JSON.stringify(body) })
+          : await api(`/products/${encodeURIComponent(p.id)}`, { method: 'PUT', body: JSON.stringify(body) });
+        if (isNew) products.push(saved); else Object.assign(p, saved);
+        $('#navCount').textContent = products.length;
+        setPending(true); closeDrawer(); drawList(true);
+        toast("Saved. Click 'Publish to website' to show it in the shop.");
+      } catch (err) { toast(err.message, true); }
+      btn.disabled = false;
+    };
+    if (!isNew) {
+      let armed = false;
+      g('#del').onclick = async (e) => {
+        if (!armed) { armed = true; e.target.textContent = 'Click again to delete'; setTimeout(() => { armed = false; e.target.textContent = 'Delete'; }, 3500); return; }
+        try {
+          await api(`/products/${encodeURIComponent(p.id)}`, { method: 'DELETE' });
+          products = products.filter((x) => x.id !== p.id);
+          $('#navCount').textContent = products.length;
+          setPending(true); closeDrawer(); drawList(true); toast('Product deleted');
+        } catch (err) { toast(err.message, true); }
+      };
+    }
+  }
+
+  checkServer().then((ok) => { if (ok) api('/products').then((r) => ($('#navCount').textContent = r.length)).catch(() => {}); });
+  route();
+})();

@@ -1,0 +1,85 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "variant": "2 PK",
+  "title": "SHARP AC SPLIT STANDARD",
+  "model": "AH-A18ZCY",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Turbo Cooling\r\r\n- Self Diagnosis\r\r\n- Auto swing louver naik turun otomatis\r\r\n- Evaporator anti karat\r\r\n- X-Fan Function\r\r\n- Remote control mudah dengan timer sleep 12 jam",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "AH-A18ZCY"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "1640 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "97 x 30 x 22 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "14 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "1 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "17500 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "90 x 60 x 38 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "42 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "Bahan Evaporator & Kondensor",
+      "value": "Alumunium"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "3.31"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

@@ -5,9 +5,12 @@
   ],
   "series": "Daikin Super Mini Split FTC",
   "variant": "1,5 PK",
-  "title": "DAIKIN FTC35YV14 AC SPLIT 1,5 PK SUPER MINI SPLIT SERIES STANDARD",
-  "photo": "",
-  "photos": [],
+  "title": "DAIKIN AC SPLIT SUPER MINI SPLIT SERIES STANDARD",
+  "model": "FTC35YV14",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Powerful Operation\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Weekly Timer Operation\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Low Voltage Protection\r\r\n- Filter Gin-Ion",
   "specs": [

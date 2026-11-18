@@ -5,9 +5,12 @@
   ],
   "series": "Sharp Inverter Garuda AH-X BEY",
   "variant": "1/2 PK",
-  "title": "Sharp X06BEY",
-  "photo": "",
-  "photos": [],
+  "title": "SHARP AC SPLIT INVERTER GARUDA SERIES",
+  "model": "X06BEY",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- J-Tech Inverter\r\r\n- Watt Fit\r\r\n- Garuda Wing Airflow\r\r\n- Super Jet Mode\r\r\n- Coanda Air Flow\r\r\n- Remote Control",
   "specs": [

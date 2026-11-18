@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Inverter"
+  ],
+  "series": "Daikin Alpha Inverter FTKH",
+  "variant": "2,5 PK",
+  "title": "DAIKIN FTKH60YV14 AC SPLIT 2,5 PK ALPHA INVERTER",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Fast Cooling\r\r\n- Streamer Technology\r\r\n- Inverter\r\r\n- Enzyme Blue\r\r\n- Filter Gin-Ion\r\r\n- 3D AirFlow\r\r\n- Intelligent Eye\r\r\n- Wifi Smart Control\r\r\n- Auto Restart\r\r\n- Self Diagnosis\r\r\n- Timer ON/OFF\r\r\n- Wide Angle Louvre\r\r\n- Blue Fin Coating\r\r\n- Grey Hairpin\r\r\n- Super PCB",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "FTKH60YV14"
+    },
+    {
+      "label": "Type",
+      "value": "AC Inverter"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "2000 (380 - 2300) Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "99 x 30 x 29 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "13 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 5 Tahun Kompresor, 3 Tahun Jasa"
+    },
+    {
+      "label": "Daya PK",
+      "value": "2,5 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "22500 (6600 - 24500) BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀1/2"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "85 x 60 x 30 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "35 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "Indonesia"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "6.38"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1500000,
+  "featured": false,
+  "published": true
+}

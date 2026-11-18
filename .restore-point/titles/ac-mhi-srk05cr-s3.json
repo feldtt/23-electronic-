@@ -1,0 +1,55 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "title": "MHI SRK05CR-S3",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- High Power Operation: mode HI POWER 15 menit untuk pendinginan cepat\r\r\n- Energy Saving: teknologi hemat daya\r\r\n- Jet Flow: udara dingin menyebar merata dan cepat\r\r\n- Self Clean Operation: unit dikeringkan setelah dimatikan\r\r\n- Self Diagnostic: mendeteksi potensi gangguan\r\r\n- Auto Flap Up-Down: flap bergerak naik-turun otomatis\r\r\n- Auto Restart: menyala kembali dengan pengaturan yang sama setelah listrik padam",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "SRK05CR-S3"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "375 Watt"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "3 Tahun Sparepart, 5 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-410A"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Made In",
+      "value": "Thailand"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

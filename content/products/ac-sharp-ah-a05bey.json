@@ -5,9 +5,12 @@
   ],
   "series": "Sharp Standard Basic Garuda AH-A BEY2",
   "variant": "1/2 PK",
-  "title": "SHARP AH-A5BEY2 AC SPLIT 1/2 PK STANDARD BASIC GARUDA SERIES",
-  "photo": "",
-  "photos": [],
+  "title": "SHARP AC SPLIT STANDARD BASIC GARUDA SERIES",
+  "model": "AH-A5BEY2",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Garuda Wing Air Flow\r\r\n- Anti Rust Evaporator: material evaporator lebih tahan cuaca ekstrim dan korosi\r\r\n- Superjet Mode: beroperasi pada kecepatan Extra High untuk mendinginkan ruangan dengan cepat\r\r\n- Sleep Mode / Dark LED\r\r\n- Evaporator & Condenser tembaga\r\r\n- Jetstream\r\r\n- Coanda\r\r\n- Auto Swing Louver",
   "specs": [

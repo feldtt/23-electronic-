@@ -5,9 +5,12 @@
   ],
   "series": "Changhong Guardian CSC NVS4",
   "variant": "1 PK",
-  "title": "CHANGHONG CSC-09NVS4 AC SPLIT 1 PK STANDARD GUARDIAN SERIES",
-  "photo": "",
-  "photos": [],
+  "title": "CHANGHONG AC SPLIT STANDARD GUARDIAN SERIES",
+  "model": "CSC-09NVS4",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Gold Fin: sirip kondensor berwarna emas, tahan debu\r\r\n- Sleep Mode: kipas lebih pelan dan lampu redup saat tidur\r\r\n- Turbo Function: mendinginkan ruangan hingga 30% lebih cepat\r\r\n- Auto Clean: kipas tetap berputar 3 menit setelah dimatikan untuk mengeringkan unit",
   "specs": [

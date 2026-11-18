@@ -1,0 +1,81 @@
+{
+  "category": "ac",
+  "group": [
+    "Standard"
+  ],
+  "series": "Gree Deluxe Standard GWC N1A",
+  "variant": "1/2 PK",
+  "title": "GREE GWC-05N1 / 05N1A AC SPLIT 1/2 PK DELUXE STANDARD BLACK DIAMOND FIN",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\r\n- Outdoor I-Cool: tetap bekerja normal di cuaca sangat panas\r\r\n- Smart Cleaner System: bagian dalam AC dibersihkan otomatis\r\r\n- Indoor Goldfin, Outdoor Blackfin",
+  "specs": [
+    {
+      "label": "Produk SKU",
+      "value": "GWC-05N1-05N1A"
+    },
+    {
+      "label": "Type",
+      "value": "AC Standard"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Daya Listrik (Watt)",
+      "value": "385 Watt"
+    },
+    {
+      "label": "Dimensi (p x t x l)",
+      "value": "71 x 26 x 19 cm"
+    },
+    {
+      "label": "Berat",
+      "value": "8 Kg"
+    },
+    {
+      "label": "Garansi Produk",
+      "value": "5 Tahun Sparepart, 10 Tahun Kompresor"
+    },
+    {
+      "label": "Daya PK",
+      "value": "1/2 PK"
+    },
+    {
+      "label": "Kapasitas Pendinginan",
+      "value": "5000 BTU/h"
+    },
+    {
+      "label": "Tipe Refrigerant",
+      "value": "R-32"
+    },
+    {
+      "label": "Ukuran Pipa Cair & Gas (Inch)",
+      "value": "⌀1/4 ⌀3/8"
+    },
+    {
+      "label": "Dimensi Ou. (p x t x l)",
+      "value": "71 x 45 x 29 cm"
+    },
+    {
+      "label": "Berat Outdoor",
+      "value": "20 Kg"
+    },
+    {
+      "label": "Made In",
+      "value": "China"
+    },
+    {
+      "label": "CSPF Rating",
+      "value": "3.95"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1000000,
+  "featured": false,
+  "published": true
+}

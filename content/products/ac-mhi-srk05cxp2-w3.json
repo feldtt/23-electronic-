@@ -3,9 +3,13 @@
   "group": [
     "Standard"
   ],
-  "title": "MITSUBISHI HEAVY INDUSTRIES SRK05CXP2-W3 AC SPLIT 1/2 PK STANDARD",
-  "photo": "",
-  "photos": [],
+  "variant": "1/2 PK",
+  "title": "MITSUBISHI HEAVY INDUSTRIES AC SPLIT STANDARD",
+  "model": "SRK05CXP2-W3",
+  "photo": "/assets/uploads/placeholder-produk.png",
+  "photos": [
+    "/assets/uploads/placeholder-produk.png"
+  ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Dry Mode: menurunkan kelembapan ruangan\r\r\n- Economy Mode: hemat energi dengan pendinginan tetap nyaman\r\r\n- Self Clean: pembersihan otomatis setelah unit berhenti",
   "specs": [
