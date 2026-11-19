@@ -7,9 +7,9 @@
   "variant": "1/2 PK",
   "title": "GREE AC SPLIT LOW WATT",
   "model": "GWC-05C3ES",
-  "photo": "/assets/uploads/placeholder-produk.png",
+  "photo": "/assets/uploads/produk-ac-gree-gwc-05c3es.png",
   "photos": [
-    "/assets/uploads/placeholder-produk.png"
+    "/assets/uploads/produk-ac-gree-gwc-05c3es.png"
   ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Pengingat Pintar: mengingat suhu, kecepatan kipas, dan jam meski listrik padam\r\r\n- Restart Otomatis: menyala kembali dengan jeda cerdas saat listrik kembali\r\r\n- Self Diagnosis: status dan gangguan terdeteksi otomatis\r\r\n- Goldfin dan Bluefin pada evaporator dan kondensor",
@@ -84,5 +84,5 @@
   "stock": null,
   "price": 1000000,
   "featured": false,
-  "published": true
+  "published": false
 }

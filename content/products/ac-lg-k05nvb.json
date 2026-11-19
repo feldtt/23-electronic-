@@ -3,12 +3,13 @@
   "group": [
     "Inverter"
   ],
+  "series": "",
   "variant": "1/2 PK",
   "title": "LG AC SPLIT",
   "model": "K05NVB",
-  "photo": "/assets/uploads/placeholder-produk.png",
+  "photo": "/assets/uploads/produk-ac-lg-k05nvb.png",
   "photos": [
-    "/assets/uploads/placeholder-produk.png"
+    "/assets/uploads/produk-ac-lg-k05nvb.png"
   ],
   "alt": "",
   "description": "Fitur Utama:\r\r\n- Dual Swing Auto: arah udara kiri-kanan diatur lewat remote\r\r\n- Watt Control: 4 level daya sesuai aktivitas\r\r\n- Dual Inverter Compressor: pendinginan cepat dan hemat listrik\r\r\n- Gold Fin: perlindungan korosi pada unit outdoor\r\r\n- Auto Cleaning: bagian dalam dikeringkan untuk mencegah jamur dan bakteri\r\r\n- Fine Dust Filter dan Pre-Filter\r\r\n- Smart Air Care dengan LG ThinQ: kontrol lewat aplikasi dan perintah suara",
@@ -67,5 +68,5 @@
   "stock": null,
   "price": 1000000,
   "featured": false,
-  "published": true
+  "published": false
 }
