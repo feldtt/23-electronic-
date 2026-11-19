@@ -167,6 +167,14 @@ const maxPrice = (e) => {
   return prices.length ? Math.max(...prices) : null;
 };
 
+const brandOf = (t) => { const b = String(t).trim().split(/\s+/)[0].toLowerCase(); return b === "mitsubishi" ? "mhi" : b; };
+function pkLabel(m) {
+  const raw = String(m.variant || "").trim() || (String(m.title).match(/(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?)\s*PK/i) || [])[1];
+  const n = pkValue(raw);
+  if (n === 99) return "";
+  return n === 0.5 ? "1/2 PK" : n === 0.75 ? "3/4 PK" : `${String(n).replace(".", ",")} PK`;
+}
+
 // `prefix` is the path from the page to produk/, '' on produk/*.html and 'produk/' on the home page.
 function card(e, prefix = "") {
   const p = e.lead;
@@ -200,7 +208,9 @@ function card(e, prefix = "") {
     meta = p.description;
     msg = defaultMessage(p);
   }
-  return `<div class="card">
+  const brand = brandOf(p.title);
+  const pks = [...new Set(e.members.map((m) => pkLabel(m)).filter(Boolean))];
+  return `<div class="card" data-brand="${esc(brand)}" data-tipe="${esc(e.groups.join("|"))}" data-pk="${esc(pks.join("|"))}">
               ${img}
               <div class="card-body">
                 <h3><a class="card-title" href="${esc(href)}">${esc(title)}</a></h3>
@@ -258,8 +268,69 @@ export function renderCategory(products, category) {
     out += `<h2 style="${style}">${esc(name)}</h2>\n          <div class="grid-3">\n            ${list.map((e) => card(e)).join("\n            ")}\n          </div>\n          `;
     first = false;
   }
-  return out;
+  return category === "ac" ? wrapFilters(out, items) : out;
 }
+
+function filterBlock(key, title, opts) {
+  return `<div class="flt-group"><div class="flt-t">${title}</div>${opts.map(([v, l]) => `<label class="flt-o"><input type="checkbox" data-k="${key}" value="${esc(v)}"> <span>${esc(l)}</span></label>`).join("")}</div>`;
+}
+
+function wrapFilters(body, items) {
+  const cnt = (fn) => { const m = new Map(); for (const e of items) for (const v of new Set(fn(e))) m.set(v, (m.get(v) || 0) + 1); return m; };
+  const brands = cnt((e) => [brandOf(e.lead.title)]);
+  const tipes = cnt((e) => e.groups);
+  const pks = cnt((e) => e.members.map(pkLabel).filter(Boolean));
+  const brandName = (b) => (b.length <= 3 ? b.toUpperCase() : b[0].toUpperCase() + b.slice(1));
+  const sorted = (m, f) => [...m.keys()].sort(f);
+  const pkSort = (a, b) => pkValue(a) - pkValue(b);
+  return `<div class="flt-layout">
+          <aside class="flt" id="flt">
+            <div class="flt-head"><strong>Filter</strong><button type="button" class="flt-reset" id="fltReset">Reset</button></div>
+            ${filterBlock("brand", "Merek", sorted(brands).map((b) => [b, `${brandName(b)} (${brands.get(b)})`]))}
+            ${filterBlock("tipe", "Tipe AC", sorted(tipes).map((t) => [t, `${t} (${tipes.get(t)})`]))}
+            ${filterBlock("pk", "Daya (PK)", sorted(pks, pkSort).map((p) => [p, `${p} (${pks.get(p)})`]))}
+          </aside>
+          <div class="flt-main">
+            <button type="button" class="flt-toggle" id="fltToggle">Filter</button>
+            <div id="fltCount" class="flt-count"></div>
+            ${body}
+            <p id="fltEmpty" class="flt-empty" hidden>Tidak ada AC yang cocok. Coba kurangi filter atau tanya admin via WhatsApp.</p>
+          </div>
+        </div>
+        <script>
+        (function () {
+          var root = document.getElementById('flt'); if (!root) return;
+          var cards = [].slice.call(document.querySelectorAll('.flt-main .card'));
+          var boxes = [].slice.call(root.querySelectorAll('input'));
+          function apply() {
+            var sel = { brand: [], tipe: [], pk: [] };
+            boxes.forEach(function (b) { if (b.checked) sel[b.dataset.k].push(b.value); });
+            var shown = 0;
+            cards.forEach(function (c) {
+              var ok = Object.keys(sel).every(function (k) {
+                if (!sel[k].length) return true;
+                var have = (c.dataset[k] || '').split('|');
+                return sel[k].some(function (v) { return have.indexOf(v) > -1; });
+              });
+              c.style.display = ok ? '' : 'none';
+              if (ok) shown++;
+            });
+            document.querySelectorAll('.flt-main .grid-3').forEach(function (g) {
+              var any = [].some.call(g.children, function (c) { return c.style.display !== 'none'; });
+              g.style.display = any ? '' : 'none';
+              if (g.previousElementSibling) g.previousElementSibling.style.display = any ? '' : 'none';
+            });
+            document.getElementById('fltEmpty').hidden = shown > 0;
+            var active = boxes.some(function (b) { return b.checked; });
+            document.getElementById('fltCount').textContent = active ? shown + ' produk ditemukan' : '';
+          }
+          boxes.forEach(function (b) { b.addEventListener('change', apply); });
+          document.getElementById('fltReset').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); apply(); });
+          document.getElementById('fltToggle').addEventListener('click', function () { root.classList.toggle('open'); });
+        })();
+        </script>`;
+}
+
 
 // Home page: products ticked "Featured" in the admin. With none ticked, the hand-written
 // cards between the markers stay as they are.
