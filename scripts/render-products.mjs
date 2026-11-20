@@ -175,6 +175,20 @@ function pkLabel(m) {
   return n === 0.5 ? "1/2 PK" : n === 0.75 ? "3/4 PK" : `${String(n).replace(".", ",")} PK`;
 }
 
+// Long model codes that only differ at the end (AQR-DTM285CBP-ME / -PE / -BE) -> short labels (ME / PE / BE).
+// Returns null when the variants share no code prefix (PK sizes etc.).
+function shortLabels(members) {
+  const v = members.map((m) => String(m.variant).trim());
+  if (v.length < 2) return null;
+  let i = 0;
+  while (i < v[0].length && v.every((x) => x[i] !== undefined && x[i].toLowerCase() === v[0][i].toLowerCase())) i++;
+  const cut = v[0].slice(0, i).lastIndexOf("-") + 1;
+  if (cut < 3) return null;
+  const out = v.map((x) => x.slice(cut));
+  return out.every((x) => x && x.length <= 5) && new Set(out).size === out.length ? out : null;
+}
+const COLLAPSE_AT = 4;
+
 // `prefix` is the path from the page to produk/, '' on produk/*.html and 'produk/' on the home page.
 function card(e, prefix = "") {
   const p = e.lead;
@@ -198,7 +212,8 @@ function card(e, prefix = "") {
     const modelOf = (m) => String(m.model ?? "").trim();
     const leadModel = modelOf(e.members[0]);
     // Model (type) line first, PK chips below it. Hovering a chip swaps the model, price shows that PK too.
-    metaHtml = `${leadModel ? `<div class="card-model"><span>${esc(leadModel)}</span></div>` : ""}<div class="card-variants">${e.members.map((m) => `<a class="cv-chip" href="${esc(`${href}#${m.id}`)}" title="Lihat ${esc(String(m.variant).trim())}" data-model="${esc(modelOf(m))}" data-price="${esc(formatPrice(m.price) ?? "Cek harga via WA")}">${esc(String(m.variant).trim())}</a>`).join("")}</div>`;
+    const short = shortLabels(e.members);
+    metaHtml = `${leadModel ? `<div class="card-model"><span>${esc(leadModel)}</span></div>` : ""}<div class="card-variants">${e.members.map((m, mi) => `<a class="cv-chip" href="${esc(`${href}#${m.id}`)}" title="Lihat ${esc(String(m.variant).trim())}" data-model="${esc(modelOf(m))}" data-photo="${esc(m.photos[0] ?? "")}" data-price="${esc(formatPrice(m.price) ?? "Cek harga via WA")}">${esc(short ? short[mi] : String(m.variant).trim())}</a>`).join("")}</div>`;
     msg = `Halo 23 Electronic, mau tanya stok & harga ${title}.`;
   } else {
     priceText = formatPrice(p.price) ?? "Cek harga via WA";
@@ -238,7 +253,7 @@ export function buildSearchIndex(products) {
         const n = pkValue(raw);
         return n === 99 ? null : n;
       }).filter((n) => n !== null))],
-      s: e.series ? e.members.map((m) => ({ v: String(m.variant).trim(), p: formatPrice(m.price) ?? "", id: m.id, mo: String(m.model ?? "").trim() })) : undefined,
+      s: e.series ? e.members.map((m) => ({ v: String(m.variant).trim(), p: formatPrice(m.price) ?? "", id: m.id, mo: String(m.model ?? "").trim(), ph: m.photos[0] ?? "" })) : undefined,
       p: !lo ? "" : lo === hi ? formatPrice(lo) : `${formatPrice(lo)} - ${formatPrice(hi).replace(/^Rp /, "")}`,
       k: [...new Set(e.members.flatMap((m) => [m.title, m.model, m.variant, m.id.replace(/-/g, " ")]))].filter(Boolean).join(" "),
     };
@@ -432,10 +447,12 @@ function renderDetailPage(e, entities) {
 
   const crumbCat = cat ? `<a href="${cat.page}">${esc(p.categoryLabel)}</a>` : `<span>${esc(p.categoryLabel)}</span>`;
 
+  const pdShort = isSeries ? shortLabels(e.members) : null;
+  const vLabel = pdShort ? "Pilih model" : e.members.every((m) => /pk/i.test(String(m.variant))) ? "Pilih PK" : "Pilih varian";
   const variantBlock = isSeries ? `
-          <div class="pd-variants" role="group" aria-label="Pilih PK">
-            <span class="pd-vlabel">Pilih PK</span>
-            ${e.members.map((m, i) => `<button type="button" class="pd-vbtn${i === 0 ? " on" : ""}" data-id="${esc(m.id)}">${esc(String(m.variant).trim())}</button>`).join("\n            ")}
+          <div class="pd-variants" role="group" aria-label="${vLabel}">
+            <span class="pd-vlabel">${vLabel}</span>
+            ${e.members.map((m, i) => `<button type="button" class="pd-vbtn${i === 0 ? " on" : ""}" data-id="${esc(m.id)}" title="${esc(String(m.variant).trim())}">${esc(pdShort ? pdShort[i] : String(m.variant).trim())}</button>`).join("\n            ")}
           </div>` : "";
 
   const data = isSeries

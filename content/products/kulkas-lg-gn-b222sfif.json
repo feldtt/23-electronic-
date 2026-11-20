@@ -1,0 +1,65 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "LG GN-B222SFIF",
+  "variant": "GN-B222SFIF",
+  "title": "LG GN-B222SFIF",
+  "model": "GN-B222SFIF",
+  "photo": "/assets/uploads/produk-kulkas-lg-gn-b222sfif-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-lg-gn-b222sfif-1.png",
+    "/assets/uploads/produk-kulkas-lg-gn-b222sfif-2.png"
+  ],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Inverter Compressor\r\n- Total No Frost System\r\n- Multi Air Flow\r\n- Express Freeze\r\n- Desain Dark Graphite Steel dengan Horizontal Pocket Handle",
+  "specs": [
+    {
+      "label": "Tipe",
+      "value": "Top Freezer (2 Pintu)"
+    },
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "225 / 209 Liter"
+    },
+    {
+      "label": "Kapasitas Freezer / Kulkas (Netto)",
+      "value": "44 / 165 Liter"
+    },
+    {
+      "label": "Kompresor",
+      "value": "Inverter Compressor"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Multi Air Flow & Total No Frost"
+    },
+    {
+      "label": "Fitur Khusus",
+      "value": "Express Freeze"
+    },
+    {
+      "label": "Material / Warna Pintu",
+      "value": "PCM / Dark Graphite Steel"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "75 Watt"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "555 x 585 x 1520 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "41 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

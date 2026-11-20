@@ -1,0 +1,50 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Sharp SJ-195",
+  "variant": "SJ-195-MD-SR",
+  "title": "Sharp SJ-195",
+  "model": "SJ-195-MD-SR",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Geometric 2 Door Design\r\n- Fan Cooling System\r\n- Extra Big Freezer\r\n- Tempered Glass Tray\r\n- LED Lamp\r\n- Ice Twist\r\n- Big Crisper\r\n- Low Wattage\r\n- Low Voltage",
+  "specs": [
+    {
+      "label": "Seri",
+      "value": "Shine Magneglas Series"
+    },
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "172 / 152 Liter"
+    },
+    {
+      "label": "Bahan Pintu",
+      "value": "Steel Door"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Fan Cooling System"
+    },
+    {
+      "label": "Defrosting",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "48 Watt/jam (diuji pada suhu ruang 30 °C)"
+    },
+    {
+      "label": "Dimensi (D x L x T)",
+      "value": "550 x 535 x 1275 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

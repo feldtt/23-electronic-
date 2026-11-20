@@ -1,0 +1,78 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "LG GN-B202SQIR",
+  "variant": "GN-B202SQIR",
+  "title": "LG GN-B202SQIR",
+  "model": "GN-B202SQIR",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Multi Air Flow\r\n- Total No Frost\r\n- Rak Tempered Glass\r\n- Moist Balance Crisper\r\n- Big Veggie Box\r\n- Pocket Handle\r\n- Lampu LED\r\n- Kontrol suhu terpisah kulkas dan freezer",
+  "specs": [
+    {
+      "label": "Tipe",
+      "value": "Top Freezer"
+    },
+    {
+      "label": "Kapasitas Total (Gross)",
+      "value": "202 Liter"
+    },
+    {
+      "label": "Volume Penyimpanan",
+      "value": "187 Liter"
+    },
+    {
+      "label": "Volume Kulkas",
+      "value": "143 Liter"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Dark Graphite Steel"
+    },
+    {
+      "label": "Material Pintu",
+      "value": "PCM"
+    },
+    {
+      "label": "Tipe Kompresor",
+      "value": "Recipro Compressor"
+    },
+    {
+      "label": "Konsumsi Energi",
+      "value": "419,65 kWh/tahun"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "555 x 1400 x 585 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "39 kg"
+    },
+    {
+      "label": "Kontrol",
+      "value": "Knob putar"
+    },
+    {
+      "label": "Rak Tempered Glass",
+      "value": "2"
+    },
+    {
+      "label": "Rak Pintu Kulkas",
+      "value": "2 Full + 1 Half"
+    },
+    {
+      "label": "Lampu",
+      "value": "LED"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

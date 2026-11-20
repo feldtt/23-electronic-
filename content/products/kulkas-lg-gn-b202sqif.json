@@ -1,0 +1,34 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "LG GN-B202SQIF",
+  "variant": "GN-B202SQIF",
+  "title": "LG GN-B202SQIF",
+  "model": "GN-B202SQIF",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Inverter Compressor\r\n- Multi Air Flow\r\n- Total No Frost\r\n- Rak Tempered Glass\r\n- Moist Balance Crisper\r\n- Big Veggie Box\r\n- Lampu LED\r\n- Kontrol suhu terpisah kulkas dan freezer",
+  "specs": [
+    {
+      "label": "Tipe",
+      "value": "Top Freezer"
+    },
+    {
+      "label": "Kapasitas Total (Gross) / Penyimpanan",
+      "value": "202 / 187 Liter"
+    },
+    {
+      "label": "Tipe Kompresor",
+      "value": "Inverter Compressor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

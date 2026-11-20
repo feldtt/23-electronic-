@@ -293,7 +293,7 @@ function importProducts({ rows, mode, dryRun }) {
       if (!title) throw new Error("Missing name");
       if (!r.category) throw new Error("Missing category");
       const cat = resolveCategory(r.category, tax, existing);
-      const key = `${cat.v}|${title.toLowerCase()}`;
+      const key = `${cat.v}|${title.toLowerCase()}|${(r.model || r.variant).toLowerCase()}`;
       if (seen.has(key)) throw new Error("Duplicate of an earlier row in this file");
       seen.add(key);
       const warnings = [];
@@ -309,7 +309,12 @@ function importProducts({ rows, mode, dryRun }) {
         if (!PHOTO_RE.test(name) || !existsSync(path.join(uploadDirs[0], path.basename(name)))) warnings.push(`Photo "${name.replace("/assets/uploads/", "")}" not found`);
         else photos.push(name);
       }
-      const match = existing.find((p) => p.category === cat.v && String(p.title).trim().toLowerCase() === title.toLowerCase());
+      // Same title + different model/variant (e.g. SJ-236MG-GR vs SJ-236MG-GB) are separate products of one series.
+      const variantKey = (r.model || r.variant).toLowerCase();
+      const sameTitle = existing.filter((p) => p.category === cat.v && String(p.title).trim().toLowerCase() === title.toLowerCase());
+      const match = !variantKey ? sameTitle[0]
+        : sameTitle.find((p) => [p.model, p.variant].some((x) => String(x ?? "").trim().toLowerCase() === variantKey))
+          ?? sameTitle.find((p) => !String(p.model ?? "").trim() && !String(p.variant ?? "").trim());
       if (match && mode !== "update") { results.push({ row, title, status: "skipped", message: "Already exists" }); return; }
       const { id: matchId, ...base } = match ?? {};
       const next = { ...base, category: cat.v, title };

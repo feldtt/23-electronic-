@@ -1,0 +1,54 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Sharp SJ-316",
+  "variant": "SJ-316MN-HS",
+  "title": "Sharp SJ-316",
+  "model": "SJ-316MN-HS",
+  "photo": "/assets/uploads/produk-kulkas-sharp-sj-316-3-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-sharp-sj-316-3-1.png",
+    "/assets/uploads/produk-kulkas-sharp-sj-316-3-2.png",
+    "/assets/uploads/produk-kulkas-sharp-sj-316-3-3.png"
+  ],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Low Wattage & Voltage System (±72 Watt)\r\n- Mega Freezer & Mega Crisper Room\r\n- Double Fresh Room\r\n- 2 Tempered Glass Shelves\r\n- Large Bottle & Egg Pocket\r\n- Fan Cooling System\r\n- LED Lamp",
+  "specs": [
+    {
+      "label": "Tipe",
+      "value": "Top Freezer (2 Pintu)"
+    },
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "256 / 237 Liter"
+    },
+    {
+      "label": "Warna / Bahan Pintu",
+      "value": "Dark Silver / Steel Door"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Fan Cooling System"
+    },
+    {
+      "label": "Defrosting",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "Sekitar 72 Watt/jam"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "535 x 558 x 1630 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

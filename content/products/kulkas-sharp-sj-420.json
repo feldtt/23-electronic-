@@ -1,0 +1,76 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Sharp SJ-420",
+  "variant": "SJ-420-GP-SD",
+  "title": "Sharp SJ-420",
+  "model": "SJ-420-GP-SD",
+  "photo": "/assets/uploads/produk-kulkas-sharp-sj-420-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-sharp-sj-420-1.png"
+  ],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Plasmacluster Ion\r\n- Fan Cooling System\r\n- Tempered Glass Tray Full Frame\r\n- Luxurious LED Lamp\r\n- Extra Big Freezer\r\n- Express Ice Making\r\n- Nano Deodorizer\r\n- Twist Ice Cube Maker\r\n- No Frost",
+  "specs": [
+    {
+      "label": "Seri",
+      "value": "Big Kirei Series"
+    },
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "338 / 315 Liter"
+    },
+    {
+      "label": "Freezer (Gross / Netto)",
+      "value": "96 / 80 Liter"
+    },
+    {
+      "label": "Kulkas (Gross / Netto)",
+      "value": "242 / 235 Liter"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Silver"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Fan Cooling System"
+    },
+    {
+      "label": "Refrigerant",
+      "value": "HFC-134a"
+    },
+    {
+      "label": "Defrosting",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 - 240 V"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "78 Watt/jam (diuji pada suhu ruang 30 °C)"
+    },
+    {
+      "label": "Dimensi (D x L x T)",
+      "value": "655 x 590 x 1650 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "46 kg (nett) / 52 kg (gross)"
+    },
+    {
+      "label": "Pintu",
+      "value": "Dua pintu"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

@@ -3,6 +3,7 @@
   "group": [
     "Standard"
   ],
+  "series": "",
   "variant": "1/2 PK",
   "title": "POLYTRON AC SPLIT STANDARD",
   "model": "PAC 05VH",
@@ -11,7 +12,7 @@
     "/assets/uploads/produk-ac-polytron-pac-05vh.png"
   ],
   "alt": "",
-  "description": "Fitur Utama:\r\r\n- Auto Cleaning: evaporator dibersihkan otomatis\r\r\n- Leakage Detector: mendeteksi tanda kerusakan sistem pendingin sejak dini\r\r\n- Auto Restart: menyala kembali otomatis setelah listrik padam",
+  "description": "Fitur Utama:\r\r\r\n- Auto Cleaning: evaporator dibersihkan otomatis\r\r\r\n- Leakage Detector: mendeteksi tanda kerusakan sistem pendingin sejak dini\r\r\r\n- Auto Restart: menyala kembali otomatis setelah listrik padam",
   "specs": [
     {
       "label": "Produk SKU",

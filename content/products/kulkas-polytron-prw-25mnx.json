@@ -1,0 +1,54 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Polytron PRW-25MNX",
+  "variant": "PRW-25MNX",
+  "title": "Polytron PRW-25MNX",
+  "model": "PRW-25MNX",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Rak lebih lebar hingga 58 cm (Jumbo Capacity)\r\n- Borderless Round Edge Tempered Glass Door\r\n- Rak Tempered Glass dapat dipindahkan\r\n- Ice Twist Tray dapat dipindahkan\r\n- Hybrid Deodorizer\r\n- Automatic Defrost System\r\n- Bigger Bottle Pocket",
+  "specs": [
+    {
+      "label": "Kapasitas (Gross)",
+      "value": "240 Liter"
+    },
+    {
+      "label": "Volume Nett",
+      "value": "212,48 Liter"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "100 Watt"
+    },
+    {
+      "label": "Refrigerant",
+      "value": "R600a"
+    },
+    {
+      "label": "Dimensi Produk (L x D x T)",
+      "value": "58,7 x 57,6 x 150,9 cm"
+    },
+    {
+      "label": "Berat Nett",
+      "value": "48,3 kg"
+    },
+    {
+      "label": "Garansi Kompresor",
+      "value": "5 tahun"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

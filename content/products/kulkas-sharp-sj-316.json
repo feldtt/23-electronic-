@@ -1,0 +1,66 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Sharp SJ-316",
+  "variant": "SJ-316MG-GR",
+  "title": "Sharp SJ-316",
+  "model": "SJ-316MG-GR",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- Geometric 2 Door Design\r\n- Fan Cooling System\r\n- Extra Big Freezer\r\n- Tempered Glass Tray\r\n- LED Lamp\r\n- AG+ Nano Deo\r\n- Ice Twist\r\n- Big Crisper\r\n- Low Wattage\r\n- Low Voltage",
+  "specs": [
+    {
+      "label": "Seri",
+      "value": "Shine Magneglas Series"
+    },
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "256 / 237 Liter"
+    },
+    {
+      "label": "Freezer (Gross / Netto)",
+      "value": "68 / 55 Liter"
+    },
+    {
+      "label": "Kulkas (Gross / Netto)",
+      "value": "188 / 182 Liter"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Geometric Red"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Fan Cooling System"
+    },
+    {
+      "label": "Defrosting",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 - 240 V"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "100 Watt"
+    },
+    {
+      "label": "Dimensi (D x L x T)",
+      "value": "588 x 545 x 1630 mm"
+    },
+    {
+      "label": "Pintu",
+      "value": "Dua pintu"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

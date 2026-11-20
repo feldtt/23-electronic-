@@ -1,0 +1,70 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "Sharp SJ-236",
+  "variant": "SJ-236MN-HS",
+  "title": "Sharp SJ-236",
+  "model": "SJ-236MN-HS",
+  "photo": "/assets/uploads/produk-kulkas-sharp-sj-236-mn-hs-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-sharp-sj-236-mn-hs-1.png",
+    "/assets/uploads/produk-kulkas-sharp-sj-236-mn-hs-2.png",
+    "/assets/uploads/produk-kulkas-sharp-sj-236-mn-hs-3.png"
+  ],
+  "alt": "",
+  "description": "Fitur Utama:\r\n- MEGA Freezer\r\n- Deep Freezing (hingga -21 °C)\r\n- Wide LED Lighting\r\n- Deodorizer\r\n- Tempered Glass\r\n- 1 Utility Door Pocket\r\n- 1 Adjustable Shelf\r\n- Large Vegetable Case\r\n- Ice Twist Maker",
+  "specs": [
+    {
+      "label": "Kapasitas (Gross / Netto)",
+      "value": "205 / 187 Liter"
+    },
+    {
+      "label": "Freezer (Gross / Netto)",
+      "value": "43 / 40 Liter"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Elegant Dark Silver Finish"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Fan Cooling Technology"
+    },
+    {
+      "label": "Refrigerant",
+      "value": "R134a"
+    },
+    {
+      "label": "Defrosting",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 - 240 V"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "75 Watt"
+    },
+    {
+      "label": "Dimensi (D x L x T)",
+      "value": "588 x 545 x 1380 mm"
+    },
+    {
+      "label": "Pintu",
+      "value": "Dua pintu stainless steel"
+    },
+    {
+      "label": "Seri",
+      "value": "Kirei Series"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 1111111,
+  "featured": false,
+  "published": true
+}

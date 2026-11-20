@@ -1,0 +1,37 @@
+# Checklist sebelum tayang (dicek oleh owner)
+
+Centang satu per satu pada hari tayang. Daftar ini dibuat dari pencarian di `mockup/toko-23/` pada 20 Nov 2026,
+jadi tambahkan hal baru kalau muncul.
+
+## A. Konten placeholder (jangan tayang sebelum diganti atau disembunyikan)
+
+- [ ] **Review pelanggan di beranda** — `index.html` baris ~373-391 (3 kartu, "Pelanggan Ciputat/Pamulang/Cipayung · testimoni WA"). Ganti dengan ulasan asli (izin pelanggan) atau sembunyikan.
+- [ ] **Halaman Review & Testimoni** — `review-dan-testimoni.html` (9 `review-card`, teks "dari WhatsApp dan Google"). Sama: ganti atau sembunyikan.
+- [ ] **Promo** — `promo/index.html` baris ~34: "Belum ada promo aktif yang diverifikasi owner — placeholder berikut akan diisi...". Isi promo asli atau hapus halamannya dari menu.
+- [ ] **Foto pekerjaan service** — `jasa-service/service-ac-ciputat.html` baris ~98 ("Foto pekerjaan ditampilkan setelah..."). Ganti dengan foto asli atau hapus kalimat.
+- [ ] **Kartu layanan di beranda** — `index.html` bagian "Layanan Service AC Ciputat": 3 kartu memakai ikon abu-abu, bukan foto. Ganti dengan foto teknisi/pekerjaan.
+- [ ] **Foto toko** — `assets/uploads/store-front.jpg`, `store-front-wide.jpg`, `store-interior.jpg`: pastikan foto asli toko, bukan placeholder.
+- [ ] **Foto kulkas yang masih ikon** — produk kulkas tanpa foto (ascasca, GEA, Hisense, Polytron PRB-217/219/237, Sharp SJ-195 / SJ-316 MN-HS / SJ-571, Toshiba).
+- [ ] **Kalimat "contoh produk"** — `produk/index.html`, `index.html` baris ~157 dan ~447, `syarat-layanan.html` baris ~36: teks "contoh/ilustratif" boleh tetap, tapi cek apakah masih sesuai setelah katalog final.
+- [ ] **Harga "Cek harga via WA"** — semua produk masih tanpa harga; putuskan apakah harga ditampilkan saat tayang.
+- [ ] **Harga Jasa Pasang AC** — `pasang-ac.html` (`ITEMS`, `PIPE_PRICE`, `PAKET_PRICE` masih `null`).
+
+## B. Identitas toko (samakan dengan Google Maps)
+
+Dari Maps: **23 Elektronik**, Jalan Dewi Sartika No.90, Cipayung, Kec. Ciputat, Kota Tangerang Selatan, Banten 15411, buka setiap hari 08.00–21.00.
+
+- [ ] **Nama**: situs memakai "23 Electronic"; Maps memakai "23 Elektronik". Putuskan satu nama, samakan di Maps atau situs.
+- [ ] **Alamat lengkap** di footer/top bar/kontak/schema: sekarang "Jl. Dewi Sartika, Ciputat" atau "Cipayung / Ciputat" (tanpa No.90, kota, kode pos). Lokasi: `assets/partials.js` baris ~21, ~110, ~252; `kontak-lokasi.html` baris ~45; `index.html` baris ~344; `area-layanan/ciputat.html`; halaman tentang.
+- [ ] **Jam buka**: sudah cocok (08.00–21.00, Senin–Minggu).
+- [ ] **Nomor telepon** di Maps = nomor di situs (`628111523239`)?
+- [ ] **Tautan Maps** di `partials.js` (`share.google/...`) masih benar.
+- [ ] **Judul halaman dan teks** memakai kata "toko elektronik Ciputat", "jual AC Ciputat" (target pencarian).
+
+## C. Teknis
+
+- [ ] Domain dibeli (23electronic.com) dan diarahkan ke hosting; pertimbangkan `23elektronik.com` sebagai pengarah.
+- [ ] **Endpoint pelacakan** di `partials.js` masih `http://<host>:8082/api/track` — harus diganti ke alamat server asli (HTTPS).
+- [ ] **Panel admin** dipasang di subdomain (admin.23electronic.com) di balik login/Cloudflare Access; jangan buka tanpa login.
+- [ ] Setelah tayang: daftar Google Search Console, kirim sitemap, cek halaman terindeks.
+- [ ] Backup: commit dan push ke GitHub (pekerjaan hari ini belum di-commit pada 20 Nov 2026).
+- [ ] Uji di HP: beranda, halaman AC (filter), halaman produk (chip varian), tombol WhatsApp.

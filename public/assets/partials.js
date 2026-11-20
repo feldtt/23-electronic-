@@ -195,12 +195,32 @@
     const base = priceEl.textContent;
     const modelEl = chip.closest('.card-body')?.querySelector('.card-model span');
     const baseModel = modelEl ? modelEl.textContent : '';
-    const show = () => { priceEl.textContent = chip.dataset.price; if (modelEl && chip.dataset.model) modelEl.textContent = chip.dataset.model; };
-    const reset = () => { priceEl.textContent = base; if (modelEl) modelEl.textContent = baseModel; };
+    const imgEl = chip.closest('.card')?.querySelector('.card-img img');
+    const basePhoto = imgEl ? imgEl.getAttribute('src') : '';
+    // Preload the variant photo and swap only once it is decoded, so the card never goes blank (flicker).
+    let pre = null;
+    if (imgEl && chip.dataset.photo) { pre = new Image(); pre.src = chip.dataset.photo; }
+    const setPhoto = (src) => {
+      if (!imgEl || !src || imgEl.getAttribute('src') === src) return;
+      const next = src === chip.dataset.photo && pre ? pre : new Image();
+      if (next !== pre) next.src = src;
+      const tok = imgEl._tok = (imgEl._tok || 0) + 1;
+      const apply = () => { if (imgEl._tok !== tok) return; imgEl.removeAttribute('loading'); imgEl.src = src; };
+      (next.decode ? next.decode() : Promise.resolve()).then(apply, apply);
+    };
+    const show = () => { setPhoto(chip.dataset.photo); priceEl.textContent = chip.dataset.price; if (modelEl && chip.dataset.model) modelEl.textContent = chip.dataset.model; };
+    const reset = () => { setPhoto(basePhoto); priceEl.textContent = base; if (modelEl) modelEl.textContent = baseModel; };
     chip.addEventListener('mouseenter', show);
     chip.addEventListener('focus', show);
     chip.addEventListener('mouseleave', reset);
     chip.addEventListener('blur', reset);
+    // Touch screens have no hover: first tap on a chip previews it (photo, price, model), second tap opens the page.
+    chip.addEventListener('click', (ev) => {
+      if (!window.matchMedia('(hover: none)').matches || chip.dataset.preview === '1') return;
+      ev.preventDefault();
+      chip.closest('.card-variants')?.querySelectorAll('.cv-chip').forEach((c) => { c.dataset.preview = ''; c.classList.remove('on'); });
+      chip.dataset.preview = '1'; chip.classList.add('on'); show();
+    });
   });
   window.__wireChips();
 
@@ -387,7 +407,7 @@
     const card = (x, pk) => {
       const chips = (x.s || []).map((m) => {
         const hit = pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01;
-        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-model="${esc(m.mo || '')}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.v)}</a>` };
+        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-model="${esc(m.mo || '')}" data-photo="${esc(m.ph || '')}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.v)}</a>` };
       });
       const hit = (x.s || []).find((m) => pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01);
       const price = hit ? hit.p : x.p;
