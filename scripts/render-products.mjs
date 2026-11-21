@@ -180,6 +180,10 @@ function pkLabel(m) {
 function shortLabels(members) {
   const v = members.map((m) => String(m.variant).trim());
   if (v.length < 2) return null;
+  // 1) last dash segment as a short letter code (colour/finish): SJ-236MG-GB / SJ-236MN-HS -> GB / HS
+  const last = v.map((x) => (x.includes("-") ? x.slice(x.lastIndexOf("-") + 1) : ""));
+  if (last.every((x) => /^[A-Za-z]{2,4}$/.test(x)) && new Set(last.map((x) => x.toUpperCase())).size === last.length) return last;
+  // 2) otherwise whatever follows the shared code prefix, if short
   let i = 0;
   while (i < v[0].length && v.every((x) => x[i] !== undefined && x[i].toLowerCase() === v[0][i].toLowerCase())) i++;
   const cut = v[0].slice(0, i).lastIndexOf("-") + 1;
@@ -253,7 +257,7 @@ export function buildSearchIndex(products) {
         const n = pkValue(raw);
         return n === 99 ? null : n;
       }).filter((n) => n !== null))],
-      s: e.series ? e.members.map((m) => ({ v: String(m.variant).trim(), p: formatPrice(m.price) ?? "", id: m.id, mo: String(m.model ?? "").trim(), ph: m.photos[0] ?? "" })) : undefined,
+      s: e.series ? e.members.map((m, mi) => ({ v: String(m.variant).trim(), l: (shortLabels(e.members) || [])[mi] || "", p: formatPrice(m.price) ?? "", id: m.id, mo: String(m.model ?? "").trim(), ph: m.photos[0] ?? "" })) : undefined,
       p: !lo ? "" : lo === hi ? formatPrice(lo) : `${formatPrice(lo)} - ${formatPrice(hi).replace(/^Rp /, "")}`,
       k: [...new Set(e.members.flatMap((m) => [m.title, m.model, m.variant, m.id.replace(/-/g, " ")]))].filter(Boolean).join(" "),
     };

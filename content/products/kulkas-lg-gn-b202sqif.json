@@ -3,26 +3,58 @@
   "group": [
     "Kulkas 2 Pintu"
   ],
-  "series": "LG GN-B202SQIF",
-  "variant": "GN-B202SQIF",
-  "title": "LG GN-B202SQIF",
-  "model": "GN-B202SQIF",
-  "photo": "",
-  "photos": [],
+  "series": "LG GN-B202",
+  "variant": "SFIF · Inverter",
+  "title": "LG GN-B202",
+  "model": "GN-B202SFIF",
+  "photo": "/assets/uploads/produk-kulkas-lg-gn-b202sqif-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-lg-gn-b202sqif-1.png",
+    "/assets/uploads/produk-kulkas-lg-gn-b202sqif-2.png",
+    "/assets/uploads/produk-kulkas-lg-gn-b202sqif-3.png"
+  ],
   "alt": "",
-  "description": "Fitur Utama:\r\n- Inverter Compressor\r\n- Multi Air Flow\r\n- Total No Frost\r\n- Rak Tempered Glass\r\n- Moist Balance Crisper\r\n- Big Veggie Box\r\n- Lampu LED\r\n- Kontrol suhu terpisah kulkas dan freezer",
+  "description": "Fitur Utama:\r\n- Smart Inverter Compressor\r\n- LINEAR Cooling\r\n- Multi Air Flow\r\n- Total No Frost\r\n- Rak Tempered Glass\r\n- Moist Balance Crisper\r\n- Big Veggie Box\r\n- Lampu LED\r\n- Kontrol suhu terpisah kulkas dan freezer",
   "specs": [
     {
       "label": "Tipe",
-      "value": "Top Freezer"
+      "value": "Top Freezer (2 Pintu)"
     },
     {
-      "label": "Kapasitas Total (Gross) / Penyimpanan",
+      "label": "Kapasitas (Gross / Netto)",
       "value": "202 / 187 Liter"
     },
     {
-      "label": "Tipe Kompresor",
-      "value": "Inverter Compressor"
+      "label": "Volume Kulkas / Freezer",
+      "value": "143 / 44 Liter"
+    },
+    {
+      "label": "Kompresor",
+      "value": "Smart Inverter Compressor (BLDC)"
+    },
+    {
+      "label": "LINEAR Cooling",
+      "value": "Ya"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Dark Graphite Steel"
+    },
+    {
+      "label": "Konsumsi Energi",
+      "value": "330,7 kWh/tahun"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "555 x 1400 x 585 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "39 kg"
+    },
+    {
+      "label": "Pembuat Es",
+      "value": "Tray es manual dan wadah es"
     }
   ],
   "wa_message": "",

@@ -7,9 +7,11 @@
   "variant": "G2HD-217",
   "title": "GEA G2HD",
   "model": "G2HD-217",
-  "photo": "",
-  "photos": [],
-  "alt": "",
+  "photo": "/assets/uploads/produk-kulkas-gea-g2hd-2-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-gea-g2hd-2-1.png"
+  ],
+  "alt": "Kulkas GEA G2HD-217",
   "description": "",
   "specs": [],
   "wa_message": "",

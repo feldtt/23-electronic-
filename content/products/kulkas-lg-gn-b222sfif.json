@@ -10,7 +10,8 @@
   "photo": "/assets/uploads/produk-kulkas-lg-gn-b222sfif-1.png",
   "photos": [
     "/assets/uploads/produk-kulkas-lg-gn-b222sfif-1.png",
-    "/assets/uploads/produk-kulkas-lg-gn-b222sfif-2.png"
+    "/assets/uploads/produk-kulkas-lg-gn-b222sfif-2.png",
+    "/assets/uploads/produk-kulkas-lg-gn-b222sfif-3.png"
   ],
   "alt": "",
   "description": "Fitur Utama:\r\n- Inverter Compressor\r\n- Total No Frost System\r\n- Multi Air Flow\r\n- Express Freeze\r\n- Desain Dark Graphite Steel dengan Horizontal Pocket Handle",
@@ -54,6 +55,10 @@
     {
       "label": "Berat",
       "value": "41 kg"
+    },
+    {
+      "label": "Konsumsi Energi",
+      "value": "318,8 kWh/tahun"
     }
   ],
   "wa_message": "",

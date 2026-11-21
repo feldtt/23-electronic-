@@ -407,7 +407,7 @@
     const card = (x, pk) => {
       const chips = (x.s || []).map((m) => {
         const hit = pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01;
-        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-model="${esc(m.mo || '')}" data-photo="${esc(m.ph || '')}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.v)}</a>` };
+        return { hit, html: `<a class="cv-chip${hit ? ' on' : ''}" href="${esc(`${x.u}#${m.id}`)}" title="Lihat ${esc(m.v)}" data-model="${esc(m.mo || '')}" data-photo="${esc(m.ph || '')}" data-price="${esc(m.p || 'Cek harga via WA')}">${esc(m.l || m.v)}</a>` };
       });
       const hit = (x.s || []).find((m) => pk != null && Math.abs((pkNum(m.v) ?? -1) - pk) < 0.01);
       const price = hit ? hit.p : x.p;

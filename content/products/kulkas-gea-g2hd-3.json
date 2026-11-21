@@ -7,9 +7,11 @@
   "variant": "G2HD-198",
   "title": "GEA G2HD",
   "model": "G2HD-198",
-  "photo": "",
-  "photos": [],
-  "alt": "",
+  "photo": "/assets/uploads/produk-kulkas-gea-g2hd-3-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-gea-g2hd-3-1.png"
+  ],
+  "alt": "Kulkas GEA G2HD-198",
   "description": "",
   "specs": [],
   "wa_message": "",
