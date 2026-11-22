@@ -4,14 +4,53 @@
     "Kulkas 2 Pintu"
   ],
   "series": "Polytron PRB-219",
-  "variant": "PRB-219B",
+  "variant": "Biru",
   "title": "Polytron PRB-219",
   "model": "PRB-219B",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "",
-  "specs": [],
+  "photo": "/assets/uploads/produk-kulkas-polytron-prb-219-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-polytron-prb-219-1.png"
+  ],
+  "alt": "Kulkas 2 pintu Polytron PRB-219B 210 liter biru",
+  "description": "Kulkas 2 pintu Polytron 210 liter dengan pintu metallic motif bunga warna biru. Dilengkapi Ice Twist Pocket, sistem defrost otomatis, dan rak tempered glass yang bisa diatur. Hemat listrik di 100 watt dan garansi kompresor 5 tahun. Cocok untuk rumah maupun kantor.",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "210 liter (netto 176,44 liter)"
+    },
+    {
+      "label": "Warna",
+      "value": "Biru"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "100 Watt"
+    },
+    {
+      "label": "Refrigeran",
+      "value": "R600a"
+    },
+    {
+      "label": "Dimensi Produk (L x D x T)",
+      "value": "54,8 x 63,2 x 139,4 cm"
+    },
+    {
+      "label": "Dimensi Kemasan (L x D x T)",
+      "value": "58,5 x 65,5 x 148 cm"
+    },
+    {
+      "label": "Berat Bersih",
+      "value": "39,5 kg"
+    },
+    {
+      "label": "Fitur",
+      "value": "Ice Twist Pocket, Automatic Defrost, Rak Tempered Glass"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Kompresor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

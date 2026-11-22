@@ -12,8 +12,25 @@
     "/assets/uploads/produk-kulkas-gea-g2hd-2-1.png"
   ],
   "alt": "Kulkas GEA G2HD-217",
-  "description": "",
-  "specs": [],
+  "description": "Fitur Utama:\r\n- No Frost (tanpa bunga es)\r\n- Top freezer, freezer di atas\r\n- Pengatur suhu analog\r\n- Lampu interior LED\r\n- Pintu reversible (bukaan bisa dibalik)",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "217 Liter"
+    },
+    {
+      "label": "Tipe",
+      "value": "2 Pintu, Top Freezer"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "No Frost"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Kompresor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

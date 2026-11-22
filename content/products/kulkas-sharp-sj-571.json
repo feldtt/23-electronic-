@@ -8,11 +8,50 @@
   "variant": "SJ-IG571PG-BK",
   "title": "Sharp SJ-571",
   "model": "SJ-IG571PG-BK",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "",
-  "specs": [],
+  "photo": "/assets/uploads/produk-kulkas-sharp-sj-571-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-sharp-sj-571-1.png"
+  ],
+  "alt": "Kulkas Sharp SJ-IG571PG-BK",
+  "description": "Fitur Utama:\r\n- New J-Tech Inverter Compressor\r\n- Hybrid Cooling System\r\n- Plasmacluster\r\n- New Diagonal Handle Design\r\n- New Tempered Glass Door\r\n- Moveable Ice Tray\r\n- Tempered Glass Tray\r\n- LED Lamp\r\n- Ag+ Nano Deodorizer\r\n- Low Voltage & Low Wattage",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "394 Liter / 428 Liter"
+    },
+    {
+      "label": "Pintu",
+      "value": "2 Pintu"
+    },
+    {
+      "label": "Warna Pintu",
+      "value": "Hitam"
+    },
+    {
+      "label": "Sistem Pendingin",
+      "value": "Hybrid Cooling System"
+    },
+    {
+      "label": "Refrigeran",
+      "value": "R-600a (non-CFC)"
+    },
+    {
+      "label": "Sumber Listrik",
+      "value": "220 - 240 V"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "132 Watt"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "645 x 697 x 1.672 mm"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 10 Tahun Kompresor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

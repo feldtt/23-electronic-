@@ -6,12 +6,43 @@
   "series": "",
   "variant": "",
   "title": "Hisense RT266N4IBN",
-  "model": "",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "",
-  "specs": [],
+  "model": "RT266N4IBN",
+  "photo": "/assets/uploads/produk-kulkas-hisense-rt266n4ibn-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-hisense-rt266n4ibn-1.png"
+  ],
+  "alt": "Kulkas 2 pintu Hisense RT266N4IBN 222 liter",
+  "description": "Kulkas 2 pintu 222 liter dengan panel Premium Black Steel.\r\n- Total No Frost: tanpa embun beku, tidak ada es menumpuk dan tidak perlu dicairkan lagi, makanan tetap segar lebih lama.\r\n- One-line Handle: gagang satu baris yang rapi dan nyaman dipakai.\r\n- Desain Pintu 90°: laci bisa dibuka sepenuhnya tanpa menyisakan ruang ekstra, pas untuk tata letak dapur dan sudut dinding.\r\n- LED Lighting: lampu LED menerangi setiap sudut kulkas.\r\n- Big Door Balcony: rak pintu besar untuk botol besar, susu dan jus dalam box tinggi, serta dua baris kaleng dan botol.\r\n- Surround Cooling System: udara dingin dialirkan lewat ventilasi di tiap rak, suhu merata dan konstan.\r\n- Deodorizing Filter: menjaga udara di dalam tetap segar.",
+  "specs": [
+    {
+      "label": "Kapasitas Total",
+      "value": "Bruto 222 L / Netto 205 L"
+    },
+    {
+      "label": "Kapasitas Kulkas",
+      "value": "Netto 153 L"
+    },
+    {
+      "label": "Kapasitas Freezer",
+      "value": "Netto 52 L"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "550 x 562 x 1456 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "43 kg"
+    },
+    {
+      "label": "Fitur",
+      "value": "Total No Frost, Surround Cooling System, LED Lighting, Deodorizing Filter, Big Door Balcony, One-line Handle, Desain Pintu 90°"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 12 Tahun Kompresor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

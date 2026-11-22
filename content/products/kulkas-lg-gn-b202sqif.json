@@ -55,6 +55,14 @@
     {
       "label": "Pembuat Es",
       "value": "Tray es manual dan wadah es"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "70 Watt"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 10 Tahun Kompresor"
     }
   ],
   "wa_message": "",

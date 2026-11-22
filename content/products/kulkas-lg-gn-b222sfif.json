@@ -46,7 +46,7 @@
     },
     {
       "label": "Daya Listrik",
-      "value": "75 Watt"
+      "value": "70 Watt"
     },
     {
       "label": "Dimensi (L x D x T)",
@@ -59,6 +59,10 @@
     {
       "label": "Konsumsi Energi",
       "value": "318,8 kWh/tahun"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 10 Tahun Kompresor"
     }
   ],
   "wa_message": "",

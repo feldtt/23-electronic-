@@ -16,7 +16,32 @@
   ],
   "alt": "",
   "description": "Fitur Utama:\r\n- Turbo Cooling Pro\r\n- -24°C Deep Freezer\r\n- Fresh Box\r\n- Smart Control\r\n- Energy Saving\r\n- H-DEO Fresh",
-  "specs": [],
+  "specs": [
+    {
+      "label": "Kapasitas Total",
+      "value": "205 Liter"
+    },
+    {
+      "label": "Kapasitas Freezer (Netto)",
+      "value": "55 Liter"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "545 x 575 x 1430 mm"
+    },
+    {
+      "label": "Material Pintu",
+      "value": "Metal"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "47,9 Watt"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 7 Tahun Kompresor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

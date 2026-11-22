@@ -1,0 +1,60 @@
+{
+  "category": "kulkas",
+  "group": [
+    "Kulkas 2 Pintu"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Toshiba GR-B25ISP",
+  "model": "GR-B25ISP",
+  "photo": "/assets/uploads/produk-kulkas-toshiba-gr-b25isp-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-toshiba-gr-b25isp-1.png"
+  ],
+  "alt": "Kulkas 2 pintu Toshiba GR-B25ISP 190 liter",
+  "description": "Fitur Utama:\r\n- PureBIO, Ag+ penyerap bau dan penekan bakteri\r\n- Freezer luas 61 L\r\n- Rak botol 1,5 L\r\n- Cooling Zone 0°C untuk daging dan ikan\r\n- Rak kaca yang tinggi bisa diatur\r\n- Ultra Big Box 12 L untuk buah dan sayur\r\n- Multi-Air Flow\r\n- Gagang desain rata",
+  "specs": [
+    {
+      "label": "Kapasitas Total",
+      "value": "190 Liter"
+    },
+    {
+      "label": "Kapasitas Kulkas",
+      "value": "133 Liter"
+    },
+    {
+      "label": "Kapasitas Freezer",
+      "value": "61 Liter"
+    },
+    {
+      "label": "Kompresor",
+      "value": "Non-Inverter"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "80 Watt"
+    },
+    {
+      "label": "Refrigeran",
+      "value": "R600a"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "545 x 623 x 1345 mm"
+    },
+    {
+      "label": "Berat Bersih",
+      "value": "40 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 5 Tahun Kompresor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

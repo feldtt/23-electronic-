@@ -55,6 +55,10 @@
     {
       "label": "Pintu",
       "value": "Dua pintu"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Kompresor"
     }
   ],
   "wa_message": "",

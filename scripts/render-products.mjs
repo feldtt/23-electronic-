@@ -168,6 +168,17 @@ const maxPrice = (e) => {
 };
 
 const brandOf = (t) => { const b = String(t).trim().split(/\s+/)[0].toLowerCase(); return b === "mitsubishi" ? "mhi" : b; };
+// Washer capacity ("8 kg") from variant, model, title or the spec table.
+function kgLabel(m) {
+  const src = [m.variant, m.model, m.title, ...(m.specs || []).filter((x) => /kapasitas/i.test(x.label)).map((x) => x.value)];
+  for (const t of src) {
+    const r = String(t ?? "").match(/(\d+(?:[.,]\d+)?)\s*kg/i);
+    if (r) return `${r[1].replace(".", ",")} kg`;
+  }
+  return "";
+}
+const kgValue = (l) => parseFloat(String(l).replace(",", ".")) || 99;
+
 function pkLabel(m) {
   const raw = String(m.variant || "").trim() || (String(m.title).match(/(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?)\s*PK/i) || [])[1];
   const n = pkValue(raw);
@@ -229,7 +240,8 @@ function card(e, prefix = "") {
   }
   const brand = brandOf(p.title);
   const pks = [...new Set(e.members.map((m) => pkLabel(m)).filter(Boolean))];
-  return `<div class="card" data-brand="${esc(brand)}" data-tipe="${esc(e.groups.join("|"))}" data-pk="${esc(pks.join("|"))}">
+  const kgs = [...new Set(e.members.map((m) => kgLabel(m)).filter(Boolean))];
+  return `<div class="card" data-brand="${esc(brand)}" data-tipe="${esc(e.groups.join("|"))}" data-pk="${esc(pks.join("|"))}" data-kg="${esc(kgs.join("|"))}">
               ${img}
               <div class="card-body">
                 <h3><a class="card-title" href="${esc(href)}">${esc(title)}</a></h3>
@@ -287,33 +299,34 @@ export function renderCategory(products, category) {
     out += `<h2 style="${style}">${esc(name)}</h2>\n          <div class="grid-3">\n            ${list.map((e) => card(e)).join("\n            ")}\n          </div>\n          `;
     first = false;
   }
-  return category === "ac" ? wrapFilters(out, items) : out;
+  return category === "ac" || category === "mesin-cuci" ? wrapFilters(out, items, category) : out;
 }
 
 function filterBlock(key, title, opts) {
   return `<div class="flt-group"><div class="flt-t">${title}</div>${opts.map(([v, l]) => `<label class="flt-o"><input type="checkbox" data-k="${key}" value="${esc(v)}"> <span>${esc(l)}</span></label>`).join("")}</div>`;
 }
 
-function wrapFilters(body, items) {
+function wrapFilters(body, items, category = "ac") {
+  const wash = category === "mesin-cuci";
   const cnt = (fn) => { const m = new Map(); for (const e of items) for (const v of new Set(fn(e))) m.set(v, (m.get(v) || 0) + 1); return m; };
   const brands = cnt((e) => [brandOf(e.lead.title)]);
   const tipes = cnt((e) => e.groups);
-  const pks = cnt((e) => e.members.map(pkLabel).filter(Boolean));
+  const pks = cnt((e) => e.members.map(wash ? kgLabel : pkLabel).filter(Boolean));
   const brandName = (b) => (b.length <= 3 ? b.toUpperCase() : b[0].toUpperCase() + b.slice(1));
   const sorted = (m, f) => [...m.keys()].sort(f);
-  const pkSort = (a, b) => pkValue(a) - pkValue(b);
+  const pkSort = wash ? (a, b) => kgValue(a) - kgValue(b) : (a, b) => pkValue(a) - pkValue(b);
   return `<div class="flt-layout">
           <aside class="flt" id="flt">
             <div class="flt-head"><strong>Filter</strong><button type="button" class="flt-reset" id="fltReset">Reset</button></div>
             ${filterBlock("brand", "Merek", sorted(brands).map((b) => [b, `${brandName(b)} (${brands.get(b)})`]))}
-            ${filterBlock("tipe", "Tipe AC", sorted(tipes).map((t) => [t, `${t} (${tipes.get(t)})`]))}
-            ${filterBlock("pk", "Daya (PK)", sorted(pks, pkSort).map((p) => [p, `${p} (${pks.get(p)})`]))}
+            ${filterBlock("tipe", wash ? "Tipe Mesin Cuci" : "Tipe AC", sorted(tipes).map((t) => [t, `${t} (${tipes.get(t)})`]))}
+            ${filterBlock(wash ? "kg" : "pk", wash ? "Kapasitas" : "Daya (PK)", sorted(pks, pkSort).map((p) => [p, `${p} (${pks.get(p)})`]))}
           </aside>
           <div class="flt-main">
             <button type="button" class="flt-toggle" id="fltToggle">Filter</button>
             <div id="fltCount" class="flt-count"></div>
             ${body}
-            <p id="fltEmpty" class="flt-empty" hidden>Tidak ada AC yang cocok. Coba kurangi filter atau tanya admin via WhatsApp.</p>
+            <p id="fltEmpty" class="flt-empty" hidden>Tidak ada ${wash ? "mesin cuci" : "AC"} yang cocok. Coba kurangi filter atau tanya admin via WhatsApp.</p>
           </div>
         </div>
         <script>
@@ -322,8 +335,8 @@ function wrapFilters(body, items) {
           var cards = [].slice.call(document.querySelectorAll('.flt-main .card'));
           var boxes = [].slice.call(root.querySelectorAll('input'));
           function apply() {
-            var sel = { brand: [], tipe: [], pk: [] };
-            boxes.forEach(function (b) { if (b.checked) sel[b.dataset.k].push(b.value); });
+            var sel = {};
+            boxes.forEach(function (b) { sel[b.dataset.k] = sel[b.dataset.k] || []; if (b.checked) sel[b.dataset.k].push(b.value); });
             var shown = 0;
             cards.forEach(function (c) {
               var ok = Object.keys(sel).every(function (k) {

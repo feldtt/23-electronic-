@@ -6,10 +6,12 @@
   "series": "",
   "variant": "",
   "title": "Toshiba GR-B28ISP",
-  "model": "",
-  "photo": "",
-  "photos": [],
-  "alt": "",
+  "model": "GR-B28ISP",
+  "photo": "/assets/uploads/produk-kulkas-toshiba-gr-b28isp-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-toshiba-gr-b28isp-1.png"
+  ],
+  "alt": "Kulkas 2 pintu Toshiba GR-B28ISP",
   "description": "Fitur Utama:\r\n- PureBIO\r\n- Multi-Air Flow\r\n- Freezer 61 L\r\n- Adjustable Glass Shelf\r\n- Bottle Bin 1,5 L\r\n- Multi-Glass Shelf Slot\r\n- Ultra Big Box\r\n- Flat Design dengan Recessed Handle\r\n- Chiller Room Cooling",
   "specs": [
     {
@@ -46,7 +48,7 @@
     },
     {
       "label": "Garansi",
-      "value": "5 tahun kompresor, 2 tahun sparepart & service"
+      "value": "2 Tahun Sparepart + 5 Tahun Kompresor"
     }
   ],
   "wa_message": "",

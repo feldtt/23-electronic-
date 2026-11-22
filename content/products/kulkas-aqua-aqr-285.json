@@ -17,7 +17,36 @@
   ],
   "alt": "",
   "description": "Fitur Utama:\r\n- Turbo Cooling\r\n- Bigger Freezer\r\n- -1°C Chiller Box\r\n- Humidity Control\r\n- H-DEO Fresh\r\n- Organized Storage",
-  "specs": [],
+  "specs": [
+    {
+      "label": "Kapasitas Total",
+      "value": "225 Liter"
+    },
+    {
+      "label": "Kapasitas Freezer",
+      "value": "55 Liter"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "545 x 575 x 1530 mm"
+    },
+    {
+      "label": "Material Pintu",
+      "value": "Metal"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "49,5 Watt"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,
