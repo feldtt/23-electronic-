@@ -7,9 +7,11 @@
   "variant": "G2HD-267",
   "title": "GEA G2HD",
   "model": "G2HD-267",
-  "photo": "",
-  "photos": [],
-  "alt": "",
+  "photo": "/assets/uploads/produk-kulkas-gea-g2hd-1.png",
+  "photos": [
+    "/assets/uploads/produk-kulkas-gea-g2hd-1.png"
+  ],
+  "alt": "Kulkas GEA G2HD-267",
   "description": "Fitur Utama:\r\n- No Frost (tanpa bunga es)\r\n- Top freezer, freezer di atas\r\n- Pengatur suhu analog\r\n- Lampu interior LED\r\n- Pintu reversible (bukaan bisa dibalik)",
   "specs": [
     {
@@ -30,7 +32,7 @@
     }
   ],
   "wa_message": "",
-  "order": 1000,
+  "order": 1002,
   "stock": null,
   "price": 0,
   "featured": false,

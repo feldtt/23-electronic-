@@ -1,0 +1,84 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Toshiba 75MN",
+  "variant": "Pink",
+  "title": "Toshiba 75MN",
+  "model": "VH-H75MN-WR",
+  "photo": "/assets/uploads/produk-mesin-cuci-toshiba-75mn-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-toshiba-75mn-1.png"
+  ],
+  "alt": "Toshiba 75MN VH-H75MN-WR warna Pink",
+  "description": "Mesin cuci 2 tabung Toshiba dengan kapasitas cuci 7,5 kg, bak cuci dan pengering terpisah serta filter bebas kotoran, sehingga mencuci dan mengeringkan baju jadi lebih cepat dan praktis.\nSistem kerja motor yang kuat membuat mesin tahan lama dan hemat listrik. Putaran drum yang lembut membuat serat kain lebih terawat dan tidak mudah rusak.\n\nFitur Utama:\n- Filter kotoran tipe kaset (lint filter cassette type)\n- Program cuci Heavy / Normal\n- Golden Soak Period (perendaman)\n- 2 saluran air masuk (water inlet)\n- Timer cuci dan timer pengering\n- Tutup transparan\n- SuperJet Spin",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci (Kotor)",
+      "value": "7,5 kg"
+    },
+    {
+      "label": "Kapasitas Cuci (Bersih)",
+      "value": "6,5 kg"
+    },
+    {
+      "label": "Kapasitas Pengering",
+      "value": "4,6 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Pink"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Daya Pencucian",
+      "value": "440 Watt"
+    },
+    {
+      "label": "Daya Pengering",
+      "value": "235 Watt"
+    },
+    {
+      "label": "Volume Air Maks.",
+      "value": "59 Liter"
+    },
+    {
+      "label": "Ukuran Tabung Cuci (L x D x T)",
+      "value": "414 x 418 x 502 mm"
+    },
+    {
+      "label": "Ukuran Tabung Pengering (L x D x T)",
+      "value": "248 x 387 mm"
+    },
+    {
+      "label": "Dimensi Unit (L x D x T)",
+      "value": "761 x 448 x 885 mm"
+    },
+    {
+      "label": "Dimensi Kemasan (L x D x T)",
+      "value": "778 x 475 x 918 mm"
+    },
+    {
+      "label": "Berat Bersih",
+      "value": "19,5 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

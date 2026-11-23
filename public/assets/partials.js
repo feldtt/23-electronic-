@@ -102,10 +102,11 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div class="logo" style="margin-bottom:14px;">
-              <span class="logo-mark">23</span>
-              <span style="color:#fff;">23 Electronic<small>Toko Dua Tiga · Ciputat</small></span>
-            </div>
+            <a href="${base}index.html" class="footer-logo" aria-label="23 Electronic"><img src="/assets/uploads/logo-23-electronic.png" alt="23 Electronic" width="120" height="44"></a>
+            <a href="${mapsLink}" target="_blank" rel="noopener" class="footer-map">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              Lihat lokasi di Google Maps
+            </a>
             <p style="color:rgba(255,255,255,0.7);font-size:13px;max-width:340px;line-height:1.55;margin-bottom:14px;">
               Toko elektronik lokal di Jl. Dewi Sartika, Ciputat. Tanya stok, harga, dan kebutuhan pemasangan AC via WhatsApp — atau datang langsung ke toko.
             </p>
@@ -114,7 +115,7 @@
               <span class="pay-chip">Tunai</span>
               <span class="pay-chip">Transfer</span>
               <span class="pay-chip">QRIS *</span>
-              <span class="pay-chip">Cicilan AEON</span>
+              <span class="pay-chip">Cicilan DP 0%</span>
               <span class="pay-chip">Debit *</span>
             </div>
             <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:6px;">* konfirmasi ke admin</div>
@@ -244,7 +245,7 @@
     "@context": "https://schema.org",
     "@type": "ElectronicsStore",
     "name": "23 Electronic",
-    "alternateName": ["Toko Dua Tiga", "23 Electronic Ciputat"],
+    "alternateName": ["23 Electronic Ciputat"],
     "image": location.origin + (base || '/') + "assets/og-fasad.jpg",
     "telephone": "+62-811-1523-239",
     "address": {

@@ -1,0 +1,88 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Sanken TW-9110",
+  "variant": "Pink",
+  "title": "Sanken TW-9110",
+  "model": "TW-9110-PK",
+  "photo": "/assets/uploads/produk-mesin-cuci-sanken-tw-9110-2-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-sanken-tw-9110-2-1.png"
+  ],
+  "alt": "Sanken TW-9110 TW-9110-PK",
+  "description": "Fitur Utama:\n- X-Tor Big Pulsator: arus air kuat dan merata, deterjen larut sempurna dan kotoran terangkat lebih optimal\n- Silver Ion Filter: menyaring kotoran dan membantu menetralisir kuman dan bakteri saat mencuci\n- Super Spin Dry: putaran tinggi mengurangi sisa air sehingga pakaian lebih cepat kering\n- Low Watt (hemat listrik)",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci (Basah)",
+      "value": "7,5 kg"
+    },
+    {
+      "label": "Kapasitas Cuci (Kering)",
+      "value": "9 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Bodi",
+      "value": "Single body"
+    },
+    {
+      "label": "Warna Bodi",
+      "value": "Putih"
+    },
+    {
+      "label": "Warna Penutup Atas",
+      "value": "Pink"
+    },
+    {
+      "label": "Tipe Penutup Atas",
+      "value": "Solid PP"
+    },
+    {
+      "label": "Daya Pencucian Maks.",
+      "value": "250 Watt"
+    },
+    {
+      "label": "Daya Pengering",
+      "value": "107 Watt"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Program Cuci",
+      "value": "Cuci-Buang"
+    },
+    {
+      "label": "Waktu Cuci / Pengering",
+      "value": "15 menit / 5 menit"
+    },
+    {
+      "label": "Inlet Air",
+      "value": "Manual"
+    },
+    {
+      "label": "Dimensi Unit",
+      "value": "77 x 47 x 94,5 cm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "18,35 kg / 20,85 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

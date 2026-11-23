@@ -1,0 +1,68 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "LG Twin Tub",
+  "variant": "12 kg",
+  "title": "LG Twin Tub 12 Kg",
+  "model": "P1200RT",
+  "photo": "/assets/uploads/produk-mesin-cuci-lg-twin-tub-12-kg-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-lg-twin-tub-12-kg-1.png"
+  ],
+  "alt": "LG Twin Tub 12 Kg P1200RT",
+  "description": "Mesin cuci 2 tabung LG kapasitas cuci 12 kg dengan Roller Jet Pulsator dan Wind Jet Dry.\n\nFitur Utama:\n- Punch+3: satu pulsator utama dan tiga pulsator mini menciptakan tiga arus air kuat untuk mengangkat kotoran\n- Roller Jet Pulsator: gesekan roller membantu menghilangkan debu dan tungau, cucian lebih merata\n- 3 program pencucian: Gentle, Normal, Strong\n- Wind Jet Dry: sirkulasi udara mengurangi kelembapan cucian dan membantu mencegah jamur pada tabung\n- Anti tikus, alas plastik anti karat, dan karet anti getaran\n- Lint Filter dan selektor pembuangan air",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "12 kg"
+    },
+    {
+      "label": "Kapasitas Tabung Pengering",
+      "value": "8 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Dark Grey"
+    },
+    {
+      "label": "Suplai Air",
+      "value": "Hanya dingin"
+    },
+    {
+      "label": "Program Cuci",
+      "value": "Gentle, Normal, Strong"
+    },
+    {
+      "label": "Timer Pencucian",
+      "value": "15 menit"
+    },
+    {
+      "label": "Timer Pengeringan",
+      "value": "5 menit"
+    },
+    {
+      "label": "Dimensi (P x T x L)",
+      "value": "905 x 1025 x 545 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "32 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + Jasa"
+    }
+  ],
+  "wa_message": "",
+  "order": 1012,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

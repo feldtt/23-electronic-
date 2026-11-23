@@ -1,0 +1,64 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Sharp 7KG Puremagic Series",
+  "variant": "Pink",
+  "title": "Sharp 7KG Puremagic Series",
+  "model": "ES-T80MW-PK",
+  "photo": "/assets/uploads/produk-mesin-cuci-sharp-7kg-puremagic-series-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-sharp-7kg-puremagic-series-1.png"
+  ],
+  "alt": "Sharp 7KG Puremagic Series ES-T80MW-PK warna Pink",
+  "description": "Fitur Utama:\n- Easy Function\n- Pulsator dengan Anti-Bakteri (Ion AG+)\n- Penutup atas berwarna penuh",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "7 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Bodi",
+      "value": "Plastik"
+    },
+    {
+      "label": "Tabung",
+      "value": "Plastik"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "Pengering 99 Watt | Pencuci 330 Watt"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "783 x 437 x 934 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "19 kg"
+    },
+    {
+      "label": "Warna Tutup Atas",
+      "value": "Pink"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

@@ -188,7 +188,20 @@ function pkLabel(m) {
 
 // Long model codes that only differ at the end (AQR-DTM285CBP-ME / -PE / -BE) -> short labels (ME / PE / BE).
 // Returns null when the variants share no code prefix (PK sizes etc.).
+// Variants that differ by capacity in litres (G2HD-198 / 217 / 267): chip shows "198 L" when the number matches the member's Kapasitas spec.
+function literNumber(m) {
+  const s = (m.specs || []).find((x) => /^kapasitas( total)?$/i.test(String(x.label).trim()));
+  const r = s && String(s.value).match(/(\d+)/);
+  return r ? r[1] : null;
+}
 function shortLabels(members) {
+  const base = baseShortLabels(members);
+  if (base && base.every((l, i) => /^\d{2,3}$/.test(l) && l === literNumber(members[i]))) return base.map((l) => `${l} L`);
+  return base;
+}
+const isLiterLabels = (labels) => !!labels && labels.every((l) => /^\d+ L$/.test(l));
+
+function baseShortLabels(members) {
   const v = members.map((m) => String(m.variant).trim());
   if (v.length < 2) return null;
   // 1) last dash segment as a short letter code (colour/finish): SJ-236MG-GB / SJ-236MN-HS -> GB / HS
@@ -465,7 +478,7 @@ function renderDetailPage(e, entities) {
   const crumbCat = cat ? `<a href="${cat.page}">${esc(p.categoryLabel)}</a>` : `<span>${esc(p.categoryLabel)}</span>`;
 
   const pdShort = isSeries ? shortLabels(e.members) : null;
-  const vLabel = pdShort ? "Pilih model" : e.members.every((m) => /pk/i.test(String(m.variant))) ? "Pilih PK" : "Pilih varian";
+  const vLabel = isLiterLabels(pdShort) ? "Pilih Literan" : e.members.every((m) => /^\d+([.,]\d+)?\s*kg$/i.test(String(m.variant).trim())) ? "Pilih Kapasitas" : pdShort ? "Pilih model" : e.members.every((m) => /pk/i.test(String(m.variant))) ? "Pilih PK" : "Pilih varian";
   const variantBlock = isSeries ? `
           <div class="pd-variants" role="group" aria-label="${vLabel}">
             <span class="pd-vlabel">${vLabel}</span>

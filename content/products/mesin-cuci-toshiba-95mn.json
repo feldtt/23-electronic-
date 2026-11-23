@@ -1,0 +1,72 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Toshiba 95MN",
+  "variant": "Biru",
+  "title": "Toshiba 95MN",
+  "model": "VH-H95MN-WB",
+  "photo": "/assets/uploads/produk-mesin-cuci-toshiba-95mn-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-toshiba-95mn-1.png"
+  ],
+  "alt": "Toshiba 95MN VH-H95MN-WB warna Biru",
+  "description": "Mesin cuci 2 tabung Toshiba kapasitas cuci 8,5 kg dengan pulsator 8 bilah (High Blades) yang membuat putaran air lebih kuat, sehingga pakaian lebih bersih sempurna.\n\nFitur Utama:\n- High Blades: putaran air lebih kuat dengan pulsator 8 bilah\n- SuperJet Spin: putaran pengering hingga 1.280 RPM, pakaian cepat kering\n- Washing Board: papan penggilas untuk noda membandel di area pakaian yang sulit\n- Golden Soak: waktu perendaman bisa dipilih sesuai kondisi pakaian\n- Tutup transparan: proses pencucian mudah dilihat\n- Anti karat: bodi lapisan fiber, tahan lama dan tidak mudah berkarat\n- Filter kaset: penyaring plastik yang awet dan mudah dibersihkan",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "8,5 kg"
+    },
+    {
+      "label": "Kapasitas Pengering",
+      "value": "4,6 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Biru"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Daya Pencucian",
+      "value": "370 Watt"
+    },
+    {
+      "label": "Daya Pengering",
+      "value": "135 Watt"
+    },
+    {
+      "label": "Volume Air Maks.",
+      "value": "59 Liter"
+    },
+    {
+      "label": "Dimensi Unit (L x D x T)",
+      "value": "827 x 485 x 862 mm"
+    },
+    {
+      "label": "Dimensi Kemasan (L x D x T)",
+      "value": "840 x 505 x 894 mm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "21 / 24,5 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

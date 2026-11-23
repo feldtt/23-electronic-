@@ -104,6 +104,18 @@ for (const { id, html } of renderDetailPages(products)) {
   writeFileSync(astroPath, preserveScripts(html));
 }
 
+// The home hero lists a few products by hand (data-hero-page="<page slug>"). Stop with a clear message
+// when one of those product pages no longer exists (product renamed, deleted or unpublished).
+{
+  const homeHtml = readFileSync(path.join(mockupRoot, "index.html"), "utf8");
+  const missing = [...homeHtml.matchAll(/data-hero-page="([^"]+)"/g)]
+    .map((m) => m[1])
+    .filter((slug) => !existsSync(path.join(pagesRoot, "produk", `${slug}.astro`)));
+  if (missing.length) {
+    throw new Error(`Hero di mockup/toko-23/index.html menunjuk ke produk yang tidak ada: ${missing.join(", ")}. Perbarui atau hapus kartunya.`);
+  }
+}
+
 // Copy EVERY non-.html file/dir into public/, preserving relative paths,
 // except design artifacts (screenshots/, .thumbnail).
 function copyAssets(dir) {

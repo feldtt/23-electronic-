@@ -1,0 +1,64 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Sharp 8KG Puremagic Series",
+  "variant": "Abu-abu",
+  "title": "Sharp 8KG Puremagic Series",
+  "model": "ES-T90MW-HK",
+  "photo": "/assets/uploads/produk-mesin-cuci-sharp-8kg-puremagic-series-2-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-sharp-8kg-puremagic-series-2-1.png"
+  ],
+  "alt": "Sharp 8KG Puremagic Series ES-T90MW-HK warna Abu-abu",
+  "description": "Fitur Utama:\n- Easy Function\n- Pulsator dengan Anti-Bakteri (Ion AG+)\n- Water Inlet\n- Penutup atas berwarna penuh",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "8 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Bodi",
+      "value": "Plastik"
+    },
+    {
+      "label": "Tabung",
+      "value": "Plastik"
+    },
+    {
+      "label": "Daya Listrik",
+      "value": "Pengering 85 Watt | Pencuci 350 Watt"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Dimensi (L x D x T)",
+      "value": "855 x 495 x 945 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "22,5 kg"
+    },
+    {
+      "label": "Warna Tutup Atas",
+      "value": "Abu-abu"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

@@ -1,7 +1,8 @@
 {
   "category": "ac",
   "group": [
-    "Standard"
+    "Standard",
+    "1/2 PK"
   ],
   "series": "TCL Elite Series",
   "variant": "1/2 PK",
@@ -12,7 +13,7 @@
     "/assets/uploads/produk-ac-tcl-tac-05csd-xss.png"
   ],
   "alt": "",
-  "description": "",
+  "description": "Fitur Utama:\r\n- Turbo Cooling\r\n- 22 dB Low Noise\r\n- I-Set\r\n- Gold Fin",
   "specs": [],
   "wa_message": "",
   "order": 1000,

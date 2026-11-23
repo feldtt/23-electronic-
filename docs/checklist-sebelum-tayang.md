@@ -13,6 +13,11 @@ jadi tambahkan hal baru kalau muncul.
 - [ ] **Foto toko** — `assets/uploads/store-front.jpg`, `store-front-wide.jpg`, `store-interior.jpg`: pastikan foto asli toko, bukan placeholder.
 - [ ] **Foto kulkas yang masih ikon** — produk kulkas tanpa foto (ascasca, GEA, Hisense, Polytron PRB-217/219/237, Sharp SJ-195 / SJ-316 MN-HS / SJ-571, Toshiba).
 - [ ] **Kalimat "contoh produk"** — `produk/index.html`, `index.html` baris ~157 dan ~447, `syarat-layanan.html` baris ~36: teks "contoh/ilustratif" boleh tetap, tapi cek apakah masih sesuai setelah katalog final.
+- [ ] **Harga tes di database** — bersihkan sebelum tayang: MIDEA MSFT-05CRN8 (Rp 1.000.000), Sharp SJ-236MN-HS (Rp 1.111.111), dan harga bulat di Midea MSCE (1.000.000 / 1.250.000 / 1.500.000). Kartu produk dan hero menampilkannya sebagai harga asli.
+- [ ] **Slot mesin cuci di hero** — setelah produk mesin cuci pertama dimasukkan, salin satu kartu `pick` di `index.html` (bagian "Paling sering ditanyakan") dan isi foto, nama, model, serta `data-hero-page`.
+- [ ] **LG P1500RT dan P1800RT disembunyikan** (`published: false`) — P1500RT: spek di data 10 kg padahal namanya 15 kg, belum ada foto; P1800RT: belum diisi. Isi lalu aktifkan, atau hapus. P1700RT: spek lengkap, foto memakai foto P1400RT.
+- [ ] **Mesin cuci tanpa foto/spek** — Sanken QW-S102GS, QW-S105DDSL (garansi belum diisi); Sharp Megamouth (ES-M7000P / ES-M8000P); Toshiba AW-M801AN; Aqua, Electrolux, Samsung, LG T2108NBTM. Isi atau sembunyikan.
+- [ ] **Harga asli** — langkah terakhir sebelum tayang; isi semua produk sekaligus supaya daftar konsisten.
 - [ ] **Harga "Cek harga via WA"** — semua produk masih tanpa harga; putuskan apakah harga ditampilkan saat tayang.
 - [ ] **Harga Jasa Pasang AC** — `pasang-ac.html` (`ITEMS`, `PIPE_PRICE`, `PAKET_PRICE` masih `null`).
 
@@ -20,7 +25,7 @@ jadi tambahkan hal baru kalau muncul.
 
 Dari Maps: **23 Elektronik**, Jalan Dewi Sartika No.90, Cipayung, Kec. Ciputat, Kota Tangerang Selatan, Banten 15411, buka setiap hari 08.00–21.00.
 
-- [ ] **Nama**: situs memakai "23 Electronic"; Maps memakai "23 Elektronik". Putuskan satu nama, samakan di Maps atau situs.
+- [ ] **Nama**: diputuskan "23 Electronic" (situs sudah memakainya). Ubah nama bisnis di Google Maps dari "23 Elektronik" menjadi "23 Electronic" supaya sama. Kata umum "elektronik" ("Toko Elektronik di Ciputat", "TV & Elektronik") sengaja tetap memakai K karena itu kata yang dicari orang di Google.
 - [ ] **Alamat lengkap** di footer/top bar/kontak/schema: sekarang "Jl. Dewi Sartika, Ciputat" atau "Cipayung / Ciputat" (tanpa No.90, kota, kode pos). Lokasi: `assets/partials.js` baris ~21, ~110, ~252; `kontak-lokasi.html` baris ~45; `index.html` baris ~344; `area-layanan/ciputat.html`; halaman tentang.
 - [ ] **Jam buka**: sudah cocok (08.00–21.00, Senin–Minggu).
 - [ ] **Nomor telepon** di Maps = nomor di situs (`628111523239`)?

@@ -1,0 +1,60 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Sharp 10KG Twin Tub Dolphinwave Series",
+  "variant": "Biru",
+  "title": "Sharp 10KG Twin Tub Dolphinwave Series",
+  "model": "ES-T1090-BK",
+  "photo": "/assets/uploads/produk-mesin-cuci-sharp-10kg-twin-tub-dolphinwave-series-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-sharp-10kg-twin-tub-dolphinwave-series-1.png"
+  ],
+  "alt": "Sharp 10KG Twin Tub Dolphinwave Series ES-T1090-BK warna Biru",
+  "description": "Fitur Utama:\n- Bodi plastik tahan karat\n- Sistem penyaring air (water purification)\n- Mode cuci Heavy dan Normal\n- Tutup atas transparan berwarna (ABS)\n- Bodi putih Neo Crystal",
+  "specs": [
+    {
+      "label": "Kapasitas",
+      "value": "10 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Bodi",
+      "value": "Plastik anti karat"
+    },
+    {
+      "label": "Tabung",
+      "value": "Plastik"
+    },
+    {
+      "label": "Volume Air Standar",
+      "value": "Level 1: 75 / Level 2: 65 / Level 3: 55"
+    },
+    {
+      "label": "Dimensi (D x T)",
+      "value": "563 x 1052 mm"
+    },
+    {
+      "label": "Berat (Netto / Bruto)",
+      "value": "25,5 / 28 kg"
+    },
+    {
+      "label": "Warna Tutup Atas",
+      "value": "Biru"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

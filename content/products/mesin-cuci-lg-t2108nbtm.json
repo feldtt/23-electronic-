@@ -1,0 +1,59 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Top Loading",
+    "Mesin Cuci 1 Tabung"
+  ],
+  "series": "LG T2108NBTM",
+  "variant": "",
+  "title": "LG T2108NBTM",
+  "model": "T2108NBTM",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Mesin cuci top load LG kapasitas 8 kg dengan pintu tempered glass.\n\nFitur Utama:\n- Quick Wash untuk pencucian cepat\n- Tub Clean: program pembersih tabung\n- Pintu tempered glass dengan soft closing door\n- Auto Restart dan Child Lock\n- LoadSense: menyesuaikan air dengan beban cucian",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "8 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Top Loading (1 tabung)"
+    },
+    {
+      "label": "Tabung",
+      "value": "Stainless steel"
+    },
+    {
+      "label": "Tipe Tutup",
+      "value": "Tempered glass"
+    },
+    {
+      "label": "Display",
+      "value": "Tombol dan LED"
+    },
+    {
+      "label": "Level Air",
+      "value": "Auto / Manual, 8 level"
+    },
+    {
+      "label": "Suplai Air",
+      "value": "Hanya dingin"
+    },
+    {
+      "label": "Dimensi (P x T x L)",
+      "value": "520 x 900 x 530 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "30 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

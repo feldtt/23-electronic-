@@ -1,0 +1,72 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Twin Tube"
+  ],
+  "series": "Toshiba 85MN",
+  "variant": "Pink",
+  "title": "Toshiba 85MN",
+  "model": "VH-H85MN-WR",
+  "photo": "/assets/uploads/produk-mesin-cuci-toshiba-85mn-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-toshiba-85mn-1.png"
+  ],
+  "alt": "Toshiba 85MN VH-H85MN-WR warna Pink",
+  "description": "Mesin cuci 2 tabung Toshiba dengan pulsator 8 bilah yang membuat putaran air lebih kuat, sehingga pakaian lebih bersih. Bodi dari lapisan fiber, tahan lama dan tidak berkarat.\n\nFitur Utama:\n- Pulsator 8 bilah: putaran air lebih kuat, pakaian lebih bersih\n- Bodi lapisan fiber, tahan lama dan tidak berkarat\n- Kecepatan putaran pengering hingga 1.280 RPM, pakaian cepat kering\n- Penyaring plastik yang awet dan mudah dibersihkan\n- Papan penggosok di dalam tabung untuk noda membandel",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "7,5 kg"
+    },
+    {
+      "label": "Kapasitas Pengering",
+      "value": "4,6 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Twin Tub (2 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Pink"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Daya Pencucian",
+      "value": "340 Watt"
+    },
+    {
+      "label": "Daya Pengering",
+      "value": "135 Watt"
+    },
+    {
+      "label": "Volume Air Maks.",
+      "value": "59 Liter"
+    },
+    {
+      "label": "Dimensi Unit (L x D x T)",
+      "value": "761 x 448 x 885 mm"
+    },
+    {
+      "label": "Dimensi Kemasan (L x D x T)",
+      "value": "778 x 475 x 918 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "19 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

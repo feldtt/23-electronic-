@@ -1,0 +1,74 @@
+{
+  "category": "mesin-cuci",
+  "group": [
+    "Top Loading",
+    "Mesin Cuci 1 Tabung",
+    "Inverter"
+  ],
+  "series": "Sanken QW-S105DDSL",
+  "variant": "",
+  "title": "Sanken QW-S105DDSL",
+  "model": "QW-S105DDSL",
+  "photo": "/assets/uploads/produk-mesin-cuci-sanken-qw-s105ddsl-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-sanken-qw-s105ddsl-1.png"
+  ],
+  "alt": "Sanken QW-S105DDSL QW-S105DDSL",
+  "description": "Mesin cuci top loading Sanken Premium dengan teknologi Direct Drive Inverter, kapasitas cuci 10,5 kg.\n\nFitur Utama:\n- 4D X-Tor Technology: arus air kuat untuk pencucian optimal\n- Auto Fill: pengisian air otomatis\n- Fuzzy Logic: menyesuaikan air dan proses cuci dengan beban pakaian\n- Tabung stainless steel\n- Tornado Dry: pengeringan dengan putaran kuat\n- 10 program cuci: Normal, Heavy, Standard, Soft, Fast, Wool, Child, Foam Clean, Tub Clean, Air Dry",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci (Basah)",
+      "value": "10,5 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Top Loading (1 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Dark Grey"
+    },
+    {
+      "label": "Tipe Tutup",
+      "value": "Transparan"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V / 50 Hz"
+    },
+    {
+      "label": "Daya Pencucian Maks.",
+      "value": "355 Watt"
+    },
+    {
+      "label": "Daya Pengering / Ekstraksi Air",
+      "value": "170 Watt"
+    },
+    {
+      "label": "Inlet Air",
+      "value": "Otomatis"
+    },
+    {
+      "label": "Perendaman Otomatis",
+      "value": "Ya"
+    },
+    {
+      "label": "Alarm Pencucian",
+      "value": "Ya"
+    },
+    {
+      "label": "Dimensi Unit (L x D x T)",
+      "value": "58 x 58,7 x 96,6 cm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "37 / 42 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}
