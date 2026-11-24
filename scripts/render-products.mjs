@@ -369,8 +369,17 @@ function wrapFilters(body, items, category = "ac") {
             var active = boxes.some(function (b) { return b.checked; });
             document.getElementById('fltCount').textContent = active ? shown + ' produk ditemukan' : '';
           }
-          boxes.forEach(function (b) { b.addEventListener('change', apply); });
-          document.getElementById('fltReset').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); apply(); });
+          // The result list gets shorter than the page was, so the browser would clamp the scroll and the
+          // sticky filter panel would jump. Keep the panel where it is: bring the top of the layout to the
+          // sticky offset, so the results start next to the panel.
+          var layout = root.closest('.flt-layout');
+          function update() {
+            apply();
+            var top = layout.getBoundingClientRect().top;
+            if (top < 90) window.scrollTo(0, window.scrollY + top - 90);
+          }
+          boxes.forEach(function (b) { b.addEventListener('change', update); });
+          document.getElementById('fltReset').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); update(); });
           document.getElementById('fltToggle').addEventListener('click', function () { root.classList.toggle('open'); });
         })();
         </script>`;
@@ -563,7 +572,13 @@ function renderDetailPage(e, entities) {
           ${v.priceHtml}
           </div>
           <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="${esc(v.msg)}" data-product="${esc(title)}">Chat WhatsApp</a>
-          <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>${p.category === "ac" ? `
+          <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
+          <ul class="pd-trust">
+            <li>Garansi resmi pabrik</li>
+            <li>Bisa diantar hari yang sama (area Ciputat, tergantung pesanan)</li>
+            <li>Cicilan DP 0% via Indodana, Kredivo, Akulaku, AEON, YES Credit</li>
+            <li>Toko fisik di Jl. Dewi Sartika, buka setiap hari 08.00–21.00</li>
+          </ul>${p.category === "ac" ? `
           <div class="pd-install">
             <div class="pd-install-h"><b>Jasa Pasang AC</b><span class="pd-install-price">Hubungi kami untuk harga</span></div>
             <ul>

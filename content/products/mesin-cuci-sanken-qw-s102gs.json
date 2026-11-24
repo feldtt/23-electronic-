@@ -1,8 +1,7 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "Sanken QW-S102GS",
   "variant": "",
@@ -13,7 +12,7 @@
     "/assets/uploads/produk-mesin-cuci-sanken-qw-s102gs-1.png"
   ],
   "alt": "Sanken QW-S102GS QW-S102GS",
-  "description": "Mesin cuci top loading Sanken Premium 1 tabung dengan bukaan atas, kapasitas cuci 10,5 kg.\n\nFitur Utama:\n- 4D X-Tor Technology: arus air kuat untuk pencucian optimal\n- Auto Fill: pengisian air otomatis\n- Fuzzy Logic: menyesuaikan air dan proses cuci dengan beban pakaian\n- Tabung stainless steel\n- Tornado Dry: pengeringan dengan putaran kuat\n- 10 program cuci: Normal, Heavy, Standard, Soft, Fast, Wool, Child, Foam Clean, Tub Clean, Air Dry",
+  "description": "Mesin cuci top loading Sanken Premium 1 tabung dengan bukaan atas, kapasitas cuci 10,5 kg.\r\n\r\nFitur Utama:\r\n- 4D X-Tor Technology: arus air kuat untuk pencucian optimal\r\n- Auto Fill: pengisian air otomatis\r\n- Fuzzy Logic: menyesuaikan air dan proses cuci dengan beban pakaian\r\n- Tabung stainless steel\r\n- Tornado Dry: pengeringan dengan putaran kuat\r\n- 10 program cuci: Normal, Heavy, Standard, Soft, Fast, Wool, Child, Foam Clean, Tub Clean, Air Dry",
   "specs": [
     {
       "label": "Kapasitas Cuci (Basah)",
@@ -66,6 +65,10 @@
     {
       "label": "Berat (Bersih / Kotor)",
       "value": "37 / 42 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
     }
   ],
   "wa_message": "",

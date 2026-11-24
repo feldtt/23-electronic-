@@ -1,10 +1,6 @@
 {
   "categories": [
     {
-      "v": "led",
-      "l": "LED"
-    },
-    {
       "v": "kulkas",
       "l": "Kulkas"
     },
@@ -14,7 +10,7 @@
     },
     {
       "v": "tv",
-      "l": "Speaker"
+      "l": "TV"
     },
     {
       "v": "showcase",
@@ -48,8 +44,18 @@
     "Inverter",
     "Standard",
     "Low Watt",
-    "Mesin Cuci 1 Tabung",
     "Portable",
-    "inv"
+    "LED",
+    "Smart TV",
+    "Google TV",
+    "Digital TV",
+    "40\"",
+    "42\"",
+    "50\"",
+    "65\"",
+    "Android TV",
+    "OLED",
+    "QLED",
+    "Mini-LED"
   ]
 }

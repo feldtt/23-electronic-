@@ -1,18 +1,76 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "Samsung 80H4000SW",
   "variant": "",
   "title": "Samsung 80H4000SW",
   "model": "80H4000SW",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "",
-  "specs": [],
+  "photo": "/assets/uploads/produk-mesin-cuci-samsung-80h4000sw-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-samsung-80h4000sw-1.png"
+  ],
+  "alt": "Samsung 80H4000SW 80H4000SW",
+  "description": "Mesin cuci top loading Samsung kapasitas 8 kg dengan Diamond Drum dan pulsator Double Storm.\r\n\r\nFitur Utama:\r\n- Diamond Drum: tabung bermotif berlian yang lembut pada pakaian\r\n- Pulsator Double Storm untuk pencucian merata\r\n- Air Turbo dan Water Fall\r\n- Magic Filter untuk menyaring serat dan kotoran\r\n- Fuzzy Control: tinggi air menyesuaikan beban cucian (5 level air)\r\n- 6 program: Blanket, Delicates, Eco Tub Clean, Fuzzy, Jeans, dan Quick Wash\r\n- Auto Restart dan Child Lock\r\n- Jendela tempered glass dan panel Dual Cluster Control",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "8 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Top Loading (1 tabung)"
+    },
+    {
+      "label": "Warna Bodi",
+      "value": "Putih"
+    },
+    {
+      "label": "Tipe Tabung",
+      "value": "Diamond Drum"
+    },
+    {
+      "label": "Motor",
+      "value": "AC Motor"
+    },
+    {
+      "label": "Pulsator",
+      "value": "Double Storm"
+    },
+    {
+      "label": "Kecepatan Putar",
+      "value": "700 RPM"
+    },
+    {
+      "label": "Level Air",
+      "value": "5 level"
+    },
+    {
+      "label": "Jumlah Program",
+      "value": "6"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "540 x 850 x 560 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "31 kg"
+    },
+    {
+      "label": "Daya Pencucian",
+      "value": "± 330 Watt"
+    },
+    {
+      "label": "Daya Pengering (Spin)",
+      "value": "± 240 Watt"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

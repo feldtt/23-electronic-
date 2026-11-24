@@ -1,0 +1,79 @@
+{
+  "category": "tv",
+  "group": [
+    "32\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung UA32HE50EFK",
+  "model": "UA32HE50EFK",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Samsung Smart TV HD H5000 32 inci beresolusi HD (1366 x 768) dengan HDR dan Tizen OS dalam desain slim.\r\n\r\nFitur Utama:\r\n- HDR untuk kontras lebih baik\r\n- PurColor untuk jangkauan warna lebih luas\r\n- Contrast Enhancer\r\n- Samsung Tizen OS dengan akses Samsung TV Plus\r\n- OTS Lite (Object Tracking Sound Lite) untuk suara surround virtual\r\n- Adaptive Sound dan Q-Symphony (perlu soundbar kompatibel, dijual terpisah)\r\n- Samsung Knox Security\r\n- Desain Slim Look",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Hyper Real picture engine"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "10 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Object Tracking Sound Lite, Adaptive Sound, Q-Symphony"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Tizen Smart TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB-A)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "733,2 x 451,8 x 117,3 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "733,2 x 438,9 x 72,2 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

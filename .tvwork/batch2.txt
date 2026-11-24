@@ -1,0 +1,30 @@
+MODEL: 65P6L
+SUMBER: https://www.ruparupa.com/p/tcl-65-inch-led-4k-google-tv-65p6l-hitam.html
+(Halaman TCL Indonesia untuk model ini 404, jadi dipakai Ruparupa. Angka dari toko diberi tanda ±.)
+
+DESKRIPSI:
+TCL 65P6L adalah Google TV LED 65 inci 4K UHD (3840 x 2160) dengan prosesor AiPQ dan HDR untuk gambar tajam.
+
+Fitur Utama:
+- Panel HVA 4K dengan HDR
+- Prosesor AiPQ
+- Google TV
+- Dolby Audio
+- Desain metallic bezel-less
+- RAM 2 GB dan penyimpanan internal 16 GB
+
+SPESIFIKASI:
+Ukuran Layar: 65 inci
+Resolusi: 4K UHD (3840 x 2160)
+Refresh Rate: ± 60 Hz
+Prosesor: AiPQ
+HDR: HDR
+Daya Suara: ± 20 W
+Audio: Dolby Audio
+Sistem Operasi: Google TV
+HDMI: ± 3 port
+USB: ± 1 port
+Konsumsi Daya Maks.: ± 122 W
+Warna: Hitam
+
+Catatan: Ruparupa menulis dimensi produk ± 1446 x 833 x 73 mm dan berat ± 19,2 kg, tapi tidak jelas dengan atau tanpa kaki (berat kemungkinan berat kemasan), jadi baris dimensi dan berat dilewati. Wi-Fi, Bluetooth, dan tuner digital tidak tercantum.

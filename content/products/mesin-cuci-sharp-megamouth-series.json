@@ -1,8 +1,7 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "Sharp Megamouth",
   "variant": "7 kg",
@@ -13,7 +12,7 @@
     "/assets/uploads/produk-mesin-cuci-sharp-megamouth-series-1.png"
   ],
   "alt": "Sharp Megamouth Series ES-M7000P-GG",
-  "description": "Mesin cuci top loading Sharp Megamouth 7 kg dengan tabung stainless steel dan panel kontrol yang mudah digunakan.\n\nFitur Utama:\n- Zero Pressure Technology: tetap bisa mencuci meski tekanan air kecil\n- Program Tub Clean untuk membersihkan tabung\n- Panel kontrol mudah digunakan\n- Tutup transparan dan plastik",
+  "description": "Mesin cuci top loading Sharp Megamouth 7 kg dengan tabung stainless steel dan panel kontrol yang mudah digunakan.\r\n\r\nFitur Utama:\r\n- Zero Pressure Technology: tetap bisa mencuci meski tekanan air kecil\r\n- Program Tub Clean untuk membersihkan tabung\r\n- Panel kontrol mudah digunakan\r\n- Tutup transparan dan plastik",
   "specs": [
     {
       "label": "Kapasitas Cuci",
@@ -46,6 +45,14 @@
     {
       "label": "Dimensi (L x D x T)",
       "value": "530 x 585 x 938 mm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "28 / 31 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 5 Tahun Motor"
     }
   ],
   "wa_message": "",

@@ -1,0 +1,101 @@
+{
+  "category": "tv",
+  "group": [
+    "32\"",
+    "Google TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Xiaomi A32",
+  "model": "A32",
+  "photo": "/assets/uploads/produk-tv-xiaomi-a32-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-xiaomi-a32-1.png"
+  ],
+  "alt": "",
+  "description": "Xiaomi TV A 32 inci HD (1366 x 768) dengan Google TV, layar bezel-less, dan audio Dolby Audio serta DTS.\r\n\r\nFitur Utama:\r\n- Layar HD 32 inci, 60 Hz, sudut pandang lebar 178°\r\n- Dukungan HDR10 dan HLG\r\n- Google TV dengan Google Assistant bawaan\r\n- Dolby Audio, DTS-X, dan DTS Virtual, speaker 2 x 8 W\r\n- Google Cast dan Miracast untuk menampilkan layar ponsel\r\n- Wi-Fi dual-band 2,4 GHz/5 GHz dan Bluetooth 5.0\r\n- Layar tanpa batas dengan frame logam\r\n- Ringan: 3,2 kg dengan dudukan",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Quad Cortex A53"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10, HLG"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "8 W + 8 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, DTS-X, DTS Virtual"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "2,4 GHz / 5 GHz"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2 + C"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "50 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "719 x 469 x 198 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "719 x 425 x 61 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "3,2 / 3,1 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

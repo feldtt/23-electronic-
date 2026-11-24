@@ -1,17 +1,18 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "LG T2108NBTM",
   "variant": "",
   "title": "LG T2108NBTM",
   "model": "T2108NBTM",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "Mesin cuci top load LG kapasitas 8 kg dengan pintu tempered glass.\n\nFitur Utama:\n- Quick Wash untuk pencucian cepat\n- Tub Clean: program pembersih tabung\n- Pintu tempered glass dengan soft closing door\n- Auto Restart dan Child Lock\n- LoadSense: menyesuaikan air dengan beban cucian",
+  "photo": "/assets/uploads/produk-mesin-cuci-lg-t2108nbtm-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-lg-t2108nbtm-1.png"
+  ],
+  "alt": "LG T2108NBTM T2108NBTM",
+  "description": "Mesin cuci top load LG kapasitas 8 kg dengan pintu tempered glass.\r\n\r\nFitur Utama:\r\n- Quick Wash untuk pencucian cepat\r\n- Tub Clean: program pembersih tabung\r\n- Pintu tempered glass dengan soft closing door\r\n- Auto Restart dan Child Lock\r\n- LoadSense: menyesuaikan air dengan beban cucian",
   "specs": [
     {
       "label": "Kapasitas Cuci",
@@ -48,6 +49,18 @@
     {
       "label": "Berat",
       "value": "30 kg"
+    },
+    {
+      "label": "Daya Maks.",
+      "value": "400 Watt"
+    },
+    {
+      "label": "Daya Pencucian",
+      "value": "± 200 Watt"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + Jasa"
     }
   ],
   "wa_message": "",

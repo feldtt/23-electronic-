@@ -587,6 +587,11 @@ h1, h2, h3, h4, h5 { font-weight: 700; color: var(--text); line-height: 1.3; let
 .pd-stock.out { color: #b42318; }
 .pd-note { font-size: 12.5px; color: var(--muted); margin: 4px 0 12px; }
 .pd-wa { width: 100%; padding: 14px 18px; font-size: 16px; margin: 10px 0 6px; }
+.pd-trust { list-style: none; margin: 14px 0 16px; padding: 14px 16px; background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm); display: grid; gap: 8px; font-size: 13.5px; color: var(--text); }
+.pd-trust li { position: relative; padding-left: 22px; line-height: 1.4; }
+.pd-trust li::before { content: ""; position: absolute; left: 2px; top: 5px; width: 6px; height: 10px; border: solid var(--green); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+@media (min-width: 900px) { .pd-info { position: sticky; top: 110px; align-self: start; } }
+@media (min-width: 881px) { .two-col > aside { position: sticky; top: 110px; align-self: start; } }
 .pd-section { margin-top: 40px; }
 .pd-section h2 { margin-bottom: 14px; }
 .spec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); background: #fff; }
@@ -1208,6 +1213,8 @@ a.cv-chip.on, .cv-chip.on { background: var(--blue-600); color: #fff; border-col
 /* AC filter sidebar */
 .flt-layout { display: grid; grid-template-columns: 210px 1fr; gap: 20px; align-items: start; }
 .flt { position: sticky; top: 90px; border: 1px solid var(--line, #e3e6ee); border-radius: 12px; padding: 14px 16px; background: #fff; }
+/* Taller than the screen on AC (many brands/PK): scroll inside the panel so every option is reachable while the page stays put. */
+.flt { max-height: calc(100vh - 110px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .flt-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .flt-reset { background: none; border: 0; color: var(--primary, #1a1a8c); cursor: pointer; font-size: 13px; text-decoration: underline; }
 .flt-group { padding: 10px 0; border-top: 1px solid var(--line, #e3e6ee); }
@@ -1221,7 +1228,7 @@ a.cv-chip.on, .cv-chip.on { background: var(--blue-600); color: #fff; border-col
 @media (min-width: 1100px) { .flt-main .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 720px) {
   .flt-layout { grid-template-columns: 1fr; }
-  .flt { display: none; position: static; }
+  .flt { display: none; position: static; max-height: none; overflow: visible; }
   .flt.open { display: block; }
   .flt-toggle { display: inline-block; }
 }

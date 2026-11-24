@@ -1,0 +1,92 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV",
+    "OLED"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "LG OLED65C6PSA",
+  "model": "OLED65C6PSA",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "LG OLED evo AI C6 65 inci 4K (3840 x 2160) dengan Prosesor Alpha 11 AI 4K Gen3 dan Brightness Booster, mendukung hingga 165 Hz untuk gaming.\r\n\r\nFitur Utama:\r\n- Brightness Booster dan Prosesor Alpha 11 AI Gen3 untuk gambar lebih terang dan detail\r\n- Perfect Black dan Perfect Color untuk kontras dalam dan warna akurat\r\n- Hingga 165 Hz pada 4K dengan G-SYNC dan FreeSync Premium\r\n- Dolby Vision dan Dolby Atmos\r\n- Waktu respons kurang dari 0,1 ms\r\n- webOS dengan pengalaman AI, diamankan oleh LG Shield\r\n- Game Optimizer (Dasbor Game) dan WOW Orchestra",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "OLED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "120 Hz (VRR hingga 165 Hz)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Alpha 11 AI Processor 4K Gen3"
+    },
+    {
+      "label": "HDR",
+      "value": "Dolby Vision, HDR10, HLG"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "40 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Atmos, speaker 2.2 channel, AI Sound Pro Alpha 11 (virtual 11.1.2 up-mix)"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "webOS 26"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 6"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.3"
+    },
+    {
+      "label": "HDMI",
+      "value": "4 port (4K 120 Hz, eARC di HDMI 2)"
+    },
+    {
+      "label": "USB",
+      "value": "2 port (USB 2.0)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2/T, DVB-C"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1441 x 880 x 230 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1441 x 826 x 45,1 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "18,4 / 16,6 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

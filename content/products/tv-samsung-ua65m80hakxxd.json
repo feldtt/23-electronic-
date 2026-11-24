@@ -1,0 +1,91 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung UA65M80HAKXXD",
+  "model": "UA65M80HAKXXD",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Smart TV Samsung Mini LED 65 inci seri M80H resolusi 4K dengan refresh rate hingga 144 Hz VRR, cocok untuk film dan game.\r\n\r\nFitur Utama:\r\n- Mini LED dengan Supreme Mini LED Dimming untuk kontras dan hitam yang dalam\r\n- Resolusi 4K UHD (3840 x 2160), prosesor NQ4 AI Gen2\r\n- Refresh rate 144 Hz VRR (100 Hz native) dan Motion Xcelerator 144 Hz\r\n- AI HDR Remastering dan dukungan HDR 10+\r\n- Mode game otomatis (ALLM), AI Auto Game Mode, dan AI Gaming Optimizer\r\n- Tizen Smart TV, Wi-Fi 5, Bluetooth 5.3\r\n- Speaker 20 W dengan Object Tracking Sound Lite dan Q-Symphony\r\n- 3 port HDMI dan 1 port USB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "Mini LED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "144 Hz VRR (100 Hz native)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "NQ4 AI Gen2 Processor"
+    },
+    {
+      "label": "HDR",
+      "value": "Mini LED HDR, HDR 10+"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Tizen Smart TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.3"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB-A)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "175 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Titan Black"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1444,1 x 882,2 x 222 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1444,1 x 831,2 x 76,8 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

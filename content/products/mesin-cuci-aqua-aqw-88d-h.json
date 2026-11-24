@@ -1,17 +1,18 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "AQUA AQW-88D-H",
   "variant": "",
   "title": "AQUA AQW-88D-H",
   "model": "AQW-88D-H",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "Mesin cuci top loading Aqua 8 kg (Hijab Wash Classic Series) dengan tutup kaca tempered dan soft closing door.\n\nFitur Utama:\n- Hijab Wash: program khusus untuk merawat hijab agar tetap baik dan tahan lama\n- Fuzzy Control: tinggi air menyesuaikan berat cucian, lebih hemat air dan listrik\n- Tempered Glass Lid: tutup kaca yang diperkeras, kuat dan awet\n- Soft Closing Door: tutup menutup perlahan dan lembut, mengurangi risiko jari terjepit\n- Low Water Pressure: tetap mencuci pada tekanan air rendah (0,01 MPa), cocok untuk apartemen dan tandon rendah\n- Power Off Memory: saat listrik mati, mesin melanjutkan dari posisi berhenti ketika listrik menyala",
+  "photo": "/assets/uploads/produk-mesin-cuci-aqua-aqw-88d-h-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-aqua-aqw-88d-h-1.png"
+  ],
+  "alt": "AQUA AQW-88D-H AQW-88D-H",
+  "description": "Mesin cuci top loading Aqua 8 kg (Hijab Wash Classic Series) dengan tutup kaca tempered dan soft closing door.\r\n\r\nFitur Utama:\r\n- Hijab Wash: program khusus untuk merawat hijab agar tetap baik dan tahan lama\r\n- Fuzzy Control: tinggi air menyesuaikan berat cucian, lebih hemat air dan listrik\r\n- Tempered Glass Lid: tutup kaca yang diperkeras, kuat dan awet\r\n- Soft Closing Door: tutup menutup perlahan dan lembut, mengurangi risiko jari terjepit\r\n- Low Water Pressure: tetap mencuci pada tekanan air rendah (0,01 MPa), cocok untuk apartemen dan tandon rendah\r\n- Power Off Memory: saat listrik mati, mesin melanjutkan dari posisi berhenti ketika listrik menyala",
   "specs": [
     {
       "label": "Kapasitas Cuci",

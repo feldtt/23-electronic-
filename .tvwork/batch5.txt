@@ -1,0 +1,34 @@
+MODEL: 32V51C
+SUMBER: listing Tokopedia (spesifikasi dan deskripsi dari owner)
+
+DESKRIPSI:
+TCL 32V51C adalah Google TV QLED 32 inci Full HD (1920 x 1080) dengan HDR10 dan audio Dolby Audio, desain bezel-less metallic.
+
+Fitur Utama:
+- Panel HVA dengan teknologi QLED, 100% Colour Volume Plus, 16,7 juta warna
+- Resolusi Full HD (1920 x 1080) dan dukungan HDR10
+- Google TV dengan akses YouTube, Netflix, Google Play, dan Disney+ Hotstar
+- Dolby Audio untuk suara lebih jernih
+- Wi-Fi 4 (2,4 GHz) dan Bluetooth 5.0
+- 2 port HDMI 1.4b dan 1 port USB 2.0
+- Multiple Eye Care untuk kenyamanan mata
+- Desain bezel-less dengan finishing metallic
+
+SPESIFIKASI:
+Ukuran Layar: 32 inci
+Resolusi: Full HD (1920 x 1080)
+Teknologi Layar: QLED (panel HVA)
+Refresh Rate: ± 60 Hz (MEMC), ± 120 Hz (DLG)
+HDR: HDR10
+Audio: Dolby Audio
+Sistem Operasi: Google TV
+Wi-Fi: Wi-Fi 4 (2,4 GHz)
+Bluetooth: 5.0
+HDMI: 2 port (HDMI 1.4b)
+USB: 1 port (USB 2.0)
+Warna: Hitam
+Dimensi tanpa Kaki (L x T x D): ± 715 x 465 x 80 mm
+Berat: ± 5 kg
+Garansi: ± 1 Tahun Sparepart + Panel
+
+Catatan: data dari listing Tokopedia. Lama garansi panel tidak tertulis jelas (listing menyebut "warranty panel + 1 year service & sparepart" dan klaim "10-year screen burning warranty").

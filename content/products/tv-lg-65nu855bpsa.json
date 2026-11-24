@@ -1,0 +1,87 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "LG 65NU855BPSA",
+  "model": "65NU855BPSA",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "LG NANO 4K UHD AI NU85 65 inci 4K (3840 x 2160) dengan Prosesor Alpha 7 AI 4K Gen9 dan webOS 26.\r\n\r\nFitur Utama:\r\n- Nano Detail Enhancer untuk tekstur dan kedalaman gambar 4K lebih realistis\r\n- Desain Linear Flow dengan finishing solid\r\n- webOS berbasis AI dengan Google Gemini dan Microsoft Copilot\r\n- AI Hub untuk pengalaman personal, diamankan LG Shield\r\n- 4K Super Upscaling dan FILMMAKER MODE\r\n- Akses konten live dan on-demand lewat LG Channels\r\n- Mode gaming: ALLM, VRR (hingga 60 Hz), HGiG",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Alpha 7 AI Processor 4K Gen9"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10, HLG"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Audio",
+      "value": "AI Sound Pro (virtual 9.1.2 up-mix), speaker 2.0 channel"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "webOS 26"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.3"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port (eARC di HDMI 2)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2/T, DVB-C"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1447 x 901 x 269 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1447 x 838 x 70,8 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "14,1 / 13,9 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

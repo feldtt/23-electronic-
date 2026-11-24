@@ -1,0 +1,34 @@
+MODEL: 50S5K
+SUMBER: listing Tokopedia (spesifikasi dan deskripsi dari owner)
+
+DESKRIPSI:
+TCL 50S5K adalah Google TV QLED 50 inci Full HD (1920 x 1080) dengan HDR10 dan audio Dolby Audio dalam desain slim.
+
+Fitur Utama:
+- Teknologi QLED (Quantum Dot) dengan panel VA, kontras 4000:1 (tipikal)
+- Resolusi Full HD (1920 x 1080) dengan HDR10, HDR10+, dan HLG
+- Google TV dengan Google Assistant lewat remote
+- Dolby Audio untuk suara lebih jernih
+- Google Cast untuk menampilkan layar ponsel
+- Wi-Fi 4 dan Bluetooth 5.4
+- HDMI 1.4b dengan HDMI CEC
+- Slim Design dan Multiple Viewing Mode
+
+SPESIFIKASI:
+Ukuran Layar: 50 inci
+Resolusi: Full HD (1920 x 1080)
+Teknologi Layar: QLED (panel VA)
+Refresh Rate: 60 Hz
+HDR: HDR10, HDR10+, HLG
+Audio: Dolby Audio
+Sistem Operasi: Google TV
+Wi-Fi: Wi-Fi 4
+Bluetooth: 5.4
+HDMI: HDMI 1.4b, dengan HDMI CEC
+Warna: Hitam
+Dimensi dengan Kaki (L x T x D): 1111 x 684 x 254 mm
+Dimensi tanpa Kaki (L x T x D): 1111 x 644 x 70 mm
+Berat: ± 7,2 - 7,3 kg
+Dudukan Dinding (VESA): 200 x 200 mm
+
+Catatan: data dari listing Tokopedia. Berat dengan kaki (7,2 kg) dan tanpa kaki (7,3 kg) tertukar di sumber, jadi ditulis rentang. Garansi belum tertulis di listing. Jumlah HDMI, USB, dan daya suara tidak tercantum.

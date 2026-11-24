@@ -1,0 +1,71 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "TCL 65P6L",
+  "model": "65P6L",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "TCL 65P6L adalah Google TV LED 65 inci 4K UHD (3840 x 2160) dengan prosesor AiPQ dan HDR untuk gambar tajam.\r\n\r\nFitur Utama:\r\n- Panel HVA 4K dengan HDR\r\n- Prosesor AiPQ\r\n- Google TV\r\n- Dolby Audio\r\n- Desain metallic bezel-less\r\n- RAM 2 GB dan penyimpanan internal 16 GB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "± 60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "AiPQ"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "± 20 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "HDMI",
+      "value": "± 3 port"
+    },
+    {
+      "label": "USB",
+      "value": "± 1 port"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "± 122 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

@@ -1,18 +1,68 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "Electrolux EWT8078K6WA",
   "variant": "",
   "title": "Electrolux EWT8078K6WA",
   "model": "EWT8078K6WA",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "",
-  "specs": [],
+  "photo": "/assets/uploads/produk-mesin-cuci-electrolux-ewt8078k6wa-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-electrolux-ewt8078k6wa-1.png"
+  ],
+  "alt": "Electrolux EWT8078K6WA EWT8078K6WA",
+  "description": "Mesin cuci top loading Electrolux kapasitas 8 kg dengan kontrol manual dan tampilan. Dilengkapi selang masuk, selang drainase, dan jaring anti tikus.",
+  "specs": [
+    {
+      "label": "Kapasitas Cuci",
+      "value": "8 kg"
+    },
+    {
+      "label": "Tipe",
+      "value": "Top Loading (1 tabung)"
+    },
+    {
+      "label": "Warna",
+      "value": "Putih"
+    },
+    {
+      "label": "Jenis Kontrol",
+      "value": "Manual dengan tampilan"
+    },
+    {
+      "label": "Kecepatan Putar Maks.",
+      "value": "700 RPM"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 - 240 V / 50 Hz"
+    },
+    {
+      "label": "Dimensi Unit (L x D x T)",
+      "value": "550 x 592 x 965 mm"
+    },
+    {
+      "label": "Dimensi Kemasan (L x D x T)",
+      "value": "630 x 640 x 1015 mm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "32 / 36 kg"
+    },
+    {
+      "label": "Aksesori",
+      "value": "Selang masuk, selang drainase, jaring anti tikus"
+    },
+    {
+      "label": "Daya Maks.",
+      "value": "400 Watt"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 10 Tahun Motor"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

@@ -1,0 +1,99 @@
+{
+  "category": "tv",
+  "group": [
+    "43\"",
+    "Google TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Xiaomi A43",
+  "model": "A43",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Xiaomi TV A 43 inci Full HD (1920 x 1080) dengan Google TV, layar bezel-less, dan audio Dolby Audio serta DTS.\r\n\r\nFitur Utama:\r\n- Layar Full HD 43 inci, 60 Hz, sudut pandang lebar 178°\r\n- Dukungan HDR10 dan HLG\r\n- Google TV dengan Google Assistant bawaan\r\n- Dolby Audio, DTS-X, dan DTS Virtual, speaker 2 x 10 W\r\n- Google Cast dan Miracast untuk menampilkan layar ponsel\r\n- Wi-Fi dual-band 2,4 GHz/5 GHz dan Bluetooth 5.0\r\n- Layar tanpa batas dengan frame logam\r\n- Remote Bluetooth dengan kontrol suara",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Quad Cortex A53"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10, HLG"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "10 W + 10 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, DTS-X, DTS Virtual"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "2,4 GHz / 5 GHz"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2 + C"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "75 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "955 x 600 x 210 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "955 x 557 x 72 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "5,3 / 5,2 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

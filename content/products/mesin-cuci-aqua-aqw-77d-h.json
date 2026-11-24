@@ -1,8 +1,7 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "AQUA AQW-77D-H",
   "variant": "",
@@ -13,7 +12,7 @@
     "/assets/uploads/produk-mesin-cuci-aqua-aqw-77d-h-1.png"
   ],
   "alt": "AQUA AQW-77D-H AQW-77D-H",
-  "description": "Mesin cuci top loading Aqua 7 kg dengan program Hijab Wash dan teknologi tekanan air rendah.\n\nFitur Utama:\n- Hijab Wash: program khusus untuk merawat hijab\n- Fuzzy Control: tinggi air menyesuaikan beban cucian, lebih hemat air dan listrik\n- Low Water Pressure: tetap bekerja pada tekanan air rendah (0,01 MPa), cocok untuk apartemen dan tandon rendah\n- ABT Pulsator: material antibakteri pada pulsator\n- Quick Wash 15 menit untuk pakaian yang tidak terlalu kotor",
+  "description": "Mesin cuci top loading Aqua 7 kg dengan program Hijab Wash dan teknologi tekanan air rendah.\r\n\r\nFitur Utama:\r\n- Hijab Wash: program khusus untuk merawat hijab\r\n- Fuzzy Control: tinggi air menyesuaikan beban cucian, lebih hemat air dan listrik\r\n- Low Water Pressure: tetap bekerja pada tekanan air rendah (0,01 MPa), cocok untuk apartemen dan tandon rendah\r\n- ABT Pulsator: material antibakteri pada pulsator\r\n- Quick Wash 15 menit untuk pakaian yang tidak terlalu kotor",
   "specs": [
     {
       "label": "Kapasitas Cuci",
@@ -50,6 +49,10 @@
     {
       "label": "Berat (Bersih / Kotor)",
       "value": "26 / 31 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + Jasa + 7 Tahun Motor"
     }
   ],
   "wa_message": "",

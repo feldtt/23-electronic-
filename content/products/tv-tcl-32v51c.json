@@ -1,0 +1,85 @@
+{
+  "category": "tv",
+  "group": [
+    "32\"",
+    "Google TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "TCL 32V51C",
+  "model": "32V51C",
+  "photo": "/assets/uploads/produk-tv-tcl-32v51c-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-tcl-32v51c-1.png"
+  ],
+  "alt": "",
+  "description": "TCL 32V51C adalah Google TV QLED 32 inci Full HD (1920 x 1080) dengan HDR10 dan audio Dolby Audio, desain bezel-less metallic.\r\n\r\nFitur Utama:\r\n- Panel HVA dengan teknologi QLED, 100% Colour Volume Plus, 16,7 juta warna\r\n- Resolusi Full HD (1920 x 1080) dan dukungan HDR10\r\n- Google TV dengan akses YouTube, Netflix, Google Play, dan Disney+ Hotstar\r\n- Dolby Audio untuk suara lebih jernih\r\n- Wi-Fi 4 (2,4 GHz) dan Bluetooth 5.0\r\n- 2 port HDMI 1.4b dan 1 port USB 2.0\r\n- Multiple Eye Care untuk kenyamanan mata\r\n- Desain bezel-less dengan finishing metallic",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "QLED (panel HVA)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "± 60 Hz (MEMC), ± 120 Hz (DLG)"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 4 (2,4 GHz)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port (HDMI 1.4b)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "± 715 x 465 x 80 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "± 5 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "± 1 Tahun Sparepart + Panel"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

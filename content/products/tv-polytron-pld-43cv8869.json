@@ -1,0 +1,51 @@
+{
+  "category": "tv",
+  "group": [
+    "43\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Polytron PLD 43CV8869",
+  "model": "PLD 43CV8869",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Polytron Smart Lite Digital TV 43 inci Full HD (1920 x 1080) dengan Google Assistant, DVB-T2, dan garansi 5 tahun.\r\n\r\nFitur Utama:\r\n- Smart TV Lite dengan antarmuka sederhana dan kontrol suara Google Assistant\r\n- Digital TV (DVB-T2), siaran digital gratis tanpa langganan\r\n- Screen casting dari ponsel lewat aplikasi CAST\r\n- Browser TV bawaan\r\n- Aplikasi YouTube dan VIDIO\r\n- Gratis Vidio Platinum 12 bulan\r\n- Garansi 5 tahun (panel LED, kerusakan petir, suku cadang, servis, remote)",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "75 W"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

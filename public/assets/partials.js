@@ -11,7 +11,11 @@
   const mapsLink = 'https://share.google/0QVk0UbpNqSYhuXnu';
   const telLink = 'tel:+628111523239';
 
-  const isActive = (k) => page.active === k ? ' active' : '';
+  // On a category page (AC, Kulkas, ...) highlight that category, not "Semua Produk"
+  const catMatch = location.pathname.match(/\/produk\/(ac|kulkas|mesin-cuci|tv-dan-elektronik-rumah)(\.html)?\/?$/);
+  const cat = catMatch ? catMatch[1] : '';
+  const isActive = (k) => (k === 'produk' && cat) ? '' : (page.active === k ? ' active' : '');
+  const isCat = (c) => cat === c ? ' class="active"' : '';
 
   // ===== Top utility bar =====
   const topbar = `
@@ -65,10 +69,10 @@
       <div class="container">
         <a href="${base}index.html" class="${isActive('home')}">Beranda</a>
         <a href="${base}produk/index.html" class="${isActive('produk')}">Semua Produk</a>
-        <div class="nav-dd" id="ddAc"><a href="${base}produk/ac.html">AC <span class="dd-caret">&#9662;</span></a><div class="dd-panel" id="ddAcPanel"></div></div>
-        <a href="${base}produk/kulkas.html">Kulkas</a>
-        <a href="${base}produk/mesin-cuci.html">Mesin Cuci</a>
-        <a href="${base}produk/tv-dan-elektronik-rumah.html">TV &amp; Elektronik</a>
+        <div class="nav-dd" id="ddAc"><a href="${base}produk/ac.html"${isCat('ac')}>AC <span class="dd-caret">&#9662;</span></a><div class="dd-panel" id="ddAcPanel"></div></div>
+        <a href="${base}produk/kulkas.html"${isCat('kulkas')}>Kulkas</a>
+        <a href="${base}produk/mesin-cuci.html"${isCat('mesin-cuci')}>Mesin Cuci</a>
+        <a href="${base}produk/tv-dan-elektronik-rumah.html"${isCat('tv-dan-elektronik-rumah')}>TV &amp; Elektronik</a>
         <a href="${base}jasa-service/index.html" class="${isActive('jasa')}">Jasa Service</a>
         <a href="${base}area-layanan/index.html" class="${isActive('area')}">Area Layanan</a>
         <a href="${base}promo/index.html" class="${isActive('promo')}">Promo</a>

@@ -1,0 +1,95 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung UA65DU8000KXXD",
+  "model": "UA65DU8000KXXD",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Samsung Smart TV Crystal UHD DU8000 65 inci 4K (3840 x 2160) dengan Crystal Processor 4K dan desain AirSlim.\r\n\r\nFitur Utama:\r\n- Dynamic Crystal Color\r\n- 4K Upscaling\r\n- Desain AirSlim\r\n- Motion Xcelerator dan Auto Low Latency Mode (ALLM)\r\n- Q-Symphony, OTS Lite, dan Adaptive Sound\r\n- Samsung Knox Security dan SmartThings\r\n- AI Energy Mode\r\n- Remote SolarCell dan stand yang bisa diatur (Float Lift)",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "50 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Crystal Processor 4K"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR, HDR10+"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Speaker 2 channel, OTS Lite, Q-Symphony, Adaptive Sound"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Tizen Smart TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.2"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port (USB-A)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "215 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Titan Gray"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1450,9 x 874,3 x 279,4 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1450,9 x 831,9 x 25,7 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "21,4 / 20,9 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

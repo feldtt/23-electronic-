@@ -1,0 +1,13 @@
+/id/tvs/full-hd-tv/f6000-43-inch-smart-tv-ua43fe60efkxxd/
+/id/tvs/mini-led-tv/m1eh-43-inch-4k-smart-tv-ua43m1ehakxxd/
+/id/tvs/mini-led-tv/m70h-43-inch-4k-smart-tv-ua43m70hakxxd/
+/id/tvs/mini-led-tv/m80h-85-inch-4k-smart-tv-ua85m80hakxxd/
+/id/tvs/oled-tv/s85h-83-inch-4k-smart-tv-qa83s85haexxd/
+/id/tvs/oled-tv/s90f-48-inch-oled-4k-smart-tv-qa48s90faexxd/
+/id/tvs/oled-tv/s90h-55-inch-4k-smart-tv-qa55s90hakxxd/
+/id/tvs/oled-tv/s95h-77-inch-4k-smart-tv-qa77s95hxexxd/
+/id/tvs/qled-tv/q5f-43-inch-qled-full-hd-smart-tv-qa43q5faakxxd/
+/id/tvs/qled-tv/q8f-75-inch-qled-4k-smart-tv-qa75q8faakxxd/
+/id/tvs/qled-tv/q8f5-43-inch-qled-4k-smart-tv-qa43q8f5akxxd/
+/id/tvs/uhd-4k-tv/u8000f-55-inch-crystal-uhd-4k-smart-tv-ua55u8000fkxxd/
+/id/tvs/uhd-4k-tv/u8500f-50-inch-crystal-uhd-4k-smart-tv-ua50u8500fkxxd/

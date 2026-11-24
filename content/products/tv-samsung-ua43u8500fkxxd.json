@@ -1,0 +1,83 @@
+{
+  "category": "tv",
+  "group": [
+    "43\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung UA43U8500FKXXD",
+  "model": "UA43U8500FKXXD",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Smart TV Samsung Crystal UHD 43 inci resolusi 4K dengan Crystal Processor 4K dan HDR 10+ untuk gambar tajam dan warna hidup.\r\n\r\nFitur Utama:\r\n- Resolusi 4K UHD (3840 x 2160) dengan Crystal Processor 4K\r\n- Dukungan HDR dan HDR 10+\r\n- Motion Xcelerator untuk gerakan yang lebih halus\r\n- Sistem operasi Tizen Smart TV dengan akses aplikasi streaming\r\n- Wi-Fi 5 dan Bluetooth 5.3\r\n- 3 port HDMI (eARC) dan 1 port USB\r\n- Mode game otomatis (ALLM)\r\n- Speaker 20 W dengan Q-Symphony untuk dipadukan dengan soundbar Samsung\r\n- Desain Metal Stream tanpa bezel di tiga sisi",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "50 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Crystal Processor 4K"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR, HDR 10+"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Tizen Smart TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.3"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB-A)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "957,8 x 609 x 157 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "957,8 x 558,8 x 76,3 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

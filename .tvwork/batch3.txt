@@ -1,0 +1,38 @@
+MODEL: A32
+SUMBER: halaman spesifikasi Xiaomi TV A 32" (teks dari owner) + listing Shopee (garansi)
+
+DESKRIPSI:
+Xiaomi TV A 32 inci HD (1366 x 768) dengan Google TV, layar bezel-less, dan audio Dolby Audio serta DTS.
+
+Fitur Utama:
+- Layar HD 32 inci, 60 Hz, sudut pandang lebar 178°
+- Dukungan HDR10 dan HLG
+- Google TV dengan Google Assistant bawaan
+- Dolby Audio, DTS-X, dan DTS Virtual, speaker 2 x 8 W
+- Google Cast dan Miracast untuk menampilkan layar ponsel
+- Wi-Fi dual-band 2,4 GHz/5 GHz dan Bluetooth 5.0
+- Layar tanpa batas dengan frame logam
+- Ringan: 3,2 kg dengan dudukan
+
+SPESIFIKASI:
+Ukuran Layar: 32 inci
+Resolusi: HD (1366 x 768)
+Refresh Rate: 60 Hz
+Prosesor: Quad Cortex A53
+HDR: HDR10, HLG
+Daya Suara: 8 W + 8 W
+Audio: Dolby Audio, DTS-X, DTS Virtual
+Sistem Operasi: Google TV
+Wi-Fi: 2,4 GHz / 5 GHz
+Bluetooth: 5.0
+HDMI: 2 port
+USB: 1 port (USB 2.0)
+Tuner Digital: DVB-T2 + C
+Konsumsi Daya Maks.: 50 W
+Warna: Hitam
+Dimensi dengan Kaki (L x T x D): 719 x 469 x 198 mm
+Dimensi tanpa Kaki (L x T x D): 719 x 425 x 61 mm
+Berat (dengan / tanpa kaki): 3,2 / 3,1 kg
+Garansi: ± 3 Tahun (Garansi Resmi)
+
+Catatan: garansi 3 tahun dari listing Shopee, bukan dari situs Xiaomi.

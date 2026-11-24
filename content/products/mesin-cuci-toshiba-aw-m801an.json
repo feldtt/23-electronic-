@@ -1,17 +1,18 @@
 {
   "category": "mesin-cuci",
   "group": [
-    "Top Loading",
-    "Mesin Cuci 1 Tabung"
+    "Top Loading"
   ],
   "series": "Toshiba AW-M801AN",
   "variant": "",
   "title": "Toshiba AW-M801AN",
   "model": "AW-M801AN-WW",
-  "photo": "",
-  "photos": [],
-  "alt": "",
-  "description": "Mesin cuci top loading Toshiba 7 kg dengan kontrol LED dan pencucian cepat 15 menit.\n\nFitur Utama:\n- Fuzzy: tinggi air menyesuaikan beban cucian, lebih hemat air\n- Fundamentally Clean: aliran air bertekanan tinggi membersihkan tabung dalam dan luar\n- Wadah pelembut pakaian terpisah\n- Quick Wash 15 menit dan program Tub Clean\n- Soft Close Lid, tutup transparan bermotif silk, desain tanpa sudut\n- Teknologi THE GREATWAVES 2.0",
+  "photo": "/assets/uploads/produk-mesin-cuci-toshiba-aw-m801an-1.png",
+  "photos": [
+    "/assets/uploads/produk-mesin-cuci-toshiba-aw-m801an-1.png"
+  ],
+  "alt": "Toshiba AW-M801AN AW-M801AN-WW",
+  "description": "Mesin cuci top loading Toshiba 7 kg dengan kontrol LED dan pencucian cepat 15 menit.\r\n\r\nFitur Utama:\r\n- Fuzzy: tinggi air menyesuaikan beban cucian, lebih hemat air\r\n- Fundamentally Clean: aliran air bertekanan tinggi membersihkan tabung dalam dan luar\r\n- Wadah pelembut pakaian terpisah\r\n- Quick Wash 15 menit dan program Tub Clean\r\n- Soft Close Lid, tutup transparan bermotif silk, desain tanpa sudut\r\n- Teknologi THE GREATWAVES 2.0",
   "specs": [
     {
       "label": "Kapasitas Cuci",
@@ -40,6 +41,10 @@
     {
       "label": "Dimensi (L x D x T)",
       "value": "515 x 525 x 920 mm"
+    },
+    {
+      "label": "Berat (Bersih / Kotor)",
+      "value": "± 32 / 35 kg"
     },
     {
       "label": "Garansi",

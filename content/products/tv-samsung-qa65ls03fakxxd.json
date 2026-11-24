@@ -1,0 +1,99 @@
+{
+  "category": "tv",
+  "group": [
+    "65\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung QA65LS03FAKXXD",
+  "model": "QA65LS03FAKXXD",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Samsung The Frame 65 inci QLED 4K (3840 x 2160) dengan Samsung Vision AI yang menampilkan karya seni saat TV tidak dipakai.\r\n\r\nFitur Utama:\r\n- Art Mode dan Art Store dengan 370+ karya seni gratis per tahun\r\n- Desain bingkai slim dengan bezel magnetis yang bisa diganti\r\n- Matte Display anti-pantulan\r\n- Samsung Vision AI, termasuk AI Upscale 4K dan Generative Wallpaper\r\n- Motion Xcelerator 144Hz, VRR, FreeSync Premium, dan ALLM untuk gaming\r\n- Dolby Atmos, Q-Symphony, dan Object Tracking Sound\r\n- Remote SolarCell bertenaga cahaya\r\n- One Connect Box untuk kabel lebih rapi",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "QLED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "100 Hz (hingga 144 Hz)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "NQ4 AI Gen2 Processor"
+    },
+    {
+      "label": "HDR",
+      "value": "Quantum HDR, HDR10+"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "40 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Atmos, 360 Audio, Adaptive Sound Pro, Object Tracking Sound, Q-Symphony"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Tizen Smart TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.3"
+    },
+    {
+      "label": "HDMI",
+      "value": "4 port"
+    },
+    {
+      "label": "USB",
+      "value": "3 port (2 x USB-A, 1 x USB-C)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "215 W"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1456,8 x 868,9 x 260,9 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1456,8 x 831,9 x 24,9 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "22,8 / 22,4 kg"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

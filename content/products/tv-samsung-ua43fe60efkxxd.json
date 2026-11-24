@@ -1,0 +1,71 @@
+{
+  "category": "tv",
+  "group": [
+    "43\"",
+    "Smart TV"
+  ],
+  "series": "",
+  "variant": "",
+  "title": "Samsung UA43FE60EFKXXD",
+  "model": "UA43FE60EFKXXD",
+  "photo": "",
+  "photos": [],
+  "alt": "",
+  "description": "Smart TV Samsung Full HD 43 inci seri F6000 dengan desain ramping dan audio Dolby, cocok untuk kamar tidur atau ruang keluarga.\r\n\r\nFitur Utama:\r\n- Resolusi Full HD (1920 x 1080) dengan Hyper Real Picture Engine\r\n- Micro Dimming Pro untuk kontras lebih baik\r\n- Audio Dolby (MS12 2CH), speaker 20 W\r\n- Wi-Fi 5, web browser, dan koneksi LAN\r\n- 2 port HDMI dan 1 port USB\r\n- Tuner digital DVB-T2\r\n- Desain Slim Look tanpa bezel di tiga sisi",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "Hyper Real Picture Engine"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby MS12 2CH"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB-A)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Warna",
+      "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "965,9 x 590 x 157,6 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "965,9 x 563,3 x 75,8 mm"
+    }
+  ],
+  "wa_message": "",
+  "order": 1000,
+  "stock": null,
+  "price": 0,
+  "featured": false,
+  "published": true
+}

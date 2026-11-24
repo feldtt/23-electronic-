@@ -329,8 +329,17 @@
             var active = boxes.some(function (b) { return b.checked; });
             document.getElementById('fltCount').textContent = active ? shown + ' produk ditemukan' : '';
           }
-          boxes.forEach(function (b) { b.addEventListener('change', apply); });
-          document.getElementById('fltReset').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); apply(); });
+          // The result list gets shorter than the page was, so the browser would clamp the scroll and the
+          // sticky filter panel would jump. Keep the panel where it is: bring the top of the layout to the
+          // sticky offset, so the results start next to the panel.
+          var layout = root.closest('.flt-layout');
+          function update() {
+            apply();
+            var top = layout.getBoundingClientRect().top;
+            if (top < 90) window.scrollTo(0, window.scrollY + top - 90);
+          }
+          boxes.forEach(function (b) { b.addEventListener('change', update); });
+          document.getElementById('fltReset').addEventListener('click', function () { boxes.forEach(function (b) { b.checked = false; }); update(); });
           document.getElementById('fltToggle').addEventListener('click', function () { root.classList.toggle('open'); });
         })();
         </script>

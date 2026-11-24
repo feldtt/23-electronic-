@@ -1,0 +1,36 @@
+MODEL: A43
+SUMBER: halaman spesifikasi resmi Xiaomi TV A 2026 43" FHD (teks dari owner)
+
+DESKRIPSI:
+Xiaomi TV A 43 inci Full HD (1920 x 1080) dengan Google TV, layar bezel-less, dan audio Dolby Audio serta DTS.
+
+Fitur Utama:
+- Layar Full HD 43 inci, 60 Hz, sudut pandang lebar 178°
+- Dukungan HDR10 dan HLG
+- Google TV dengan Google Assistant bawaan
+- Dolby Audio, DTS-X, dan DTS Virtual, speaker 2 x 10 W
+- Google Cast dan Miracast untuk menampilkan layar ponsel
+- Wi-Fi dual-band 2,4 GHz/5 GHz dan Bluetooth 5.0
+- Layar tanpa batas dengan frame logam
+- Remote Bluetooth dengan kontrol suara
+
+SPESIFIKASI:
+Ukuran Layar: 43 inci
+Resolusi: Full HD (1920 x 1080)
+Refresh Rate: 60 Hz
+Prosesor: Quad Cortex A53
+HDR: HDR10, HLG
+Daya Suara: 10 W + 10 W
+Audio: Dolby Audio, DTS-X, DTS Virtual
+Sistem Operasi: Google TV
+Wi-Fi: 2,4 GHz / 5 GHz
+Bluetooth: 5.0
+HDMI: 2 port
+USB: 1 port (USB 2.0)
+Tuner Digital: DVB-T2 + C
+Konsumsi Daya Maks.: 75 W
+Warna: Hitam
+Dimensi dengan Kaki (L x T x D): 955 x 600 x 210 mm
+Dimensi tanpa Kaki (L x T x D): 955 x 557 x 72 mm
+Berat (dengan / tanpa kaki): 5,3 / 5,2 kg
+Garansi: 1 Tahun Sparepart + 3 Tahun Panel
