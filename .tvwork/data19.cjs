@@ -1,0 +1,3 @@
+module.exports = {"tv-sharp-2t-c24hd1400i": {
+desc: "Sharp 2T-C24HD1400I adalah LED TV digital 24 inci resolusi HD (1366 x 768) dengan tuner DVB-T2, X2 Master Engine, dan Dolby Audio.\r\n\r\nFitur Utama:\r\n- Layar LED HD (1366 x 768) dengan Wide Colour\r\n- Prosesor X2 Master Engine\r\n- Motion Enhancement AquoMotion 200\r\n- TV digital dengan tuner DVB-T2\r\n- Speaker 3 W + 3 W dengan Dolby Audio dan Original Surround\r\n- Antenna booster bawaan\r\n- Konektivitas HDMI dan USB (putar film dari USB)",
+specs: [["Ukuran Layar","24 inci (60 cm)"],["Resolusi","HD (1366 x 768)"],["Teknologi Layar","LED"],["Prosesor","X2 Master Engine"],["Daya Suara","3 W + 3 W"],["Audio","Dolby Audio, Original Surround"],["Tuner Digital","DVB-T2"]]}};

@@ -11,8 +11,53 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Coocaa 32Q55 adalah Google TV QLED 32 inci Full HD (1920 x 1080) dengan Dolby Audio, Bluetooth 5.0, dan Eye Care.\r\n\r\nFitur Utama:\r\n- Layar QLED 2K Full HD dengan gamut warna 90% DCI-P3\r\n- Google TV dengan YouTube, Netflix, Amazon Prime Video, dan App Store\r\n- Dukungan HDR10 dan HLG\r\n- Dolby Audio\r\n- Bluetooth 5.0\r\n- Sapphire Crystal Optics dan Eye Care untuk kenyamanan mata\r\n- RAM 1 GB dan penyimpanan 8 GB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "QLED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10, HLG"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "74 W"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "715,2 x 476,9 x 214,4 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "3,4 / 3,3 kg"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

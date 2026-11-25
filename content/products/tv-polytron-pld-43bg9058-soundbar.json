@@ -11,8 +11,57 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Polytron Smart Cinemax Soundbar 43 inci Full HD (1920 x 1080) dengan Android TV, Mola TV, dan speaker soundbar plus subwoofer.\r\n\r\nFitur Utama:\r\n- Android TV yang mendukung YouTube, Netflix, Disney+ Hotstar, dan aplikasi lain dari Google Play Store\r\n- Mola TV exclusive dengan film, serial, tayangan anak, dan olahraga\r\n- Google Assistant dengan remote Bluetooth\r\n- Teknologi DIPE untuk detail warna dan gambar lebih tajam\r\n- Desain frameless dengan bingkai layar tipis\r\n- Dilengkapi speaker soundbar dan subwoofer untuk suara menggelegar\r\n- 3 port HDMI, 2 port USB, dan 1 port Ethernet",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Prosesor",
+      "value": "DIPE Engine"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Android TV"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port"
+    },
+    {
+      "label": "Ethernet (LAN)",
+      "value": "1 port"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "75 W"
+    },
+    {
+      "label": "Tegangan",
+      "value": "180 - 240 V (50/60 Hz)"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "± 735 x 478 x 212 mm"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Panel + Jasa Sparepart"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

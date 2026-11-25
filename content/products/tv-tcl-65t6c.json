@@ -8,11 +8,62 @@
   "variant": "",
   "title": "TCL 65T6C",
   "model": "65T6C",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-tcl-65t6c-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-tcl-65t6c-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "TCL 65T6C adalah Google TV QLED 65 inci 4K dengan panel HVA, HDR10+, Dolby Vision & Atmos, dan AiPQ Processor.\r\n\r\nFitur Utama:\r\n- Teknologi Quantum Dot (QLED) dengan 93% DCI-P3 Colour Gamut\r\n- Panel HVA, HDR 10+, dan Bionic Color Optimization\r\n- Refresh rate 120 Hz VRR (60 Hz tanpa VRR) dan MEMC\r\n- Dolby Vision & Atmos\r\n- Google TV dan Airplay 2\r\n- Flicker Free & Anti-Blue Light\r\n- Wi-Fi 5, Bluetooth 5.4, HDMI 2.1 x2, HDMI 2.0 x2, USB 3.0 x1\r\n- Desain bezel-less",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "65 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "QLED (HVA, 93% DCI-P3)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "120 Hz VRR (60 Hz tanpa VRR), MEMC"
+    },
+    {
+      "label": "Prosesor",
+      "value": "AiPQ Processor"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10+, Dolby Vision"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Atmos"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 5"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.4"
+    },
+    {
+      "label": "HDMI",
+      "value": "4 port (2 x HDMI 2.1, 2 x HDMI 2.0)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 3.0)"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

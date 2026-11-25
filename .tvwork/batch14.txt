@@ -1,0 +1,34 @@
+MODEL: PLD 43RG5059
+SUMBER: listing toko online (screenshot dari owner)
+
+DESKRIPSI:
+Polytron Google TV LED 43 inci Full HD (1920 x 1080) dengan Chromecast built-in, Google Assistant, dan Dolby Audio.
+
+Fitur Utama:
+- Google TV dengan Mola TV, YouTube, Netflix, Prime Video, dan Vidio terpasang
+- Chromecast built-in dan Google Assistant
+- Tuner digital DVB-T2
+- Prosesor ARM Cortex-A55 quad core 1,45 GHz, RAM 1,5 GB dan ROM 8 GB
+- Dolby Audio, output audio digital SPDIF (optik)
+- Wi-Fi dual band 2,4/5 GHz, Bluetooth 5.0, dan port Ethernet RJ45
+- 2 port HDMI dan 2 port USB (film, MP3, JPEG)
+
+SPESIFIKASI:
+Ukuran Layar: 43 inci
+Resolusi: Full HD (1920 x 1080)
+Teknologi Layar: LED
+Prosesor: ARM Cortex-A55 Quad Core 1,45 GHz
+RAM / Penyimpanan: 1,5 GB / 8 GB
+Audio: Dolby Audio, SPDIF (optik)
+Sistem Operasi: Google TV
+Wi-Fi: Dual band 2,4 / 5 GHz
+Bluetooth: 5.0
+HDMI: 2 port
+USB: 2 port
+Ethernet (LAN): 1 port (RJ45)
+Tuner Digital: DVB-T2
+Konsumsi Daya Maks.: 60 W
+Tegangan: 180 - 240 V (50/60 Hz)
+Dimensi dengan Kaki (L x T x D): 965 x 612 x 201 mm
+Dudukan Dinding (VESA): 200 x 200 mm
+Garansi: 5 Tahun Panel + Jasa Sparepart

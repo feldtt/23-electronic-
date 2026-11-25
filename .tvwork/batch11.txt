@@ -1,0 +1,27 @@
+MODEL: PLD 32TV1755
+SUMBER: listing toko online (screenshot dari owner)
+
+DESKRIPSI:
+Polytron PLD 32TV1755 adalah LED Digital TV 32 inci HD Ready (1366 x 768) dengan tuner DVB-T2 dan sepasang speaker tower.
+
+Fitur Utama:
+- Digital TV dengan tuner DVB-T2 bawaan
+- Resolusi HD Ready (1366 x 768) dengan DIPE Engine
+- 8 mode gambar dan 3D Picture Noise Reduction
+- 2 port HDMI, input YUV Component, dan input AV
+- USB Movie untuk memutar film dari flash disk
+- Audio Output dan SPDIF Output
+- Screen Saver by Mode dan Eco Mode
+- Garansi resmi 5 tahun
+
+SPESIFIKASI:
+Ukuran Layar: 32 inci
+Resolusi: HD Ready (1366 x 768)
+Teknologi Layar: LED
+Prosesor: DIPE Engine
+HDMI: 2 port
+USB: Ya (USB Movie)
+Tuner Digital: DVB-T2
+Konsumsi Daya Maks.: 55 W
+Dimensi (L x T x D): ± 740 x 490 x 210 mm
+Garansi: 5 Tahun Garansi Resmi

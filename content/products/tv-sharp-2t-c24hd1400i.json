@@ -8,11 +8,66 @@
   "variant": "",
   "title": "Sharp 2T-C24HD1400I",
   "model": "2T-C24HD1400I",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-sharp-2t-c24hd1400i-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-sharp-2t-c24hd1400i-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Sharp 2T-C24HD1400I adalah LED TV digital 24 inci resolusi HD (1366 x 768) dengan tuner DVB-T2, X2 Master Engine, dan Dolby Audio.\r\n\r\nFitur Utama:\r\n- Layar LED HD (1366 x 768) dengan Wide Colour\r\n- Prosesor X2 Master Engine\r\n- Motion Enhancement AquoMotion 200\r\n- TV digital dengan tuner DVB-T2\r\n- Speaker 3 W + 3 W dengan Dolby Audio dan Original Surround\r\n- Antenna booster bawaan\r\n- 2 port HDMI dan 1 port USB (putar film, musik, dan foto)\r\n- Input RF, AV, dan output headphone\r\n- Hemat daya: konsumsi ± 35 W, standby 0,5 W",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "24 inci (60 cm)"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "X2 Master Engine"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "3 W + 3 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, Original Surround"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (putar film, musik, foto)"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "± 35 W (standby 0,5 W)"
+    },
+    {
+      "label": "Tegangan",
+      "value": "100 - 240 V"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "± 600 x 380 x 150 mm"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

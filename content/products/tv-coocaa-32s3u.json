@@ -11,8 +11,49 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Coocaa 32S3U adalah Digital Smart TV LED 32 inci resolusi HD (1366 x 768) dengan OS Coolita, tuner digital, dan hemat daya.\r\n\r\nFitur Utama:\r\n- Smart TV dengan OS Coolita\r\n- Digital TV dengan tuner DVB-T/T2 dan DVB-C bawaan\r\n- CC Cast untuk mirroring layar ponsel\r\n- Browser internet dan YouTube\r\n- Audio Dolby dengan DTS TruSurround\r\n- Wi-Fi bawaan\r\n- 2 port HDMI dan 1 port USB\r\n- Konsumsi daya rendah (Low Watt)",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby, DTS TruSurround"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Coolita OS"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Ya (bawaan)"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T/T2 dan DVB-C"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

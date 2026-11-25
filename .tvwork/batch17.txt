@@ -1,0 +1,32 @@
+MODEL: 43V5C
+SUMBER: listing Tokopedia (spesifikasi dan deskripsi dari owner)
+
+DESKRIPSI:
+TCL 43V5C adalah Google TV QLED 43 inci Full HD (1920 x 1080) dengan HDR10, Dolby Audio, dan desain metallic bezel-less.
+
+Fitur Utama:
+- Teknologi QLED (Quantum Dot) dengan standar warna DCI-P3 (100% Colour Volume Plus)
+- Resolusi Full HD (1920 x 1080) dengan HDR10 dan refresh rate 60 Hz (MEMC)
+- Google TV (basis Android 14) dengan Netflix, YouTube, Disney+ Hotstar, dan Google Play Store
+- Speaker 2 channel (20 W) dengan Dolby Audio dan DTS Virtual:X
+- Chromecast built-in
+- Eye Care untuk perlindungan mata
+- Wi-Fi 4 dan Bluetooth 5.0
+- 2 port HDMI 1.4b, 1 port USB 2.0, antena TV digital, dan output audio optik
+- Desain metallic bezel-less dengan bodi belakang logam
+
+SPESIFIKASI:
+Ukuran Layar: 43 inci
+Resolusi: Full HD (1920 x 1080)
+Teknologi Layar: QLED (DCI-P3)
+Refresh Rate: 60 Hz (MEMC)
+Prosesor: AiPQ Processor
+HDR: HDR10
+Daya Suara: 20 W
+Audio: Dolby Audio, DTS Virtual:X
+Sistem Operasi: Google TV (Android 14)
+Wi-Fi: Wi-Fi 4 (2,4 GHz)
+Bluetooth: 5.0
+HDMI: 2 port (HDMI 1.4b)
+USB: 1 port (USB 2.0)
+RAM / Penyimpanan: 1 GB / 8 GB

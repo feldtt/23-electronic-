@@ -8,11 +8,58 @@
   "variant": "",
   "title": "Polytron PLD 50UG3059",
   "model": "PLD 50UG3059",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-polytron-pld-50ug3059-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-polytron-pld-50ug3059-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Polytron Smart Google TV 50 inci 4K UHD (3840 x 2160) dengan Dolby Vision, Dolby Audio, dan kontrol suara hands-free.\r\n\r\nFitur Utama:\r\n- Google TV dengan Google Play Store, Netflix, YouTube, dan Disney+ Hotstar\r\n- Resolusi 4K HDR (3840 x 2160) dengan Dolby Vision\r\n- Teknologi MEMC untuk gerakan gambar lebih halus\r\n- Hands-free voice control dengan Google Assistant dan remote Bluetooth\r\n- Dolby Audio\r\n- Wi-Fi Dual Band (2,4/5 GHz)\r\n- Desain frameless\r\n- Tuner digital DVB-T2\r\n- 3 port HDMI dan 2 port USB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "50 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Teknologi Gambar",
+      "value": "MEMC, Dolby Vision"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Dual Band 2,4 / 5 GHz"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Panel + Jasa Sparepart"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

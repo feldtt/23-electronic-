@@ -1,0 +1,3 @@
+module.exports = {"tv-sharp-2t-c32hd1400i": {
+desc: "Sharp 32 inci HD Ready Digital TV (resolusi 1366 x 768) dengan tuner digital DVB-T2, Wide Colour, dan Dolby Digital Plus.\r\n\r\nFitur Utama:\r\n- Resolusi HD Ready (1366 x 768)\r\n- Wide Colour untuk warna lebih hidup\r\n- Tuner digital DVB-T2 dan antenna booster\r\n- Output suara 15 W dengan Dolby Digital Plus dan Digital Surround\r\n- Putar film dari USB (USB Movie)\r\n- Output headphone",
+specs: [["Ukuran Layar","32 inci"],["Resolusi","HD (1366 x 768)"],["Daya Suara","15 W"],["Audio","Dolby Digital Plus, Digital Surround"],["Tuner Digital","DVB-T2"],["USB","1 port (putar film)"]]}};

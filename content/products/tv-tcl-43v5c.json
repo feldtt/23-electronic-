@@ -8,11 +8,70 @@
   "variant": "",
   "title": "TCL 43V5C",
   "model": "43V5C",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-tcl-43v5c-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-tcl-43v5c-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "TCL 43V5C adalah Google TV QLED 43 inci Full HD (1920 x 1080) dengan HDR10, Dolby Audio, dan desain metallic bezel-less.\r\n\r\nFitur Utama:\r\n- Teknologi QLED (Quantum Dot) dengan standar warna DCI-P3 (100% Colour Volume Plus)\r\n- Resolusi Full HD (1920 x 1080) dengan HDR10 dan refresh rate 60 Hz (MEMC)\r\n- Google TV (basis Android 14) dengan Netflix, YouTube, Disney+ Hotstar, dan Google Play Store\r\n- Speaker 2 channel (20 W) dengan Dolby Audio dan DTS Virtual:X\r\n- Chromecast built-in\r\n- Eye Care untuk perlindungan mata\r\n- Wi-Fi 4 dan Bluetooth 5.0\r\n- 2 port HDMI 1.4b, 1 port USB 2.0, antena TV digital, dan output audio optik\r\n- Desain metallic bezel-less dengan bodi belakang logam",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "QLED (DCI-P3)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz (MEMC)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "AiPQ Processor"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, DTS Virtual:X"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV (Android 14)"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi 4 (2,4 GHz)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port (HDMI 1.4b)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "RAM / Penyimpanan",
+      "value": "1 GB / 8 GB"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

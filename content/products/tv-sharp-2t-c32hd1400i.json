@@ -8,11 +8,70 @@
   "variant": "",
   "title": "Sharp 2T-C32HD1400I",
   "model": "2T-C32HD1400I",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-sharp-2t-c32hd1400i-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-sharp-2t-c32hd1400i-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Sharp Aquos 2T-C32HD1400I adalah LED TV digital 32 inci HD Ready (1366 x 768) dengan desain frameless, X2 Master Engine, dan Dolby Digital Plus.\r\n\r\nFitur Utama:\r\n- Resolusi HD Ready (1366 x 768) dengan gambar detail dan warna hidup\r\n- Desain frameless yang modern dan ramping\r\n- X2 Master Engine untuk kontras dan warna yang optimal\r\n- Tuner digital DVB-T2 dan antenna booster internal untuk sinyal lebih stabil\r\n- Dolby Digital Plus dan Sound Reflector, output 15 W (7,5 W + 7,5 W)\r\n- USB Movie: putar video, musik, dan foto dari flash drive\r\n- 2 port HDMI, 1 port USB, 1 Video In, dan 1 output headphone",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci (80 cm)"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Prosesor",
+      "value": "X2 Master Engine"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "15 W (7,5 W + 7,5 W)"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Digital Plus, Sound Reflector"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (putar film, musik, foto)"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "50 W"
+    },
+    {
+      "label": "Tegangan",
+      "value": "110 - 240 V, 50/60 Hz"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "± 732 x 465 x 144 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "± 6,0 kg (dengan kaki)"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Sparepart + 5 Tahun Panel"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

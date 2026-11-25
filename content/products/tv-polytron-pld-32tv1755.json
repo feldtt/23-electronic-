@@ -8,11 +8,54 @@
   "variant": "",
   "title": "Polytron PLD 32TV1755",
   "model": "PLD 32TV1755",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-polytron-pld-32tv1755-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-polytron-pld-32tv1755-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Polytron PLD 32TV1755 adalah LED Digital TV 32 inci HD Ready (1366 x 768) dengan tuner DVB-T2 dan sepasang speaker tower.\r\n\r\nFitur Utama:\r\n- Digital TV dengan tuner DVB-T2 bawaan\r\n- Resolusi HD Ready (1366 x 768) dengan DIPE Engine\r\n- 8 mode gambar dan 3D Picture Noise Reduction\r\n- 2 port HDMI, input YUV Component, dan input AV\r\n- USB Movie untuk memutar film dari flash disk\r\n- Audio Output dan SPDIF Output\r\n- Screen Saver by Mode dan Eco Mode\r\n- Garansi resmi 5 tahun",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD Ready (1366 x 768)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Prosesor",
+      "value": "DIPE Engine"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "Ya (USB Movie)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "55 W"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "± 740 x 490 x 210 mm"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Panel + Jasa Sparepart"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

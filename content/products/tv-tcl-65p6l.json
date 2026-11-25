@@ -8,10 +8,12 @@
   "variant": "",
   "title": "TCL 65P6L",
   "model": "65P6L",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-tcl-65p6l-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-tcl-65p6l-1.png"
+  ],
   "alt": "",
-  "description": "TCL 65P6L adalah Google TV LED 65 inci 4K UHD (3840 x 2160) dengan prosesor AiPQ dan HDR untuk gambar tajam.\r\n\r\nFitur Utama:\r\n- Panel HVA 4K dengan HDR\r\n- Prosesor AiPQ\r\n- Google TV\r\n- Dolby Audio\r\n- Desain metallic bezel-less\r\n- RAM 2 GB dan penyimpanan internal 16 GB",
+  "description": "TCL 65P6L adalah Google TV LED 65 inci 4K UHD (3840 x 2160) dengan prosesor AiPQ dan HDR untuk gambar tajam.\r\n\r\nFitur Utama:\r\n- Panel HVA 4K dengan HDR10\r\n- Prosesor AiPQ\r\n- Google TV\r\n- Dolby Audio\r\n- Desain metallic bezel-less\r\n- RAM 2 GB dan penyimpanan internal 16 GB",
   "specs": [
     {
       "label": "Ukuran Layar",
@@ -20,6 +22,10 @@
     {
       "label": "Resolusi",
       "value": "4K UHD (3840 x 2160)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "HVA Panel"
     },
     {
       "label": "Refresh Rate",
@@ -31,7 +37,7 @@
     },
     {
       "label": "HDR",
-      "value": "HDR"
+      "value": "HDR10"
     },
     {
       "label": "Daya Suara",
@@ -55,11 +61,27 @@
     },
     {
       "label": "Konsumsi Daya Maks.",
-      "value": "± 122 W"
+      "value": "125 W"
     },
     {
       "label": "Warna",
       "value": "Hitam"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "1446 x 878 x 300 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "1446 x 833 x 73 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "± 12,2 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
     }
   ],
   "wa_message": "",

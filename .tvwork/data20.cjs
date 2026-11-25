@@ -1,0 +1,3 @@
+module.exports = {"tv-advance-adv-2430a": {
+desc: "Advance ADV-2430A adalah Smart TV LED 24 inci dengan tuner digital DVB-T2/C bawaan, jadi bisa menonton siaran TV digital tanpa set top box.\r\n\r\nFitur Utama:\r\n- Smart TV dengan Wi-Fi b/g/n\r\n- Tuner digital DVB-T2/DVB-C bawaan\r\n- Deteksi resolusi otomatis dan sudut pandang lebar\r\n- 16,7 juta warna layar, kecerahan 200 cd/m², respon waktu 8 ms\r\n- OSD multi bahasa\r\n- 2 port HDMI, USB 2.0, input AV, dan AUX in\r\n- Aplikasi video gratis selama satu tahun",
+specs: [["Ukuran Layar","24 inci"],["Teknologi Layar","LED"],["Refresh Rate","50 Hz"],["Tuner Digital","DVB-T2 / DVB-C"],["Wi-Fi","802.11 b/g/n"],["HDMI","2 port"],["USB","1 port (USB 2.0)"],["Konsumsi Daya Maks.","60 W"],["Tegangan","220 - 240 V"]]}};

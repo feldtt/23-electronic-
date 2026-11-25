@@ -1,0 +1,27 @@
+MODEL: 43S3U
+SUMBER: listing toko online (screenshot dari owner; judul listing "COOCAA 43S3U Plus")
+
+DESKRIPSI:
+Coocaa 43S3U adalah Smart TV LED 43 inci Full HD (1920 x 1080) dengan Coolita 3.0, YouTube, Prime Video, dan Dolby Audio.
+
+Fitur Utama:
+- Smart TV dengan OS Coolita 3.0
+- Layar LED Full HD (1920 x 1080), refresh rate 60 Hz
+- Akses YouTube dan Prime Video
+- Dolby Audio
+- Wi-Fi 802.11 b/g/n
+- Chipset AMLT921D
+
+SPESIFIKASI:
+Ukuran Layar: 43 inci
+Resolusi: Full HD (1920 x 1080)
+Teknologi Layar: LED
+Refresh Rate: 60 Hz
+Prosesor: AMLT921D
+Audio: Dolby Audio
+Sistem Operasi: Coolita 3.0
+Wi-Fi: 802.11 b/g/n
+Tegangan: 100 - 240 V
+RAM / Penyimpanan: ± 512 MB / 4 GB
+
+Catatan: data dari listing toko online, judul listing "43S3U Plus" (perlu cek apakah sama dengan 43S3U). Baris HDR di listing tidak jelas ("HDR: Dolby Audio+") jadi dilewati. Jumlah HDMI, USB, daya suara, dimensi, berat, dan garansi tidak tercantum.

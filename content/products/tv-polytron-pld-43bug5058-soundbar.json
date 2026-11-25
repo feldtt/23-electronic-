@@ -11,8 +11,53 @@
   "photo": "",
   "photos": [],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Polytron Google TV 43 inci 4K UHD dengan Dolby Vision dan Dolby Atmos, dilengkapi soundbar dan subwoofer terintegrasi.\r\n\r\nFitur Utama:\r\n- Resolusi 4K UHD dengan teknologi MEMC untuk gerakan gambar lebih halus\r\n- Google TV dengan rekomendasi konten personal\r\n- Dolby Vision dan Dolby Atmos untuk gambar dan suara sinematik\r\n- Soundbar dan subwoofer terintegrasi, tanpa perangkat tambahan\r\n- Screen Mirroring (Cast)\r\n- Wi-Fi Dual Band untuk streaming stabil\r\n- Aplikasi streaming seperti Netflix, YouTube, dan Disney+",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "4K UHD"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED"
+    },
+    {
+      "label": "Teknologi Gambar",
+      "value": "MEMC, Dolby Vision"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Atmos, soundbar dan subwoofer terintegrasi"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Dual Band"
+    },
+    {
+      "label": "Tegangan",
+      "value": "220 V"
+    },
+    {
+      "label": "Dimensi (L x T x D)",
+      "value": "± 993 x 628 x 243 mm"
+    },
+    {
+      "label": "Berat",
+      "value": "± 10,6 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "5 Tahun Panel + Jasa Sparepart"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

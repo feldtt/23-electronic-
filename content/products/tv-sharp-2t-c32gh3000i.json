@@ -8,11 +8,78 @@
   "variant": "",
   "title": "Sharp 2T-C32GH3000I",
   "model": "2T-C32GH3000I",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-sharp-2t-c32gh3000i-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-sharp-2t-c32gh3000i-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "Sharp 2T-C32GH3000I adalah Google TV 32 inci HD Ready (1366 x 768) dengan HDR10, Google Assistant, Chromecast built-in, dan desain frameless.\r\n\r\nFitur Utama:\r\n- Resolusi HD Ready (1366 x 768) dengan dukungan HDR10\r\n- Google TV dengan Google Assistant dan YouTube\r\n- Chromecast dan mirroring bawaan\r\n- Prosesor S2 Revelation dengan Wide Colour serta MEMC, ALLM, VRR, dan AMD FreeSync\r\n- Tuner digital DVB-T2 dan antenna booster\r\n- Wi-Fi, Bluetooth, dan port LAN\r\n- Speaker 16 W (8 W + 8 W) dengan Digital Surround\r\n- 2 port HDMI dan 2 port USB\r\n- Desain frameless yang ramping\r\n- Clear Cache untuk performa tetap lancar",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Prosesor",
+      "value": "S2 Revelation"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "16 W (8 W + 8 W)"
+    },
+    {
+      "label": "Audio",
+      "value": "Digital Surround"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Ya (bawaan)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "Ya"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "60 W"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "716 x 426 x 178 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "716 x 426 x 83 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "3,4 / 3,3 kg"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,
