@@ -6,17 +6,76 @@
   ],
   "series": "",
   "variant": "",
-  "title": "CHIQ L32G7P-PRO",
+  "title": "CHiQ 32 Inch Digital TV",
   "model": "L32G7P-PRO",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-chiq-l32g7p-pro-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-chiq-l32g7p-pro-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "CHiQ L32G7P-PRO adalah Google TV LED 32 inci HD (1366 x 768) dengan Google Assistant, Chromecast bawaan, Wi-Fi dual-band 2,4G/5G, dan audio Dolby dengan dbx-tv.\r\n\r\nFitur Utama:\r\n- Google TV dengan 5000+ aplikasi (Netflix, YouTube, Amazon Prime Video, Google Play Store)\r\n- Google Assistant untuk kontrol suara\r\n- Chromecast bawaan dan Multi-screen share\r\n- Dolby Audio dengan penyetelan dbx-tv untuk suara lebih jernih\r\n- HDR10 dan teknologi Layar Penuh Mutakhir\r\n- Wi-Fi dual-band 2,4G/5G dan Bluetooth 5.0\r\n- 2 port HDMI (ARC) dan 1 port USB, plus LAN, AV In, optical, dan headphone\r\n- RAM 1,5 GB dan penyimpanan 8 GB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD (1366 x 768)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, dbx-tv"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi dual-band (2,4 GHz / 5 GHz)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port (HDMI 1.4, ARC)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "Ya (Digital TV)"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "45 - 55 W"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "± 724 x 480 x 179 mm"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,
   "price": 0,
   "featured": false,
-  "published": true
+  "published": false
 }

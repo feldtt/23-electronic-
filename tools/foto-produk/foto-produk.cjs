@@ -2,7 +2,7 @@
 // <foto-mentah> = path atau nama file di tools/foto-produk/raw/ . Template dan logo ada di folder ini.
 const fs=require('fs');const sharp=require('sharp');
 const path=require('path');const H=__dirname;
-const logoSrc={aqua:'aqua.jpg',sharp:'sharp.png',lg:'lg.webp',polytron:'polytron.webp',tcl:'tcl.png',samsung:'samsung.jpg',daikin:'daikin.png',panasonic:'panasonic.jpg',gree:'gree.png',midea:'midea.jpg',mitsubishi:'mitsubishi.png'};
+const logoSrc={aqua:'aqua.jpg',sharp:'sharp.png',lg:'lg.webp',polytron:'polytron.webp',tcl:'tcl.png',samsung:'samsung.jpg',daikin:'daikin.png',panasonic:'panasonic.jpg',gree:'gree.png',midea:'midea.jpg',mitsubishi:'mitsubishi.png',coocaa:'coocaa.webp',iffalcon:'iffalcon.jpg',xiaomi:'xiaomi.png',hisense:'hisense.png',toshiba:'toshiba.png',changhong:'changhong.svg',mhi:'mhi.png',sanken:'sanken.png',electrolux:'electrolux.png',gea:'gea.webp'};
 async function getLogo(b){
   if(!logoSrc[b])return null;const f=path.join(H,'logos',logoSrc[b]);
   const src=await sharp(f,{density:300}).flatten({background:'#fff'}).png().toBuffer();

@@ -6,7 +6,7 @@
   ],
   "series": "",
   "variant": "",
-  "title": "Samsung QA65LS03FAKXXD",
+  "title": "Samsung 65 Inch Smart TV",
   "model": "QA65LS03FAKXXD",
   "photo": "/assets/uploads/produk-tv-samsung-qa65ls03fakxxd-1.png",
   "photos": [
@@ -90,6 +90,10 @@
     {
       "label": "Berat (dengan / tanpa kaki)",
       "value": "22,8 / 22,4 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "2 Tahun Sparepart + 1 Tahun Panel"
     }
   ],
   "wa_message": "",

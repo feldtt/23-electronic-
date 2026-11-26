@@ -6,13 +6,60 @@
   ],
   "series": "",
   "variant": "",
-  "title": "LG 32LB550BPSC",
+  "title": "LG 32 Inch Digital TV",
   "model": "32LB550BPSC",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-lg-32lb550bpsc-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-lg-32lb550bpsc-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "LG 32LB550BPSC adalah Digital TV LED 32 inci dengan desain Seamless tanpa sambungan frame di depan, tuner digital DVB-T2, dan speaker down firing 20 W.\r\n\r\nFitur Utama:\r\n- Desain Seamless yang bersih dan minimalis dengan Geometric Back Cover yang kokoh\r\n- Panel Direct LED dengan Dynamic Color dan refresh rate 60 Hz Native\r\n- Resolution Upscaler dan 4 mode gambar (Standard, Dynamic, Soft, User)\r\n- Speaker 2.0 channel 20 W down firing dengan 5 mode suara (Standard, Movie, Music, Clear Voice, User)\r\n- Tuner digital DVB-T2 (RF In)\r\n- 2 port HDMI, 2 port USB, dan headphone jack / audio output di samping",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "Direct LED"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz Native"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "20 W (2.0 channel, down firing)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port"
+    },
+    {
+      "label": "USB",
+      "value": "2 port"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "719 x 456 x 180 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "719 x 430 x 75 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "3,6 / 3,5 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 1 Tahun Panel"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

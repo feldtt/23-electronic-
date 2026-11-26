@@ -155,7 +155,16 @@ export function buildEntities(products) {
   return entities;
 }
 
-const entityTitle = (e) => requireTitle(e.lead);
+// A washer series that spans several capacities (LG Twin Tub 12 / 14 / 17 kg) shows the range: "LG 12 - 17 Kg Twin Tube".
+function entityTitle(e) {
+  const t = requireTitle(e.lead);
+  if (e.category !== "mesin-cuci" || !e.series) return t;
+  const kgs = e.members.map((m) => parseFloat(kgLabel(m).replace(",", "."))).filter((n) => n > 0);
+  const lo = Math.min(...kgs), hi = Math.max(...kgs);
+  if (!kgs.length || lo === hi) return t;
+  const fmt = (n) => String(n).replace(".", ",");
+  return t.replace(/\d+(?:,\d+)?\s*Kg/i, `${fmt(lo)} - ${fmt(hi)} Kg`);
+}
 const entityByOrder = (a, b) => a.order - b.order || entityTitle(a).localeCompare(entityTitle(b));
 const allSoldOut = (e) => e.members.every(soldOut);
 const minPrice = (e) => {
@@ -178,6 +187,22 @@ function kgLabel(m) {
   return "";
 }
 const kgValue = (l) => parseFloat(String(l).replace(",", ".")) || 99;
+
+// TV filters: screen size ("43") from the Ukuran Layar spec or the "43\"" group, resolution bucket from the Resolusi spec.
+const specOf = (m, re) => ((m.specs || []).find((x) => re.test(String(x.label).trim())) || {}).value ?? "";
+const isSizeGroup = (g) => /^\d+\s*(?:"|”|″|inci|inch)$/i.test(String(g).trim());
+function tvSize(m) {
+  const r = String(specOf(m, /^ukuran layar$/i)).match(/(\d+)/) || (groupsOf(m).find(isSizeGroup) || "").match(/(\d+)/);
+  return r ? r[1] : "";
+}
+function tvRes(m) {
+  const v = String(specOf(m, /^resolusi$/i)).toLowerCase();
+  if (!v) return "";
+  if (/4k|uhd|3840/.test(v)) return "4K UHD";
+  if (/full\s*hd|1920/.test(v)) return "Full HD";
+  if (/hd/.test(v) || /1366/.test(v)) return "HD";
+  return "";
+}
 
 function pkLabel(m) {
   const raw = String(m.variant || "").trim() || (String(m.title).match(/(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?)\s*PK/i) || [])[1];
@@ -254,7 +279,10 @@ function card(e, prefix = "") {
   const brand = brandOf(p.title);
   const pks = [...new Set(e.members.map((m) => pkLabel(m)).filter(Boolean))];
   const kgs = [...new Set(e.members.map((m) => kgLabel(m)).filter(Boolean))];
-  return `<div class="card" data-brand="${esc(brand)}" data-tipe="${esc(e.groups.join("|"))}" data-pk="${esc(pks.join("|"))}" data-kg="${esc(kgs.join("|"))}">
+  const tipeGroups = e.category === "tv" ? e.groups.filter((g) => !isSizeGroup(g)) : e.groups;
+  const sizes = [...new Set(e.members.map(tvSize).filter(Boolean))];
+  const ress = [...new Set(e.members.map(tvRes).filter(Boolean))];
+  return `<div class="card" data-id="${esc(e.id)}" data-uk="${esc(sizes.join("|"))}" data-res="${esc(ress.join("|"))}" data-brand="${esc(brand)}" data-tipe="${esc(tipeGroups.join("|"))}" data-pk="${esc(pks.join("|"))}" data-kg="${esc(kgs.join("|"))}">
               ${img}
               <div class="card-body">
                 <h3><a class="card-title" href="${esc(href)}">${esc(title)}</a></h3>
@@ -290,13 +318,19 @@ export function buildSearchIndex(products) {
 }
 
 export function renderCategory(products, category) {
-  const items = buildEntities(products).filter((e) => e.category === category).sort(entityByOrder);
+  const tv = category === "tv";
+  const wash = category === "mesin-cuci";
+  // Smallest first, one section per size (type is covered by the filter): TV by screen inch, washers by capacity.
+  const kgOf = (e) => Math.min(...e.members.map((m) => kgValue(kgLabel(m))));
+  const sizeOf = (e) => (wash ? kgOf(e) : Number(tvSize(e.lead)) || 999);
+  const sized = tv || wash;
+  const items = buildEntities(products).filter((e) => e.category === category).sort(sized ? (x, y) => sizeOf(x) - sizeOf(y) || entityByOrder(x, y) : entityByOrder);
 
   // Groups keep the order in which their first product appears.
   const groups = new Map();
   for (const e of items) {
     // `group` may be a string (old files) or an array (multiple sub-categories).
-    for (const g of e.groups.length ? e.groups : [DEFAULT_GROUP[category] || "Produk"]) {
+    for (const g of sized ? [sizeOf(e) >= 99 ? "Lainnya" : wash ? `${String(sizeOf(e)).replace(".", ",")} kg` : `${sizeOf(e)} Inch`] : e.groups.length ? e.groups : [DEFAULT_GROUP[category] || "Produk"]) {
       if (!groups.has(g)) groups.set(g, []);
       groups.get(g).push(e);
     }
@@ -312,7 +346,7 @@ export function renderCategory(products, category) {
     out += `<h2 style="${style}">${esc(name)}</h2>\n          <div class="grid-3">\n            ${list.map((e) => card(e)).join("\n            ")}\n          </div>\n          `;
     first = false;
   }
-  return category === "ac" || category === "mesin-cuci" ? wrapFilters(out, items, category) : out;
+  return ["ac", "mesin-cuci", "kulkas", "tv"].includes(category) ? wrapFilters(out, items, category) : out;
 }
 
 function filterBlock(key, title, opts) {
@@ -323,23 +357,35 @@ function wrapFilters(body, items, category = "ac") {
   const wash = category === "mesin-cuci";
   const cnt = (fn) => { const m = new Map(); for (const e of items) for (const v of new Set(fn(e))) m.set(v, (m.get(v) || 0) + 1); return m; };
   const brands = cnt((e) => [brandOf(e.lead.title)]);
-  const tipes = cnt((e) => e.groups);
-  const pks = cnt((e) => e.members.map(wash ? kgLabel : pkLabel).filter(Boolean));
+  const tipes = cnt((e) => (category === "tv" ? e.groups.filter((g) => !isSizeGroup(g)) : e.groups));
   const brandName = (b) => (b.length <= 3 ? b.toUpperCase() : b[0].toUpperCase() + b.slice(1));
   const sorted = (m, f) => [...m.keys()].sort(f);
-  const pkSort = wash ? (a, b) => kgValue(a) - kgValue(b) : (a, b) => pkValue(a) - pkValue(b);
+  let blocks = filterBlock("brand", "Merek", sorted(brands).map((b) => [b, `${brandName(b)} (${brands.get(b)})`]));
+  const tipeTitle = { ac: "Tipe AC", "mesin-cuci": "Tipe Mesin Cuci", kulkas: "Tipe Kulkas", tv: "Jenis TV" }[category];
+  blocks += filterBlock("tipe", tipeTitle, sorted(tipes).map((t) => [t, `${t} (${tipes.get(t)})`]));
+  if (category === "ac" || wash) {
+    const pks = cnt((e) => e.members.map(wash ? kgLabel : pkLabel).filter(Boolean));
+    const pkSort = wash ? (a, b) => kgValue(a) - kgValue(b) : (a, b) => pkValue(a) - pkValue(b);
+    blocks += filterBlock(wash ? "kg" : "pk", wash ? "Kapasitas" : "Daya (PK)", sorted(pks, pkSort).map((p) => [p, `${p} (${pks.get(p)})`]));
+  }
+  if (category === "tv") {
+    const uk = cnt((e) => e.members.map(tvSize).filter(Boolean));
+    const res = cnt((e) => e.members.map(tvRes).filter(Boolean));
+    const resOrder = ["HD", "Full HD", "4K UHD"];
+    blocks += filterBlock("uk", "Ukuran Layar", sorted(uk, (a, b) => a - b).map((u) => [u, `${u} inci (${uk.get(u)})`]));
+    blocks += filterBlock("res", "Resolusi", sorted(res, (a, b) => resOrder.indexOf(a) - resOrder.indexOf(b)).map((r) => [r, `${r} (${res.get(r)})`]));
+  }
+  const noun = { ac: "AC", "mesin-cuci": "mesin cuci", kulkas: "kulkas", tv: "TV" }[category];
   return `<div class="flt-layout">
           <aside class="flt" id="flt">
             <div class="flt-head"><strong>Filter</strong><button type="button" class="flt-reset" id="fltReset">Reset</button></div>
-            ${filterBlock("brand", "Merek", sorted(brands).map((b) => [b, `${brandName(b)} (${brands.get(b)})`]))}
-            ${filterBlock("tipe", wash ? "Tipe Mesin Cuci" : "Tipe AC", sorted(tipes).map((t) => [t, `${t} (${tipes.get(t)})`]))}
-            ${filterBlock(wash ? "kg" : "pk", wash ? "Kapasitas" : "Daya (PK)", sorted(pks, pkSort).map((p) => [p, `${p} (${pks.get(p)})`]))}
+            ${blocks}
           </aside>
           <div class="flt-main">
             <button type="button" class="flt-toggle" id="fltToggle">Filter</button>
             <div id="fltCount" class="flt-count"></div>
             ${body}
-            <p id="fltEmpty" class="flt-empty" hidden>Tidak ada ${wash ? "mesin cuci" : "AC"} yang cocok. Coba kurangi filter atau tanya admin via WhatsApp.</p>
+            <p id="fltEmpty" class="flt-empty" hidden>Tidak ada ${noun} yang cocok. Coba kurangi filter atau tanya admin via WhatsApp.</p>
           </div>
         </div>
         <script>
@@ -350,7 +396,7 @@ function wrapFilters(body, items, category = "ac") {
           function apply() {
             var sel = {};
             boxes.forEach(function (b) { sel[b.dataset.k] = sel[b.dataset.k] || []; if (b.checked) sel[b.dataset.k].push(b.value); });
-            var shown = 0;
+            var shown = 0, seen = {};
             cards.forEach(function (c) {
               var ok = Object.keys(sel).every(function (k) {
                 if (!sel[k].length) return true;
@@ -358,7 +404,7 @@ function wrapFilters(body, items, category = "ac") {
                 return sel[k].some(function (v) { return have.indexOf(v) > -1; });
               });
               c.style.display = ok ? '' : 'none';
-              if (ok) shown++;
+              if (ok && !seen[c.dataset.id]) { seen[c.dataset.id] = 1; shown++; }
             });
             document.querySelectorAll('.flt-main .grid-3').forEach(function (g) {
               var any = [].some.call(g.children, function (c) { return c.style.display !== 'none'; });

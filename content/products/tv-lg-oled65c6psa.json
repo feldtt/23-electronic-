@@ -7,10 +7,12 @@
   ],
   "series": "",
   "variant": "",
-  "title": "LG OLED65C6PSA",
+  "title": "LG 65 Inch OLED Smart TV",
   "model": "OLED65C6PSA",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-lg-oled65c6psa-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-lg-oled65c6psa-1.png"
+  ],
   "alt": "",
   "description": "LG OLED evo AI C6 65 inci 4K (3840 x 2160) dengan Prosesor Alpha 11 AI 4K Gen3 dan Brightness Booster, mendukung hingga 165 Hz untuk gaming.\r\n\r\nFitur Utama:\r\n- Brightness Booster dan Prosesor Alpha 11 AI Gen3 untuk gambar lebih terang dan detail\r\n- Perfect Black dan Perfect Color untuk kontras dalam dan warna akurat\r\n- Hingga 165 Hz pada 4K dengan G-SYNC dan FreeSync Premium\r\n- Dolby Vision dan Dolby Atmos\r\n- Waktu respons kurang dari 0,1 ms\r\n- webOS dengan pengalaman AI, diamankan oleh LG Shield\r\n- Game Optimizer (Dasbor Game) dan WOW Orchestra",
   "specs": [
@@ -81,6 +83,10 @@
     {
       "label": "Berat (dengan / tanpa kaki)",
       "value": "18,4 / 16,6 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 1 Tahun Panel"
     }
   ],
   "wa_message": "",

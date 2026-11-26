@@ -6,13 +6,88 @@
   ],
   "series": "",
   "variant": "",
-  "title": "Iffalcon 32S55",
+  "title": "iFFALCON 32 Inch Google TV",
   "model": "32S55",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-iffalcon-32s55-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-iffalcon-32s55-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "iFFALCON 32S55 adalah Google TV LED 32 inci HD Ready (1366 x 768) dengan desain metallic bezel-less, Dolby Audio, dan Chromecast bawaan.\r\n\r\nFitur Utama:\r\n- Desain metallic bezel-less\r\n- Google TV dengan Google Assistant, Smart Home, dan Chromecast built-in\r\n- Dolby Audio dan Enhanced Audio, speaker stereo 2 x 5 W\r\n- Tuner digital DVB-T2 / DVB-C dan analog TV\r\n- Wi-Fi 2,4 GHz dan Bluetooth 5.0\r\n- 2 port HDMI (mendukung HDMI ARC) dan 1 port USB 2.0\r\n- Port LAN, AV In, Digital Audio Out (optical), antena, dan headphone",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "32 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "HD Ready (1366 x 768)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LED Backlight"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Daya Suara",
+      "value": "10 W (2 x 5 W)"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi (2,4 GHz)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "2 port (HDMI ARC)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port (USB 2.0)"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "DVB-T2 / DVB-C"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "50 W (standby < 0,5 W)"
+    },
+    {
+      "label": "Tegangan",
+      "value": "100 - 240 V, 50/60 Hz"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "715 x 468 x 180 mm"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "715 x 421 x 80 mm"
+    },
+    {
+      "label": "Berat (dengan / tanpa kaki)",
+      "value": "± 3,4 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

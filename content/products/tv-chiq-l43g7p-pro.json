@@ -6,17 +6,76 @@
   ],
   "series": "",
   "variant": "",
-  "title": "CHIQ L43G7P-PRO",
+  "title": "CHiQ 43 Inch Smart TV",
   "model": "L43G7P-PRO",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-chiq-l43g7p-pro-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-chiq-l43g7p-pro-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "CHiQ L43G7P-PRO adalah Google TV LED 43 inci Full HD (1920 x 1080) dengan Google Assistant, Chromecast bawaan, Wi-Fi dual-band 2,4G/5G, dan audio Dolby dengan dbx-tv.\r\n\r\nFitur Utama:\r\n- Google TV bersertifikat resmi dengan 5000+ aplikasi (Netflix, YouTube, Amazon Prime Video, Google Play Store)\r\n- Prosesor 64-bit dan Google Assistant untuk kontrol suara dan perangkat rumah pintar\r\n- Resolusi Full HD dengan HDR10 dan HLG\r\n- Dolby Audio dengan penyetelan dbx-tv untuk suara lebih jernih\r\n- Chromecast bawaan dan Multi-screen share\r\n- Wi-Fi dual-band 2,4G/5G dan Bluetooth 5.0\r\n- 3 port HDMI, 1 port USB, plus LAN, AV In, optical, dan headphone\r\n- RAM 1,5 GB dan penyimpanan 8 GB",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Refresh Rate",
+      "value": "60 Hz"
+    },
+    {
+      "label": "Prosesor",
+      "value": "64-bit"
+    },
+    {
+      "label": "HDR",
+      "value": "HDR10, HLG"
+    },
+    {
+      "label": "Audio",
+      "value": "Dolby Audio, dbx-tv"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Wi-Fi",
+      "value": "Wi-Fi dual-band (2,4 GHz / 5 GHz)"
+    },
+    {
+      "label": "Bluetooth",
+      "value": "5.0"
+    },
+    {
+      "label": "HDMI",
+      "value": "3 port (HDMI 1.4)"
+    },
+    {
+      "label": "USB",
+      "value": "1 port"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "Ya (Digital TV)"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "55 - 75 W"
+    },
+    {
+      "label": "Dimensi dengan Kaki (L x T x D)",
+      "value": "± 963 x 617 x 180 mm"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,
   "price": 0,
   "featured": false,
-  "published": true
+  "published": false
 }

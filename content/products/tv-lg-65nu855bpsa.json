@@ -6,10 +6,12 @@
   ],
   "series": "",
   "variant": "",
-  "title": "LG 65NU855BPSA",
+  "title": "LG 65 Inch Smart TV",
   "model": "65NU855BPSA",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-lg-65nu855bpsa-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-lg-65nu855bpsa-1.png"
+  ],
   "alt": "",
   "description": "LG NANO 4K UHD AI NU85 65 inci 4K (3840 x 2160) dengan Prosesor Alpha 7 AI 4K Gen9 dan webOS 26.\r\n\r\nFitur Utama:\r\n- Nano Detail Enhancer untuk tekstur dan kedalaman gambar 4K lebih realistis\r\n- Desain Linear Flow dengan finishing solid\r\n- webOS berbasis AI dengan Google Gemini dan Microsoft Copilot\r\n- AI Hub untuk pengalaman personal, diamankan LG Shield\r\n- 4K Super Upscaling dan FILMMAKER MODE\r\n- Akses konten live dan on-demand lewat LG Channels\r\n- Mode gaming: ALLM, VRR (hingga 60 Hz), HGiG",
   "specs": [
@@ -76,6 +78,10 @@
     {
       "label": "Berat (dengan / tanpa kaki)",
       "value": "14,1 / 13,9 kg"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 1 Tahun Panel"
     }
   ],
   "wa_message": "",

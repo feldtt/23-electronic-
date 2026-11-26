@@ -6,7 +6,7 @@
   ],
   "series": "",
   "variant": "",
-  "title": "TCL 43V5C",
+  "title": "TCL 43 Inch Android TV",
   "model": "43V5C",
   "photo": "/assets/uploads/produk-tv-tcl-43v5c-1.png",
   "photos": [
@@ -70,6 +70,10 @@
     {
       "label": "RAM / Penyimpanan",
       "value": "1 GB / 8 GB"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
     }
   ],
   "wa_message": "",

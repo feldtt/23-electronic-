@@ -18,65 +18,81 @@
     </div>
   </div>
 
+  <style>
+    .cat-grid { gap: 20px; }
+    .cat-grid .card h2 { font-size: 21px; font-weight: 700; margin-bottom: 8px; }
+    .cat-grid .card h2 a.card-title { color: var(--text); }
+    .cat-grid .card p { font-size: 14.5px; line-height: 1.55; margin-bottom: 14px; max-width: 46ch; }
+    .cat-grid .card .card-body { padding: 22px 24px; justify-content: center; }
+    .cat-grid .card .card-cta { margin-top: 0; }
+    .cat-grid .card .card-cta .btn { width: auto; padding: 10px 20px; font-size: 14px; }
+    .cat-grid .card-img { aspect-ratio: 4 / 3; }
+    .cat-grid .card-img.has-photo img { object-fit: contain; }
+
+    @media (min-width: 761px) {
+      .cat-grid .card { flex-direction: row; }
+      .cat-grid .card-img { flex: 0 0 44%; aspect-ratio: auto; min-height: 220px; }
+    }
+    @media (max-width: 760px) {
+      .cat-grid { grid-template-columns: 1fr; gap: 14px; }
+      .cat-grid .card-img { aspect-ratio: 16 / 10; }
+    }
+  </style>
   <section class="page-header">
     <div class="container">
-      <h1>Kategori Produk</h1>
-      <p>Untuk stok dan harga hari ini, tanyakan langsung ke admin via WhatsApp. Halaman ini menampilkan kategori dan contoh produk.</p>
+      <h1>Produk</h1>
+      <p>Pilih kategori, lalu tanya stok dan harga hari ini lewat WhatsApp.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="grid-2">
+      <div class="grid-2 cat-grid">
         <div class="card">
-          <div class="card-img has-photo"><img src="/assets/uploads/ac-sharp.jpeg" alt="AC di 23 Electronic" loading="lazy"></div>
+          <a class="card-img has-photo" href="ac.html" tabindex="-1" aria-hidden="true"><img src="/assets/uploads/produk-ac-sharp-x13zy.png" alt="AC Sharp di 23 Electronic" loading="lazy"></a>
           <div class="card-body">
-            <span class="tag">Kategori Utama</span>
-            <h3>AC — Air Conditioner</h3>
-            <p>AC split standard, low watt, dan inverter. Kapasitas 1/2 PK, 3/4 PK, 1 PK, dan lebih besar. Tersedia paket pemasangan.</p>
+            <h2><a class="card-title" href="ac.html">AC</a></h2>
+            <p>AC split standard, low watt, dan inverter. Pilih dari 1/2 PK sampai kapasitas besar. Paket pemasangan tersedia.</p>
             <div class="card-cta">
-              <a href="ac.html" class="btn btn-primary">Lihat AC →</a>
+              <a href="ac.html" class="btn btn-primary">Lihat AC</a>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img has-photo"><img src="/assets/uploads/store-interior.jpg" alt="Kulkas di toko 23 Electronic, Ciputat" loading="lazy"></div>
+          <a class="card-img has-photo" href="kulkas.html" tabindex="-1" aria-hidden="true"><img src="/assets/uploads/produk-kulkas-aqua-aqr-285-1.png" alt="Kulkas AQUA di 23 Electronic" loading="lazy"></a>
           <div class="card-body">
-            <span class="tag">Kategori</span>
-            <h3>Kulkas</h3>
-            <p>Kulkas 1 pintu untuk kebutuhan rumah. Tanya stok dan opsi pengiriman.</p>
+            <h2><a class="card-title" href="kulkas.html">Kulkas</a></h2>
+            <p>Kulkas 2 pintu biasa dan inverter untuk rumah. Tanya admin soal stok dan pengiriman.</p>
             <div class="card-cta">
-              <a href="kulkas.html" class="btn btn-primary">Lihat Kulkas →</a>
+              <a href="kulkas.html" class="btn btn-primary">Lihat Kulkas</a>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img has-photo"><img src="/assets/uploads/mc-toshiba-h95.jpeg" alt="Mesin cuci di 23 Electronic" loading="lazy"></div>
+          <a class="card-img has-photo" href="mesin-cuci.html" tabindex="-1" aria-hidden="true"><img src="/assets/uploads/produk-mesin-cuci-toshiba-95mn-1.png" alt="Mesin cuci Toshiba di 23 Electronic" loading="lazy"></a>
           <div class="card-body">
-            <span class="tag">Kategori</span>
-            <h3>Mesin Cuci</h3>
-            <p>Mesin cuci 1 tabung, 2 tabung, dan front loading. Tipe dan kapasitas ditanyakan saat chat.</p>
+            <h2><a class="card-title" href="mesin-cuci.html">Mesin Cuci</a></h2>
+            <p>Pilih 1 tabung (top loading) atau 2 tabung (twin tube), lalu saring per merek dan kapasitas.</p>
             <div class="card-cta">
-              <a href="mesin-cuci.html" class="btn btn-primary">Lihat Mesin Cuci →</a>
+              <a href="mesin-cuci.html" class="btn btn-primary">Lihat Mesin Cuci</a>
             </div>
           </div>
         </div>
         <div class="card">
-          <div class="card-img has-photo"><img src="/assets/uploads/tv-samsung-hd.jpeg" alt="TV & elektronik di 23 Electronic" loading="lazy"></div>
+          <a class="card-img has-photo" href="tv-dan-elektronik-rumah.html" tabindex="-1" aria-hidden="true"><img src="/assets/uploads/produk-tv-lg-65qned70bsa-1.png" alt="TV LG di 23 Electronic" loading="lazy"></a>
           <div class="card-body">
-            <span class="tag">Kategori</span>
-            <h3>TV & Elektronik Rumah</h3>
-            <p>TV LED / Smart TV dan beberapa small appliances. Stok bervariasi — konfirmasi via WA.</p>
+            <h2><a class="card-title" href="tv-dan-elektronik-rumah.html">TV & Elektronik Rumah</a></h2>
+            <p>TV LED dan Smart TV dari 24 sampai 65 inci. Saring per ukuran, resolusi, dan jenis.</p>
             <div class="card-cta">
-              <a href="tv-dan-elektronik-rumah.html" class="btn btn-primary">Lihat TV & Lainnya →</a>
+              <a href="tv-dan-elektronik-rumah.html" class="btn btn-primary">Lihat TV</a>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="notice notice-info" style="margin-top:32px;">
-        <strong>Catatan harga & stok</strong>
-        Harga elektronik berubah cukup cepat dan stok berbeda per merek/tipe. Untuk kepastian, tanyakan stok dan harga hari ini ke admin WhatsApp sebelum datang ke toko.
+      <div class="notice notice-info" style="margin-top:32px;border:1px solid var(--blue-100);border-radius:var(--r-md);">
+        <strong>Harga dan stok</strong>
+        Harga berubah cepat dan stok beda tiap merek dan tipe. Tanya admin di WhatsApp sebelum datang ke toko.
       </div>
     </div>
   </section>

@@ -4,8 +4,8 @@ Semua bahan untuk membuat foto produk (template + logo merek + foto mentah) ada 
 jadi di komputer lain tidak perlu mengunduh ulang.
 
 - `template.png` — template 740 x 740 (logo 23 Electronic, bingkai biru, "100% ORI / Pengiriman Cepat / Garansi Resmi")
-- `logos/` — logo merek: AQUA, Daikin, Gree, LG, Midea, Mitsubishi Heavy, Panasonic, Polytron, Samsung, Sharp, TCL
-  (Xiaomi, Coocaa, Advance, dll. belum ada logonya; fotonya dibuat tanpa logo)
+- `logos/` — logo merek: AQUA, Changhong, Coocaa, Daikin, Electrolux, GEA, Gree, Hisense, iFFALCON, LG, Midea, Mitsubishi Heavy (MHI), Panasonic, Polytron, Samsung, Sanken, Sharp, TCL, Toshiba, Xiaomi
+  (Advance, CHiQ, Digitec belum ada logonya; fotonya dibuat tanpa logo)
 - `raw/` — foto mentah TV yang dipakai (nama = merek-model)
 - `arsip-kiriman/` — semua gambar yang pernah dikirim ke Claude di sesi pembuatan katalog
   (foto produk, screenshot spesifikasi, logo). Nomor file = urutan kirim. Boleh dihapus kalau sudah tidak perlu.

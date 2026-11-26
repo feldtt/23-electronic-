@@ -6,7 +6,7 @@
   ],
   "series": "",
   "variant": "",
-  "title": "TCL 65T6C",
+  "title": "TCL 65 Inch Google TV",
   "model": "65T6C",
   "photo": "/assets/uploads/produk-tv-tcl-65t6c-1.png",
   "photos": [
@@ -62,6 +62,10 @@
     {
       "label": "USB",
       "value": "1 port (USB 3.0)"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
     }
   ],
   "wa_message": "",

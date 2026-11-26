@@ -6,13 +6,52 @@
   ],
   "series": "",
   "variant": "",
-  "title": "AQUA 43T50GFX",
+  "title": "AQUA 43 Inch Smart TV",
   "model": "43T50GFX",
-  "photo": "",
-  "photos": [],
+  "photo": "/assets/uploads/produk-tv-aqua-43t50gfx-1.png",
+  "photos": [
+    "/assets/uploads/produk-tv-aqua-43t50gfx-1.png"
+  ],
   "alt": "",
-  "description": "",
-  "specs": [],
+  "description": "AQUA 43T50GFX adalah Google TV LED 43 inci Full HD (1920 x 1080) dari Vivid Series dengan Chromecast bawaan, TV digital, dan audio dbx-tv.\r\n\r\nFitur Utama:\r\n- Google TV: unduh aplikasi dan game favorit dari Google Play\r\n- Resolusi Full HD untuk gambar tajam dan jernih\r\n- Chromecast bawaan untuk menayangkan video dan foto dari ponsel ke layar TV\r\n- Tuner TV digital\r\n- RAM 1 GB dan ROM 8 GB untuk respons cepat\r\n- Kalibrasi audio dbx-tv dengan suara surround virtual\r\n- Suku cadang asli AQUA",
+  "specs": [
+    {
+      "label": "Ukuran Layar",
+      "value": "43 inci"
+    },
+    {
+      "label": "Resolusi",
+      "value": "Full HD (1920 x 1080)"
+    },
+    {
+      "label": "Teknologi Layar",
+      "value": "LCD (LED)"
+    },
+    {
+      "label": "Sistem Operasi",
+      "value": "Google TV"
+    },
+    {
+      "label": "Audio",
+      "value": "dbx-tv"
+    },
+    {
+      "label": "Tuner Digital",
+      "value": "Ya (Digital TV)"
+    },
+    {
+      "label": "Konsumsi Daya Maks.",
+      "value": "75 W"
+    },
+    {
+      "label": "Dimensi tanpa Kaki (L x T x D)",
+      "value": "955 x 556 x 88 mm"
+    },
+    {
+      "label": "Garansi",
+      "value": "3 Tahun Sparepart + 3 Tahun Panel"
+    }
+  ],
   "wa_message": "",
   "order": 1000,
   "stock": null,

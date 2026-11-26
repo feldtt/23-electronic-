@@ -6,7 +6,7 @@
   ],
   "series": "",
   "variant": "",
-  "title": "Coocaa 32S3U",
+  "title": "Coocaa 32 Inch Smart TV",
   "model": "32S3U",
   "photo": "/assets/uploads/produk-tv-coocaa-32s3u-1.png",
   "photos": [
@@ -54,6 +54,10 @@
     {
       "label": "Tegangan",
       "value": "220 V"
+    },
+    {
+      "label": "Garansi",
+      "value": "1 Tahun Sparepart + 3 Tahun Panel"
     }
   ],
   "wa_message": "",

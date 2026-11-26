@@ -381,13 +381,17 @@
     const pkText = (n) => (n === 0.5 ? '1/2' : n === 0.75 ? '3/4' : String(n).replace('.', ','));
     window.__searchLoad = () => loading || (loading = fetch('/assets/search-index.json').then((r) => r.json()).then((d) => { index = d.map((x) => ({ ...x, h: norm(`${x.t} ${x.k} ${x.c}`) })); }).catch(() => { index = []; }));
     window.__search = (q, g) => {
+      // Washer type synonyms: "2 tabung / dua tabung / twin tub / double tub" -> twin tube, "1 tabung / buka atas / top load" -> top loading.
+      let washer = false;
       let s = String(q || '').toLowerCase()
+        .replace(/\b(?:2|dua)\s*tabung\b|\btabung\s*(?:2|dua|ganda|kembar)\b|\btwin\s*-?\s*tub(?:e|ung)?\b|\btwintub(?:e)?\b|\bdouble\s*tub(?:e)?\b|\b(?:2|dua)\s*tub\b/g, () => { washer = true; return ' twin tube '; })
+        .replace(/\b(?:1|satu)\s*tabung\b|\btabung\s*(?:1|satu|tunggal)\b|\btop\s*-?\s*load(?:ing|er)?\b|\bbuka(?:an)?\s*atas\b/g, () => { washer = true; return ' top loading '; })
         .replace(/satu setengah/g, '1.5').replace(/tiga perempat/g, '3/4').replace(/setengah/g, '1/2')
         .replace(/\bsatu\b/g, '1').replace(/\bdua\b/g, '2').replace(/\btiga\b/g, '3');
       let pk = null;
       s = s.replace(/(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?)\s*pk\b/, (_, n) => { pk = pkNum(n); return ' '; });
       s = ` ${norm(s)} `;
-      let cat = null;
+      let cat = washer ? 'mesin-cuci' : null;
       for (const [word, c] of CATS) {
         if (s.includes(` ${word} `)) { cat = cat || c; s = s.replace(` ${word} `, ' '); }
       }
