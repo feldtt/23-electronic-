@@ -38,10 +38,25 @@
               <button type="button" class="ins-mode on" data-v="paket"><b>Paket Lengkap</b><span>Jasa pasang, vakum, pipa + kabel + selang, bracket outdoor</span></button>
               <button type="button" class="ins-mode" data-v="satuan"><b>Jasa Satuan</b><span>Pilih sendiri jasa dan bahan yang dibutuhkan</span></button>
             </div>
-            <div class="ins-row">
-              <label class="ins-f">AC yang dipasang (opsional)<input type="text" id="iAc" placeholder="mis. DAIKIN AC SPLIT ALPHA INVERTER FTKH15YV14"></label>
-              <label class="ins-f">Kapasitas<select id="iPk"><option value="">Belum tahu</option><option>1/2 PK</option><option>3/4 PK</option><option>1 PK</option><option>1,5 PK</option><option>2 PK</option><option>2,5 PK</option><option>3 PK</option></select></label>
-              <label class="ins-f">Freon<select id="iFreon"><option value="">Belum tahu</option><option>R32</option><option>R410A</option><option>R22</option></select></label>
+            <div hidden>
+              <input type="hidden" id="iAc">
+              <select id="iPk"><option value="">Belum tahu</option><option>1/2 PK</option><option>3/4 PK</option><option>1 PK</option><option>1,5 PK</option><option>2 PK</option><option>2,5 PK</option><option>3 PK</option></select>
+            </div>
+            <div class="ins-pick" id="insPick">
+              <button type="button" class="ins-pick-btn" id="pickBtn" aria-expanded="false" aria-controls="pickPanel">
+                <span class="ins-pick-main"><small>AC yang dipasang</small><b id="pickName">Pilih AC (opsional)</b></span>
+                <span class="ins-pick-pk"><small>Kapasitas</small><b id="pickPk">-</b></span>
+                <svg class="ins-pick-chev" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg>
+              </button>
+              <div class="ins-pick-panel" id="pickPanel" hidden>
+                <div class="ins-pick-filters">
+                  <input type="search" id="pickQ" placeholder="Cari merek atau tipe AC" autocomplete="off" aria-label="Cari AC">
+                  <select id="pickBrand" aria-label="Merek"><option value="">Semua merek</option></select>
+                  <select id="pickPkF" aria-label="Kapasitas"><option value="">Semua PK</option></select>
+                </div>
+                <ul class="ins-pick-list" id="pickList"></ul>
+                <div class="ins-pick-foot"><span id="pickCount"></span><button type="button" id="pickClear">Kosongkan pilihan</button></div>
+              </div>
             </div>
           </div>
 
@@ -134,8 +149,74 @@
 
       // query: ?produk=...&pk=...
       var q = new URLSearchParams(location.search);
-      if (q.get('produk')) $('iAc').value = q.get('produk');
-      if (q.get('pk')) { var pk = q.get('pk'); Array.prototype.forEach.call($('iPk').options, function (o) { if (o.value && o.value.replace(',', '.').toLowerCase() === pk.replace(',', '.').toLowerCase()) $('iPk').value = o.value; }); }
+      // ---- AC picker: dropdown with search + brand + PK filters, fed by the same index as the header search ----
+      var pkNorm = function (raw) {
+        var m = String(raw || '').replace(',', '.').match(/(\d+)\s*\/\s*(\d+)|(\d+(?:\.\d+)?)/);
+        if (!m) return null;
+        var n = m[3] ? parseFloat(m[3]) : Number(m[1]) / Number(m[2]);
+        return n === 0.5 ? '1/2 PK' : n === 0.75 ? '3/4 PK' : String(n).replace('.', ',') + ' PK';
+      };
+      var pkIn = function (text) { var m = String(text || '').match(/(\d+(?:[.,]\d+)?(?:\s*\/\s*\d+)?)\s*PK/i); return m ? pkNorm(m[1]) : null; };
+      var pkVal = function (l) { var m = String(l).replace(',', '.').match(/(\d+)\/(\d+)|(\d+(?:\.\d+)?)/); return m ? (m[3] ? parseFloat(m[3]) : m[1] / m[2]) : 99; };
+      var brandOf = function (t) { var b = String(t).trim().split(/\s+/)[0].toLowerCase(); if (b === 'mitsubishi') b = 'mhi'; return b.length <= 3 ? b.toUpperCase() : b.charAt(0).toUpperCase() + b.slice(1); };
+      var options = [], insReady = false;
+      function setPick(name, pk) {
+        $('iAc').value = name || '';
+        $('iPk').value = '';
+        if (pk) Array.prototype.forEach.call($('iPk').options, function (o) { if (o.value && o.value.replace(',', '.').toLowerCase() === pk.replace(',', '.').toLowerCase()) $('iPk').value = o.value; });
+        $('pickName').textContent = name || 'Pilih AC (opsional)';
+        $('pickPk').textContent = $('iPk').value || (pk && name ? pk : '-');
+        if (insReady) refresh();
+      }
+      function togglePanel(open) {
+        $('pickPanel').hidden = !open;
+        $('pickBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) {
+          // Filters start on the chosen AC's brand and capacity, like the fields above.
+          var cur = $('iAc').value, curPk = $('iPk').value;
+          var bv = cur ? brandOf(cur) : '', pv = curPk;
+          $('pickBrand').value = Array.prototype.some.call($('pickBrand').options, function (o) { return o.value === bv; }) ? bv : '';
+          $('pickPkF').value = Array.prototype.some.call($('pickPkF').options, function (o) { return o.value === pv; }) ? pv : '';
+          $('pickQ').value = '';
+          drawList(); $('pickQ').focus();
+        }
+      }
+      function drawList() {
+        var qq = $('pickQ').value.trim().toLowerCase().split(/\s+/).filter(Boolean), b = $('pickBrand').value, p = $('pickPkF').value;
+        var list = options.filter(function (o) { return (!b || o.brand === b) && (!p || o.pk === p) && qq.every(function (t) { return o.h.indexOf(t) > -1; }); });
+        $('pickCount').textContent = list.length + ' AC';
+        $('pickList').innerHTML = list.length ? list.slice(0, 80).map(function (o, i) {
+          return '<li><button type="button" class="ins-opt" data-i="' + options.indexOf(o) + '">' + (o.img ? '<img src="' + o.img + '" alt="">' : '<span class="ins-opt-noimg"></span>') + '<span class="ins-opt-t">' + o.name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</span><span class="ins-opt-pk">' + (o.pk || '') + '</span></button></li>';
+        }).join('') : '<li class="ins-opt-empty">Tidak ada AC yang cocok.' + ($('pickQ').value.trim() ? ' <button type="button" id="pickOwn">Pakai "' + $('pickQ').value.trim().replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '') + '"</button>' : '') + '</li>';
+      }
+      $('pickBtn').addEventListener('click', function () { togglePanel($('pickPanel').hidden); });
+      ['pickQ', 'pickBrand', 'pickPkF'].forEach(function (id) { $(id).addEventListener('input', drawList); });
+      $('pickList').addEventListener('click', function (e) {
+        var own = e.target.closest('#pickOwn');
+        if (own) { setPick($('pickQ').value.trim(), pkIn($('pickQ').value)); togglePanel(false); return; }
+        var b = e.target.closest('.ins-opt'); if (!b) return;
+        var o = options[Number(b.dataset.i)];
+        setPick(o.name, o.pk); togglePanel(false);
+      });
+      $('pickClear').addEventListener('click', function () { setPick('', ''); togglePanel(false); });
+      document.addEventListener('click', function (e) { if (!$('insPick').contains(e.target)) togglePanel(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('pickPanel').hidden) { togglePanel(false); $('pickBtn').focus(); } });
+      fetch('/assets/search-index.json').then(function (r) { return r.json(); }).then(function (d) {
+        d.filter(function (x) { return x.c === 'ac'; }).forEach(function (x) {
+          var add = function (name, pk, img) { options.push({ name: name, pk: pk, img: img || x.i, brand: brandOf(x.t), h: (name + ' ' + (x.k || '')).toLowerCase() }); };
+          if (x.s && x.s.length) x.s.forEach(function (m) { add(x.t + (m.mo ? ' ' + m.mo : '') + ' · ' + m.v, pkNorm(m.v) || pkIn(m.mo), m.ph); });
+          else add(x.t + (x.m ? ' ' + x.m : ''), pkIn(x.t + ' ' + x.m) || (x.v && x.v.length === 1 ? pkNorm(x.v[0]) : null));
+        });
+        var brands = {}, pks = {};
+        options.forEach(function (o) { brands[o.brand] = 1; if (o.pk) pks[o.pk] = 1; });
+        $('pickBrand').innerHTML += Object.keys(brands).sort().map(function (b) { return '<option>' + b + '</option>'; }).join('');
+        $('pickPkF').innerHTML += Object.keys(pks).sort(function (a, c) { return pkVal(a) - pkVal(c); }).map(function (p) { return '<option>' + p + '</option>'; }).join('');
+      }).catch(function () {});
+      // Coming from an AC page: the AC and its capacity are already filled in.
+      if (q.get('produk')) {
+        var pkq = q.get('pk') ? pkNorm(q.get('pk')) : pkIn(q.get('produk'));
+        setPick(q.get('produk'), pkq);
+      }
 
       function visible() { return ITEMS.filter(function (x) { return mode === 'satuan' ? true : x.mode === 'both'; }); }
 
@@ -172,7 +253,6 @@
         var msg = ['Halo 23 Electronic, saya mau pesan jasa pasang AC (' + (mode === 'paket' ? 'paket lengkap' : 'jasa satuan') + ').'];
         if ($('iAc').value.trim()) msg.push('AC: ' + $('iAc').value.trim());
         if ($('iPk').value) msg.push('Kapasitas: ' + $('iPk').value);
-        if ($('iFreon').value) msg.push('Freon: ' + $('iFreon').value);
         if (L.length) { msg.push('', 'Pesanan:'); L.forEach(function (l) { msg.push('- ' + l.t); }); }
         if ($('iNote').value.trim()) msg.push('', 'Catatan: ' + $('iNote').value.trim());
         msg.push('', 'Mohon info harga dan jadwalnya.');
@@ -192,7 +272,8 @@
         mode = b.dataset.v;
         document.querySelectorAll('.ins-mode').forEach(function (x) { x.classList.toggle('on', x === b); });
         $('boxPaket').hidden = mode !== 'paket';
-        drawAdd(); refresh();
+        insReady = true;
+      drawAdd(); refresh();
       });
       $('iPipe').addEventListener('click', function (e) {
         var b = e.target.closest('.ins-pipe'); if (!b) return;
@@ -217,7 +298,7 @@
         row.querySelector('output').textContent = sel[id];
         refresh();
       });
-      ['iAc', 'iPk', 'iFreon', 'iNote'].forEach(function (id) { $(id).addEventListener('input', refresh); });
+      ['iAc', 'iPk', 'iNote'].forEach(function (id) { $(id).addEventListener('input', refresh); });
 
       if (q.get('mode') === 'satuan') { document.querySelector('.ins-mode[data-v="satuan"]').click(); }
       drawAdd(); refresh();

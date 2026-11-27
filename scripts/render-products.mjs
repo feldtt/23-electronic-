@@ -617,7 +617,7 @@ function renderDetailPage(e, entities) {
           <div id="pdPrice">
           ${v.priceHtml}
           </div>
-          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="${esc(v.msg)}" data-product="${esc(title)}">Chat WhatsApp</a>
+          <a href="#" id="pdWa" class="btn btn-wa pd-wa wa-link" data-msg="${esc(v.msg)}" data-product="${esc(title)}">${p.category === "ac" ? "Pesan Unit Only via WhatsApp" : "Chat WhatsApp"}</a>
           <p class="pd-note">Stok dan harga final dikonfirmasi admin via WhatsApp.</p>
           <ul class="pd-trust">
             <li>Garansi resmi pabrik</li>
