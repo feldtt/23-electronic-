@@ -436,7 +436,9 @@ function wrapFilters(body, items, category = "ac") {
 // cards between the markers stay as they are.
 const FEATURED_MAX = 10;
 export function renderFeatured(products) {
-  const items = buildEntities(products).filter((e) => e.featured).sort(entityByOrder).slice(0, FEATURED_MAX);
+  // AC first, then kulkas, mesin cuci, TV; within a category the usual order.
+  const catRank = (e) => { const i = ["ac", "kulkas", "mesin-cuci", "tv"].indexOf(e.category); return i < 0 ? 99 : i; };
+  const items = buildEntities(products).filter((e) => e.featured).sort((a, b) => catRank(a) - catRank(b) || entityByOrder(a, b)).slice(0, FEATURED_MAX);
   return items.length ? items.map((e) => card(e, "produk/")).join("\n          ") : null;
 }
 

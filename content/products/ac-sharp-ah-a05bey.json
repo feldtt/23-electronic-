@@ -87,6 +87,6 @@
   "order": 1000,
   "stock": 5,
   "price": 1000000,
-  "featured": false,
+  "featured": true,
   "published": true
 }
